@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3517600B20E643890056803B /* OrderManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3517600820E643890056803B /* OrderManagerViewController.swift */; };
+		3517600C20E643890056803B /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3517600920E643890056803B /* FeedbackViewController.swift */; };
+		3517600D20E643890056803B /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3517600A20E643890056803B /* MainTableViewController.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -28,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3517600820E643890056803B /* OrderManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderManagerViewController.swift; sourceTree = "<group>"; };
+		3517600920E643890056803B /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		3517600A20E643890056803B /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		59B74FFF5F4FDAF17FB293C5 /* Pods-JXFoundation_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXFoundation_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-JXFoundation_Example/Pods-JXFoundation_Example.release.xcconfig"; sourceTree = "<group>"; };
 		5BE60DEF63C7E707B5D4E0DA /* Pods-JXFoundation_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXFoundation_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JXFoundation_Tests/Pods-JXFoundation_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* JXFoundation_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JXFoundation_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,13 +46,13 @@
 		607FACE51AFB9204008FA782 /* JXFoundation_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JXFoundation_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		8F5B92AB0EF0DE8A546F7385 /* JXFoundation.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = JXFoundation.podspec; path = ../JXFoundation.podspec; sourceTree = "<group>"; };
+		8F5B92AB0EF0DE8A546F7385 /* JXFoundation.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = JXFoundation.podspec; path = ../JXFoundation.podspec; sourceTree = "<group>"; };
 		A229F08ED1DE9C6192AFD97E /* Pods-JXFoundation_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXFoundation_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JXFoundation_Tests/Pods-JXFoundation_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B6E14FD458B0D2892BD30F6E /* Pods_JXFoundation_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JXFoundation_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C61EB5F1B94044D0D48F7F83 /* Pods-JXFoundation_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXFoundation_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JXFoundation_Example/Pods-JXFoundation_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		E50CC44660C13CE0EE9B87DB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		E50CC44660C13CE0EE9B87DB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F4033CC54EDB8F326E866405 /* Pods_JXFoundation_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JXFoundation_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F6D7AE780731F5ACFE9BD095 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		F6D7AE780731F5ACFE9BD095 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,9 @@
 		607FACD21AFB9204008FA782 /* Example for JXFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				3517600920E643890056803B /* FeedbackViewController.swift */,
+				3517600A20E643890056803B /* MainTableViewController.swift */,
+				3517600820E643890056803B /* OrderManagerViewController.swift */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -349,6 +358,9 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				3517600B20E643890056803B /* OrderManagerViewController.swift in Sources */,
+				3517600D20E643890056803B /* MainTableViewController.swift in Sources */,
+				3517600C20E643890056803B /* FeedbackViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

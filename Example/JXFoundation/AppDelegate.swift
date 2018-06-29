@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  JXFoundation
+//  JXView
 //
-//  Created by dujinxin on 06/29/2018.
-//  Copyright (c) 2018 dujinxin. All rights reserved.
+//  Created by dujinxin on 08/23/2017.
+//  Copyright (c) 2017 dujinxin. All rights reserved.
 //
 
 import UIKit

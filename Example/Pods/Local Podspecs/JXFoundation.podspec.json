@@ -1,7 +1,7 @@
 {
   "name": "JXFoundation",
   "version": "0.1.0",
-  "summary": "A short description of JXFoundation.",
+  "summary": "custom view",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/dujinxin/JXFoundation",
   "license": {
@@ -18,5 +18,6 @@
   "platforms": {
     "ios": "8.0"
   },
+  "swift_version": "4.0",
   "source_files": "JXFoundation/Classes/**/*"
 }
