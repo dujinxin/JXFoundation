@@ -10,7 +10,7 @@
 import UIKit
 import Photos
 
-extension UIImage {
+public extension UIImage {
     
     /// 依据宽度等比例对图片重新绘制
     ///
@@ -18,7 +18,7 @@ extension UIImage {
     ///   - originalImage: 原图
     ///   - scaledWidth: 将要缩放或拉伸的宽度
     /// - Returns: 新的图片
-    class func image(originalImage:UIImage? ,to scaledWidth:CGFloat) -> UIImage? {
+    public class func image(originalImage:UIImage? ,to scaledWidth:CGFloat) -> UIImage? {
         guard let image = originalImage else {
             return UIImage.init()
         }
@@ -44,37 +44,33 @@ extension UIImage {
         return newImage
     }
 
-    static func image(originalImage:UIImage?,rect:CGRect,radius:CGFloat) -> UIImage? {
+    public func image(originalImage:UIImage?,rect:CGRect,radius:CGFloat) -> UIImage? {
         guard let image = originalImage else {
             return UIImage.init()
         }
-        //opaque 是否透明 false透明 true不透明
-        //scale 绘制分辨率，默认为1.0,会模糊，设置为0会自动根据屏幕分辨率来绘制
-        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 1.0)
         
         
         //let path = UIBezierPath(arcCenter: self.center, radius: radius, startAngle: pid_t * 0, endAngle: pid_t * 2, clockwise: true)
-        //let path = UIBezierPath(ovalIn: rect)
-        let path = UIBezierPath(roundedRect: rect, cornerRadius: radius)
+        let path = UIBezierPath(ovalIn: rect)
         //剪切
         path.addClip()
         
         image.draw(in: rect)
         
-        //path.lineCapStyle = .round
-        UIColor.groupTableViewBackground.setStroke()
-        path.lineWidth = 3
-        //path.stroke(with: .color, alpha: 0.8)
-        path.stroke()
+        path.lineCapStyle = .round
+        UIColor.darkGray.setStroke()
+        path.lineWidth = 2
+        path.stroke(with: .color, alpha: 0.8)
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         
         UIGraphicsEndImageContext()
         
-        
+  
         return newImage
     }
-    class func imageScreenshot(view: UIView) -> UIImage? {
+    public class func imageScreenshot(view: UIView) -> UIImage? {
         let rect = view.bounds
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
@@ -87,13 +83,12 @@ extension UIImage {
     }
     
 }
-extension UIImage {
+public extension UIImage {
     
-    
-    class func save(image:UIImage,completion:((_ isSuccess:Bool)->())?) {
+    public class func save(image:UIImage,completion:((_ isSuccess:Bool)->())?) {
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
     }
-    @objc func image(image:UIImage,didFinishSavingWithError error:Error?,contextInfo:AnyObject?) {
+    @objc public func image(image:UIImage,didFinishSavingWithError error:Error?,contextInfo:AnyObject?) {
         if error != nil {
             //
             print("保存成功")
@@ -102,12 +97,17 @@ extension UIImage {
         }
     }
     
-    class func saveImage(image:UIImage,isAlbum:Bool = false,completion:@escaping ((_ isSuccess:Bool,_ msg:String)->())) -> Void {
+    /// 保存图片到相册
+    ///
+    /// - Parameters:
+    ///   - image: 图片
+    ///   - isAlbum: 是否新建相册
+    ///   - completion: 回调
+    public class func saveImage(image:UIImage,isAlbum:Bool = false,completion:@escaping ((_ isSuccess:Bool,_ msg:String)->())) -> Void {
         
         //let isGo = authorizationStatus()
         
         saveImageToAlbum(image: image, isCreateAlbum: isAlbum, albumName: "操作员", completion: completion)
-
     }
     private func authorizationStatus() -> Bool {
         if PHPhotoLibrary.authorizationStatus() == .authorized{
@@ -121,6 +121,14 @@ extension UIImage {
 //            }
 //        })
     }
+    
+    /// 保存图片到相册
+    ///
+    /// - Parameters:
+    ///   - image: 图片
+    ///   - isCreateAlbum: 是否新建相册（如果有就不会创建）
+    ///   - albumName: 相册名字
+    ///   - completion: 回调
     class private func saveImageToAlbum(image:UIImage,isCreateAlbum:Bool,albumName:String,completion:@escaping ((_ isSuccess:Bool,_ msg:String)->())) -> Void {
         //同步执行
 //        try? PHPhotoLibrary.shared().performChangesAndWait({
@@ -219,5 +227,49 @@ extension UIImage {
                 print("保存到胶卷相册失败 error = \(String(describing: error?.localizedDescription))")
             }
         })
+    }
+}
+//MARK:保存到文件中
+public extension UIImage {
+    
+    /// 保存图片到文件中
+    ///
+    /// - Parameters:
+    ///   - image: 图片
+    ///   - name: 数据名称
+    /// - Returns: 操作结果
+    public static func insert(image:UIImage,name:String) ->Bool{
+        guard let data = UIImageJPEGRepresentation(image, 1.0) else {
+            return false
+        }
+        return FileManager.insert(data: data, toFile: name)
+    }
+    /// 修改文件中的图片
+    ///
+    /// - Parameters:
+    ///   - image: 图片
+    ///   - name: 数据名称
+    /// - Returns: 操作结果
+    public static func update(image:UIImage,name:String) ->Bool {
+        guard let data = UIImageJPEGRepresentation(image, 1.0) else {
+            return false
+        }
+        return FileManager.update(inFile: data, name: name)
+    }
+    /// 获取文件中的图片
+    ///
+    /// - Parameters:
+    ///   - name: 数据名称
+    /// - Returns: 操作结果
+    public static func select(name:String) -> Data? {
+        let data = FileManager.select(fromFile: name) as? Data
+        return data
+    }
+    /// 移除图片
+    ///
+    /// - Parameter name: 数据名称
+    /// - Returns: 操作结果
+    public static func delete(name:String) ->Bool{
+        return FileManager.delete(fromFile: name)
     }
 }

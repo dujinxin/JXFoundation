@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JXFoundation'
-  s.version          = '0.1.0'
-  s.summary          = 'custom view'
+  s.version          = '0.1.1'
+  s.summary          = '自定义view，以及平时自己常用的一些方法扩展'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?

@@ -10,11 +10,15 @@ import Foundation
 
 extension Bundle {
     /// 工程名称
-    var bundleName: String {
+    public var bundleName: String {
         return (Bundle.main.infoDictionary?["CFBundleName"] as? String) ?? ""
     }
     /// 版本号
-    var version: String {
+    public var version: String {
         return (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? ""
+    }
+    /// build版本号
+    public var buildVersion: String {
+        return (Bundle.main.infoDictionary?["CFBundleVersion"] as? String) ?? ""
     }
 }

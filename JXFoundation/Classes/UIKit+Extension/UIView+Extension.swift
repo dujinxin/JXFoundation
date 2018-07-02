@@ -81,7 +81,7 @@ public extension UIView {
      *
      * Sets center.x = centerX
      */
-    public var JXcenter : CGPoint {
+    public var jxCenter : CGPoint {
         get{
             return center
         }
@@ -110,7 +110,7 @@ public extension UIView {
     /**
      * Shortcut for frame.origin
      */
-    public var jxOrigin : CGPoint {
+    var jxOrigin : CGPoint {
         get{
             return frame.origin
         }
@@ -119,7 +119,7 @@ public extension UIView {
     /**
      * Shortcut for frame.size
      */
-    public var jxSize : CGSize {
+    var jxSize : CGSize {
         get{
             return frame.size
         }

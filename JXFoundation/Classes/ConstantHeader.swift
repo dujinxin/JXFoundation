@@ -8,18 +8,22 @@
 
 import Foundation
 import UIKit
+//MARK:设备
+public let deviceModel = UIScreen.main.modelSize
+
 //MARK:尺寸类
 public let kScreenWidth = UIScreen.main.bounds.width
 public let kScreenHeight = UIScreen.main.bounds.height
 public let kScreenBounds = UIScreen.main.bounds
 
-public let kStatusBarHeight = CGFloat(20)
+public let kStatusBarHeight = (deviceModel == .iPhoneX) ? CGFloat(44) : CGFloat(20)
 public let kNavBarHeight = CGFloat(44)
 public let kNavStatusHeight = kStatusBarHeight + kNavBarHeight
 public let kTabBarHeight = CGFloat(49)
 
 public let kHWPercent = (kScreenHeight / kScreenWidth)//高宽比例
 public let kPercent = kScreenWidth / 375.0
+
 
 //MARK:颜色
 

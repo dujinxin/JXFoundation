@@ -1,5 +1,5 @@
 //
-//  MainTableViewController.swift
+//  JXViewController.swift
 //  JXView
 //
 //  Created by 杜进新 on 2017/8/23.
@@ -9,12 +9,11 @@
 import UIKit
 import JXFoundation
 
-class MainTableViewController: UITableViewController {
+class JXViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = JXDebugColor
+        view.backgroundColor = UIColor.groupTableViewBackground
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,11 +42,24 @@ class MainTableViewController: UITableViewController {
                 self.navigationController?.pushViewController(OrderManagerViewController(), animated: true)
             case 5:
                 self.navigationController?.pushViewController(FeedbackViewController(), animated: true)
+            case 6:
+                self.showInputView()
             default:
                 break
             }
         default:
             break
         }
+    }
+    
+    func showInputView() {
+        let inputTextView = JXInputTextView(frame: CGRect(x: 0, y: self.tableView.frame.height, width: view.bounds.width, height: 60), style: .hidden, completion:nil)
+        inputTextView.sendBlock = { (_,object) in
+            let notice = JXNoticeView(text: "发表成功")
+            notice.show()
+        }
+        inputTextView.limitWords = 1000
+        inputTextView.placeHolder = "写下你的评论吧~~🌹🌹🌹"
+        inputTextView.show()
     }
 }

@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		3517600B20E643890056803B /* OrderManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3517600820E643890056803B /* OrderManagerViewController.swift */; };
 		3517600C20E643890056803B /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3517600920E643890056803B /* FeedbackViewController.swift */; };
-		3517600D20E643890056803B /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3517600A20E643890056803B /* MainTableViewController.swift */; };
+		3517600D20E643890056803B /* JXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3517600A20E643890056803B /* JXViewController.swift */; };
+		3598AB6920E9FE1700841C85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598AB6820E9FE1700841C85 /* MainViewController.swift */; };
+		3598AB6B20EA022E00841C85 /* UIKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598AB6A20EA022E00841C85 /* UIKitViewController.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -33,7 +35,9 @@
 /* Begin PBXFileReference section */
 		3517600820E643890056803B /* OrderManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderManagerViewController.swift; sourceTree = "<group>"; };
 		3517600920E643890056803B /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
-		3517600A20E643890056803B /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		3517600A20E643890056803B /* JXViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXViewController.swift; sourceTree = "<group>"; };
+		3598AB6820E9FE1700841C85 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		3598AB6A20EA022E00841C85 /* UIKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitViewController.swift; sourceTree = "<group>"; };
 		59B74FFF5F4FDAF17FB293C5 /* Pods-JXFoundation_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXFoundation_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-JXFoundation_Example/Pods-JXFoundation_Example.release.xcconfig"; sourceTree = "<group>"; };
 		5BE60DEF63C7E707B5D4E0DA /* Pods-JXFoundation_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXFoundation_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JXFoundation_Tests/Pods-JXFoundation_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* JXFoundation_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JXFoundation_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,7 +50,7 @@
 		607FACE51AFB9204008FA782 /* JXFoundation_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JXFoundation_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		8F5B92AB0EF0DE8A546F7385 /* JXFoundation.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = JXFoundation.podspec; path = ../JXFoundation.podspec; sourceTree = "<group>"; };
+		8F5B92AB0EF0DE8A546F7385 /* JXFoundation.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = JXFoundation.podspec; path = ../JXFoundation.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A229F08ED1DE9C6192AFD97E /* Pods-JXFoundation_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXFoundation_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JXFoundation_Tests/Pods-JXFoundation_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B6E14FD458B0D2892BD30F6E /* Pods_JXFoundation_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JXFoundation_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C61EB5F1B94044D0D48F7F83 /* Pods-JXFoundation_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXFoundation_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JXFoundation_Example/Pods-JXFoundation_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +88,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3598AB6C20EA076C00841C85 /* JXViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3517600A20E643890056803B /* JXViewController.swift */,
+				3517600920E643890056803B /* FeedbackViewController.swift */,
+				3517600820E643890056803B /* OrderManagerViewController.swift */,
+				607FACD71AFB9204008FA782 /* ViewController.swift */,
+			);
+			name = JXViewController;
+			sourceTree = "<group>";
+		};
+		3598AB6D20EA07A600841C85 /* UIKitViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3598AB6A20EA022E00841C85 /* UIKitViewController.swift */,
+			);
+			name = UIKitViewController;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -108,11 +131,10 @@
 		607FACD21AFB9204008FA782 /* Example for JXFoundation */ = {
 			isa = PBXGroup;
 			children = (
-				3517600920E643890056803B /* FeedbackViewController.swift */,
-				3517600A20E643890056803B /* MainTableViewController.swift */,
-				3517600820E643890056803B /* OrderManagerViewController.swift */,
+				3598AB6820E9FE1700841C85 /* MainViewController.swift */,
+				3598AB6C20EA076C00841C85 /* JXViewController */,
+				3598AB6D20EA07A600841C85 /* UIKitViewController */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -217,7 +239,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
@@ -359,7 +381,9 @@
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				3517600B20E643890056803B /* OrderManagerViewController.swift in Sources */,
-				3517600D20E643890056803B /* MainTableViewController.swift in Sources */,
+				3598AB6B20EA022E00841C85 /* UIKitViewController.swift in Sources */,
+				3598AB6920E9FE1700841C85 /* MainViewController.swift in Sources */,
+				3517600D20E643890056803B /* JXViewController.swift in Sources */,
 				3517600C20E643890056803B /* FeedbackViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,12 +438,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -467,12 +493,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
