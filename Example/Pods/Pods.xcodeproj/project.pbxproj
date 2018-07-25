@@ -27,6 +27,7 @@
 		306A3526A87963A07BF7C3D5E6D66496 /* ExampleMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C71DF19B75D27352FBD0AE9FF127BEA /* ExampleMetadata.swift */; };
 		31C39ED8CB1C9317F1F2840FC919662D /* PostNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722B65BCF6B5C842506A8955E6161CD9 /* PostNotification.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		32B38992751B96F21324BFC9923BFCBD /* AssertionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3B55C53EB21C5DB6665D3A4EDBB295 /* AssertionDispatcher.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		351EE60E21087666004C5DE9 /* JXBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351EE60A21086A53004C5DE9 /* JXBarView.swift */; };
 		3598AB4C20E9E43700841C85 /* JXPlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598AB3A20E9E43600841C85 /* JXPlaceHolderTextView.swift */; };
 		3598AB4D20E9E43700841C85 /* JXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598AB3B20E9E43600841C85 /* JXView.swift */; };
 		3598AB4E20E9E43700841C85 /* JXNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598AB3C20E9E43600841C85 /* JXNoticeView.swift */; };
@@ -292,6 +293,7 @@
 		329D9CBE260B63EEF23DCEE07DFD1FCF /* CwlMachBadInstructionHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlMachBadInstructionHandler.h; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/include/CwlMachBadInstructionHandler.h; sourceTree = "<group>"; };
 		340829F151652115C1F660E0627B5A3D /* Nimble.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Nimble.xcconfig; sourceTree = "<group>"; };
 		3419B294CA6C43D40AA9176EAC20A068 /* BeEmpty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeEmpty.swift; path = Sources/Nimble/Matchers/BeEmpty.swift; sourceTree = "<group>"; };
+		351EE60A21086A53004C5DE9 /* JXBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXBarView.swift; sourceTree = "<group>"; };
 		3531CE5F730F1DEC4FDBB944E7A8B12E /* CurrentTestCaseTracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CurrentTestCaseTracker.h; path = Sources/NimbleObjectiveC/CurrentTestCaseTracker.h; sourceTree = "<group>"; };
 		3559DFB37ED916E7C52954A6BC6C1736 /* ToSucceed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ToSucceed.swift; path = Sources/Nimble/Matchers/ToSucceed.swift; sourceTree = "<group>"; };
 		3598AB3A20E9E43600841C85 /* JXPlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPlaceHolderTextView.swift; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 				3598AB3B20E9E43600841C85 /* JXView.swift */,
 				3598AB3C20E9E43600841C85 /* JXNoticeView.swift */,
 				3598AB3D20E9E43600841C85 /* JXTopBarView.swift */,
+				351EE60A21086A53004C5DE9 /* JXBarView.swift */,
 				3598AB3E20E9E43600841C85 /* JXHorizontalView.swift */,
 				3598AB3F20E9E43600841C85 /* JXAdvertiseView.swift */,
 				3598AB4020E9E43600841C85 /* JXGuideView.swift */,
@@ -1217,6 +1220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				351EE60E21087666004C5DE9 /* JXBarView.swift in Sources */,
 				3598AB5B20E9E43700841C85 /* UIScreen+Extension.swift in Sources */,
 				3598AB6420E9E56C00841C85 /* Bundle+Extension.swift in Sources */,
 				A73CBDF47437E9C7DF96F241620F0C61 /* ConstantHeader.swift in Sources */,

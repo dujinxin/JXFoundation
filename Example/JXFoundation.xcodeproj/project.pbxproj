@@ -10,6 +10,7 @@
 		3517600B20E643890056803B /* OrderManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3517600820E643890056803B /* OrderManagerViewController.swift */; };
 		3517600C20E643890056803B /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3517600920E643890056803B /* FeedbackViewController.swift */; };
 		3517600D20E643890056803B /* JXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3517600A20E643890056803B /* JXViewController.swift */; };
+		351EE60D210875D6004C5DE9 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351EE60C210875D6004C5DE9 /* CategoryViewController.swift */; };
 		3598AB6920E9FE1700841C85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598AB6820E9FE1700841C85 /* MainViewController.swift */; };
 		3598AB6B20EA022E00841C85 /* UIKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598AB6A20EA022E00841C85 /* UIKitViewController.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 		3517600820E643890056803B /* OrderManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderManagerViewController.swift; sourceTree = "<group>"; };
 		3517600920E643890056803B /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		3517600A20E643890056803B /* JXViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXViewController.swift; sourceTree = "<group>"; };
+		351EE60C210875D6004C5DE9 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		3598AB6820E9FE1700841C85 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3598AB6A20EA022E00841C85 /* UIKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitViewController.swift; sourceTree = "<group>"; };
 		59B74FFF5F4FDAF17FB293C5 /* Pods-JXFoundation_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXFoundation_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-JXFoundation_Example/Pods-JXFoundation_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				3517600A20E643890056803B /* JXViewController.swift */,
 				3517600920E643890056803B /* FeedbackViewController.swift */,
 				3517600820E643890056803B /* OrderManagerViewController.swift */,
+				351EE60C210875D6004C5DE9 /* CategoryViewController.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 			);
 			name = JXViewController;
@@ -382,6 +385,7 @@
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				3517600B20E643890056803B /* OrderManagerViewController.swift in Sources */,
 				3598AB6B20EA022E00841C85 /* UIKitViewController.swift in Sources */,
+				351EE60D210875D6004C5DE9 /* CategoryViewController.swift in Sources */,
 				3598AB6920E9FE1700841C85 /* MainViewController.swift in Sources */,
 				3517600D20E643890056803B /* JXViewController.swift in Sources */,
 				3517600C20E643890056803B /* FeedbackViewController.swift in Sources */,

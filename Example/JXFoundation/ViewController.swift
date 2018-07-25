@@ -44,15 +44,14 @@ class ViewController: UIViewController {
         for i in 1...4 {
             array.append(String(format: "guide_%d", i))
         }
-        let guideView = JXGuideView(frame: view.bounds, images:array) { (guide) in
-            guide.removeFromSuperview()
+        let guideView = JXGuideView(frame: view.bounds, images: array, style: .point) { (guide) in
+            print("收起")
         }
         view.addSubview(guideView)
     }
     /// 设置广告页面
     func setAdvertiseView() {
         let adView = JXAdvertiseView(frame: view.bounds)
-        
         adView.imageView.image = UIImage(named: "guide_2")
         view.addSubview(adView)
     }

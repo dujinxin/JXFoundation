@@ -13,9 +13,9 @@ public class JXTopBarView: UIView {
     public var titles = Array<String>()
     public var delegate : JXTopBarViewDelegate?
     public var selectedIndex = 0
-    public var attribute = TopBarAttribute.init()
+    public var attribute = TopBarAttribute()
     
-    public var isBottomLineEnabled : Bool = false{
+    public var isBottomLineEnabled : Bool = false {
         didSet{
             if isBottomLineEnabled {
                 for v in subviews {
@@ -112,7 +112,7 @@ public protocol JXTopBarViewDelegate {
 
 public class TopBarAttribute: NSObject {
     var normalColor = UIColor.darkGray
-    var highlightedColor = UIColor.darkGray
+    var highlightedColor = UIColor.darkText
     var separatorColor = UIColor.darkGray
     
     override init() {

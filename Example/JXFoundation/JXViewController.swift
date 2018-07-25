@@ -15,7 +15,10 @@ class JXViewController: UITableViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.groupTableViewBackground
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -33,17 +36,21 @@ class JXViewController: UITableViewController {
             case 2:
                 let vc = ViewController()
                 vc.type = .ad
-                self.navigationController?.present(vc, animated: true, completion: nil)
+                self.navigationController?.pushViewController(vc, animated: true)
             case 3:
                 let vc = ViewController()
                 vc.type = .guide
-                self.navigationController?.present(vc, animated: true, completion: nil)
+                self.navigationController?.pushViewController(vc, animated: true)
             case 4:
                 self.navigationController?.pushViewController(OrderManagerViewController(), animated: true)
             case 5:
                 self.navigationController?.pushViewController(FeedbackViewController(), animated: true)
             case 6:
                 self.showInputView()
+            case 7:
+                self.navigationController?.pushViewController(CategoryViewController(), animated: true)
+            case 8:
+                self.navigationController?.pushViewController(CategoryViewController(), animated: true)
             default:
                 break
             }

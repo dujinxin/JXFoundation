@@ -42,7 +42,6 @@ public class JXGuideView: UIView,UICollectionViewDelegate,UICollectionViewDataSo
         }
     }
     
-    
     lazy var collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         
@@ -50,14 +49,12 @@ public class JXGuideView: UIView,UICollectionViewDelegate,UICollectionViewDataSo
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.itemSize = self.bounds.size
-        //layout.itemSize = CGSize(width: 200, height: 300)
         layout.scrollDirection = .horizontal
         
         let collection = UICollectionView(frame: self.bounds, collectionViewLayout: layout)
         collection.backgroundColor = UIColor.clear
         collection.dataSource = self
         collection.delegate = self
-        //self.collectionView?.collectionViewLayout = layout
         
         collection.isPagingEnabled = true
         collection.showsVerticalScrollIndicator = false
@@ -84,7 +81,7 @@ public class JXGuideView: UIView,UICollectionViewDelegate,UICollectionViewDataSo
     public lazy var enterButton: UIButton = {
         let button = UIButton()
         button.setTitle("进入", for: .normal)
-        button.frame = CGRect(origin: CGPoint(), size: CGSize(width: 80, height: 40))
+        button.frame = CGRect(origin: CGPoint(), size: CGSize(width: 120, height: 40))
         //button.sizeToFit()
         button.setTitleColor(UIColor.white, for: .normal)
         button.addTarget(self, action: #selector(touchDismiss(button:)), for: .touchUpInside)
@@ -96,26 +93,25 @@ public class JXGuideView: UIView,UICollectionViewDelegate,UICollectionViewDataSo
     }()
     
     
-    public init(frame: CGRect,images:Array<String>, block:DismissBlock) {
+    public init(frame: CGRect,images: Array<String>, style: GuidePageStyle, block:DismissBlock) {
         super.init(frame: frame)
         
         self.images = images
         self.dismissBlock = block
-        
-        backgroundColor = UIColor.clear
-        
+        self.style = style
+
         addSubview(self.collectionView)
         addSubview(self.enterButton)
         
-        enterButton.center = CGPoint(x: center.x, y: bounds.height - 50)
+        if #available(iOS 11.0, *) {
+            self.collectionView.contentInsetAdjustmentBehavior = .never
+        } 
+        self.pageControl.numberOfPages = self.images.count
+        
         if style == .point {
             addSubview(self.pageControl)
-            pageControl.center = CGPoint(x: center.x, y: enterButton.center.y + 25 + 10)
-            pageControl.numberOfPages = self.images.count
-            
         }else{
             addSubview(self.pageLabel)
-            pageLabel.center = CGPoint(x: self.center.x, y: enterButton.center.y + 25 + 10)
         }
 
         self.collectionView.reloadData()
@@ -125,14 +121,21 @@ public class JXGuideView: UIView,UICollectionViewDelegate,UICollectionViewDataSo
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        enterButton.center = CGPoint(x: center.x, y: bounds.height - kTabBarHeight - 30 )
+        if style == .point {
+            pageControl.center = CGPoint(x: center.x, y: enterButton.jxBottom + pageControl.jxHeight / 2)
+        }else{
+            pageLabel.center = CGPoint(x: self.center.x, y: enterButton.jxBottom + pageLabel.jxHeight / 2)
+        }
+    }
     // MARK: UICollectionViewDataSource
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
-    
+
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.images.count
     }
@@ -141,10 +144,7 @@ public class JXGuideView: UIView,UICollectionViewDelegate,UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! GuideImageView
         
         // Configure the cell
-        cell.contentView.backgroundColor = UIColor.randomColor
-        cell.imageView.backgroundColor = UIColor.randomColor
     
-        
         let urlStr = images[indexPath.item]
         if
             let _ = URL.init(string: urlStr),
@@ -158,12 +158,9 @@ public class JXGuideView: UIView,UICollectionViewDelegate,UICollectionViewDataSo
             }
             
         }
-//
         return cell
     }
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("点击：\(indexPath.item)")
-    }
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {}
     
 }
 //MARK: - imageView gesture method
@@ -189,9 +186,8 @@ extension JXGuideView {
     }
     
     @objc func touchDismiss(button:UIButton) {
-        //收起
-        print("收起")
         if let block = dismissBlock {
+            self.removeFromSuperview()
             block(self)
         }
     }

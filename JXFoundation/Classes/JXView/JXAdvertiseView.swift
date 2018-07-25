@@ -8,6 +8,9 @@
 
 import UIKit
 
+let rightMargin : CGFloat = 20
+let buttonWidth : CGFloat = 40
+
 public class JXAdvertiseView: UIView {
     
     public var timeInterval : Int = 5
@@ -26,7 +29,7 @@ public class JXAdvertiseView: UIView {
         //button.sizeToFit()
         button.setTitleColor(UIColor.white, for: .normal)
         button.addTarget(self, action: #selector(touchDismiss), for: .touchUpInside)
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = buttonWidth / 2
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.white.cgColor
         return button
@@ -35,10 +38,7 @@ public class JXAdvertiseView: UIView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.clear
-        
-        self.imageView.frame = bounds
-        self.enterButton.frame = CGRect(x: kScreenWidth - 60, y: 20, width: 40, height: 40)
+
         addSubview(self.imageView)
         addSubview(self.enterButton)
         
@@ -56,6 +56,11 @@ public class JXAdvertiseView: UIView {
     }
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.imageView.frame = bounds
+        self.enterButton.frame = CGRect(x: kScreenWidth - buttonWidth - rightMargin, y: kStatusBarHeight, width: buttonWidth, height: buttonWidth)
     }
 
     //MARK: methods
