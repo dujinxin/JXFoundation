@@ -69,14 +69,14 @@ extension String {
         }
         
         let ocText = self as NSString
-        var attributes : Dictionary<NSAttributedStringKey, Any>
+        var attributes : Dictionary<NSAttributedString.Key, Any>
         let paragraph = NSMutableParagraphStyle.init()
         paragraph.lineSpacing = lineSpace
         
         if lineSpace < 0 {
-            attributes = [NSAttributedStringKey.font:UIFont.systemFont(ofSize: fontSize)]
+            attributes = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: fontSize)]
         }else{
-            attributes = [NSAttributedStringKey.font:UIFont.systemFont(ofSize: fontSize),NSAttributedStringKey.paragraphStyle:paragraph]
+            attributes = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: fontSize),NSAttributedString.Key.paragraphStyle:paragraph]
         }
         
         let rect = ocText.boundingRect(with: CGSize.init(width: width, height: CGFloat.greatestFiniteMagnitude), options: [.usesLineFragmentOrigin,.usesFontLeading,.usesDeviceMetrics], attributes: attributes, context: nil)

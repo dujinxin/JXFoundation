@@ -27,9 +27,8 @@ TODO: Add long description of the pod here.
   s.author           = { 'dujinxin' => '510033463@qq.com' }
   s.source           = { :git => 'https://github.com/dujinxin/JXFoundation.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
   s.ios.deployment_target = '8.0'
-  s.swift_version    = '4.0'
+  s.swift_version    = '4.2'
   s.source_files = 'JXFoundation/Classes/**/*'
   
   # s.resource_bundles = {

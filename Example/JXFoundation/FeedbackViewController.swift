@@ -27,7 +27,7 @@ class FeedbackViewController: UIViewController {
         
         //self.textView.text = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890"
         
-        NotificationCenter.default.addObserver(self, selector: #selector(placeHolderTextChange(nofiy:)), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(placeHolderTextChange(nofiy:)), name: UITextView.textDidChangeNotification, object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,7 +35,7 @@ class FeedbackViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextViewTextDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidChangeNotification, object: nil)
     }
 }
 

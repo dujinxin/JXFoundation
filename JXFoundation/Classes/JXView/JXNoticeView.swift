@@ -34,7 +34,7 @@ public class JXNoticeView: UIView {
     lazy private var bgWindow : UIWindow = {
         let window = UIWindow()
         window.frame = UIScreen.main.bounds
-        window.windowLevel = UIWindowLevelAlert + 1
+        window.windowLevel = UIWindow.Level.alert + 1
         window.backgroundColor = UIColor.clear
         window.isHidden = false
         return window
@@ -77,7 +77,7 @@ public class JXNoticeView: UIView {
         }
         let paragraphStyle = NSMutableParagraphStyle.init()
         paragraphStyle.lineSpacing = 7
-        let attributes = [NSAttributedStringKey.font:font,NSAttributedStringKey.paragraphStyle:paragraphStyle] as [NSAttributedStringKey : Any]
+        let attributes = [NSAttributedString.Key.font:font,NSAttributedString.Key.paragraphStyle:paragraphStyle] as [NSAttributedString.Key : Any]
         let rect = msg.boundingRect(with: CGSize.init(width: UIScreen.main.bounds.width - 60, height: CGFloat.greatestFiniteMagnitude), options: [.usesFontLeading,.usesLineFragmentOrigin], attributes: attributes, context: nil)
         
         msgLabel.frame = CGRect(x: 0, y: 0, width: rect.width + 10, height: rect.height + 10)

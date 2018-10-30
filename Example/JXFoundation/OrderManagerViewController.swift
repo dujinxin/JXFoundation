@@ -38,7 +38,7 @@ extension OrderManagerViewController {
     func jxTopBarView(topBarView: JXTopBarView, didSelectTabAt index: Int) {
         let indexPath = IndexPath.init(item: index, section: 0)
         //开启动画会影响topBar的点击移动动画
-        self.horizontalView?.containerView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.left, animated: false)
+        self.horizontalView?.containerView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.left, animated: false)
     }
     func horizontalViewDidScroll(scrollView:UIScrollView) {
         var frame = self.topBar?.bottomLineView.frame

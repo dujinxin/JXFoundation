@@ -1,7 +1,7 @@
 {
   "name": "JXFoundation",
-  "version": "0.1.0",
-  "summary": "custom view",
+  "version": "0.1.2",
+  "summary": "自定义view，以及平时自己常用的一些方法扩展",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/dujinxin/JXFoundation",
   "license": {
@@ -13,11 +13,11 @@
   },
   "source": {
     "git": "https://github.com/dujinxin/JXFoundation.git",
-    "tag": "0.1.0"
+    "tag": "0.1.2"
   },
   "platforms": {
     "ios": "8.0"
   },
-  "swift_version": "4.0",
+  "swift_version": "4.2",
   "source_files": "JXFoundation/Classes/**/*"
 }

@@ -13,7 +13,7 @@ public class JXTopBarView: UIView {
     public var titles = Array<String>()
     public var delegate : JXTopBarViewDelegate?
     public var selectedIndex = 0
-    public var attribute = TopBarAttribute()
+    public var attribute = JXAttribute()
     
     public var isBottomLineEnabled : Bool = false {
         didSet{
@@ -55,11 +55,11 @@ public class JXTopBarView: UIView {
             button.frame = CGRect.init(x: (width * CGFloat(i)), y: 0, width: width, height: height)
             
             button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-            button.setTitleColor(attribute.normalColor, for: UIControlState.normal)
-            button.setTitleColor(attribute.highlightedColor, for: UIControlState.selected)
+            button.setTitleColor(attribute.normalColor, for: .normal)
+            button.setTitleColor(attribute.highlightedColor, for: .selected)
             button.tag = i
-            button.setTitle(title, for: UIControlState.normal)
-            button.addTarget(self, action: #selector(tabButtonAction(button:)), for: UIControlEvents.touchUpInside)
+            button.setTitle(title, for: .normal)
+            button.addTarget(self, action: #selector(tabButtonAction(button:)), for: .touchUpInside)
             
             addSubview(button)
             
@@ -67,7 +67,7 @@ public class JXTopBarView: UIView {
                 button.isSelected = true
                 button.setTitle(title, for: .selected)
             }else{
-                button.setTitle(title, for: UIControlState.normal)
+                button.setTitle(title, for: .normal)
             }
         }
         
@@ -110,14 +110,18 @@ public protocol JXTopBarViewDelegate {
     func jxTopBarView(topBarView : JXTopBarView,didSelectTabAt index:Int) -> Void
 }
 
-public class TopBarAttribute: NSObject {
-    var normalColor = UIColor.darkGray
-    var highlightedColor = UIColor.darkText
-    var separatorColor = UIColor.darkGray
+public class JXAttribute: NSObject {
+    public var normalColor = UIColor.darkGray
+    public var highlightedColor = UIColor.black
+    public var selectedColor = UIColor.darkText
+    public var separatorColor = UIColor.darkGray
+    public var font : UIFont = UIFont.systemFont(ofSize: 15)
     
-    override init() {
+    public override init() {
         normalColor = UIColor.darkGray
-        highlightedColor = UIColor.darkText
+        highlightedColor = UIColor.black
+        selectedColor = UIColor.darkText
         separatorColor = UIColor.darkGray
+        font = UIFont.systemFont(ofSize: 15)
     }
 }

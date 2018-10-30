@@ -22,26 +22,30 @@ class UIKitViewController: UIViewController {
         v.backgroundColor = UIColor.jxeeeeeeColor
         return v
     }()
+    var centerView : UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "测试", fontSize: 15, target: self, action: #selector(test))
         self.view.backgroundColor = UIColor.rgbColor(from: 10, 200, 50)
         self.view.addSubview(self.contentView)
         
-        let subArray = ["0.009","0.012","0.013","0.022","0.021","0.025","0.027","0.019"]
         
-        self.random(subArray)
+//        //随机分布视图，并带上下浮动动画
+//        let subArray = ["0.009","0.012","0.013","0.022","0.021","0.025","0.027","0.019"]
+//        self.random(subArray)
+//        self.animate()
+
+        //随机分布视图向中间汇聚动画
         
-        self.animate()
         
-        for name in UIFont.familyNames {
-            let fontAr = UIFont.fontNames(forFamilyName: name)
-            for font in fontAr {
-                print(font)
-            }
-        }
-        
-        // 
+        self.centerView = UIView()
+        centerView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        centerView.backgroundColor = UIColor.blue
+        self.contentView.addSubview(centerView)
+        centerView.center = CGPoint(x: self.contentView.jxCenterX, y: self.contentView.jxHeight / 2)
+
+        self.randomPoints(begin: 10)
     }
 
     override func didReceiveMemoryWarning() {
@@ -148,8 +152,8 @@ class UIKitViewController: UIViewController {
             //animation.repeatDuration = 3
             animation.duration = 5
             animation.autoreverses = false
-            animation.fillMode = kCAFillModeForwards
-            animation.calculationMode = kCAAnimationPaced
+            animation.fillMode = CAMediaTimingFillMode.forwards
+            animation.calculationMode = CAAnimationCalculationMode.paced
             
             v.layer.add(animation, forKey: nil)
             
@@ -177,7 +181,7 @@ class UIKitViewController: UIViewController {
 //            }
         }
     }
-    @objc func tap(tap:UITapGestureRecognizer) {
+    @objc func tap(tap: UITapGestureRecognizer) {
         guard let subView = tap.view else {
             return
         }
@@ -215,13 +219,103 @@ class UIKitViewController: UIViewController {
             }
         }
     }
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    
+    //由于同一个视图在动画过程中不响应点击事件，这里的做法是给父视图添加点击事件，而给子视图添加动画
+    func randomPoints(begin count: Int) {
+    
+        self.countDown(timeOut: count, timeInterval: 1, process: { (i) in
+            print("当前点",i)
+            self.resetRandomPoint(v: nil)
+        }) {
+            print("初始点全部生成")
+        }
+    }
+    func resetRandomPoint(v: UIView?) {
+
+        //origin可随机区域 width = superView.width - button.width
+        let width = self.contentView.bounds.width - 5
+        //origin可随机区域 width = superView.height - button.height
+        let height = self.contentView.bounds.width - 5
         
-        let touch = touches.first
-        let touchPoint = touch?.location(in: self.view)
+        var frame = CGRect()
+        var isIntersects = true
+        repeat{
+            //起始位置预留动画的位置
+            let x = 5 + arc4random_uniform(UInt32(width))
+            let y = UInt32(kNavStatusHeight) + 5 + arc4random_uniform(UInt32(height))
+            frame = CGRect(x: CGFloat(x), y: CGFloat(y), width: 10, height: 10)
+            
+            
+            isIntersects = false
+            //与已存在的子视图没有交集，方可添加
+            if self.centerView.frame.intersects(frame) == true {
+                //print("有交集")
+                isIntersects = true
+                break
+            }
+            
+        }while(isIntersects)
+        //print("没有交集")
+        let superView = v ?? UIView()
+        superView.frame = frame
+        superView.backgroundColor = UIColor.randomColor
+        superView.alpha = 1
+        superView.layer.cornerRadius = 5
+        superView.isHidden = false
+        self.view.addSubview(superView)
+        self.beginConvergeAnimate(v: superView, startTime: 0)
+
+    }
+    func beginConvergeAnimate(v: UIView, startTime: Double) {
+
+        //动画
+        UIView.animate(withDuration: 3, delay: startTime, options: [.curveEaseOut], animations: {
+            var frame = v.frame
+            let point = CGPoint(x: self.contentView.jxCenterX + 10 / 2, y: self.contentView.jxCenterY + 10 / 2)
+            frame.origin = point
+            frame.size = CGSize(width: 0, height: 0)
+            v.frame = frame
+            v.alpha = 0
+            v.layer.cornerRadius = 0
+        }) { (finish) in
+            if finish {
+                v.isHidden = true
+                v.alpha = 1
+                v.removeFromSuperview()
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + startTime) {
+                    self.resetRandomPoint(v: v)
+                }
+            }
+        }
+    }
+    /// 倒计时
+    ///
+    /// - Parameters:
+    ///   - timeOut: 倒计时长(执行次数)
+    ///   - timeInterval: 倒计时间间隔(每次调用间隔)
+    ///   - process:未完成时的回调
+    ///   - completion: 完成回调
+    func countDown(timeOut: Int, timeInterval: Int = 1, process: @escaping ((_ currentTime:Int)->()), completion: @escaping (()->())) {
         
-//        if <#condition#> {
-//            <#code#>
-//        }
+        var timeOut1 = timeOut
+        
+        let queue = DispatchQueue.global(qos: .default)
+        let source_timer = DispatchSource.makeTimerSource(flags: [], queue: queue)
+        source_timer.schedule(wallDeadline: DispatchWallTime.now(), repeating: Double(timeInterval))
+        source_timer.setEventHandler {
+            if timeOut1 <= 0 {
+                source_timer.cancel()
+                DispatchQueue.main.async {
+                    completion()
+                }
+            } else {
+                let seconds = timeOut1 % (timeOut + 1)
+                DispatchQueue.main.async {
+                    process(seconds)
+                }
+                timeOut1 -= timeInterval
+            }
+        }
+        source_timer.resume()
     }
 }

@@ -22,12 +22,12 @@ public extension  UIBarButtonItem {
         
         let btn = UIButton()
         btn.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
-        btn.setTitle(title, for: UIControlState.normal)
+        btn.setTitle(title, for: .normal)
         btn.setTitleColor(UIColor.darkText, for: .normal)
         if imageName.isEmpty == false {
-            btn.setImage(UIImage.init(named: imageName), for: UIControlState.normal)
+            btn.setImage(UIImage.init(named: imageName), for: .normal)
         }
-        btn.addTarget(target, action: action, for: UIControlEvents.touchUpInside)
+        btn.addTarget(target, action: action, for: .touchUpInside)
         
         btn.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
         

@@ -21,24 +21,29 @@ public class JXBarView: UIView {
     public var delegate : JXBarViewDelegate?
     public var selectedIndex = 0
     
-    public var attribute = TopBarAttribute()
+    public var attribute : JXAttribute = JXAttribute() {
+        didSet {
+            let indexPath = IndexPath(item: self.selectedIndex, section: 0)
+            self.containerView.reloadItems(at: [indexPath])
+            self.scrollToItem(at: indexPath)
+        }
+    }
     
-    
-    public var bottomLineWidth : CGFloat = 0
+    public var bottomLineSize : CGSize = CGSize() {
+        didSet {
+            self.layoutSubviews()
+        }
+    }
     public var isBottomLineEnabled : Bool = false {
         didSet{
-            if isBottomLineEnabled {
-                let indexPath = IndexPath(item: self.selectedIndex, section: 0)
-                self.containerView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
-                
-                addSubview(self.bottomLineView)
-                self.bottomLineView.frame = CGRect(x: CGFloat(self.selectedIndex) * self.bottomLineWidth, y: self.bounds.height - 1, width: self.bottomLineWidth, height: 1)
-            }
+            self.bottomLineView.isHidden = !isBottomLineEnabled
         }
     }
     public lazy var bottomLineView: UIView = {
         let view = UIView()
+        view.frame = CGRect(x: 0, y: self.frame.height - 1, width: 80, height: 1)
         view.backgroundColor = UIColor.darkGray
+        view.isHidden = true
         return view
     }()
     public var itemSize: CGSize = CGSize(){
@@ -65,7 +70,7 @@ public class JXBarView: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = UIColor.clear
         
         collectionView.register(ItemCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
@@ -73,34 +78,69 @@ public class JXBarView: UIView {
     }()
     public init(frame: CGRect, titles: Array<String>) {
         super.init(frame: frame)
-        if titles.count > 0 {
-            self.bottomLineWidth = frame.width / CGFloat(titles.count)
-        }
-        
+
         self.titles = titles
-        self.addSubview(self.containerView)
-        self.containerView.reloadData()
+        addSubview(self.containerView)
+        addSubview(self.bottomLineView)
+        
+        let indexPath = IndexPath(item: self.selectedIndex, section: 0)
+        self.containerView.reloadItems(at: [indexPath])
+        self.scrollToItem(at: indexPath)
     }
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.containerView.frame = self.bounds
-        self.bottomLineView.frame = CGRect(x: 0, y: self.bounds.height - 1, width: bottomLineWidth, height: 1)
+        
+        var x : CGFloat
+        let count = CGFloat(self.titles.count)
+        if itemSize.width * count >= self.bounds.width {
+            x = (itemSize.width  - self.bottomLineSize.width) / 2
+        } else {
+            x = (self.bounds.width / count  - self.bottomLineSize.width) / 2
+        }
+        self.bottomLineView.frame = CGRect(origin: CGPoint(x: x, y: self.bounds.height - self.bottomLineSize.height), size: self.bottomLineSize)
     }
     func clickItem(index: Int) {
 
         selectedIndex = index
-
-        UIView.animate(withDuration: 0.3, animations: {
-            self.bottomLineView.frame = CGRect(x: CGFloat(index) * self.bottomLineWidth, y: self.bounds.height - 1, width: self.bottomLineWidth, height: 1)
-        }) { (finished) in
-            //
+        
+        var x : CGFloat
+        let count = CGFloat(self.titles.count)
+        if itemSize.width * count >= self.bounds.width {
+            x = (itemSize.width  - self.bottomLineSize.width) / 2 + itemSize.width * CGFloat(index)
+        } else {
+            x = (self.bounds.width / count  - self.bottomLineSize.width) / 2 + (self.bounds.width / count) * CGFloat(index)
         }
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.bottomLineView.frame.origin.x = x
+        }) { (finished) in
+        
+        }
+        self.updateState(at: IndexPath(item: index, section: 0))
         if self.delegate != nil {
             self.delegate?.jxBarView(barView: self, didClick: index)
         }
+    }
+    public func updateState(at indexPath: IndexPath) {
+        self.containerView.visibleCells.forEach { (cell) in
+            if self.containerView.indexPath(for: cell) == indexPath {
+                cell.isSelected = true
+            } else {
+                cell.isSelected = false
+            }
+            if let cell = cell as? ItemCell {
+                cell.attribute = self.attribute
+            }
+        }
+    }
+    public func scrollToItem(at indexPath: IndexPath) {
+        self.updateState(at: indexPath)
+        self.containerView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
     }
 }
 extension JXBarView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -120,7 +160,7 @@ extension JXBarView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if self.titles.count > 0 {
             let count = CGFloat(self.titles.count)
-            if itemSize.width * count > self.bounds.width {
+            if itemSize.width * count >= self.bounds.width {
                 return itemSize
             } else {
                 let size = CGSize(width: self.bounds.width / CGFloat(self.titles.count), height: self.bounds.height)
@@ -145,6 +185,7 @@ extension JXBarView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     }
     //scrollView
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
         if self.delegate != nil {
             self.delegate?.jxBarViewDidScroll!(scrollView: self.containerView)
         }
@@ -165,7 +206,7 @@ class ItemCell: UICollectionViewCell {
     lazy var titleView: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 15)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor.darkText
         label.textAlignment = .center
         return label
@@ -175,17 +216,19 @@ class ItemCell: UICollectionViewCell {
             self.titleView.text = title
         }
     }
-    var attribute: TopBarAttribute? {
+    var attribute: JXAttribute? {
         didSet {
             if isSelected {
-                self.titleView.textColor = attribute?.highlightedColor
+                self.titleView.textColor = attribute?.selectedColor
             } else {
                 self.titleView.textColor = attribute?.normalColor
             }
+            self.titleView.font = attribute?.font
         }
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = UIColor.clear
         self.addSubview(self.titleView)
     }
     required init?(coder aDecoder: NSCoder) {

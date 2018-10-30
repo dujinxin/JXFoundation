@@ -107,10 +107,10 @@ public class JXInputTextView: JXView {
     private lazy var cancelButton: UIButton = {
         let btn = UIButton()
         btn.backgroundColor = UIColor.white
-        btn.setTitle("取消", for: UIControlState.normal)
-        btn.setTitleColor(JX333333Color, for: UIControlState.normal)
+        btn.setTitle("取消", for: .normal)
+        btn.setTitleColor(JX333333Color, for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        btn.addTarget(self, action: #selector(tapClick), for: UIControlEvents.touchUpInside)
+        btn.addTarget(self, action: #selector(tapClick), for: .touchUpInside)
         return btn
     }()
     private lazy var bgWindow : UIWindow? = {
@@ -155,7 +155,7 @@ public class JXInputTextView: JXView {
             self.contentView = self.textView
             self.addSubview(self.contentView!)
             self.addObserver(self, forKeyPath: "text", options: [.old,.new], context: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(textChange(nofiy:)), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(textChange(nofiy:)), name: UITextView.textDidChangeNotification, object: nil)
         }
         self.setPosition(hidden: style != .bottom)
     }
@@ -169,10 +169,10 @@ public class JXInputTextView: JXView {
         }
     }
     private func setKeyBoardObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(notify:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(notify:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(notify:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(notify:)), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     @objc private func tapClick() {
         self.dismiss()
@@ -207,8 +207,8 @@ extension JXInputTextView {
         print("notify = ","show")
         guard
             let userInfo = notify.userInfo,
-            let rect = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
-            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+            let rect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
         else {
             return
         }
@@ -226,8 +226,8 @@ extension JXInputTextView {
         print("notify = ","hide")
         guard
             let userInfo = notify.userInfo,
-            let _ = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
-            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+            let _ = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
             else {
                 return
         }

@@ -70,6 +70,10 @@ public extension UIImage {
   
         return newImage
     }
+    /// 截屏，根据视图的大小来截取一种图片
+    ///
+    /// - Parameter view: 要截取的视图
+    /// - Returns: 图片
     public class func imageScreenshot(view: UIView) -> UIImage? {
         let rect = view.bounds
         UIGraphicsBeginImageContext(rect.size)
@@ -81,7 +85,20 @@ public extension UIImage {
         UIGraphicsEndImageContext()
         return image
     }
-    
+    /// 色彩图片
+    ///
+    /// - Parameter color: 要生成图片的颜色
+    /// - Returns: 图片
+    public func imageWithColor(_ color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        context?.setFillColor(color.cgColor)
+        context?.fill(rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
 }
 public extension UIImage {
     
@@ -239,7 +256,7 @@ public extension UIImage {
     ///   - name: 数据名称
     /// - Returns: 操作结果
     public static func insert(image:UIImage,name:String) ->Bool{
-        guard let data = UIImageJPEGRepresentation(image, 1.0) else {
+        guard let data = image.jpegData(compressionQuality: 1.0) else {
             return false
         }
         return FileManager.insert(data: data, toFile: name)
@@ -251,7 +268,7 @@ public extension UIImage {
     ///   - name: 数据名称
     /// - Returns: 操作结果
     public static func update(image:UIImage,name:String) ->Bool {
-        guard let data = UIImageJPEGRepresentation(image, 1.0) else {
+        guard let data = image.jpegData(compressionQuality: 1.0) else {
             return false
         }
         return FileManager.update(inFile: data, name: name)
