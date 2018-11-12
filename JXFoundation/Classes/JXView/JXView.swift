@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class JXView: UIView {
+open class JXView: UIView {
 
     public typealias ClickBlock = ((_ view:UIView,_ object:Any) -> ())
 }

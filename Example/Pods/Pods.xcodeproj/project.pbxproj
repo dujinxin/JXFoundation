@@ -55,6 +55,7 @@
 		3155A7A716C3A5BC2AA3F33710B3D917 /* ConstantHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C042463ED21EAFBBF3E5E8F8DC6AAD5B /* ConstantHeader.swift */; };
 		32A55AE0DD706E7BC8F18CA6B21505B3 /* FBSnapshotTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F305ACC8605BD5F345B47541E42E72 /* FBSnapshotTestCase.m */; };
 		34E0BF011948F3DE936931814EC1E342 /* QCKDSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 125CC0CE5E5FD3E53CB0FAD6837598B0 /* QCKDSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3595B2CF2199253A00494929 /* JXKeyboardToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2CE2199253A00494929 /* JXKeyboardToolBar.swift */; };
 		35D4E968B84E2D0863607BB06A1F5C1B /* QuickTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE1DAE433796A80A636633BB7696FED /* QuickTestSuite.swift */; };
 		35DD05FD595A6FE7F5A0692D12E319DC /* UIImage+Diff.m in Sources */ = {isa = PBXBuildFile; fileRef = AF5A86B4328BE9FA459C8B72C8A65DEC /* UIImage+Diff.m */; };
 		37117F7F23F2373D17BCB4F48709BB56 /* Quick-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5039C63F051B3C504639CCC1FC7D3C /* Quick-dummy.m */; };
@@ -317,6 +318,7 @@
 		32EC61C6CC8BDF825CDE4986B8BA449F /* FBSnapshotTestController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestController.m; path = FBSnapshotTestCase/FBSnapshotTestController.m; sourceTree = "<group>"; };
 		3315D0CA7EE4F3642DE1E99B84BFF5DF /* MatcherProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatcherProtocols.swift; path = Sources/Nimble/Matchers/MatcherProtocols.swift; sourceTree = "<group>"; };
 		34C5B794361ECB7885385066EAF46F92 /* XCTestObservationCenter+Register.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCTestObservationCenter+Register.m"; path = "Sources/NimbleObjectiveC/XCTestObservationCenter+Register.m"; sourceTree = "<group>"; };
+		3595B2CE2199253A00494929 /* JXKeyboardToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXKeyboardToolBar.swift; sourceTree = "<group>"; };
 		3781DBD4006F183A5D68C6ABA4D19A0B /* JXFoundation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JXFoundation.xcconfig; sourceTree = "<group>"; };
 		379034E6ADBDF73EC4231FFFE0563B31 /* BeAnInstanceOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAnInstanceOf.swift; path = Sources/Nimble/Matchers/BeAnInstanceOf.swift; sourceTree = "<group>"; };
 		395419532DC51A212FEF6BB947E07C96 /* Quick-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Quick-umbrella.h"; sourceTree = "<group>"; };
@@ -1054,6 +1056,7 @@
 				2DB4653046C8C0875464BC1C8D4A0F1D /* JXPlaceHolderTextView.swift */,
 				0C493E152025760280C019A97CF048B3 /* JXTopBarView.swift */,
 				3F9DB4DD6CCDA7A02ECBEDDA32A5CE05 /* JXView.swift */,
+				3595B2CE2199253A00494929 /* JXKeyboardToolBar.swift */,
 			);
 			name = JXView;
 			path = JXFoundation/Classes/JXView;
@@ -1511,6 +1514,7 @@
 				F20F470D5698B76BD4D9396D47CA2136 /* Date+Extension.swift in Sources */,
 				0051123F720AA9B62C5E6414C34AFCC1 /* FileManager+Extension.swift in Sources */,
 				AD148850CDE0E1EAEA1EC3BCA7C3EE9E /* JXAdvertiseView.swift in Sources */,
+				3595B2CF2199253A00494929 /* JXKeyboardToolBar.swift in Sources */,
 				70221BD31F84C1540033D7452AAF0DA1 /* JXAlertView.swift in Sources */,
 				A90541248E0412AA3933603362CD88CA /* JXBarView.swift in Sources */,
 				4DE8CD7EF9E0AB5587A4F1E35F7C96BE /* JXFoundation-dummy.m in Sources */,

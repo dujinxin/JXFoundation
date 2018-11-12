@@ -11,6 +11,9 @@
 		3517600C20E643890056803B /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3517600920E643890056803B /* FeedbackViewController.swift */; };
 		3517600D20E643890056803B /* JXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3517600A20E643890056803B /* JXViewController.swift */; };
 		351EE60D210875D6004C5DE9 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351EE60C210875D6004C5DE9 /* CategoryViewController.swift */; };
+		3595B29C218FECA800494929 /* TestListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B29B218FECA800494929 /* TestListController.swift */; };
+		3595B2A22190062C00494929 /* CountDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2A12190062C00494929 /* CountDown.swift */; };
+		3595B2CD2196EB0F00494929 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2CC2196EB0F00494929 /* InputViewController.swift */; };
 		3598AB6920E9FE1700841C85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598AB6820E9FE1700841C85 /* MainViewController.swift */; };
 		3598AB6B20EA022E00841C85 /* UIKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598AB6A20EA022E00841C85 /* UIKitViewController.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -38,6 +41,10 @@
 		3517600920E643890056803B /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		3517600A20E643890056803B /* JXViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXViewController.swift; sourceTree = "<group>"; };
 		351EE60C210875D6004C5DE9 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		3595B29B218FECA800494929 /* TestListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestListController.swift; sourceTree = "<group>"; };
+		3595B29D218FFD8300494929 /* JXFoundation_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JXFoundation_Example-Bridging-Header.h"; sourceTree = "<group>"; };
+		3595B2A12190062C00494929 /* CountDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDown.swift; sourceTree = "<group>"; };
+		3595B2CC2196EB0F00494929 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		3598AB6820E9FE1700841C85 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3598AB6A20EA022E00841C85 /* UIKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitViewController.swift; sourceTree = "<group>"; };
 		59B74FFF5F4FDAF17FB293C5 /* Pods-JXFoundation_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXFoundation_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-JXFoundation_Example/Pods-JXFoundation_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -93,11 +100,15 @@
 		3598AB6C20EA076C00841C85 /* JXViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3595B2A12190062C00494929 /* CountDown.swift */,
 				3517600A20E643890056803B /* JXViewController.swift */,
+				3595B2CC2196EB0F00494929 /* InputViewController.swift */,
 				3517600920E643890056803B /* FeedbackViewController.swift */,
 				3517600820E643890056803B /* OrderManagerViewController.swift */,
 				351EE60C210875D6004C5DE9 /* CategoryViewController.swift */,
+				3595B29B218FECA800494929 /* TestListController.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				3595B29D218FFD8300494929 /* JXFoundation_Example-Bridging-Header.h */,
 			);
 			name = JXViewController;
 			sourceTree = "<group>";
@@ -247,7 +258,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1010;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -383,6 +394,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				3595B2A22190062C00494929 /* CountDown.swift in Sources */,
+				3595B2CD2196EB0F00494929 /* InputViewController.swift in Sources */,
+				3595B29C218FECA800494929 /* TestListController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				3517600B20E643890056803B /* OrderManagerViewController.swift in Sources */,
 				3598AB6B20EA022E00841C85 /* UIKitViewController.swift in Sources */,
@@ -539,11 +553,15 @@
 			baseConfigurationReference = C61EB5F1B94044D0D48F7F83 /* Pods-JXFoundation_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = JXFoundation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "JXFoundation/JXFoundation_Example-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -553,11 +571,14 @@
 			baseConfigurationReference = 59B74FFF5F4FDAF17FB293C5 /* Pods-JXFoundation_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = JXFoundation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "JXFoundation/JXFoundation_Example-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
