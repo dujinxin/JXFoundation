@@ -10,16 +10,6 @@ import UIKit
 import JXFoundation
 
 class JXViewController: UITableViewController {
-    
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var ageTextField: UITextField!
-    @IBOutlet weak var remarkTextView: JXPlaceHolderTextView! {
-        didSet{
-            remarkTextView.layer.borderColor = UIColor.lightGray.cgColor
-            remarkTextView.layer.borderWidth = 1
-            remarkTextView.placeHolderText = "写一段话介绍一下自己吧！"
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
