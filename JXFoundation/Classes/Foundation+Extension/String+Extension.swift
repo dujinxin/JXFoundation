@@ -45,6 +45,7 @@ public extension String {
         guard let str = string, str.isEmpty == false else {
 //            let notice = JXNoticeView.init(text: emptyMsg ?? formatMsg)
 //            notice.show()
+            
             return false
         }
         if type == .none {
