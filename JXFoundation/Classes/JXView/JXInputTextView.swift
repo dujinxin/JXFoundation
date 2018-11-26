@@ -108,7 +108,7 @@ public class JXInputTextView: JXView {
         let btn = UIButton()
         btn.backgroundColor = UIColor.white
         btn.setTitle("取消", for: .normal)
-        btn.setTitleColor(JX333333Color, for: .normal)
+        btn.setTitleColor(UIColor.rgbColor(rgbValue: 0x333333), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         btn.addTarget(self, action: #selector(tapClick), for: .touchUpInside)
         return btn

@@ -50,7 +50,6 @@ TODO: Add long description of the pod here.
   end
   s.subspec 'UIKit+Extension' do |ss|
       ss.source_files = 'JXFoundation/Classes/UIKit+Extension/**/*'
-      ss.dependency 'JXFoundation/Constant'
       ss.dependency 'JXFoundation/Foundation+Extension'
   end
   s.subspec 'JXManager' do |ss|

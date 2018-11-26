@@ -123,7 +123,7 @@ public class JXGuideView: UIView,UICollectionViewDelegate,UICollectionViewDataSo
     }
     public override func layoutSubviews() {
         super.layoutSubviews()
-        enterButton.center = CGPoint(x: center.x, y: bounds.height - kTabBarHeight - 30 )
+        enterButton.center = CGPoint(x: center.x, y: bounds.height - (UIScreen.main.isIphoneX ? (49 + 34): (49)) - 30 )
         if style == .point {
             pageControl.center = CGPoint(x: center.x, y: enterButton.jxBottom + pageControl.jxHeight / 2)
         }else{

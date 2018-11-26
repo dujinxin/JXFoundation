@@ -19,7 +19,8 @@ public let kScreenBounds = UIScreen.main.bounds
 public let kStatusBarHeight = UIScreen.main.isIphoneX ? CGFloat(44) : CGFloat(20)
 public let kNavBarHeight = CGFloat(44)
 public let kNavStatusHeight = kStatusBarHeight + kNavBarHeight
-public let kTabBarHeight = CGFloat(49)
+public let kBottomMaginHeight : CGFloat = UIScreen.main.isIphoneX ? 34 : 0
+public let kTabBarHeight : CGFloat = kBottomMaginHeight + 49
 
 public let kHWPercent = (kScreenHeight / kScreenWidth)//高宽比例
 public let kPercent = kScreenWidth / 375.0

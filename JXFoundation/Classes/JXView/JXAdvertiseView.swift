@@ -60,7 +60,7 @@ public class JXAdvertiseView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.imageView.frame = bounds
-        self.enterButton.frame = CGRect(x: kScreenWidth - buttonWidth - rightMargin, y: kStatusBarHeight, width: buttonWidth, height: buttonWidth)
+        self.enterButton.frame = CGRect(x: kScreenWidth - buttonWidth - rightMargin, y: UIScreen.main.isIphoneX ? 44 : 20, width: buttonWidth, height: buttonWidth)
     }
 
     //MARK: methods

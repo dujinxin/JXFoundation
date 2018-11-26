@@ -26,7 +26,7 @@ class CategoryViewController: UIViewController {
         topBar.bottomLineView.backgroundColor = .red
         topBar.isBottomLineEnabled = true
         let att = JXAttribute()
-        att.normalColor = JX999999Color
+        att.normalColor = UIColor.rgbColor(rgbValue: 0x999999)
         att.selectedColor = UIColor.red
         att.font = UIFont.systemFont(ofSize: 18)
         topBar.attribute = att
