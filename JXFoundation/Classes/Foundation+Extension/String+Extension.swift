@@ -32,27 +32,27 @@ public extension String {
     ///   - string: 需要校验的字符串
     ///   - type: 类型
     /// - Returns: 结果
-    public func validate(type:RegularExpression) -> Bool {
+    public func validate(type: RegularExpression) -> Bool {
         let predicate = NSPredicate(format: "SELF MATCHES %@", type.rawValue)
         return predicate.evaluate(with: self)
     }
-    public static func validate(_ string:String, type:RegularExpression) -> Bool {
+    public static func validate(_ string:String, type: RegularExpression) -> Bool {
         let predicate = NSPredicate(format: "SELF MATCHES %@", type.rawValue)
         return predicate.evaluate(with: string)
     }
     
-    public static func validate(_ string:String?,type:RegularExpression,emptyMsg:String?,formatMsg:String) -> Bool{
+    public static func validate(_ string: String?, type: RegularExpression, emptyMsg: String?, formatMsg: String) -> Bool{
         guard let str = string, str.isEmpty == false else {
-            let notice = JXNoticeView.init(text: emptyMsg ?? formatMsg)
-            notice.show()
+//            let notice = JXNoticeView.init(text: emptyMsg ?? formatMsg)
+//            notice.show()
             return false
         }
         if type == .none {
             return true
         }
         if !self.validate(str, type: type) {
-            let notice = JXNoticeView.init(text: formatMsg)
-            notice.show()
+//            let notice = JXNoticeView.init(text: formatMsg)
+//            notice.show()
             return false
         } else {
             return true
