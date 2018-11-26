@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JXFoundation'
-  s.version          = '0.2.2'
+  s.version          = '0.2.3'
   s.summary          = '自定义view，以及平时自己常用的一些方法扩展'
 
 # This description is used to generate tags and improve search results.
@@ -38,4 +38,18 @@ TODO: Add long description of the pod here.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+  
+
+  s.subspec 'Foundation+Extension' do |ss|
+      
+  end
+  s.subspec 'UIKit+Extension' do |ss|
+      
+  end
+  s.subspec 'JXManager' do |ss|
+      
+  end
+  s.subspec 'JXView' do |ss|
+      
+  end
 end
