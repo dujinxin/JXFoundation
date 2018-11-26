@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JXFoundation'
-  s.version          = '1.0.2'
+  s.version          = '1.0.3'
   s.summary          = '自定义view，以及平时自己常用的一些方法扩展'
 
 # This description is used to generate tags and improve search results.
@@ -52,7 +52,7 @@ TODO: Add long description of the pod here.
       ss.dependency 'JXFoundation/Foundation+Extension'
   end
   s.subspec 'JXManager' do |ss|
-      ss.source_files = 'JXFoundation/Classes/JXManager/**/*'
+      ss.source_files = 'Sources/JXManager/JXKeyboardToolBar.swift'
       ss.dependency 'JXFoundation/Constant'
   end
   s.subspec 'JXView' do |ss|
