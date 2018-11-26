@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JXFoundation'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = '自定义view，以及平时自己常用的一些方法扩展'
 
 # This description is used to generate tags and improve search results.
@@ -29,7 +29,7 @@ TODO: Add long description of the pod here.
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   s.ios.deployment_target = '9.0'
   s.swift_version    = '4.2'
-  s.source_files = 'JXFoundation/Classes/**/*'
+  # s.source_files = 'JXFoundation/Classes/**/*'
   
   # s.resource_bundles = {
   #   'JXFoundation' => ['JXFoundation/Assets/*.png']
