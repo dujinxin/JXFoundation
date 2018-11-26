@@ -51,7 +51,7 @@ TODO: Add long description of the pod here.
   end
   s.subspec 'JXManager' do |ss|
       ss.source_files = 'JXFoundation/Classes/JXManager/**/*'
-      s.dependency 'JXFoundation'
+      #s.dependency 'JXFoundation'
   end
   s.subspec 'JXView' do |ss|
       ss.source_files = 'JXFoundation/Classes/JXView/**/*'
