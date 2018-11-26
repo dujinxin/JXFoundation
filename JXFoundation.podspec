@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JXFoundation'
-  s.version          = '0.2.1'
+  s.version          = '0.2.2'
   s.summary          = '自定义view，以及平时自己常用的一些方法扩展'
 
 # This description is used to generate tags and improve search results.
@@ -27,7 +27,7 @@ TODO: Add long description of the pod here.
   s.author           = { 'dujinxin' => '510033463@qq.com' }
   s.source           = { :git => 'https://github.com/dujinxin/JXFoundation.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
   s.swift_version    = '4.2'
   s.source_files = 'JXFoundation/Classes/**/*'
   

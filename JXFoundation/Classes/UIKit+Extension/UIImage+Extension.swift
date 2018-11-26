@@ -89,7 +89,7 @@ public extension UIImage {
     ///
     /// - Parameter color: 要生成图片的颜色
     /// - Returns: 图片
-    public func imageWithColor(_ color: UIColor) -> UIImage {
+    public class func imageWithColor(_ color: UIColor) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()

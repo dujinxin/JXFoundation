@@ -64,10 +64,16 @@ class InputViewController: UIViewController {
 //        }
         
         self.title = "InputView"
-        
-        let bar = JXKeyboardToolBar(frame: CGRect(), views: [nameTextField,ageTextField,remarkTextView]) { (view, value) in
+
+        let bar = JXKeyboardToolBar(frame: CGRect(), views: [nameTextField])
+        bar.showBlock = { (view, value) in
             print(view,value)
         }
+        bar.tintColor = UIColor.white
+        bar.toolBar.barTintColor = UIColor.black
+        bar.backgroundColor = UIColor.black
+        bar.upItem?.title = "上"
+        bar.downItem?.title = "下"
         self.view.addSubview(bar)
         
         

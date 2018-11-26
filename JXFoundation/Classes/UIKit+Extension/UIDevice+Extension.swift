@@ -6,7 +6,7 @@
 //  Copyright © 2018年 dujinxin. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public extension UIDevice {
     public var uuid: String {
@@ -55,6 +55,10 @@ public extension UIDevice {
             case "iPhone10,1","iPhone10,4":   return "iPhone 8"
             case "iPhone10,2","iPhone10,5":   return "iPhone 8 Plus"
             case "iPhone10,3","iPhone10,6":   return "iPhone X"
+            case "iPhone11,2":  return "iPhone XS"
+            case "iPhone11,4","iPhone11,6":   return "iPhone XS Max"
+            case "iPhone11,8":  return "iPhone XR"
+            
                 
             case "iPad1,1":   return "iPad"
             case "iPad1,2":   return "iPad 3G"
@@ -69,6 +73,11 @@ public extension UIDevice {
             case "iPad5,3", "iPad5,4":  return "iPad Air 2"
             case "iPad6,3", "iPad6,4":  return "iPad Pro 9.7"
             case "iPad6,7", "iPad6,8":  return "iPad Pro 12.9"
+            case "iPad6,11", "iPad6,12":  return "iPad 5"
+            case "iPad7,1", "iPad7,2":   return "iPad Pro 12.9"
+            case "iPad7,3", "iPad7,4":  return "iPad Pro 10.5"
+           
+                
             case "AppleTV2,1":  return "Apple TV 2"
             case "AppleTV3,1","AppleTV3,2":  return "Apple TV 3"
             case "AppleTV5,3":   return "Apple TV 4"
