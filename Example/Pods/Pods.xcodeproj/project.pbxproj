@@ -64,7 +64,6 @@
 		3561B7E521ABE3C2004A6775 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3561B7CA21ABE3C1004A6775 /* FileManager+Extension.swift */; };
 		3561B7E621ABE3C2004A6775 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3561B7CB21ABE3C1004A6775 /* String+Extension.swift */; };
 		3561B7E721ABE3C2004A6775 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3561B7CC21ABE3C1004A6775 /* Data+Extension.swift */; };
-		3561B7E821ABE3C2004A6775 /* ConstantHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3561B7CD21ABE3C1004A6775 /* ConstantHeader.swift */; };
 		3561B7E921ABE3C2004A6775 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3561B7CF21ABE3C1004A6775 /* UIImageView+Extension.swift */; };
 		3561B7EA21ABE3C2004A6775 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3561B7D021ABE3C1004A6775 /* UIDevice+Extension.swift */; };
 		3561B7EB21ABE3C2004A6775 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3561B7D121ABE3C1004A6775 /* UIColor+Extension.swift */; };
@@ -73,6 +72,7 @@
 		3561B7EE21ABE3C2004A6775 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3561B7D421ABE3C1004A6775 /* UIViewController+Extension.swift */; };
 		3561B7EF21ABE3C2004A6775 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3561B7D521ABE3C1004A6775 /* UIScreen+Extension.swift */; };
 		3561B7F021ABE3C2004A6775 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3561B7D621ABE3C1004A6775 /* UIBarButtonItem+Extension.swift */; };
+		3561B7F421ABFCEE004A6775 /* ConstantHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3561B7F321ABFCEE004A6775 /* ConstantHeader.swift */; };
 		35D4E968B84E2D0863607BB06A1F5C1B /* QuickTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE1DAE433796A80A636633BB7696FED /* QuickTestSuite.swift */; };
 		35DD05FD595A6FE7F5A0692D12E319DC /* UIImage+Diff.m in Sources */ = {isa = PBXBuildFile; fileRef = AF5A86B4328BE9FA459C8B72C8A65DEC /* UIImage+Diff.m */; };
 		37117F7F23F2373D17BCB4F48709BB56 /* Quick-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5039C63F051B3C504639CCC1FC7D3C /* Quick-dummy.m */; };
@@ -328,7 +328,6 @@
 		3561B7CA21ABE3C1004A6775 /* FileManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		3561B7CB21ABE3C1004A6775 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		3561B7CC21ABE3C1004A6775 /* Data+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
-		3561B7CD21ABE3C1004A6775 /* ConstantHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConstantHeader.swift; path = JXFoundation/Classes/ConstantHeader.swift; sourceTree = "<group>"; };
 		3561B7CF21ABE3C1004A6775 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		3561B7D021ABE3C1004A6775 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		3561B7D121ABE3C1004A6775 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -337,6 +336,7 @@
 		3561B7D421ABE3C1004A6775 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		3561B7D521ABE3C1004A6775 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		3561B7D621ABE3C1004A6775 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
+		3561B7F321ABFCEE004A6775 /* ConstantHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantHeader.swift; sourceTree = "<group>"; };
 		3781DBD4006F183A5D68C6ABA4D19A0B /* JXFoundation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JXFoundation.xcconfig; sourceTree = "<group>"; };
 		379034E6ADBDF73EC4231FFFE0563B31 /* BeAnInstanceOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAnInstanceOf.swift; path = Sources/Nimble/Matchers/BeAnInstanceOf.swift; sourceTree = "<group>"; };
 		395419532DC51A212FEF6BB947E07C96 /* Quick-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Quick-umbrella.h"; sourceTree = "<group>"; };
@@ -715,6 +715,15 @@
 			path = "JXFoundation/Classes/UIKit+Extension";
 			sourceTree = "<group>";
 		};
+		3561B7F221ABFCEE004A6775 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				3561B7F321ABFCEE004A6775 /* ConstantHeader.swift */,
+			);
+			name = Constant;
+			path = JXFoundation/Classes/Constant;
+			sourceTree = "<group>";
+		};
 		411A3552EB44C68B2E7D6D7C24ECD4F2 /* iOSSnapshotTestCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -1073,7 +1082,7 @@
 		FA4595302F3D903311DBB271C90ADC8A /* JXFoundation */ = {
 			isa = PBXGroup;
 			children = (
-				3561B7CD21ABE3C1004A6775 /* ConstantHeader.swift */,
+				3561B7F221ABFCEE004A6775 /* Constant */,
 				3561B7C721ABE3C1004A6775 /* Foundation+Extension */,
 				3561B7C521ABE3C1004A6775 /* JXManager */,
 				3561B7B921ABE3C1004A6775 /* JXView */,
@@ -1528,6 +1537,7 @@
 				3561B7DE21ABE3C1004A6775 /* JXInputTextView.swift in Sources */,
 				3561B7E021ABE3C2004A6775 /* JXAlertView.swift in Sources */,
 				3561B7F021ABE3C2004A6775 /* UIBarButtonItem+Extension.swift in Sources */,
+				3561B7F421ABFCEE004A6775 /* ConstantHeader.swift in Sources */,
 				3561B7EF21ABE3C2004A6775 /* UIScreen+Extension.swift in Sources */,
 				3561B7DB21ABE3C1004A6775 /* JXHorizontalView.swift in Sources */,
 				3561B7D921ABE3C1004A6775 /* JXNoticeView.swift in Sources */,
@@ -1544,7 +1554,6 @@
 				3561B7E321ABE3C2004A6775 /* Date+Extension.swift in Sources */,
 				3561B7D721ABE3C1004A6775 /* JXPlaceHolderTextView.swift in Sources */,
 				3561B7DD21ABE3C1004A6775 /* JXGuideView.swift in Sources */,
-				3561B7E821ABE3C2004A6775 /* ConstantHeader.swift in Sources */,
 				3561B7E721ABE3C2004A6775 /* Data+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

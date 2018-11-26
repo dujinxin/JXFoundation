@@ -40,22 +40,27 @@ TODO: Add long description of the pod here.
   # s.dependency 'AFNetworking', '~> 2.3'
   
 
+  s.subspec 'Constant' do |ss|
+      ss.source_files = 'JXFoundation/Classes/Constant/**/*'
+      ss.dependency 'JXFoundation/UIKit+Extension'
+  end
   s.subspec 'Foundation+Extension' do |ss|
       ss.source_files = 'JXFoundation/Classes/Foundation+Extension/**/*'
-      #s.dependency 'JXFoundation'
+      ss.dependency 'JXFoundation/Constant'
   end
   s.subspec 'UIKit+Extension' do |ss|
       ss.source_files = 'JXFoundation/Classes/UIKit+Extension/**/*'
-      #s.dependency 'JXFoundation'
+      ss.dependency 'JXFoundation/Constant'
       ss.dependency 'JXFoundation/Foundation+Extension'
   end
   s.subspec 'JXManager' do |ss|
       ss.source_files = 'JXFoundation/Classes/JXManager/**/*'
-      #s.dependency 'JXFoundation'
+      ss.dependency 'JXFoundation/Constant'
   end
   s.subspec 'JXView' do |ss|
       ss.source_files = 'JXFoundation/Classes/JXView/**/*'
       ss.dependency 'JXFoundation/Foundation+Extension'
       ss.dependency 'JXFoundation/UIKit+Extension'
+      ss.dependency 'JXFoundation/Constant'
   end
 end
