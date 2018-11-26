@@ -52,7 +52,7 @@ TODO: Add long description of the pod here.
       ss.dependency 'JXFoundation/Foundation+Extension'
   end
   s.subspec 'JXManager' do |ss|
-      ss.source_files = 'Sources/JXManager/JXKeyboardToolBar.swift'
+      ss.source_files = 'JXFoundation/Classes/JXManager/JXKeyboardToolBar.swift'
       ss.dependency 'JXFoundation/Constant'
   end
   s.subspec 'JXView' do |ss|
