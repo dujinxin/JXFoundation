@@ -12,8 +12,8 @@ import UIKit
 //public let deviceModel = UIScreen.main.modelSize
 
 //MARK:尺寸类
-public let kScreenWidth = UIScreen.main.bounds.width
-public let kScreenHeight = UIScreen.main.bounds.height
+public let kScreenWidth = UIScreen.main.screenWidth
+public let kScreenHeight = UIScreen.main.screenHeight
 public let kScreenBounds = UIScreen.main.bounds
 
 public let kStatusBarHeight = UIScreen.main.isIphoneX ? CGFloat(44) : CGFloat(20)
@@ -35,19 +35,20 @@ public let JXEeeeeeColor = UIColor.rgbColor(rgbValue: 0xeeeeee)
 public let JXFfffffColor = UIColor.rgbColor(rgbValue: 0xffffff)
 public let JXF1f1f1Color = UIColor.rgbColor(rgbValue: 0xf1f1f1)
 
-public let JXDebugColor = UIColor.randomColor
+public let JXDebugColor = JXConstantHelper.shared.isDebug ? UIColor.randomColor : UIColor.clear
 
 
 //MARK:字体
 //let JXFontNormarl
 
 
+class JXConstantHelper {
 
-
-
-
-
-
-
+    static let shared = JXConstantHelper()
+    private init() {}
+    
+    var isShowLog : Bool = false
+    var isDebug : Bool = false
+}
 
 		

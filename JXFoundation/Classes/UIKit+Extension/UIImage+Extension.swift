@@ -255,7 +255,7 @@ public extension UIImage {
     ///   - image: 图片
     ///   - name: 数据名称
     /// - Returns: 操作结果
-    public static func insert(image:UIImage,name:String) ->Bool{
+    public static func insert(image: UIImage, name: String) ->Bool{
         guard let data = image.jpegData(compressionQuality: 1.0) else {
             return false
         }
@@ -267,7 +267,7 @@ public extension UIImage {
     ///   - image: 图片
     ///   - name: 数据名称
     /// - Returns: 操作结果
-    public static func update(image:UIImage,name:String) ->Bool {
+    public static func update(image: UIImage, name: String) ->Bool {
         guard let data = image.jpegData(compressionQuality: 1.0) else {
             return false
         }
@@ -278,7 +278,7 @@ public extension UIImage {
     /// - Parameters:
     ///   - name: 数据名称
     /// - Returns: 操作结果
-    public static func select(name:String) -> Data? {
+    public static func select(name: String) -> Data? {
         let data = FileManager.select(fromFile: name) as? Data
         return data
     }
@@ -286,7 +286,7 @@ public extension UIImage {
     ///
     /// - Parameter name: 数据名称
     /// - Returns: 操作结果
-    public static func delete(name:String) ->Bool{
+    public static func delete(name: String) ->Bool{
         return FileManager.delete(fromFile: name)
     }
 }

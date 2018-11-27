@@ -54,7 +54,7 @@ class UIKitViewController: UIViewController {
     }
     
     @objc func test() {
-        print(UIScreen.main.modelSize)
+        print(UIScreen.main.model)
         print(UIViewController.topStackViewController ?? "")
     }
 

@@ -7,12 +7,6 @@
 
 import UIKit
 
-public enum JXKeyboardToolBarAction: Int {
-    case up      =   0
-    case down
-    case close
-}
-
 private let keyWindowWidth : CGFloat = UIScreen.main.bounds.width
 private let keyWindowHeight : CGFloat = UIScreen.main.bounds.height
 

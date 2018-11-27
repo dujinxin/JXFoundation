@@ -6,7 +6,6 @@
 //  Copyright © 2017年 dujinxin. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 public enum  RegularExpression : String{
@@ -17,53 +16,36 @@ public enum  RegularExpression : String{
     case number              = "[0-9]*"       //数字
     case letter              = "[a-zA-Z]*"    //字母
     case chinese             = "[\\u4e00-\\u9fa5]+"  //汉字
-    case numberOrNumber      = "[a-zA-Z0-9]*" //数字或字母
+    case numberOrLetter      = "[a-zA-Z0-9]*" //数字或字母
+    case numberOrLetter8_20  = "[a-zA-Z0-9]{8,20}+$"//8-20位数字或字母
     case code4               = "^[0-9]{4}+$"  //四位验证码
     case code6               = "^[0-9]{6}+$"  //六位验证码
-//    case number = ""
-    
+    case numberAndLetter8_20 = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$" //8-20位数字加字母的组合
+
 }
 
+// MARK: - 字符串校验
 public extension String {
     
     /// 字符串校验
     ///
     /// - Parameters:
     ///   - string: 需要校验的字符串
-    ///   - type: 类型
+    ///   - predicateStr: 正则
     /// - Returns: 结果
-    public func validate(type: RegularExpression) -> Bool {
-        let predicate = NSPredicate(format: "SELF MATCHES %@", type.rawValue)
+    public func validate(predicateStr: String) -> Bool {
+        let predicate = NSPredicate(format: "SELF MATCHES %@", predicateStr)
         return predicate.evaluate(with: self)
     }
-    public static func validate(_ string:String, type: RegularExpression) -> Bool {
-        let predicate = NSPredicate(format: "SELF MATCHES %@", type.rawValue)
+    public static func validate(_ string: String, predicateStr: String) -> Bool {
+        let predicate = NSPredicate(format: "SELF MATCHES %@", predicateStr)
         return predicate.evaluate(with: string)
     }
-    
-    public static func validate(_ string: String?, type: RegularExpression, emptyMsg: String?, formatMsg: String) -> Bool{
-        guard let str = string, str.isEmpty == false else {
-//            let notice = JXNoticeView.init(text: emptyMsg ?? formatMsg)
-//            notice.show()
-            
-            return false
-        }
-        if type == .none {
-            return true
-        }
-        if !self.validate(str, type: type) {
-//            let notice = JXNoticeView.init(text: formatMsg)
-//            notice.show()
-            return false
-        } else {
-            return true
-        }
-    }
 }
-//MARK:计算
+// MARK: - 文本计算
 extension String {
     
-    public func calculate(width: CGFloat,fontSize:CGFloat,lineSpace:CGFloat = -1) -> CGSize {
+    public func calculate(width: CGFloat, fontSize: CGFloat, lineSpace: CGFloat = -1) -> CGSize {
         
         if self.isEmpty {
             return CGSize()
@@ -92,7 +74,7 @@ extension String {
         return CGSize(width: width, height: height)
     }
 }
-//MARK:加密
+// MARK: - 加解密
 public extension String {
 //    func md5(string:String) -> String {
 //        return MD5.encode(string)

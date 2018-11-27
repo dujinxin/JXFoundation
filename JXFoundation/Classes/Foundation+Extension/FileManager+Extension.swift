@@ -19,17 +19,16 @@ public extension FileManager{
     ///   - data: 数据
     ///   - name: 数据名称
     /// - Returns: 操作结果
-    public static func insert(data:Data,toFile name:String) -> Bool{
+    public static func insert(data: Data, toFile name: String) -> Bool{
         let newPath = dataPath + "/\(name)"
         let dataPathUrl = URL.init(fileURLWithPath: newPath)
         
-        try? data.write(to: dataPathUrl)
-        
-        if FileManager.default.fileExists(atPath: newPath) {
-            print("保存成功",newPath)
-            return true
+        do {
+            try data.write(to: dataPathUrl)
+        } catch let error {
+            print(error.localizedDescription)
         }
-        return false
+        return !FileManager.default.fileExists(atPath: newPath)
     }
     /// 修改文件中的数据
     ///
@@ -37,46 +36,49 @@ public extension FileManager{
     ///   - data: 数据
     ///   - name: 数据名称
     /// - Returns: 操作结果
-    public static func update(inFile data:Data,name:String) -> Bool {
+    public static func update(inFile data: Data, name: String) -> Bool {
         let newPath = dataPath + "/\(name)"
         let dataPathUrl = URL.init(fileURLWithPath: newPath)
-        
-        try? FileManager.default.removeItem(atPath: newPath)
-        if FileManager.default.fileExists(atPath: newPath) {
+        if FileManager.default.fileExists(atPath: newPath) == false {
             return false
         }
-        try? data.write(to: dataPathUrl)
-        if FileManager.default.fileExists(atPath: newPath) {
-            return true
-        }
         
-        return false
+        do {
+            try data.write(to: dataPathUrl)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        return !FileManager.default.fileExists(atPath: newPath)
     }
     /// 获取文件中的数据
     ///
     /// - Parameters:
     ///   - name: 数据名称
     /// - Returns: 操作结果
-    public static func select(fromFile name:String) -> Any? {
+    public static func select(fromFile name: String) -> Any? {
         let newPath = dataPath + "/\(name)"
         let dataPathUrl = URL.init(fileURLWithPath: newPath)
         
-        let data = try? Data.init(contentsOf: dataPathUrl)
-        
+        var data : Data?
+        do {
+            data = try Data.init(contentsOf: dataPathUrl)
+        } catch let error {
+            print(error.localizedDescription)
+        }
         return data
     }
     /// 移除文件中数据
     ///
     /// - Parameter name: 数据名称
     /// - Returns: 操作结果
-    public static func delete(fromFile name:String) -> Bool{
+    public static func delete(fromFile name: String) -> Bool{
         let newPath = dataPath + "/\(name)"
         
-        try? FileManager.default.removeItem(atPath: newPath)
-        if !FileManager.default.fileExists(atPath: newPath) {
-            print("移除成功",newPath)
-            return true
+        do {
+            try FileManager.default.removeItem(atPath: newPath)
+        } catch let error {
+            print(error.localizedDescription)
         }
-        return false
+        return !FileManager.default.fileExists(atPath: newPath)
     }
 }

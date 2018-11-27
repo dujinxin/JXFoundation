@@ -16,7 +16,7 @@ public extension UIColor{
     ///   - rgbValue: RGB 色值
     ///   - alpha: 透明度
     /// - Returns: UIColor
-    public class func rgbColor(rgbValue :Int, alpha:CGFloat = 1.0) -> UIColor {
+    public class func rgbColor(rgbValue :Int, alpha: CGFloat = 1.0) -> UIColor {
         
         let color = UIColor(red: (CGFloat((rgbValue & 0xFF0000) >> 16))/255.0,
                             green: (CGFloat((rgbValue & 0xFF00) >> 8))/255.0,
@@ -34,7 +34,7 @@ public extension UIColor{
     ///   - blue: 0~255的 CGFloat数值
     ///   - alpha: 0~1 CGFloat数值
     /// - Returns: UIColor
-    public class func rgbColor(from red:CGFloat, _ green:CGFloat, _ blue:CGFloat ,_ alpha:CGFloat = 1.0) -> UIColor {
+    public class func rgbColor(from red: CGFloat, _ green: CGFloat, _ blue: CGFloat ,_ alpha: CGFloat = 1.0) -> UIColor {
         let color = UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0, alpha: alpha)
         return color
     }
