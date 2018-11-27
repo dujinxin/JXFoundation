@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JXFoundation'
-  s.version          = '1.0.4'
+  s.version          = '1.0.5'
   s.summary          = '自定义view，以及平时自己常用的一些方法扩展'
 
 # This description is used to generate tags and improve search results.
