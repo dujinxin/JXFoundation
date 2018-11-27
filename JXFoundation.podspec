@@ -61,6 +61,5 @@ TODO: Add long description of the pod here.
       ss.source_files = 'JXFoundation/Classes/JXView/**/*'
       ss.dependency 'JXFoundation/Foundation+Extension'
       ss.dependency 'JXFoundation/UIKit+Extension'
-      ss.dependency 'JXFoundation/Constant'
   end
 end
