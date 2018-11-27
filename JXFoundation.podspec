@@ -44,6 +44,7 @@ TODO: Add long description of the pod here.
       ss.source_files = 'JXFoundation/Classes/Constant/**/*'
       ss.dependency 'JXFoundation/UIKit+Extension'
       ss.dependency 'JXFoundation/Foundation+Extension'
+      ss.dependency 'JXFoundation/JXView'
   end
   s.subspec 'Foundation+Extension' do |ss|
       ss.source_files = 'JXFoundation/Classes/Foundation+Extension/**/*'
