@@ -46,7 +46,7 @@ public class JXKeyboardToolBar: UIView {
     }
     public var topBarHeight: CGFloat = 49 {
         didSet {
-            self.toolBar.frame = CGRect(x: toolEdgeInsets.left, y: toolEdgeInsets.top, width: kScreenWidth - toolEdgeInsets.left - toolEdgeInsets.right, height: topBarHeight - toolEdgeInsets.top - toolEdgeInsets.bottom)
+            self.toolBar.frame = CGRect(x: toolEdgeInsets.left, y: toolEdgeInsets.top, width: UIScreen.main.screenWidth - toolEdgeInsets.left - toolEdgeInsets.right, height: topBarHeight - toolEdgeInsets.top - toolEdgeInsets.bottom)
         }
     }
     public var font: UIFont = UIFont.systemFont(ofSize: 14){
@@ -73,7 +73,7 @@ public class JXKeyboardToolBar: UIView {
     public var closeItem : UIBarButtonItem?
     public var toolEdgeInsets : UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) {
         didSet{
-            self.toolBar.frame = CGRect(x: toolEdgeInsets.left, y: toolEdgeInsets.top, width: kScreenWidth - toolEdgeInsets.left - toolEdgeInsets.right, height: topBarHeight - toolEdgeInsets.top - toolEdgeInsets.bottom)
+            self.toolBar.frame = CGRect(x: toolEdgeInsets.left, y: toolEdgeInsets.top, width: UIScreen.main.bounds.width - toolEdgeInsets.left - toolEdgeInsets.right, height: topBarHeight - toolEdgeInsets.top - toolEdgeInsets.bottom)
         }
     }
     
@@ -133,7 +133,7 @@ public class JXKeyboardToolBar: UIView {
     }
     override public func layoutSubviews() {
         super.layoutSubviews()
-        self.toolBar.frame = CGRect(x: toolEdgeInsets.left, y: toolEdgeInsets.top, width: kScreenWidth - toolEdgeInsets.left - toolEdgeInsets.right, height: topBarHeight - toolEdgeInsets.top - toolEdgeInsets.bottom)
+        self.toolBar.frame = CGRect(x: toolEdgeInsets.left, y: toolEdgeInsets.top, width: UIScreen.main.bounds.width - toolEdgeInsets.left - toolEdgeInsets.right, height: topBarHeight - toolEdgeInsets.top - toolEdgeInsets.bottom)
     }
     //MARK:private methods
     

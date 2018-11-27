@@ -32,7 +32,7 @@ private let inputViewMinHeight : CGFloat = 40
 //private let inputViewMaxHeight : CGFloat = 90
 private let inputViewTopMargin : CGFloat = 10
 private let inputViewBottomMargin : CGFloat = 10
-private let inputViewMargin : CGFloat = kScreenWidth * 0.05
+private let inputViewMargin : CGFloat = UIScreen.main.bounds.width * 0.05
 private let inputViewWidth : CGFloat = UIScreen.main.bounds.width - 2 * inputViewMargin
 
 private let keyWindowWidth : CGFloat = UIScreen.main.bounds.width

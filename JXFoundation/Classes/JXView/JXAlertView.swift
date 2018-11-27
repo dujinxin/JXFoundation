@@ -21,7 +21,7 @@ public enum JXAlertViewShowPosition {
 private let reuseIdentifier = "reuseIdentifier"
 
 private let topBarHeight : CGFloat = 40
-private let alertViewMargin : CGFloat = kScreenWidth * 0.1
+private let alertViewMargin : CGFloat = UIScreen.main.bounds.width * 0.1
 private let alertViewWidth : CGFloat = UIScreen.main.bounds.width - 2 * alertViewMargin
 private let listHeight : CGFloat = 40
 private let cancelViewHeight : CGFloat = 40
