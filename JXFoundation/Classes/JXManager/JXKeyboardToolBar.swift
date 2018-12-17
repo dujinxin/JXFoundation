@@ -18,7 +18,7 @@ public protocol JXKeyboardTextViewDelegate: AnyObject {
     func keyboardTextView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
 }
 
-public class JXKeyboardToolBar: UIView {
+public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate {
     
     public typealias KeyboardShowBlock = ((_ height: CGFloat, _ rect: CGRect)->())
     public typealias KeyboardCloseBlock = (()->())
@@ -78,25 +78,22 @@ public class JXKeyboardToolBar: UIView {
     }
     
     public lazy var toolBar: UIToolbar = {
-        let tool = UIToolbar(frame: CGRect())
-        //tool.backgroundColor = UIColor.red
-        
+        let tool = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 49))
+        //tool.translatesAutoresizingMaskIntoConstraints = false
+     
         tool.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         var items = [UIBarButtonItem]()
-        var title = ""
+        let titles = [" ↑ "," ↑ ","完成"]
         for i in 0..<3 {
             
-            let item = UIBarButtonItem(title: title, style: UIBarButtonItem.Style.plain, target: self, action: #selector(changeResponder(_:)))
+            let item = UIBarButtonItem(title: titles[i], style: UIBarButtonItem.Style.plain, target: self, action: #selector(changeResponder(_:)))
             item.isEnabled = true
             item.tag = i
             if i == 0 {
-                item.title = " ↑ "
                 self.upItem = item
             } else if i == 1 {
-                item.title = " ↓ "
                 self.downItem = item
             } else {
-                item.title = "关闭"
                 self.closeItem = item
             }
             items.append(item)
@@ -104,7 +101,7 @@ public class JXKeyboardToolBar: UIView {
         let item = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         items.insert(item, at: 2)
         tool.items = items
-        //tool.items = [UIBarButtonItem(title: "↑", style: UIBarButtonItem.Style.plain, target: self, action: #selector(up)),UIBarButtonItem(title: "↓", style: UIBarButtonItem.Style.plain, target: self, action: #selector(down)),UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil),UIBarButtonItem(title: "关闭", style: UIBarButtonItem.Style.plain, target: self, action: #selector(close)),]
+        
         return tool
     }()
     
@@ -123,7 +120,7 @@ public class JXKeyboardToolBar: UIView {
         }
         self.setupDelegate()
         
-        self.frame = CGRect.init(x: 0, y: keyWindowHeight, width: keyWindowWidth, height: topBarHeight)
+        self.frame = CGRect(x: 0, y: keyWindowHeight, width: keyWindowWidth, height: topBarHeight)
     }
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -137,13 +134,13 @@ public class JXKeyboardToolBar: UIView {
     }
     //MARK:private methods
     
-    private func setKeyBoardObserver() {
+    func setKeyBoardObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(notify:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(notify:)), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
-    private func setupDelegate() {
+    func setupDelegate() {
         self.views.forEach { (v) in
             if v is UITextField, let textField = v as? UITextField{
                 textField.delegate = self
@@ -153,18 +150,17 @@ public class JXKeyboardToolBar: UIView {
         }
     }
     @objc private func changeResponder(_ item: UIBarButtonItem) {
+        if self.views.isEmpty { return }
+        
         if item.tag == 2 {
-            if self.views.isEmpty {
-                return
-            }
+            
             let v = self.views[self.index]
             if v is UITextField, let textField = v as? UITextField, textField.isFirstResponder == true {
                 textField.resignFirstResponder()
             } else if v is UITextView, let textView = v as? UITextView, textView.isFirstResponder == true {
                 textView.resignFirstResponder()
-            } else {
-                print("shit!!!")
             }
+            //关闭block
             if let block = self.closeBlock {
                 block()
             }
@@ -172,35 +168,24 @@ public class JXKeyboardToolBar: UIView {
             if isUpDownShow == false {
                 return
             }
+         
             if item.tag == 0 {
                 self.index -= 1
-                let v = self.views[self.index]
-                if v is UITextField, let textField = v as? UITextField, textField.isFirstResponder == false {
-                    self.textViewFrame = textField.frame
-                    textField.becomeFirstResponder()
-                } else if v is UITextView, let textView = v as? UITextView, textView.isFirstResponder == false {
-                    self.textViewFrame = textView.frame
-                    textView.becomeFirstResponder()
-                } else {
-                    print("shit!!!")
-                }
             } else if item.tag == 1 {
                 self.index += 1
-                let v = self.views[self.index]
-                if v is UITextField, let textField = v as? UITextField, textField.isFirstResponder == false {
-                    self.textViewFrame = textField.frame
-                    textField.becomeFirstResponder()
-                } else if v is UITextView, let textView = v as? UITextView, textView.isFirstResponder == false {
-                    self.textViewFrame = textView.frame
-                    textView.becomeFirstResponder()
-                } else {
-                    print("shit!!!")
-                }
+            }
+            let v = self.views[self.index]
+            if v is UITextField, let textField = v as? UITextField, textField.isFirstResponder == false {
+                self.textViewFrame = textField.frame
+                textField.becomeFirstResponder()
+            } else if v is UITextView, let textView = v as? UITextView, textView.isFirstResponder == false {
+                self.textViewFrame = textView.frame
+                textView.becomeFirstResponder()
             }
         }
         
     }
-    private func updown(_ isShow: Bool) {
+    func updown(_ isShow: Bool) {
         self.isUpDownShow = isShow
         if isShow {
             self.upItem?.title = " ↑ "
@@ -214,8 +199,8 @@ public class JXKeyboardToolBar: UIView {
             self.downItem?.isEnabled = false
         }
     }
-    private func updateItemState(forIndex: Int) {
-        print("current index = ", index)
+    func updateStates(editViewAtIndex index: Int) {
+       
         if self.isUpDownShow == false {
             return
         }
@@ -231,13 +216,12 @@ public class JXKeyboardToolBar: UIView {
         }
     }
     
-    func handleState(view: UIView) {
-       
+    func beginEditing(_ view: UIView) {
         guard let currentIndex = self.views.index(of: view) else {
             return
         }
         self.index = currentIndex
-        self.updateItemState(forIndex: self.index)
+        self.updateStates(editViewAtIndex: currentIndex)
         if let block = self.showBlock {
             block(self.topBarHeight + self.keyboardRect.height, self.textViewFrame)
         }
@@ -245,7 +229,7 @@ public class JXKeyboardToolBar: UIView {
 }
 extension JXKeyboardToolBar {
     @objc func keyboardWillShow(notify:Notification) {
-        print("notify = ","show")
+        print("JXKeyboardToolBar.Keyboard = ","show")
         guard
             let userInfo = notify.userInfo,
             let rect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
@@ -255,21 +239,18 @@ extension JXKeyboardToolBar {
         }
         self.animateDuration = animationDuration
         self.keyboardRect = rect
-        print(rect)
+        //print("JXKeyboardToolBar.Keyboard.frame = ",rect)
         
         if let block = self.showBlock {
             block(self.topBarHeight + self.keyboardRect.height, self.textViewFrame)
         }
-        
         UIView.animate(withDuration: animationDuration, animations: {
             self.frame = CGRect(x: 0, y: keyWindowHeight - self.topBarHeight - self.keyboardRect.height, width: keyWindowWidth, height: self.topBarHeight + self.keyboardRect.height)
-            
         }) { (finish) in
             //
         }
     }
     @objc func keyboardWillHide(notify:Notification) {
-        print("notify = ","hide")
         guard
             let userInfo = notify.userInfo,
             let rect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
@@ -291,24 +272,32 @@ extension JXKeyboardToolBar {
         self.isKeyboardShow = false
     }
 }
-extension JXKeyboardToolBar: UITextFieldDelegate {
-    private func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.handleState(view: textField)
+//MARK:UITextFieldDelegate
+extension JXKeyboardToolBar {
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true
     }
-    private func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.beginEditing(textField)
+    }
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let delegate = self.textFieldDelegate else { return true }
         return delegate.keyboardTextFieldShouldReturn(textField)
     }
-    private func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let delegate = self.textFieldDelegate else { return true }
         return delegate.keyboardTextField(textField, shouldChangeCharactersIn: range, replacementString: string)
     }
 }
-extension JXKeyboardToolBar: UITextViewDelegate {
-    private func textViewDidBeginEditing(_ textView: UITextView) {
-        self.handleState(view: textView)
+//MARK:UITextViewDelegate
+extension JXKeyboardToolBar {
+    public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        return true
     }
-    private func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    public func textViewDidBeginEditing(_ textView: UITextView) {
+        self.beginEditing(textView)
+    }
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         guard let delegate = self.textViewDelegate else { return true }
         return delegate.keyboardTextView(textView, shouldChangeTextIn: range, replacementText: text)
     }

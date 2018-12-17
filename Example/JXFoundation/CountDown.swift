@@ -80,26 +80,6 @@ class CountDown: NSObject {
         let minutes = (timeInterval - days * 24 * 3600 - hours * 3600) / 60
         let seconds = timeInterval - days * 24 * 3600 - hours * 3600 - minutes * 60
         
-        var dayStr : String = ""
-        var hourStr : String = ""
-        var minuteStr : String = ""
-        var secondStr : String = ""
-        
-        if minutes < 10 {
-            minuteStr = String(format: "0%d", minutes)
-        } else {
-            minuteStr = String(format: "%d", minutes)
-        }
-        if seconds < 10 {
-            secondStr = String(format: "0%d", minutes)
-        } else {
-            secondStr = String(format: "%d", minutes)
-        }
-        if minutes < 10 {
-            minuteStr = String(format: "0%d", minutes)
-        } else {
-            minuteStr = String(format: "%d", minutes)
-        }
         
         if days > 0 {
             return String(format: "%zd天 %zd小时 %zd分 %zd秒", days,hours,minutes,seconds)
