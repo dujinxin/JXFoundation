@@ -11,7 +11,7 @@ import WebKit
 
 open class JXWkWebViewController: JXBaseViewController {
 
-    lazy var webView: WKWebView = {
+    public lazy var webView: WKWebView = {
         let config = WKWebViewConfiguration()
         //初始化偏好设置属性：preferences
         let preferences = WKPreferences()
@@ -33,7 +33,7 @@ open class JXWkWebViewController: JXBaseViewController {
         
         return web
     }()
-    lazy var processView: UIProgressView = {
+    public lazy var processView: UIProgressView = {
         let process = UIProgressView()
         process.progressTintColor = UIColor.blue
         process.progress = 0.0
