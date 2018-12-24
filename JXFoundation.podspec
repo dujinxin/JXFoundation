@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JXFoundation'
-  s.version          = '1.2.0'
+  s.version          = '1.2.1'
   s.summary          = '常用view,方法工具，用于快速集成'
 
 # This description is used to generate tags and improve search results.
@@ -42,6 +42,7 @@ TODO: Add long description of the pod here.
   s.subspec 'Basic' do |ss|
       ss.source_files = 'JXFoundation/Classes/Basic/**/*'
       ss.dependency 'JXFoundation/Core'
+      ss.dependency 'JXFoundation/UIKit'
   end
   s.subspec 'Core' do |ss|
       ss.source_files = 'JXFoundation/Classes/Core/**/*'

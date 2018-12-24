@@ -73,16 +73,16 @@ class JXFoundationHelper {
     /// - Returns: 结果
     public func validate(_ string: String?, predicateStr: String, emptyMsg: String?, formatMsg: String) -> Bool{
         guard let str = string, str.isEmpty == false else {
-            let notice = JXNoticeView.init(text: emptyMsg ?? formatMsg)
-            notice.show()
+//            let notice = JXNoticeView.init(text: emptyMsg ?? formatMsg)
+//            notice.show()
             return false
         }
         if predicateStr.isEmpty {
             return true
         }
         if !String.validate(str, predicateStr: predicateStr) {
-            let notice = JXNoticeView.init(text: formatMsg)
-            notice.show()
+//            let notice = JXNoticeView.init(text: formatMsg)
+//            notice.show()
             return false
         } else {
             return true

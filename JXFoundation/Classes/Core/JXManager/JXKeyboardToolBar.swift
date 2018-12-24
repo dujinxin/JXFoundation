@@ -130,7 +130,7 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
     }
     override public func layoutSubviews() {
         super.layoutSubviews()
-        self.toolBar.frame = CGRect(x: toolEdgeInsets.left, y: toolEdgeInsets.top, width: UIScreen.main.bounds.width - toolEdgeInsets.left - toolEdgeInsets.right, height: topBarHeight - toolEdgeInsets.top - toolEdgeInsets.bottom)
+        self.toolBar.frame = CGRect(x: toolEdgeInsets.left, y: toolEdgeInsets.top, width: keyWindowWidth - toolEdgeInsets.left - toolEdgeInsets.right, height: topBarHeight - toolEdgeInsets.top - toolEdgeInsets.bottom)
     }
     //MARK:private methods
     
