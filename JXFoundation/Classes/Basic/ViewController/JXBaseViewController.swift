@@ -79,7 +79,7 @@ open class JXBaseViewController: UIViewController {
     override open var preferredStatusBarStyle: UIStatusBarStyle {
          return .default
     }
-    public func isCustomNavigationBarUsed() -> Bool{
+    open func isCustomNavigationBarUsed() -> Bool{
         return true
     }
     /// request data
