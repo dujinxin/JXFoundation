@@ -18,6 +18,13 @@ class CategoryViewController: UIViewController {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
         self.title = "分类"
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            self.navigationItem.largeTitleDisplayMode = .always
+            self.navigationItem.title = "分类"
+        } else {
+            // Fallback on earlier versions
+        }
         
         topBar = JXBarView.init(frame: CGRect.init(x: 0, y: kNavStatusHeight, width: view.bounds.width, height: 44), titles: ["新闻","视频","热点","体育"])
         topBar.delegate = self
@@ -63,29 +70,17 @@ extension CategoryViewController : JXBarViewDelegate {
 extension CategoryViewController : JXHorizontalViewDelegate {
 
     func horizontalViewDidScroll(scrollView:UIScrollView) {
-//        var frame = self.topBar?.bottomLineView.frame
-//        let offset = scrollView.contentOffset.x
-//        frame?.origin.x = (offset / kScreenWidth ) * (kScreenWidth / CGFloat((self.topBar?.titles.count)!))
-//        self.topBar?.bottomLineView.frame = frame!
-        
+
         let offset = scrollView.contentOffset.x
-        var x : CGFloat
+        
         let count = CGFloat(self.topBar.titles.count)
-//        if itemSize.width * count >= self.bounds.width {
-//            x = (itemSize.width  - self.bottomLineSize.width) / 2 + (offset / kScreenWidth ) * (itemSize.width * count)
-//        } else {
-            x = (kScreenWidth / count  - self.topBar.bottomLineSize.width) / 2 + (offset / kScreenWidth ) * ((kScreenWidth / count))
-//        }
+        let x : CGFloat = (UIScreen.main.screenWidth / count  - self.topBar.bottomLineSize.width) / 2 + (offset / UIScreen.main.screenWidth ) * ((UIScreen.main.screenWidth / count))
+
         self.topBar.bottomLineView.frame.origin.x = x
+        
     }
     func horizontalView(_: JXHorizontalView, to indexPath: IndexPath) {
-        if self.topBar.selectedIndex == indexPath.item {
-            return
-        }
         
-//        self.topBar.containerView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.left)
         self.topBar.scrollToItem(at: indexPath)
-//        self.topBar.containerView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-//        self.topBar.containerView.reloadItems(at: [indexPath])
     }
 }

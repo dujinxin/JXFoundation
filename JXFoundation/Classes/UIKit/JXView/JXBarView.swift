@@ -139,6 +139,7 @@ public class JXBarView: UIView {
         }
     }
     public func scrollToItem(at indexPath: IndexPath) {
+        self.selectedIndex = indexPath.item
         self.updateState(at: indexPath)
         self.containerView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
     }
@@ -185,10 +186,9 @@ extension JXBarView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     }
     //scrollView
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        if self.delegate != nil {
-            self.delegate?.jxBarViewDidScroll!(scrollView: self.containerView)
-        }
+        guard let delegate = self.delegate else { return }
+        delegate.jxBarViewDidScroll!(scrollView: self.containerView)
+  
     }
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.x
@@ -197,9 +197,8 @@ extension JXBarView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
 
         self.containerView.reloadItems(at: [indexPath as IndexPath])
 
-        if self.delegate != nil{
-            self.delegate?.jxBarView!(self, to: indexPath)
-        }
+        guard let delegate = self.delegate else { return }
+        delegate.jxBarView!(self, to: indexPath)
     }
 }
 class ItemCell: UICollectionViewCell {

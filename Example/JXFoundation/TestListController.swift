@@ -7,54 +7,34 @@
 //
 
 import UIKit
+import JXFoundation
 
-class TestListController: UIViewController {
-    
-    //tableview
-    var tableView : UITableView?
+class TestListController: JXTableViewController {
     
     var countDown : CountDown?
-    
-    var dataArray = Array<Int>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if #available(iOS 11.0, *) {
-            self.tableView?.contentInsetAdjustmentBehavior = .never
-        } else {
-            self.automaticallyAdjustsScrollViewInsets = false
-        }
+        self.title = "TimeLabel"
 
-        self.tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height), style: .plain)
-        self.tableView?.backgroundColor = UIColor.clear
-        self.tableView?.separatorStyle = .none
-        self.tableView?.delegate = self
-        self.tableView?.dataSource = self
-        self.tableView?.estimatedRowHeight = 44
-        self.tableView?.rowHeight = UITableView.automaticDimension
-        self.view.addSubview(self.tableView!)
+        self.tableView.frame = CGRect(x: 0, y: kNavStatusHeight, width: view.bounds.width, height: view.bounds.height - kNavStatusHeight)
+        self.tableView.register(JXTimeCell.self, forCellReuseIdentifier: "cell")
+       
+        self.dataArray = [30230,4035,175,5]
+            //,52,20,9532,30232,4022,5132,242,5000,46302,5300,4532,5432,3220,402,5532,30070,4002,51232]
         
-        self.tableView?.register(JXTimeCell.self, forCellReuseIdentifier: "cell")
-        
-        
-        
-        dataArray = [30230,4035,175,5,52,20,9532,30232,4022,5132,242,5000,46302,5300,4532,5432,3220,402,5532,30070,4002,51232]
-        
-        countDown = CountDown(tableView: self.tableView!, data: dataArray)
+        countDown = CountDown(tableView: self.tableView, data: dataArray as! Array<Int>)
         //countDown?.isPlusTime = true
     }
-
-    deinit {
-        
-    }
-}
-extension TestListController : UITableViewDelegate,UITableViewDataSource{
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+}
+extension TestListController {
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! JXTimeCell
         cell.tag = indexPath.row
@@ -63,12 +43,12 @@ extension TestListController : UITableViewDelegate,UITableViewDataSource{
         cell.timeLabel.text = countDown?.countDown(indexPath: indexPath)
         return cell
     }
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
-    }
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01
-    }
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        return UIView()
+//    }
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 0.01
+//    }
 }
 
 class JXTimeCell:  UITableViewCell{

@@ -33,7 +33,9 @@ class JXViewController: UITableViewController {
                 let notice = JXNoticeView(text: "温馨提示！")
                 notice.show()
             case 1:
-                self.navigationController?.pushViewController(FeedbackViewController(), animated: true)
+                let vc = FeedbackViewController()
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
             case 2:
                 let vc = ViewController()
                 vc.type = .ad
@@ -43,18 +45,26 @@ class JXViewController: UITableViewController {
                 vc.type = .guide
                 self.navigationController?.pushViewController(vc, animated: true)
             case 4:
-                self.navigationController?.pushViewController(OrderManagerViewController(), animated: true)
+                let vc = OrderManagerViewController()
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
             case 5:
-                self.navigationController?.pushViewController(FeedbackViewController(), animated: true)
+                let vc = FeedbackViewController()
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
             case 6:
                 self.showInputView()
             case 7:
                 ()
                 //self.navigationController?.pushViewController(InputViewController(), animated: true)
             case 8:
-                self.navigationController?.pushViewController(CategoryViewController(), animated: true)
+                let vc = CategoryViewController()
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
             case 9:
-                self.navigationController?.pushViewController(TestListController(), animated: true)
+                let vc = TestListController()
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
             default:
                 break
             }

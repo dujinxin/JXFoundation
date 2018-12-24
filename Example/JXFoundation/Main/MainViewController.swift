@@ -13,6 +13,7 @@ class MainViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.groupTableViewBackground
+        self.title = "首页"
     }
     
     override func didReceiveMemoryWarning() {

@@ -43,7 +43,7 @@ extension OrderManagerViewController {
     func horizontalViewDidScroll(scrollView:UIScrollView) {
         var frame = self.topBar?.bottomLineView.frame
         let offset = scrollView.contentOffset.x
-        frame?.origin.x = (offset / kScreenWidth ) * (kScreenWidth / CGFloat((self.topBar?.titles.count)!))
+        frame?.origin.x = (offset / UIScreen.main.screenWidth ) * (UIScreen.main.screenWidth / CGFloat((self.topBar?.titles.count)!))
         self.topBar?.bottomLineView.frame = frame!
     }
     func horizontalView(_: JXHorizontalView, to indexPath: IndexPath) {

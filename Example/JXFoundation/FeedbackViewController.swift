@@ -14,7 +14,7 @@ class FeedbackViewController: UIViewController {
     lazy var textView: JXPlaceHolderTextView = {
         //        let textView = JXPlaceHolderTextView(frame: CGRect(x: 10, y:kNavStatusHeight + 10, width: kScreenWidth - 20, height: 80), textContainer: NSTextContainer(size: CGSize(width: 100, height: 44)))
         let textView = JXPlaceHolderTextView()
-        textView.frame = CGRect(x: 10, y:kNavStatusHeight + 10, width: kScreenWidth - 20, height: 80)
+        textView.frame = CGRect(x: 10, y:kNavStatusHeight + 10, width: UIScreen.main.screenWidth - 20, height: 80)
         textView.placeHolderText = "为了寻你，我错过了许许许多多的良辰美景!"
         textView.delegate = self
         return textView

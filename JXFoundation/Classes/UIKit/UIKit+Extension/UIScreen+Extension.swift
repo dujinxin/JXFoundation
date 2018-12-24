@@ -8,6 +8,15 @@
 
 import UIKit
 
+public let kStatusBarHeight = UIScreen.main.isIphoneX ? CGFloat(44) : CGFloat(20)
+public let kNavBarHeight = CGFloat(44)
+public let kNavStatusHeight = kStatusBarHeight + kNavBarHeight
+public let kBottomMaginHeight : CGFloat = UIScreen.main.isIphoneX ? 34 : 0
+public let kTabBarHeight : CGFloat = kBottomMaginHeight + 49
+
+public let kHWPercent = (UIScreen.main.screenHeight / UIScreen.main.screenWidth)//高宽比例
+public let kPercent = UIScreen.main.screenWidth / 375.0
+
 public enum Model: CGSize {
     case iPhoneSE = "{640.0,1136.0}"
     case iPhone8 = "{750.0,1334.0}"

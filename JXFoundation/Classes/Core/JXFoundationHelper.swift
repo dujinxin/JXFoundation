@@ -17,7 +17,7 @@ import Foundation
 ///   - function: 方法名称
 public func prints<T>(_ msg:T, file: String = #file, line: Int = #line, function: String = #function) {
     
-    if JXConstantHelper.shared.isShowLog {
+    if JXFoundationHelper.shared.isShowLog {
         let fileName = (file as NSString).lastPathComponent.components(separatedBy: ".")[0]
         Swift.print(fileName,msg, separator: " ", terminator: "\n")
     }
@@ -27,6 +27,9 @@ public func prints<T>(_ msg:T, file: String = #file, line: Int = #line, function
 
 class JXFoundationHelper {
     static let shared = JXFoundationHelper()
+    
+    var isShowLog : Bool = false
+    var isDebug : Bool = false
     
     private init() {}
     /// 倒计时
@@ -85,5 +88,4 @@ class JXFoundationHelper {
             return true
         }
     }
-    
 }

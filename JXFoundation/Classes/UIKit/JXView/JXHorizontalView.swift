@@ -76,11 +76,11 @@ public class JXHorizontalView: UIView {
 }
 
 public protocol JXHorizontalViewDelegate {
-    func horizontalView(_ :JXHorizontalView,to indexPath:IndexPath) -> Void
-    func horizontalViewDidScroll(scrollView:UIScrollView) -> Void
+    func horizontalView(_ : JXHorizontalView, to indexPath: IndexPath) -> Void
+    func horizontalViewDidScroll(scrollView: UIScrollView) -> Void
 }
 
-extension JXHorizontalView:UICollectionViewDelegate,UICollectionViewDataSource{
+extension JXHorizontalView: UICollectionViewDelegate, UICollectionViewDataSource{
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if containers.count > 0 {
             return containers.count
@@ -111,20 +111,17 @@ extension JXHorizontalView:UICollectionViewDelegate,UICollectionViewDataSource{
 
 extension JXHorizontalView {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if self.delegate != nil {
-            self.delegate?.horizontalViewDidScroll(scrollView: self.containerView)
-        }
+        guard let delegate = self.delegate else { return }
+        delegate.horizontalViewDidScroll(scrollView: self.containerView)
     }
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.x
         let page = offset / self.frame.size.width
         let indexPath = IndexPath.init(item: Int(page), section: 0)
         
-        self.containerView.reloadItems(at: [indexPath as IndexPath])
+        self.containerView.reloadItems(at: [indexPath])
         
-        if self.delegate != nil{
-            self.delegate?.horizontalView(self, to: indexPath)
-        }
-        
+        guard let delegate = self.delegate else { return }
+        delegate.horizontalView(self, to: indexPath)
     }
 }

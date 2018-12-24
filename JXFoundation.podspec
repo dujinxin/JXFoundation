@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JXFoundation'
-  s.version          = '1.1.0'
-  s.summary          = '自定义view，以及平时自己常用的一些方法扩展'
+  s.version          = '1.2.0'
+  s.summary          = '常用view,方法工具，用于快速集成'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -39,27 +39,15 @@ TODO: Add long description of the pod here.
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
   
-
-  s.subspec 'Constant' do |ss|
-      ss.source_files = 'JXFoundation/Classes/Constant/**/*'
-      ss.dependency 'JXFoundation/UIKit+Extension'
-      ss.dependency 'JXFoundation/Foundation+Extension'
-      ss.dependency 'JXFoundation/JXView'
+  s.subspec 'Basic' do |ss|
+      ss.source_files = 'JXFoundation/Classes/Basic/**/*'
+      ss.dependency 'JXFoundation/Core'
   end
-  s.subspec 'Foundation+Extension' do |ss|
-      ss.source_files = 'JXFoundation/Classes/Foundation+Extension/**/*'
+  s.subspec 'Core' do |ss|
+      ss.source_files = 'JXFoundation/Classes/Core/**/*'
   end
-  s.subspec 'UIKit+Extension' do |ss|
-      ss.source_files = 'JXFoundation/Classes/UIKit+Extension/**/*'
-      ss.dependency 'JXFoundation/Foundation+Extension'
-  end
-  s.subspec 'JXManager' do |ss|
-      ss.source_files = 'JXFoundation/Classes/JXManager/JXKeyboardToolBar.swift'
-      ss.dependency 'JXFoundation/Constant'
-  end
-  s.subspec 'JXView' do |ss|
-      ss.source_files = 'JXFoundation/Classes/JXView/**/*'
-      ss.dependency 'JXFoundation/Foundation+Extension'
-      ss.dependency 'JXFoundation/UIKit+Extension'
+  s.subspec 'UIKit' do |ss|
+      ss.source_files = 'JXFoundation/Classes/UIKit/**/*'
+      ss.dependency 'JXFoundation/Core'
   end
 end

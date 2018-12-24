@@ -108,15 +108,6 @@ extension InputViewController: UITextFieldDelegate{
             let textField = notify.object as? UITextField,
             textField == self.nameTextField {
             
-            
-            if
-                let num = textField.text,
-                let numDouble = Double(num){
-                
-            } else {
-                
-            }
-            
         }
         
     }
