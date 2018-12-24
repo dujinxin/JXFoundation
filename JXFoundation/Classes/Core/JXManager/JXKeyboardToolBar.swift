@@ -46,7 +46,7 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
     }
     public var topBarHeight: CGFloat = 49 {
         didSet {
-            self.toolBar.frame = CGRect(x: toolEdgeInsets.left, y: toolEdgeInsets.top, width: UIScreen.main.screenWidth - toolEdgeInsets.left - toolEdgeInsets.right, height: topBarHeight - toolEdgeInsets.top - toolEdgeInsets.bottom)
+            self.toolBar.frame = CGRect(x: toolEdgeInsets.left, y: toolEdgeInsets.top, width: keyWindowWidth - toolEdgeInsets.left - toolEdgeInsets.right, height: topBarHeight - toolEdgeInsets.top - toolEdgeInsets.bottom)
         }
     }
     public var font: UIFont = UIFont.systemFont(ofSize: 14){
