@@ -19,7 +19,7 @@ public extension FileManager{
     ///   - data: 数据
     ///   - name: 数据名称
     /// - Returns: 操作结果
-    public static func insert(data: Data, toFile name: String) -> Bool{
+    static func insert(data: Data, toFile name: String) -> Bool{
         let newPath = dataPath + "/\(name)"
         let dataPathUrl = URL.init(fileURLWithPath: newPath)
         
@@ -36,7 +36,7 @@ public extension FileManager{
     ///   - data: 数据
     ///   - name: 数据名称
     /// - Returns: 操作结果
-    public static func update(inFile data: Data, name: String) -> Bool {
+    static func update(inFile data: Data, name: String) -> Bool {
         let newPath = dataPath + "/\(name)"
         let dataPathUrl = URL.init(fileURLWithPath: newPath)
         if FileManager.default.fileExists(atPath: newPath) == false {
@@ -55,7 +55,7 @@ public extension FileManager{
     /// - Parameters:
     ///   - name: 数据名称
     /// - Returns: 操作结果
-    public static func select(fromFile name: String) -> Any? {
+    static func select(fromFile name: String) -> Any? {
         let newPath = dataPath + "/\(name)"
         let dataPathUrl = URL.init(fileURLWithPath: newPath)
         
@@ -71,7 +71,7 @@ public extension FileManager{
     ///
     /// - Parameter name: 数据名称
     /// - Returns: 操作结果
-    public static func delete(fromFile name: String) -> Bool{
+    static func delete(fromFile name: String) -> Bool{
         let newPath = dataPath + "/\(name)"
         
         do {

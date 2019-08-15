@@ -10,5 +10,5 @@ import UIKit
 
 open class JXView: UIView {
 
-    public typealias ClickBlock = ((_ view:UIView,_ object:Any) -> ())
+    public typealias ClickBlock = ((_ view: UIView,_ object: Any) -> ())
 }

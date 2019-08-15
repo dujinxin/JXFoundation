@@ -33,19 +33,19 @@ public extension String {
     ///   - string: 需要校验的字符串
     ///   - predicateStr: 正则
     /// - Returns: 结果
-    public func validate(predicateStr: String) -> Bool {
+    func validate(predicateStr: String) -> Bool {
         let predicate = NSPredicate(format: "SELF MATCHES %@", predicateStr)
         return predicate.evaluate(with: self)
     }
-    public static func validate(_ string: String, predicateStr: String) -> Bool {
+    static func validate(_ string: String, predicateStr: String) -> Bool {
         let predicate = NSPredicate(format: "SELF MATCHES %@", predicateStr)
         return predicate.evaluate(with: string)
     }
 }
 // MARK: - 文本计算
-extension String {
+public extension String {
     
-    public func calculate(width: CGFloat, fontSize: CGFloat, lineSpace: CGFloat = -1) -> CGSize {
+    func calculate(width: CGFloat, fontSize: CGFloat, lineSpace: CGFloat = -1) -> CGSize {
         
         if self.isEmpty {
             return CGSize()

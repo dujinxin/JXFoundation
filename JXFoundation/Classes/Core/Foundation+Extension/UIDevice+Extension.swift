@@ -9,10 +9,10 @@
 import UIKit
 
 public extension UIDevice {
-    public var uuid: String {
+    var uuid: String {
         return self.identifierForVendor?.uuidString ?? "unknown"
     }
-    public var modelName : String {
+    var modelName : String {
         get{
             var systemInfo = utsname()
             uname(&systemInfo)

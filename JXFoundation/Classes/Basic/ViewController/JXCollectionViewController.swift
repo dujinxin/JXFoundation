@@ -11,7 +11,7 @@ import UIKit
 private let reuseIdentifier = "reuseIdentifier"
 private let reuseIndentifierHeader = "reuseIndentifierHeader"
 
-class JXCollectionViewController: JXBaseViewController {
+open class JXCollectionViewController: JXBaseViewController {
 
     //collectionView
     public lazy var collectionView : UICollectionView = {
@@ -42,7 +42,7 @@ class JXCollectionViewController: JXBaseViewController {
     public var dataArray = NSMutableArray()
     public var page : Int = 1
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         if #available(iOS 11.0, *) {
@@ -52,7 +52,7 @@ class JXCollectionViewController: JXBaseViewController {
         }
     }
    
-    @objc override func setUpMainView() {
+    @objc override open func setUpMainView() {
         setUpTableView()
     }
     

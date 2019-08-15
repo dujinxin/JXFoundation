@@ -14,7 +14,7 @@ public extension Data{
     /// - Parameters:
     ///   - image: 图片
     ///   - name: 图片名称
-    public static func save(data: Data, name: String) {
+    static func save(data: Data, name: String) {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let path = paths[0]
         let imagePath = path + "/\(name)"
@@ -31,7 +31,7 @@ public extension Data{
     /// - Parameters:
     ///   - image: 图片
     ///   - name: 图片名称
-    public static func get(name: String) -> Data? {
+    static func get(name: String) -> Data? {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let path = paths[0]
         let imagePath = path + "/\(name)"
@@ -44,7 +44,7 @@ public extension Data{
     /// 移除文件中图片
     ///
     /// - Parameter name: 图片名称
-    public static func remove(name: String) {
+    static func remove(name: String) {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let path = paths[0]
         let imagePath = path + "/\(name)"

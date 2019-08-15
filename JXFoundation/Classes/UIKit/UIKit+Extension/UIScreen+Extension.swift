@@ -42,9 +42,9 @@ extension CGSize: ExpressibleByStringLiteral{
         self.init(width: size.width, height: size.height)
     }
 }
-extension UIScreen {
+public extension UIScreen {
     
-    public var isIphoneX : Bool {
+    var isIphoneX : Bool {
         get{
             if self.model == .iPhoneX || self.model == .iPhoneXR || self.model == .iPhoneXM {
                 return true
@@ -53,7 +53,7 @@ extension UIScreen {
             }
         }
     }
-    public var model: Model {
+    var model: Model {
         get{
             
             guard let mode = self.currentMode
@@ -64,17 +64,17 @@ extension UIScreen {
         }
     }
     
-    public var screenSize : CGSize {
+    var screenSize : CGSize {
         get{
             return bounds.size
         }
     }
-    public var screenWidth : CGFloat {
+    var screenWidth : CGFloat {
         get{
             return bounds.width
         }
     }
-    public var screenHeight : CGFloat {
+    var screenHeight : CGFloat {
         get{
             return bounds.height
         }

@@ -214,7 +214,7 @@ class UIKitViewController: UIViewController {
         }) { (finish) in
             if finish {
                 subView.removeFromSuperview()
-                let index = self.buttonArray.index(of: subView)
+                let index = self.buttonArray.firstIndex(of: subView)
                 self.buttonArray.remove(at: index!)
             }
         }

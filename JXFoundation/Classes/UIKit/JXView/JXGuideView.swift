@@ -22,7 +22,7 @@ public class JXGuideView: UIView,UICollectionViewDelegate,UICollectionViewDataSo
     ///当前页码
     public var currentPage = 0
     public var style : GuidePageStyle = .point
-    public typealias DismissBlock =  ((_ guide:JXGuideView)->())?
+    public typealias DismissBlock = ((_ guide: JXGuideView)->())?
     public var dismissBlock : DismissBlock
     
     /// 首次安装和升级安装要显示引导页
@@ -94,12 +94,14 @@ public class JXGuideView: UIView,UICollectionViewDelegate,UICollectionViewDataSo
     
     
     public init(frame: CGRect,images: Array<String>, style: GuidePageStyle, block:DismissBlock) {
-        super.init(frame: frame)
         
         self.images = images
         self.dismissBlock = block
         self.style = style
-
+        
+        super.init(frame: frame)
+        
+    
         addSubview(self.collectionView)
         addSubview(self.enterButton)
         

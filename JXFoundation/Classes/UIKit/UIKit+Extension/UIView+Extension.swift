@@ -15,7 +15,7 @@ public extension UIView {
      *
      * Sets frame.origin.x = left
      */
-    public var jxLeft : CGFloat {
+    var jxLeft : CGFloat {
         get{
             return frame.origin.x
         }
@@ -26,7 +26,7 @@ public extension UIView {
      *
      * Sets frame.origin.y = top
      */
-    public var jxTop : CGFloat {
+    var jxTop : CGFloat {
         get{
             return frame.origin.y
         }
@@ -37,7 +37,7 @@ public extension UIView {
      *
      * Sets frame.origin.x = right - frame.size.width
      */
-    public var jxRight : CGFloat {
+    var jxRight : CGFloat {
         get{
             return frame.origin.x + frame.size.width
         }
@@ -48,7 +48,7 @@ public extension UIView {
      *
      * Sets frame.origin.y = bottom - frame.size.height
      */
-    public var jxBottom : CGFloat {
+    var jxBottom : CGFloat {
         get{
             return frame.origin.y + frame.size.height
         }
@@ -59,7 +59,7 @@ public extension UIView {
      *
      * Sets frame.size.width = width
      */
-    public var jxWidth : CGFloat {
+    var jxWidth : CGFloat {
         get{
             return frame.size.width
         }
@@ -70,7 +70,7 @@ public extension UIView {
      *
      * Sets frame.size.height = height
      */
-    public var jxHeight : CGFloat {
+    var jxHeight : CGFloat {
         get{
             return frame.size.height
         }
@@ -81,7 +81,7 @@ public extension UIView {
      *
      * Sets center.x = centerX
      */
-    public var jxCenter : CGPoint {
+    var jxCenter : CGPoint {
         get{
             return center
         }
@@ -91,7 +91,7 @@ public extension UIView {
      *
      * Sets center.x = centerX
      */
-    public var jxCenterX : CGFloat {
+    var jxCenterX : CGFloat {
         get{
             return center.x
         }
@@ -102,7 +102,7 @@ public extension UIView {
      *
      * Sets center.y = centerY
      */
-    public var jxCenterY : CGFloat {
+    var jxCenterY : CGFloat {
         get{
             return center.y
         }
@@ -128,7 +128,7 @@ public extension UIView {
 }
 
 public extension UIView {
-    public func removeAllSubView() {
+    func removeAllSubView() {
         
         for view in subviews {
             let v = view

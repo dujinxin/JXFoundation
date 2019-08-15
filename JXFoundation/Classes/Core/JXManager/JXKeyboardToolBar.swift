@@ -217,7 +217,7 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
     }
     
     func beginEditing(_ view: UIView) {
-        guard let currentIndex = self.views.index(of: view) else {
+        guard let currentIndex = self.views.firstIndex(of: view) else {
             return
         }
         self.index = currentIndex

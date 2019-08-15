@@ -309,7 +309,7 @@ extension JXInputTextView : UITextViewDelegate {
                 target.inputTextViewConfirm!(inputTextView: self, object: textView.text)
             }
             if let block = sendBlock {
-                block(self,textView.text)
+                block(self,textView.text ?? "")
             }
             textView.text = ""                        //发送后清除内容
             if self.apply == .comment {

@@ -121,7 +121,7 @@ private func updateTraitCollection(on element: Snapshotable) {
             #if swift(>=4.2)
             vc.children.forEach(updateTraitCollection(on:))
             #else
-            vc.children.forEach(updateTraitCollection(on:))
+            vc.childViewControllers.forEach(updateTraitCollection(on:))
             #endif
 
             if vc.isViewLoaded {

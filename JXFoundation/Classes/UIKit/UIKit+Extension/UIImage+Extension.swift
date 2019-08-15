@@ -18,7 +18,7 @@ public extension UIImage {
     ///   - originalImage: 原图
     ///   - scaledWidth: 将要缩放或拉伸的宽度
     /// - Returns: 新的图片
-    public class func image(originalImage:UIImage? ,to scaledWidth:CGFloat) -> UIImage? {
+    class func image(originalImage:UIImage? ,to scaledWidth:CGFloat) -> UIImage? {
         guard let image = originalImage else {
             return UIImage.init()
         }
@@ -44,7 +44,7 @@ public extension UIImage {
         return newImage
     }
 
-    public func image(originalImage:UIImage?,rect:CGRect,radius:CGFloat) -> UIImage? {
+    func image(originalImage:UIImage?,rect:CGRect,radius:CGFloat) -> UIImage? {
         guard let image = originalImage else {
             return UIImage.init()
         }
@@ -74,7 +74,7 @@ public extension UIImage {
     ///
     /// - Parameter view: 要截取的视图
     /// - Returns: 图片
-    public class func imageScreenshot(view: UIView) -> UIImage? {
+    class func imageScreenshot(view: UIView) -> UIImage? {
         let rect = view.bounds
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
@@ -89,7 +89,7 @@ public extension UIImage {
     ///
     /// - Parameter color: 要生成图片的颜色
     /// - Returns: 图片
-    public class func imageWithColor(_ color: UIColor) -> UIImage {
+    class func imageWithColor(_ color: UIColor) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
@@ -102,10 +102,10 @@ public extension UIImage {
 }
 public extension UIImage {
     
-    public class func save(image:UIImage,completion:((_ isSuccess:Bool)->())?) {
+    class func save(image: UIImage, completion: ((_ isSuccess: Bool)->())?) {
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
     }
-    @objc public func image(image:UIImage,didFinishSavingWithError error:Error?,contextInfo:AnyObject?) {
+    @objc func image(image:UIImage,didFinishSavingWithError error:Error?,contextInfo:AnyObject?) {
         if error != nil {
             //
             print("保存成功")
@@ -120,7 +120,7 @@ public extension UIImage {
     ///   - image: 图片
     ///   - isAlbum: 是否新建相册
     ///   - completion: 回调
-    public class func saveImage(image:UIImage,isAlbum:Bool = false,completion:@escaping ((_ isSuccess:Bool,_ msg:String)->())) -> Void {
+    class func saveImage(image: UIImage, isAlbum: Bool = false, completion: @escaping ((_ isSuccess: Bool,_ msg: String)->())) -> Void {
         
         //let isGo = authorizationStatus()
         
@@ -255,7 +255,7 @@ public extension UIImage {
     ///   - image: 图片
     ///   - name: 数据名称
     /// - Returns: 操作结果
-    public static func insert(image: UIImage, name: String) ->Bool{
+    static func insert(image: UIImage, name: String) ->Bool{
         guard let data = image.jpegData(compressionQuality: 1.0) else {
             return false
         }
@@ -267,7 +267,7 @@ public extension UIImage {
     ///   - image: 图片
     ///   - name: 数据名称
     /// - Returns: 操作结果
-    public static func update(image: UIImage, name: String) ->Bool {
+    static func update(image: UIImage, name: String) ->Bool {
         guard let data = image.jpegData(compressionQuality: 1.0) else {
             return false
         }
@@ -278,7 +278,7 @@ public extension UIImage {
     /// - Parameters:
     ///   - name: 数据名称
     /// - Returns: 操作结果
-    public static func select(name: String) -> Data? {
+    static func select(name: String) -> Data? {
         let data = FileManager.select(fromFile: name) as? Data
         return data
     }
@@ -286,7 +286,7 @@ public extension UIImage {
     ///
     /// - Parameter name: 数据名称
     /// - Returns: 操作结果
-    public static func delete(name: String) ->Bool{
+    static func delete(name: String) ->Bool{
         return FileManager.delete(fromFile: name)
     }
 }

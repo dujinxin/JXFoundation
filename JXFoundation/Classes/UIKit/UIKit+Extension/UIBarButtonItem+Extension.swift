@@ -18,7 +18,7 @@ public extension  UIBarButtonItem {
     ///   - imageName:图片名称
     ///   - target:target
     ///   - action:action
-    public convenience init(title:String = "",fontSize:CGFloat = 13, imageName:String = "",target:Any,action:Selector) {
+    convenience init(title:String = "",fontSize:CGFloat = 13, imageName:String = "",target:Any,action:Selector) {
         
         let btn = UIButton()
         btn.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)

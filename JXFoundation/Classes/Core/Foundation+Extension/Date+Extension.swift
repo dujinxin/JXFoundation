@@ -39,7 +39,7 @@ public extension Date {
 //    detailLabel.text = [NSString stringWithFormat:@"%@",[dateString1 substringWithRange:NSMakeRange(11, 5)]];
 //    }
 
-    public var formatter: DateFormatter {
+    var formatter: DateFormatter {
         return DateFormatter()
     }
     /// Date format
@@ -54,24 +54,24 @@ public extension Date {
         "YYYY-MM-dd HH:mm:ss" //2016-07-08 16:44:37
         "YYYY-MM-dd HH:mm:ss aaa" //2016-07-08 04:44:37 下午
        */
-    public func format(_ string:String = "YYYY-MM-dd HH:mm:ss") {
+    func format(_ string: String = "YYYY-MM-dd HH:mm:ss") {
         self.formatter.dateFormat = string
     }
-    public func dateFromString(_ string:String) -> Date? {
+    func dateFromString(_ string:String) -> Date? {
         return self.formatter.date(from: string)
     }
-    public func stringFromDate() -> String {
+    func stringFromDate() -> String {
         return self.formatter.string(from: self)
     }
     //1528180887000
-    public static func calculateTimeIntervalFrom(_ timeInterval:TimeInterval) -> String {
+    static func calculateTimeIntervalFrom(_ timeInterval:TimeInterval) -> String {
 
         let beforeDate = Date(timeIntervalSince1970: timeInterval)
         let beforeDateStr = beforeDate.stringFromDate()
 
         return self.calculateTimeStringFrom(beforeDateStr)
     }
-    public static func calculateTimeStringFrom(_ beforeDateStr:String) -> String {
+    static func calculateTimeStringFrom(_ beforeDateStr:String) -> String {
         var text : String = ""
  
         let currentDate = Date()

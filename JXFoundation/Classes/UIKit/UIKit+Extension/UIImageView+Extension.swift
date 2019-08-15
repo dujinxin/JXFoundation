@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIImageView {
     
-    public func jx_setImage(with urlStr:String, placeholderImage: UIImage?,isRound:Bool = false){
+    func jx_setImage(with urlStr:String, placeholderImage: UIImage?,isRound:Bool = false){
         
         guard let _ = URL(string: urlStr) else {
             self.image = placeholderImage

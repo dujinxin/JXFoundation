@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIViewController {
     /// 获取根控制器
-    public static var rootViewController : UIViewController? {
+    static var rootViewController : UIViewController? {
         guard
             let delegate = UIApplication.shared.delegate,
             let window = delegate.window,
@@ -24,7 +24,7 @@ public extension UIViewController {
         return rootVc
     }
     /// 获取当前栈顶控制器
-    public static var topStackViewController: UIViewController? {
+    static var topStackViewController: UIViewController? {
         guard let rootVc = rootViewController else {
             return nil
         }
@@ -46,7 +46,7 @@ public extension UIViewController {
         }
     }
     /// 获取当前显示的控制器，包括模态视图
-    public static var topVisibleViewController: UIViewController? {
+    static var topVisibleViewController: UIViewController? {
         
         guard let topVC = self.topStackViewController else {
             return nil

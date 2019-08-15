@@ -89,9 +89,9 @@ class ConstraintViewResizer: ViewResizer {
         let widthLayout = NSLayoutConstraint.Attribute.width
         let equalRelation = NSLayoutConstraint.Relation.equal
         #else
-        let heightLayout = NSLayoutConstraint.Attribute.height
-        let widthLayout = NSLayoutConstraint.Attribute.width
-        let equalRelation = NSLayoutConstraint.Relation.equal
+        let heightLayout = NSLayoutAttribute.height
+        let widthLayout = NSLayoutAttribute.width
+        let equalRelation = NSLayoutRelation.equal
         #endif
 
         for constrain in view.constraints {

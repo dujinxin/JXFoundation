@@ -41,10 +41,6 @@ open class JXNavigationController: UINavigationController {
         // Dispose of any resources that can be recreated.
     }
 
-}
-
-extension JXNavigationController {
-    
     /// 重写push方法
     ///
     /// - Parameters:
@@ -64,7 +60,7 @@ extension JXNavigationController {
             vc.hidesBottomBarWhenPushed = true
             vc.customNavigationItem.leftBarButtonItem = self.backItem
             //vc.customNavigationItem.leftBarButtonItem = UIBarButtonItem.init(title: titleName, imageName: "imgBack", target: self, action: #selector(pop))
-        } 
+        }
         
     }
     
@@ -72,4 +68,8 @@ extension JXNavigationController {
     @objc func pop() {
         popViewController(animated: true)
     }
+}
+
+public extension JXNavigationController {
+    
 }

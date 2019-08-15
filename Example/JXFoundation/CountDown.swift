@@ -51,7 +51,7 @@ class CountDown: NSObject {
                 self.dataArray?.forEach({ (secouds) in
                     var num = secouds
                     num -= 1
-                    if let index = self.dataArray?.index(of: secouds) {
+                    if let index = self.dataArray?.firstIndex(of: secouds) {
                         self.dataArray?[index] = num
                     }
                 })
