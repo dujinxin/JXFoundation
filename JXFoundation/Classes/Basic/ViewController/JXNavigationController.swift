@@ -10,7 +10,7 @@ import UIKit
 
 open class JXNavigationController: UINavigationController {
     
-    public lazy var backItem: UIBarButtonItem = {
+    open var backItem: UIBarButtonItem = {
         let leftButton = UIButton()
         leftButton.frame = CGRect(x: 10, y: 7, width: 30, height: 30)
         leftButton.setImage(UIImage(named: "icon-back")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -25,15 +25,12 @@ open class JXNavigationController: UINavigationController {
     override open func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        self.navigationBar.isTranslucent = true
-        self.navigationBar.barStyle = .blackTranslucent //状态栏 白色
-        //self.navigationBar.barStyle = .default      //状态栏 黑色
-        self.navigationBar.barTintColor = UIColor.white//导航条颜色
-        self.navigationBar.tintColor = UIColor.darkText   //item图片文字颜色
-        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.darkText,NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]//标题设置
-        
-        self.navigationBar.isHidden = false
+//        self.navigationBar.isTranslucent = true
+//        self.navigationBar.barStyle = .blackTranslucent //状态栏 白色
+//        //self.navigationBar.barStyle = .default      //状态栏 黑色
+//        self.navigationBar.barTintColor = UIColor.white//导航条颜色
+//        self.navigationBar.tintColor = UIColor.darkText   //item图片文字颜色
+//        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.darkText,NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]//标题设置
     }
 
     override open func didReceiveMemoryWarning() {
@@ -59,14 +56,27 @@ open class JXNavigationController: UINavigationController {
         if let vc = viewController as? JXBaseViewController {
             vc.hidesBottomBarWhenPushed = true
             vc.customNavigationItem.leftBarButtonItem = self.backItem
-            //vc.customNavigationItem.leftBarButtonItem = UIBarButtonItem.init(title: titleName, imageName: "imgBack", target: self, action: #selector(pop))
         }
-        
     }
     
     /// 自定义导航栏的返回按钮事件
     @objc func pop() {
         popViewController(animated: true)
+    }
+    
+    //重写这两个方法，解决单个控制器设置状态栏隐藏或文字无效的问题
+    override open var childForStatusBarHidden: UIViewController? {
+        return self.topViewController
+    }
+    override open var childForStatusBarStyle: UIViewController? {
+        return self.topViewController
+    }
+    //或者这两个...
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
+        return self.visibleViewController!.preferredStatusBarStyle
+    }
+    override open var prefersStatusBarHidden: Bool {
+        return self.visibleViewController!.prefersStatusBarHidden
     }
 }
 

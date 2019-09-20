@@ -45,10 +45,12 @@ open class JXCollectionViewController: JXBaseViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 11.0, *) {
-            self.collectionView.contentInsetAdjustmentBehavior = .never
-        } else {
-            self.automaticallyAdjustsScrollViewInsets = false
+        if self.isCustomNavigationBarUsed() {
+            if #available(iOS 11.0, *) {
+                self.collectionView.contentInsetAdjustmentBehavior = .never
+            } else {
+                self.automaticallyAdjustsScrollViewInsets = false
+            }
         }
     }
    
@@ -57,8 +59,8 @@ open class JXCollectionViewController: JXBaseViewController {
     }
     
     open func setUpTableView(){
-        let y = self.isCustomNavigationBarUsed() ? kNavStatusHeight : 0
-        let height = self.isCustomNavigationBarUsed() ? (view.bounds.height - kNavStatusHeight) : view.bounds.height
+        let y = self.isCustomNavigationBarUsed() ? self.navStatusHeight : 0
+        let height = self.isCustomNavigationBarUsed() ? (view.bounds.height - self.navStatusHeight) : view.bounds.height
         
         self.collectionView.frame = CGRect(x: 0, y: y, width: view.bounds.width, height: height)
         self.view.addSubview(self.collectionView)

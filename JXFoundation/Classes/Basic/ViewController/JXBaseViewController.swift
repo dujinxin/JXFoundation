@@ -42,10 +42,44 @@ open class JXBaseViewController: UIViewController {
     //子类重写title的setter方法
     override open var title: String?{
         didSet {
-            customNavigationItem.title = title
+            if self.isCustomNavigationBarUsed() {
+                self.customNavigationItem.title = title
+            } else {
+                self.navigationItem.title = title
+            }
         }
     }
-    
+    //MARK: - navStatusHeight
+    private var _navStatusHeight: CGFloat = 0
+    open var navStatusHeight: CGFloat {
+        set{
+            _navStatusHeight = newValue
+        }
+        get{
+            return _navStatusHeight
+        }
+    }
+    //子类重写setter方法
+    open var useLargeTitles: Bool = false {
+        didSet {
+            if useLargeTitles == true {
+                self.navStatusHeight = kNavStatusHeight + 52
+            } else {
+                self.navStatusHeight = kNavStatusHeight + 52
+            }
+            self.customNavigationBar.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.navStatusHeight)
+            if #available(iOS 11.0, *) {
+                if self.isCustomNavigationBarUsed() {
+                    
+                    self.customNavigationBar.prefersLargeTitles = useLargeTitles
+                } else {
+                    self.navigationController?.navigationBar.prefersLargeTitles = useLargeTitles
+                }
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+    }
     //MARK: - default view info
     
     /// default view
@@ -57,9 +91,10 @@ open class JXBaseViewController: UIViewController {
     
     public var defaultInfo : [String: String]?
     
-    //log state
-    public var isLogin: Bool = true
+    //prefersDefaultView show or not
+    public var prefersDefaultView: Bool = false
     
+    //MARK: - viewController life circle
     override open func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,12 +105,13 @@ open class JXBaseViewController: UIViewController {
     override open func loadView() {
         super.loadView()
         
-        isLogin ? setUpMainView() : setUpDefaultView()
+        prefersDefaultView ? setUpDefaultView() : setUpMainView()
     }
     override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    //MARK: - 子类重写
     override open var preferredStatusBarStyle: UIStatusBarStyle {
          return .default
     }
@@ -84,7 +120,7 @@ open class JXBaseViewController: UIViewController {
     }
     /// request data
     @objc open func requestData() {}
-    //MARK: - base view set
+    
     open func setUpMainView() {}
     /// add default view eg:no data,no network,no login
     open func setUpDefaultView() {
@@ -109,18 +145,24 @@ extension JXBaseViewController {
     }
     /// 设置系统导航栏，子类可重新设置
     open func setupNavigationBarConfig() {
+        self.navigationController?.navigationBar.isHidden = false
+        
         let image = UIImage(named: "icon-back")
         self.navigationController?.navigationBar.backIndicatorImage = image
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = image?.withRenderingMode(.alwaysOriginal)
+        self.navigationController?.navigationBar.barTintColor = UIColor.orange//UIColor.clear 导航条颜色,透明色不起作用
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.barStyle = .blackTranslucent
+        self.navigationController?.navigationBar.tintColor = UIColor.rgbColor(rgbValue: 0x000000) //item图片文字颜色
         self.navigationItem.leftItemsSupplementBackButton = false;
         let backBarButtonItem = UIBarButtonItem.init(title:"", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backBarButtonItem
+
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.rgbColor(rgbValue: 0x000000) ,NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]//标题设置
         
-        self.navigationController?.navigationBar.tintColor = UIColor.darkText //item图片文字颜色
-//        self.navigationController?.navigationBar.barTintColor = UIColor.rgbColor(rgbValue: 0x046ac9)//导航条颜色
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white,NSAttributedStringKey.font:UIFont.systemFont(ofSize: 19)]//标题设置
         if #available(iOS 11.0, *) {
-            self.navigationController?.navigationBar.prefersLargeTitles = true
+            self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.rgbColor(rgbValue: 0x000000) ,NSAttributedString.Key.font:UIFont.systemFont(ofSize: 34)]//大标题设置
+            self.navigationController?.navigationBar.prefersLargeTitles = false
             self.navigationItem.largeTitleDisplayMode = .automatic
         } else {
             // Fallback on earlier versions

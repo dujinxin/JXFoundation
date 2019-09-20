@@ -8,24 +8,24 @@
 
 import UIKit
 
-enum JXDefaultViewStyle : Int{
+public enum JXDefaultViewStyle : Int{
     case none         /*不显示*/
     case logOut       /*未登录*/
     case noNetwork    /*无网络*/
     case dataEmpty    /*无数据*/
 }
 
-public class JXDefaultView: UIView {
+open class JXDefaultView: UIView {
     
     /// 风格类型
-    var style : JXDefaultViewStyle = .none{
+    open var style : JXDefaultViewStyle = .none{
         didSet {
             setSubViewContent(type: style)
         }
     }
     
     /// detail content include imageName,content text
-    var info : [String:String]? {
+    open var info : [String:String]? {
         didSet {
             guard let imagaName = info?["imageName"],
                 let content = info?["content"]
@@ -38,12 +38,12 @@ public class JXDefaultView: UIView {
         }
     }
     
-    var tapBlock : (()->())?
+    open var tapBlock : (()->())?
     
     
     
 
-    lazy var imageView : UIImageView = {
+    open lazy var imageView : UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "share_default")
         imageView.backgroundColor = UIColor.yellow
@@ -51,7 +51,7 @@ public class JXDefaultView: UIView {
     }()
     
     
-    lazy var noticeLabel: UILabel = {
+    open lazy var noticeLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = UIColor.red
         label.textAlignment = NSTextAlignment.center
@@ -78,7 +78,7 @@ public class JXDefaultView: UIView {
 
     }
     
-    override public func updateConstraints() {
+    override open func updateConstraints() {
         //imageView
         addConstraint(.init(item: imageView,
                             attribute: .centerX,
@@ -124,12 +124,17 @@ public class JXDefaultView: UIView {
     }
     
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if style == .noNetwork {
+            self.tapBlock?()
+        }
     }
 }
 
-extension JXDefaultView {
+public extension JXDefaultView {
     
     /// set default content
     ///
@@ -172,10 +177,6 @@ extension JXDefaultView {
         noticeLabel.text = content
     }
     
-    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if style == .noNetwork {
-            self.tapBlock?()
-        }
-    }
+    
 }
 
