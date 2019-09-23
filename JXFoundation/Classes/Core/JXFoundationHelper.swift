@@ -25,11 +25,11 @@ public func prints<T>(_ msg:T, file: String = #file, line: Int = #line, function
     //print("\(Date(timeIntervalSinceNow: 0)) <\(fileName) \(line) \(function)>\n\(msg)", separator: "", terminator: "\n")
 }
 
-class JXFoundationHelper {
-    static let shared = JXFoundationHelper()
+open class JXFoundationHelper {
+    public static let shared = JXFoundationHelper()
     
-    var isShowLog : Bool = false
-    var isDebug : Bool = false
+    open var isShowLog : Bool = false
+    open var isDebug : Bool = false
     
     private init() {}
     /// 倒计时

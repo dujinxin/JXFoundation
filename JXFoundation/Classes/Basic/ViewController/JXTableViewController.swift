@@ -61,14 +61,18 @@ open class JXTableViewController: JXBaseViewController{
         self.tableView.frame = CGRect(x: 0, y: y, width: view.bounds.width, height: height)
         self.view.addSubview(self.tableView)
         
-//        refreshControl = UIRefreshControl()
-//        refreshControl?.addTarget(self, action: #selector(requestData), for: UIControlEvents.valueChanged)
-//        self.tableView?.addSubview(refreshControl!)
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        self.tableView.addSubview(refreshControl!)
     }
     /// request data
     ///
     /// - Parameter page: load data for page,
     open func request(page:Int) {}
+    /// refresh
+    ///
+    /// - Parameter page: load data for page,
+    @objc open func refresh() {}
 }
 extension JXTableViewController : UITableViewDelegate,UITableViewDataSource{
 

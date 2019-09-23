@@ -114,6 +114,7 @@ public class JXAttribute: NSObject {
     public var normalColor = UIColor.darkGray
     public var highlightedColor = UIColor.black
     public var selectedColor = UIColor.darkText
+    public var backgroundColor = UIColor.clear
     public var separatorColor = UIColor.darkGray
     public var font : UIFont = UIFont.systemFont(ofSize: 15)
     

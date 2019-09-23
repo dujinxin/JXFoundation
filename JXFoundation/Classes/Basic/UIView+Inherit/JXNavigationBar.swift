@@ -58,9 +58,9 @@ open class JXNavigationBar: UINavigationBar {
     
     override open func layoutSubviews() {
         super.layoutSubviews()
-        var rect = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: kNavStatusHeight)
+        
+        var rect = self.frame//CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: kNavStatusHeight)
 
-        print("*******************\(#file)************************")
         self.subviews.forEach { (v) in
 
             if NSStringFromClass(type(of: v)).contains("UIBarBackground") {
@@ -81,11 +81,10 @@ open class JXNavigationBar: UINavigationBar {
     }
     func setupAttribute() {
         titleTextAttributes = [NSAttributedString.Key.foregroundColor:  UIColor.rgbColor(rgbValue: 0x000000), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)]//标题设置
-        barTintColor = UIColor.clear //导航条颜色, 透明色不起作用, 需用透明图片来代替
-        tintColor = UIColor.darkText //item图片文字颜色
         isTranslucent = true
         barStyle = .default
-        
-        setBackgroundImage(self.imageWithColor(UIColor.clear), for: UIBarMetrics.default) //导航条透明
+        tintColor = UIColor.darkText //item图片文字颜色
+        barTintColor = UIColor.clear //导航条颜色, 透明色不起作用, 需用透明图片来代替
+        //setBackgroundImage(self.imageWithColor(UIColor.clear), for: UIBarMetrics.default) //导航条透明
     }
 }

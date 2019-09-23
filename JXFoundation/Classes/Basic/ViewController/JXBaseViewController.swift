@@ -16,12 +16,14 @@ open class JXBaseViewController: UIViewController {
     //自定义导航栏
     public lazy var customNavigationBar : JXNavigationBar = {
         let navigationBar = JXNavigationBar(frame:CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: kNavStatusHeight))
-        navigationBar.barTintColor = UIColor.clear//导航条颜色,透明色不起作用
+        
         navigationBar.isTranslucent = true
         navigationBar.barStyle = .default
         navigationBar.tintColor = UIColor.rgbColor(rgbValue: 0x000000) //item图片文字颜色
         navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.rgbColor(rgbValue: 0x000000),NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]//标题设置
-        navigationBar.setBackgroundImage(navigationBar.imageWithColor(UIColor.clear), for: UIBarMetrics.default)
+        
+        navigationBar.barTintColor = UIColor.clear//导航条颜色,透明色不起作用,可以用下面的方法来设置
+        //navigationBar.setBackgroundImage(navigationBar.imageWithColor(UIColor.clear), for: UIBarMetrics.default)
         //大标题
         if #available(iOS 11.0, *) {
             navigationBar.prefersLargeTitles = false

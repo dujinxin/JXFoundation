@@ -20,14 +20,31 @@ class MyViewController: JXTableViewController {
         self.title = "我的"
         self.useLargeTitles = true
         print(self.navStatusHeight)
-        self.tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - kTabBarHeight)
+        self.tableView.frame = CGRect(x: 0, y: self.navStatusHeight, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
 
+        print(self.tableView.subviews)
+        self.tableView.subviews.forEach { (v) in
+            if v is UIRefreshControl {
+                v.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 60)
+            }
+        }
+        
+       self.customNavigationBar.barTintColor = UIColor.yellow
+        //self.customNavigationBar.setBackgroundImage(UIImage.imageWithColor(UIColor.red), for: UIBarMetrics.default)
     }
     override func isCustomNavigationBarUsed() -> Bool {
-        return false
+        return true
     }
 
+    override func refresh() {
+        JXFoundationHelper.shared.countDown(timeOut: 3, process: { (a) in
+            print(a)
+        }) {
+            self.refreshControl?.endRefreshing()
+            //self.tableView.setContentOffset(CGPoint(x: 0, y: -self.navStatusHeight), animated: true)
+        }
+    }
 }
 extension MyViewController {
     override func tableView(_ tvareView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,5 +62,7 @@ extension MyViewController {
     }
 }
 extension MyViewController {
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset)
+    }
 }
