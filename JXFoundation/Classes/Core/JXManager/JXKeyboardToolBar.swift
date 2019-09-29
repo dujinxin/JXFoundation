@@ -69,8 +69,10 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
     
     //MARK: private properties
     private var textView : UIView!
+    private var keyboardType: UIKeyboardType = .twitter
     private var keyboardRect = CGRect()
     private var animateDuration = 0.25
+    private var isKeyboardChanged: Bool = true
     private var isKeyboardShow = false
     private var isUpDownShow : Bool = false
     
@@ -239,7 +241,10 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
         }
     }
     
-    func beginEditing(_ view: UIView) {
+    
+}
+extension JXKeyboardToolBar {
+    func didBeginEditing(_ view: UIView) {
         guard let currentIndex = self.views.firstIndex(of: view) else {
             return
         }
@@ -250,17 +255,28 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
         
         if let v = self.textView as? UITextField {
             self.titleItem.title = self.placeHolder ?? v.placeholder
-        } else if let _ = self.textView as? UITextView {
+            
+            self.isKeyboardChanged = !(self.keyboardType == v.keyboardType)
+            self.keyboardType = v.keyboardType
+        } else if let v = self.textView as? UITextView {
             self.titleItem.title = self.placeHolder ?? ""
+            
+            self.isKeyboardChanged = !(self.keyboardType == v.keyboardType)
+            self.keyboardType = v.keyboardType
         }
         
-        
-//        if let block = self.showBlock {
-//            block(self.keyboardRect.height, self.topBarHeight, self.views[currentIndex])
-//        }
+        if self.isKeyboardChanged == false, let block = self.showBlock {
+            block(self.keyboardRect.height, self.topBarHeight, self.views[currentIndex])
+        }
     }
-}
-extension JXKeyboardToolBar {
+    //直接切换第一响应者，并且键盘类型没有变化的话，不会发送这个通知
+    //解决方法：
+    //配合代理方法 textFieldDidBeginEditing & textViewDidBeginEditing 来保证每次切换输入框都会有回调
+    //首先，第一次弹出键盘，
+         //ps:一定会调用，所以第一次在通知里回调
+    //以后，使用代理还是通知来回调，要根据键盘类型是否变化来决定
+         //ps:假如键盘无变化，那上次拿到的键盘高度也是无变化的，所以不会有先回调，后取值，导致回调传值错误的问题.
+         //ps:假如键盘有变化，那么使用通知，要重新获取键盘高度
     @objc func keyboardWillShow(notify:Notification) {
         print("JXKeyboardToolBar.Keyboard = ","show")
         guard
@@ -310,7 +326,7 @@ extension JXKeyboardToolBar {
         return true
     }
     public func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.beginEditing(textField)
+        self.didBeginEditing(textField)
     }
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let delegate = self.textFieldDelegate else { return true }
@@ -327,7 +343,7 @@ extension JXKeyboardToolBar {
         return true
     }
     public func textViewDidBeginEditing(_ textView: UITextView) {
-        self.beginEditing(textView)
+        self.didBeginEditing(textView)
     }
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         guard let delegate = self.textViewDelegate else { return true }
