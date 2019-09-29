@@ -20,7 +20,7 @@ public protocol JXKeyboardTextViewDelegate: AnyObject {
 
 public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate {
     
-    public typealias KeyboardShowBlock = ((_ height: CGFloat, _ rect: CGRect)->())
+    public typealias KeyboardShowBlock = ((_ keyboardHeight: CGFloat, _ toolBarHeight: CGFloat, _ responderView: UIView)->())
     public typealias KeyboardCloseBlock = (()->())
     
     public var showBlock: KeyboardShowBlock?
@@ -37,23 +37,29 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
         }
     }
     public var index: Int = 0
-    public var keyBoardHeight: CGFloat = 0
-    public var textViewFrame: CGRect = CGRect()
+    
     public var text: String? {
         didSet {
             //self.textView.text = text
         }
     }
+    public var useTitleNotice = false {
+        didSet {
+            self.titleItem.title = useTitleNotice == true ? placeHolder : ""
+        }
+    }
+    public var placeHolder: String? {
+        didSet {
+            self.titleItem.title = placeHolder
+        }
+    }
+    public var keyBoardHeight: CGFloat = 0
     public var topBarHeight: CGFloat = 49 {
         didSet {
             self.toolBar.frame = CGRect(x: toolEdgeInsets.left, y: toolEdgeInsets.top, width: keyWindowWidth - toolEdgeInsets.left - toolEdgeInsets.right, height: topBarHeight - toolEdgeInsets.top - toolEdgeInsets.bottom)
         }
     }
-    public var font: UIFont = UIFont.systemFont(ofSize: 14){
-        didSet {
-            //self.textView.font = font
-        }
-    }
+    
     public override var tintColor: UIColor! {
         didSet{
             self.toolBar.tintColor = tintColor
@@ -62,15 +68,17 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
     //MARK:public methods
     
     //MARK: private properties
-    private var textView : UIView?
+    private var textView : UIView!
     private var keyboardRect = CGRect()
     private var animateDuration = 0.25
     private var isKeyboardShow = false
     private var isUpDownShow : Bool = false
     
-    public var upItem : UIBarButtonItem?
-    public var downItem : UIBarButtonItem?
-    public var closeItem : UIBarButtonItem?
+    public var upItem : UIBarButtonItem!
+    public var downItem : UIBarButtonItem!
+    public var titleItem : UIBarButtonItem!
+    public var closeItem : UIBarButtonItem!
+    
     public var toolEdgeInsets : UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) {
         didSet{
             self.toolBar.frame = CGRect(x: toolEdgeInsets.left, y: toolEdgeInsets.top, width: UIScreen.main.bounds.width - toolEdgeInsets.left - toolEdgeInsets.right, height: topBarHeight - toolEdgeInsets.top - toolEdgeInsets.bottom)
@@ -81,9 +89,9 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
         let tool = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 49))
         //tool.translatesAutoresizingMaskIntoConstraints = false
      
-        tool.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        //tool.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         var items = [UIBarButtonItem]()
-        let titles = [" ↑ "," ↑ ","完成"]
+        let titles = ["↑","↓","完成"]
         for i in 0..<3 {
             
             let item = UIBarButtonItem(title: titles[i], style: UIBarButtonItem.Style.plain, target: self, action: #selector(changeResponder(_:)))
@@ -98,9 +106,24 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
             }
             items.append(item)
         }
-        let item = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        items.insert(item, at: 2)
-        tool.items = items
+        /**
+             —————————————————————————————
+             | 5 ↑ 5 ↓ ---title--- 完成 5 |
+             —————————————————————————————
+         */
+        
+        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fixedSpace, target: nil, action: nil)
+        space.width = 5
+        
+        let item = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+        item.isEnabled = false
+        self.titleItem = item
+        
+        
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        
+        //tool.items = items
+        tool.items = [space,self.upItem,space,self.downItem,flexibleSpace,self.titleItem,flexibleSpace,self.closeItem,space]
         
         return tool
     }()
@@ -176,10 +199,10 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
             }
             let v = self.views[self.index]
             if v is UITextField, let textField = v as? UITextField, textField.isFirstResponder == false {
-                self.textViewFrame = textField.frame
+          
                 textField.becomeFirstResponder()
             } else if v is UITextView, let textView = v as? UITextView, textView.isFirstResponder == false {
-                self.textViewFrame = textView.frame
+                
                 textView.becomeFirstResponder()
             }
         }
@@ -188,8 +211,8 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
     func updown(_ isShow: Bool) {
         self.isUpDownShow = isShow
         if isShow {
-            self.upItem?.title = " ↑ "
-            self.downItem?.title = " ↓ "
+            self.upItem?.title = "↑"
+            self.downItem?.title = "↓"
             self.upItem?.isEnabled = true
             self.downItem?.isEnabled = true
         } else {
@@ -221,10 +244,20 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
             return
         }
         self.index = currentIndex
+        self.textView = self.views[currentIndex]
+        
         self.updateStates(editViewAtIndex: currentIndex)
-        if let block = self.showBlock {
-            block(self.topBarHeight + self.keyboardRect.height, self.textViewFrame)
+        
+        if let v = self.textView as? UITextField {
+            self.titleItem.title = self.placeHolder ?? v.placeholder
+        } else if let _ = self.textView as? UITextView {
+            self.titleItem.title = self.placeHolder ?? ""
         }
+        
+        
+//        if let block = self.showBlock {
+//            block(self.keyboardRect.height, self.topBarHeight, self.views[currentIndex])
+//        }
     }
 }
 extension JXKeyboardToolBar {
@@ -239,10 +272,9 @@ extension JXKeyboardToolBar {
         }
         self.animateDuration = animationDuration
         self.keyboardRect = rect
-        //print("JXKeyboardToolBar.Keyboard.frame = ",rect)
-        
+       
         if let block = self.showBlock {
-            block(self.topBarHeight + self.keyboardRect.height, self.textViewFrame)
+            block(self.keyboardRect.height, self.topBarHeight, self.textView)
         }
         UIView.animate(withDuration: animationDuration, animations: {
             self.frame = CGRect(x: 0, y: keyWindowHeight - self.topBarHeight - self.keyboardRect.height, width: keyWindowWidth, height: self.topBarHeight + self.keyboardRect.height)

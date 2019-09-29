@@ -52,7 +52,7 @@ open class JXBaseViewController: UIViewController {
         }
     }
     //MARK: - navStatusHeight
-    private var _navStatusHeight: CGFloat = 0
+    private var _navStatusHeight: CGFloat = kNavStatusHeight
     open var navStatusHeight: CGFloat {
         set{
             _navStatusHeight = newValue
