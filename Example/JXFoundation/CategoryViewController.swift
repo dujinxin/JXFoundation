@@ -25,8 +25,14 @@ class CategoryViewController: UIViewController {
         } else {
             // Fallback on earlier versions
         }
-        
-        topBar = JXBarView.init(frame: CGRect.init(x: 0, y: kNavStatusHeight, width: view.bounds.width, height: 44), titles: ["新闻","视频","热点","体育"])
+        if #available(iOS 13.0, *) {
+            self.navigationController?.navigationBar.standardAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor:  UIColor.rgbColor(rgbValue: 0x000000), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 34)]
+            self.navigationController?.navigationBar.standardAppearance.backgroundColor = UIColor.yellow
+        } else {
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:  UIColor.rgbColor(rgbValue: 0x000000), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 34)]
+            self.navigationController?.navigationBar.barTintColor = UIColor.red
+        }
+        topBar = JXBarView.init(frame: CGRect.init(x: 0, y: kNavStatusHeight + 52 + 20, width: view.bounds.width, height: 44), titles: ["新闻","视频","热点","体育"])
         topBar.delegate = self
         topBar.backgroundColor = UIColor.orange
         topBar.bottomLineSize = CGSize(width: 60, height: 2)
@@ -49,7 +55,7 @@ class CategoryViewController: UIViewController {
         let vc4 = UIViewController()
         vc4.view.backgroundColor = UIColor.randomColor
         
-        horizontalView = JXHorizontalView.init(frame: CGRect.init(x: 0, y: kNavStatusHeight + 44, width: view.bounds.width, height: UIScreen.main.bounds.height - kNavStatusHeight - 44), containers: [vc1,vc2,vc3,vc4], parentViewController: self)
+        horizontalView = JXHorizontalView.init(frame: CGRect.init(x: 0, y: kNavStatusHeight + 52 + 44, width: view.bounds.width, height: UIScreen.main.bounds.height - kNavStatusHeight - 52 - 44), containers: [vc1,vc2,vc3,vc4], parentViewController: self)
         view.addSubview(horizontalView!)
     }
     

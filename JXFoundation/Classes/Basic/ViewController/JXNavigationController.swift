@@ -78,6 +78,8 @@ open class JXNavigationController: UINavigationController {
     override open var prefersStatusBarHidden: Bool {
         return self.visibleViewController!.prefersStatusBarHidden
     }
+    
+    
 }
 
 public extension JXNavigationController {

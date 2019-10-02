@@ -23,15 +23,19 @@ class MyViewController: JXTableViewController {
         self.tableView.frame = CGRect(x: 0, y: self.navStatusHeight, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
 
-        print(self.tableView.subviews)
-        self.tableView.subviews.forEach { (v) in
-            if v is UIRefreshControl {
-                v.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 60)
-            }
+        self.customNavigationBar.barTintColor = UIColor.blue
+        if #available(iOS 13.0, *) {
+            self.customNavigationBar.standardAppearance.backgroundColor = UIColor.yellow
+            self.customNavigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor:  UIColor.rgbColor(rgbValue: 0x000000), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 34)]
+        } else {
+            
+            self.customNavigationBar.barTintColor = UIColor.yellow
         }
+       
+        self.customNavigationBar.backgroundView.backgroundColor = UIColor.cyan
+        self.customNavigationBar.separatorView.backgroundColor = UIColor.gray
         
-       self.customNavigationBar.barTintColor = UIColor.yellow
-        //self.customNavigationBar.setBackgroundImage(UIImage.imageWithColor(UIColor.red), for: UIBarMetrics.default)
+        self.customNavigationBar.layoutMargins = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 8)
     }
     override func isCustomNavigationBarUsed() -> Bool {
         return true

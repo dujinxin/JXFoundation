@@ -16,9 +16,20 @@ class MainViewController: UITableViewController {
         view.backgroundColor = UIColor.groupTableViewBackground
         self.title = "首页"
         
+        if #available(iOS 13.0, *) {
+//            self.navigationController?.navigationBar.standardAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor:  UIColor.rgbColor(rgbValue: 0x000000), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 34)]
+            self.navigationController?.navigationBar.standardAppearance.backgroundColor = UIColor.yellow
+        } else {
+//            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:  UIColor.rgbColor(rgbValue: 0x000000), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 34)]
+            self.navigationController?.navigationBar.barTintColor = UIColor.red
+        }
+        
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         self.tableView.addSubview(refreshControl!)
+        
+        print(self.navigationItem)
+        print(self.navigationController?.navigationBar.items)
         
     }
     @objc func refresh() {

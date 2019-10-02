@@ -245,20 +245,22 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
 }
 extension JXKeyboardToolBar {
     func didBeginEditing(_ view: UIView) {
+        
+        self.textView = view
+        
         guard let currentIndex = self.views.firstIndex(of: view) else {
             return
         }
         self.index = currentIndex
-        self.textView = self.views[currentIndex]
         
         self.updateStates(editViewAtIndex: currentIndex)
         
-        if let v = self.textView as? UITextField {
+        if let v = view as? UITextField {
             self.titleItem.title = self.placeHolder ?? v.placeholder
             
             self.isKeyboardChanged = !(self.keyboardType == v.keyboardType)
             self.keyboardType = v.keyboardType
-        } else if let v = self.textView as? UITextView {
+        } else if let v = view as? UITextView {
             self.titleItem.title = self.placeHolder ?? ""
             
             self.isKeyboardChanged = !(self.keyboardType == v.keyboardType)
@@ -266,7 +268,7 @@ extension JXKeyboardToolBar {
         }
         
         if self.isKeyboardChanged == false, let block = self.showBlock {
-            block(self.keyboardRect.height, self.topBarHeight, self.views[currentIndex])
+            block(self.keyboardRect.height, self.topBarHeight, view)
         }
     }
     //直接切换第一响应者，并且键盘类型没有变化的话，不会发送这个通知
@@ -306,6 +308,7 @@ extension JXKeyboardToolBar {
             else {
                 return
         }
+        self.isKeyboardChanged = true
         self.keyboardRect = rect
         UIView.animate(withDuration: animationDuration, animations: {
             self.frame = CGRect.init(x: 0, y: keyWindowHeight, width: keyWindowWidth, height: self.topBarHeight + self.keyboardRect.height)
