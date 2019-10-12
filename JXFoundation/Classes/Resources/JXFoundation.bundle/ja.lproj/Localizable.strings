@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  Pods
+
+  Created by 飞亦 on 10/12/19.
+  
+*/
+
+"Tips" = "ヒント";
+"Cancel" = "キャンセル";
+"OK" = "確認済み";
+"Done" = "完了";

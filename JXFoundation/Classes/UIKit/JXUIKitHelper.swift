@@ -23,12 +23,12 @@ class JXUIKitHelper {
     }
     public func showAlert(title: String? = "", message: String? = "", cancelBlock: (()->())?, confirmBlock: (()->())?) -> UIAlertController{
         let alert = UIAlertController(title: title ?? "", message: message ?? "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (action) in
+        alert.addAction(UIAlertAction(title: Bundle.main.jxLocalizedString(forKey: "Cancel"), style: .cancel, handler: { (action) in
             if let block = cancelBlock {
                 block()
             }
         }))
-        alert.addAction(UIAlertAction(title: "确定", style: .destructive, handler: { (action) in
+        alert.addAction(UIAlertAction(title: Bundle.main.jxLocalizedString(forKey: "OK"), style: .destructive, handler: { (action) in
             if let block = confirmBlock {
                 block()
             }

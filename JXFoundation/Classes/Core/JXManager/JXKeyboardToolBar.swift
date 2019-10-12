@@ -93,7 +93,7 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
      
         //tool.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         var items = [UIBarButtonItem]()
-        let titles = ["↑","↓","完成"]
+        let titles = ["↑","↓",Bundle.main.jxLocalizedString(forKey: "Done")]
         for i in 0..<3 {
             
             let item = UIBarButtonItem(title: titles[i], style: UIBarButtonItem.Style.plain, target: self, action: #selector(changeResponder(_:)))
@@ -256,12 +256,12 @@ extension JXKeyboardToolBar {
         self.updateStates(editViewAtIndex: currentIndex)
         
         if let v = view as? UITextField {
-            self.titleItem.title = self.placeHolder ?? v.placeholder
+            self.titleItem.title = Bundle.main.jxLocalizedString(forKey: "\(self.placeHolder ?? v.placeholder ?? "")")
             
             self.isKeyboardChanged = !(self.keyboardType == v.keyboardType)
             self.keyboardType = v.keyboardType
         } else if let v = view as? UITextView {
-            self.titleItem.title = self.placeHolder ?? ""
+            self.titleItem.title = Bundle.main.jxLocalizedString(forKey: "\(self.placeHolder ?? "")")
             
             self.isKeyboardChanged = !(self.keyboardType == v.keyboardType)
             self.keyboardType = v.keyboardType

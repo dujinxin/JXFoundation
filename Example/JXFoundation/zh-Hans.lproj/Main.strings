@@ -1,0 +1,96 @@
+
+/* Class = "UILabel"; text = "实际总价"; ObjectID = "09t-oZ-K7s"; */
+"09t-oZ-K7s.text" = "实际总价";
+
+/* Class = "UITabBarItem"; title = "我的"; ObjectID = "5en-RK-yrz"; */
+"5en-RK-yrz.title" = "我的";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "6CK-Wk-d0M"; */
+"6CK-Wk-d0M.text" = "0";
+
+/* Class = "UILabel"; text = "JXAdvertiseView"; ObjectID = "8VA-eE-FPK"; */
+"8VA-eE-FPK.text" = "JXAdvertiseView";
+
+/* Class = "UILabel"; text = "介绍："; ObjectID = "D11-JG-4ZY"; */
+"D11-JG-4ZY.text" = "介绍：";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "HF7-1D-rZG"; */
+"HF7-1D-rZG.text" = "0";
+
+/* Class = "UILabel"; text = "收款方式"; ObjectID = "HmW-1G-f5b"; */
+"HmW-1G-f5b.text" = "收款方式";
+
+/* Class = "UILabel"; text = "JXView"; ObjectID = "KL4-kG-Lfs"; */
+"KL4-kG-Lfs.text" = "JXView";
+
+/* Class = "UITableViewSection"; footerTitle = " "; ObjectID = "Lk3-Zw-Fdb"; */
+"Lk3-Zw-Fdb.footerTitle" = " ";
+
+/* Class = "UILabel"; text = "UIKit+Extension"; ObjectID = "Qvc-Qb-vMi"; */
+"Qvc-Qb-vMi.text" = "UIKit+Extension";
+
+/* Class = "UITextField"; placeholder = "请输入"; ObjectID = "RL7-h5-btO"; */
+"RL7-h5-btO.placeholder" = "请输入";
+
+/* Class = "UILabel"; text = "JXAlertView"; ObjectID = "Se8-Ar-fN4"; */
+"Se8-Ar-fN4.text" = "JXAlertView";
+
+/* Class = "UILabel"; text = "JXInputTextView"; ObjectID = "Twv-Qt-gIM"; */
+"Twv-Qt-gIM.text" = "JXInputTextView";
+
+/* Class = "UILabel"; text = "请选择"; ObjectID = "UCY-Qh-ReA"; */
+"UCY-Qh-ReA.text" = "请选择";
+
+/* Class = "UILabel"; text = "JXGuideView"; ObjectID = "Uqb-G7-G7x"; */
+"Uqb-G7-G7x.text" = "JXGuideView";
+
+/* Class = "UIButton"; normalTitle = "添加"; ObjectID = "dOD-MU-Anm"; */
+"dOD-MU-Anm.normalTitle" = "添加";
+
+/* Class = "UILabel"; text = "JXTimeLabel"; ObjectID = "grT-K3-RVd"; */
+"grT-K3-RVd.text" = "JXTimeLabel";
+
+/* Class = "UILabel"; text = "JXHorizontalView-JXTopBarView"; ObjectID = "hO8-57-mfw"; */
+"hO8-57-mfw.text" = "JXHorizontalView-JXTopBarView";
+
+/* Class = "UILabel"; text = "InPutView"; ObjectID = "iyR-y1-3n8"; */
+"iyR-y1-3n8.text" = "InPutView";
+
+/* Class = "UILabel"; text = "JXPlaceHolderTextView"; ObjectID = "jBf-Eq-Yrd"; */
+"jBf-Eq-Yrd.text" = "JXPlaceHolderTextView";
+
+/* Class = "UILabel"; text = "JXHorizontalView-JXBarView"; ObjectID = "lYB-N6-DtI"; */
+"lYB-N6-DtI.text" = "JXHorizontalView-JXBarView";
+
+/* Class = "UILabel"; text = "手续费"; ObjectID = "mrP-jK-r58"; */
+"mrP-jK-r58.text" = "手续费";
+
+/* Class = "UILabel"; text = "卖出总价"; ObjectID = "pyM-sH-TZ9"; */
+"pyM-sH-TZ9.text" = "卖出总价";
+
+/* Class = "UILabel"; text = "JXNoticeView"; ObjectID = "qvj-ad-tSF"; */
+"qvj-ad-tSF.text" = "JXNoticeView";
+
+/* Class = "UITabBarItem"; title = "首页"; ObjectID = "r1m-nJ-H3E"; */
+"r1m-nJ-H3E.title" = "首页";
+
+/* Class = "UILabel"; text = "Foundation+Extension"; ObjectID = "rQZ-fT-X4I"; */
+"rQZ-fT-X4I.text" = "Foundation+Extension";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "wcQ-vf-oge"; */
+"wcQ-vf-oge.text" = "0";
+
+/* Class = "UITableViewSection"; footerTitle = " "; ObjectID = "x7b-fp-evD"; */
+"x7b-fp-evD.footerTitle" = " ";
+
+/* Class = "UITabBarItem"; title = "分类"; ObjectID = "yKh-BR-n72"; */
+"yKh-BR-n72.title" = "分类";
+
+/* Class = "UITextField"; placeholder = "请输入"; ObjectID = "ylF-V5-Jxn"; */
+"ylF-V5-Jxn.placeholder" = "请输入";
+
+/* Class = "UILabel"; text = "姓名："; ObjectID = "ywI-JJ-UPh"; */
+"ywI-JJ-UPh.text" = "姓名：";
+
+/* Class = "UILabel"; text = "年龄："; ObjectID = "z3D-e7-i8S"; */
+"z3D-e7-i8S.text" = "年龄：";
