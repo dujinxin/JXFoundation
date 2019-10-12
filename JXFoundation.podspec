@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JXFoundation'
-  s.version          = '2.0.4'
+  s.version          = '2.0.4.1'
   s.summary          = '基类，自定义view，extension，方法工具，用于快速集成'
 
 # This description is used to generate tags and improve search results.
@@ -30,7 +30,7 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '9.0'
   s.swift_version    = '5.1'
   # s.source_files = 'JXFoundation/Classes/Resources/JXFoundation.bundle'
-  s.resource = 'JXFoundation/**/JXFoundation.bundle'
+  s.resource = 'JXFoundation/Classes/Resources/JXFoundation.bundle'
   # s.resource_bundles = {
   #   'JXFoundation' => ['JXFoundation/Assets/*.png']
   # }
