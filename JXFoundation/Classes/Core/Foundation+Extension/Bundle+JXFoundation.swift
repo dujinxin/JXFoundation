@@ -40,7 +40,7 @@ extension Bundle {
     }
     public func getBundle() -> Bundle? {
         guard
-            let path = Bundle.init(for: JXView.self).path(forResource: "JXFoundation", ofType: "bundle"),
+            let path = Bundle.init(for: Bundle.self).path(forResource: "JXFoundation", ofType: "bundle"),
             let languageBundle = Bundle(path: path) else {
               
             return nil

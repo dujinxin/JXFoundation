@@ -29,8 +29,8 @@ TODO: Add long description of the pod here.
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   s.ios.deployment_target = '9.0'
   s.swift_version    = '5.1'
-  s.source_files = 'JXFoundation/Classes/Resources/JXFoundation.bundle'
-  
+  # s.source_files = 'JXFoundation/Classes/Resources/JXFoundation.bundle'
+  s.resource = 'JXFoundation/**/JXFoundation.bundle'
   # s.resource_bundles = {
   #   'JXFoundation' => ['JXFoundation/Assets/*.png']
   # }
