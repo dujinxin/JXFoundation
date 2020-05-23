@@ -7,6 +7,10 @@
 
 import UIKit
 
+public protocol JXTopBarViewDelegate {
+    func jxTopBarView(topBarView : JXTopBarView,didSelectTabAt index:Int) -> Void
+}
+
 public class JXTopBarView: UIView {
     var rect = CGRect()
     
@@ -106,23 +110,5 @@ public class JXTopBarView: UIView {
         }
     }
 }
-public protocol JXTopBarViewDelegate {
-    func jxTopBarView(topBarView : JXTopBarView,didSelectTabAt index:Int) -> Void
-}
 
-public class JXAttribute: NSObject {
-    public var normalColor = UIColor.darkGray
-    public var highlightedColor = UIColor.black
-    public var selectedColor = UIColor.darkText
-    public var backgroundColor = UIColor.clear
-    public var separatorColor = UIColor.darkGray
-    public var font : UIFont = UIFont.systemFont(ofSize: 15)
-    
-    public override init() {
-        normalColor = UIColor.darkGray
-        highlightedColor = UIColor.black
-        selectedColor = UIColor.darkText
-        separatorColor = UIColor.darkGray
-        font = UIFont.systemFont(ofSize: 15)
-    }
-}
+

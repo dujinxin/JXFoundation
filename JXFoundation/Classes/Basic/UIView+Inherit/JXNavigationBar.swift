@@ -77,10 +77,11 @@ open class JXNavigationBar: UINavigationBar {
         super.layoutSubviews()
         
         self.backgroundView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: frame.maxY)
+        print(self.backgroundView.frame)
         self.backgroundImage.frame = CGRect(x: 0, y: 0, width: bounds.width, height: frame.maxY)
         self.separatorView.frame = CGRect(x: 0, y: frame.maxY - 0.33, width: bounds.width, height: 0.33)
-        self.contentView.frame = CGRect(x: 0, y: kStatusBarHeight, width: bounds.width, height: 44)
-        self.largeTitleView.frame = CGRect(x: 0, y: kStatusBarHeight + 44, width: bounds.width, height: 52)
+        self.contentView.frame = CGRect(x: 0, y: kStatusBarHeight, width: bounds.width, height: kNavStatusHeight - kStatusBarHeight)
+        self.largeTitleView.frame = CGRect(x: 0, y: kNavStatusHeight, width: bounds.width, height: frame.maxY - kNavStatusHeight)
         
         subviews.forEach { (v) in
             
@@ -119,9 +120,9 @@ open class JXNavigationBar: UINavigationBar {
                 }
             } else if NSStringFromClass(type(of: v)).contains("UINavigationBarLargeTitleView") {
                 if frame.maxY != frame.height {
-                    v.frame = CGRect(x: 0, y: frame.minY + 44, width: bounds.width, height: 52)
+                    v.frame = CGRect(x: 0, y: frame.minY + 44, width: bounds.width, height: frame.maxY - kNavStatusHeight)
                 } else {
-                    v.frame = CGRect(x: 0, y: kStatusBarHeight + 44, width: bounds.width, height: 52)
+                    v.frame = CGRect(x: 0, y: kStatusBarHeight + 44, width: bounds.width, height: frame.maxY - kNavStatusHeight)
                 }
                 ///调整 UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
             }

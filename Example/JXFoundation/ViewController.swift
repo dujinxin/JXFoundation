@@ -31,7 +31,8 @@ class ViewController: UIViewController {
             self.setAdvertiseView()
         }
     }
-
+    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,6 +54,14 @@ class ViewController: UIViewController {
     func setAdvertiseView() {
         let adView = JXAdvertiseView(frame: view.bounds)
         adView.imageView.image = UIImage(named: "guide_2")
+         
+        //添加毛玻璃效果
+        let blurEffect = UIBlurEffect(style: .light)
+        let visualEffectView = UIVisualEffectView(effect: blurEffect)
+        //visualEffectView.alpha = 0.5
+        visualEffectView.frame = CGRect(x: 0, y: 0, width: adView.bounds.width / 2, height: adView.bounds.height)
+        adView.addSubview(visualEffectView)
+        
         view.addSubview(adView)
     }
 }

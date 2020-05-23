@@ -15,12 +15,12 @@ open class JXBaseViewController: UIViewController {
     //MARK: - custom NavigationBar
     //自定义导航栏
     public lazy var customNavigationBar : JXNavigationBar = {
-        let navigationBar = JXNavigationBar(frame:CGRect.init(x: 0, y: kStatusBarHeight, width: UIScreen.main.bounds.width, height: kNavStatusHeight - kStatusBarHeight))
+        let navigationBar = JXNavigationBar(frame:CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: kNavStatusHeight))
         navigationBar.useCustomBackgroundView = true
         //navigationBar.isTranslucent = true
         navigationBar.barStyle = .default
         navigationBar.tintColor = UIColor.rgbColor(rgbValue: 0x000000) //item图片文字颜色
-        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.rgbColor(rgbValue: 0x000000),NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]//标题设置
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.rgbColor(rgbValue: 0x000000),NSAttributedString.Key.font:UIFont(name: "PingFangSC-Semibold", size: 17) as Any]//标题设置
         
         //navigationBar.barTintColor = UIColor.clear//导航条颜色,透明色不起作用,可以用下面的方法来设置
         //navigationBar.setBackgroundImage(navigationBar.imageWithColor(UIColor.clear), for: UIBarMetrics.default)
@@ -66,9 +66,9 @@ open class JXBaseViewController: UIViewController {
     open var useLargeTitles: Bool = false {
         didSet {
             if useLargeTitles == true {
-                self.navStatusHeight = kNavStatusHeight + 52
+                self.navStatusHeight = kNavStatusHeight + kNavLargeTitleHeight
             } else {
-                self.navStatusHeight = kNavStatusHeight + 52
+                self.navStatusHeight = kNavStatusHeight
             }
             self.customNavigationBar.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.navStatusHeight)
             if #available(iOS 11.0, *) {

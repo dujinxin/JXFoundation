@@ -9,58 +9,90 @@
 import UIKit
 import JXFoundation
 
-class MainViewController: UITableViewController {
+class MainViewController: JXBaseViewController {
+    
+    var titles: Array<String> {
+        return ["新闻","视频","热点","体育","游戏","关注","娱乐","直播","音乐台","会员专区"]
+    }
+    lazy var topBar: JXScrollTitleView = {
+        let att = JXAttribute()
+        att.normalColor = UIColor.rgbColor(rgbValue: 0x999999)
+        att.normalFontSize = 18
+        att.selectedColor = UIColor.red
+        att.selectedFontSize =  24
+        att.sectionEdgeInsets = UIEdgeInsets.init(top: 0, left: 15, bottom: 0, right: -15)
+        //att.contentEdgeInsets = UIEdgeInsets.init(top: 0, left: -8, bottom: 0, right: 8)
+        att.contentMarginEdge = UIEdgeInsets.init(top: 0, left: 8, bottom: 0, right: 8)
+        
+        att.minimumInteritemSpacing = 0
+        
+        let topBar = JXScrollTitleView.init(frame: CGRect.init(x: 0, y: kNavStatusHeight + 60 , width: view.bounds.width, height: 44), delegate: self, titles: titles, attribute: att)
+        //topBar.delegate = self
+        topBar.backgroundColor = UIColor.groupTableViewBackground
+        topBar.bottomLineView.frame = CGRect(x: 0, y: 0, width: 40, height: 2)
+        topBar.bottomLineView.backgroundColor = .red
+        topBar.lineType = .customSize
+        return topBar
+    }()
+    var horizontalView : JXHorizontalView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.groupTableViewBackground
-        self.title = "首页"
         
-        if #available(iOS 13.0, *) {
-//            self.navigationController?.navigationBar.standardAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor:  UIColor.rgbColor(rgbValue: 0x000000), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 34)]
-            self.navigationController?.navigationBar.standardAppearance.backgroundColor = UIColor.yellow
-        } else {
-//            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:  UIColor.rgbColor(rgbValue: 0x000000), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 34)]
-            self.navigationController?.navigationBar.barTintColor = UIColor.red
+        self.title = "Home"
+        self.useLargeTitles = true
+        self.customNavigationBar.backgroundView.backgroundColor = UIColor.cyan
+        self.customNavigationBar.separatorView.backgroundColor = UIColor.gray
+        
+        view.addSubview(self.topBar)
+        
+        
+        var controllers = [UIViewController]()
+        for title in titles {
+            let vc = SubViewController()
+            vc.view.backgroundColor = UIColor.randomColor
+            vc.title = title
+            controllers.append(vc)
         }
         
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
-        self.tableView.addSubview(refreshControl!)
+        horizontalView = JXHorizontalView(frame: CGRect(x: 0, y: kNavStatusHeight + 60 + 44, width: kScreenWidth, height: UIScreen.main.bounds.height - kNavStatusHeight - 52 - 44), containers: controllers, parentViewController: self)
+        view.addSubview(self.horizontalView)
         
-        print(self.navigationItem)
-        print(self.navigationController?.navigationBar.items)
         
+        
+        self.topBar.selectedIndex = 1
+        let indexPath = IndexPath.init(item: 1, section: 0)
+        self.horizontalView.containerView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: false)
     }
-    @objc func refresh() {
-        let _ = JXFoundationHelper.shared.countDown(timeOut: 3, process: { (a) in
-            print(a)
-        }) {
-            self.refreshControl?.endRefreshing()
-            //self.tableView.setContentOffset(CGPoint(x: 0, y: -0), animated: true)
-        }
-    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 0:
-            switch indexPath.row {
-            case 0:
-                self.performSegue(withIdentifier: "JXView", sender: nil)
-            case 1:
-                self.performSegue(withIdentifier: "UIKitExtension", sender: nil)
-            case 2:
-                self.performSegue(withIdentifier: "JXView", sender: nil)
-            default:
-                break
-            }
-        default:
-            break
-        }
-    }
+//    override var shouldAutomaticallyForwardAppearanceMethods: Bool {
+//        return false
+//    }
+}
+extension MainViewController : JXScrollTitleViewDelegate {
 
+    func jxScrollTitleView(scrollTitleView: JXScrollTitleView, didSelectItemAt index: Int) {
+        let indexPath = IndexPath.init(item: index, section: 0)
+        //开启动画会影响topBar的点击移动动画
+        self.horizontalView.containerView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
+    }
+}
+extension MainViewController : JXHorizontalViewDelegate {
+
+    func horizontalViewDidScroll(scrollView:UIScrollView) {
+        
+    }
+    func horizontalView(_: JXHorizontalView, to indexPath: IndexPath) {
+        if self.topBar.selectedIndex == indexPath.item {
+            return
+        }
+        self.topBar.selectedIndex = indexPath.item
+        
+        print(self.topBar.selectedIndex)
+        
+    }
 }

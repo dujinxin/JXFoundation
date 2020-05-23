@@ -161,6 +161,7 @@ extension JXBarView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if self.titles.count > 0 {
             let count = CGFloat(self.titles.count)
+            
             if itemSize.width * count >= self.bounds.width {
                 return itemSize
             } else {
@@ -222,7 +223,7 @@ class ItemCell: UICollectionViewCell {
             } else {
                 self.titleView.textColor = attribute?.normalColor
             }
-            self.titleView.font = attribute?.font
+            self.titleView.font = UIFont.systemFont(ofSize: attribute?.normalFontSize ?? 14)
         }
     }
     override init(frame: CGRect) {

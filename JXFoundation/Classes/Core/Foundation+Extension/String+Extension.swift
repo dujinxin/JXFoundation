@@ -45,7 +45,7 @@ public extension String {
 // MARK: - 文本计算
 public extension String {
     
-    func calculate(width: CGFloat, fontSize: CGFloat, lineSpace: CGFloat = -1) -> CGSize {
+    func calculate(width: CGFloat = CGFloat.greatestFiniteMagnitude, font: UIFont, lineSpace: CGFloat = -1) -> CGSize {
         
         if self.isEmpty {
             return CGSize()
@@ -57,9 +57,9 @@ public extension String {
         paragraph.lineSpacing = lineSpace
         
         if lineSpace < 0 {
-            attributes = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: fontSize)]
+            attributes = [NSAttributedString.Key.font:font]
         }else{
-            attributes = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: fontSize),NSAttributedString.Key.paragraphStyle:paragraph]
+            attributes = [NSAttributedString.Key.font:font,NSAttributedString.Key.paragraphStyle:paragraph]
         }
         
         let rect = ocText.boundingRect(with: CGSize.init(width: width, height: CGFloat.greatestFiniteMagnitude), options: [.usesLineFragmentOrigin,.usesFontLeading,.usesDeviceMetrics], attributes: attributes, context: nil)
@@ -67,11 +67,11 @@ public extension String {
         let height : CGFloat
         if rect.origin.x < 0 {
             height = abs(rect.origin.x) + rect.height
-        }else{
+        } else {
             height = rect.height
         }
         
-        return CGSize(width: width, height: height)
+        return CGSize(width: rect.width, height: height)
     }
 }
 // MARK: - 加解密

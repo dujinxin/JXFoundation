@@ -37,7 +37,7 @@ private let inputViewWidth : CGFloat = UIScreen.main.bounds.width - 2 * inputVie
 
 private let keyWindowWidth : CGFloat = UIScreen.main.bounds.width
 private let keyWindowHeight : CGFloat = UIScreen.main.bounds.height
-private let additionalBottomHeight : CGFloat = UIScreen.main.isIphoneX ? 34 : 0
+private let additionalBottomHeight : CGFloat = UIScreen.main.isIphoneXAbove ? 34 : 0
 
 public class JXInputTextView: JXView {
     
@@ -275,7 +275,7 @@ extension JXInputTextView {
         //self.layoutIfNeeded()
     }
     func automaticallySet(_ textView:JXPlaceHolderTextView,_ string:String) {
-        let size = string.calculate(width: textView.frame.width, fontSize: self.font.pointSize)
+        let size = string.calculate(width: textView.frame.width, font: self.font)
         let height = size.height + textView.textContainerInset.top + textView.textContainerInset.bottom
         let inputViewMaxHeight = self.font.lineHeight * CGFloat(limitLines)
         

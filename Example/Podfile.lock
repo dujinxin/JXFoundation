@@ -9,15 +9,15 @@ PODS:
   - iOSSnapshotTestCase/Core (5.0.2)
   - iOSSnapshotTestCase/SwiftSupport (5.0.2):
     - iOSSnapshotTestCase/Core
-  - JXFoundation (1.3.1):
-    - JXFoundation/Basic (= 1.3.1)
-    - JXFoundation/Core (= 1.3.1)
-    - JXFoundation/UIKit (= 1.3.1)
-  - JXFoundation/Basic (1.3.1):
+  - JXFoundation (2.0.4.2):
+    - JXFoundation/Basic (= 2.0.4.2)
+    - JXFoundation/Core (= 2.0.4.2)
+    - JXFoundation/UIKit (= 2.0.4.2)
+  - JXFoundation/Basic (2.0.4.2):
     - JXFoundation/Core
     - JXFoundation/UIKit
-  - JXFoundation/Core (1.3.1)
-  - JXFoundation/UIKit (1.3.1):
+  - JXFoundation/Core (2.0.4.2)
+  - JXFoundation/UIKit (2.0.4.2):
     - JXFoundation/Core
   - Nimble (7.3.4)
   - Nimble-Snapshots (6.9.1):
@@ -35,7 +35,7 @@ DEPENDENCIES:
   - Quick
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - FBSnapshotTestCase
     - iOSSnapshotTestCase
     - Nimble
@@ -49,11 +49,11 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   iOSSnapshotTestCase: 2d51aa06775e95cecb0a1fb9c5c159ccd1dd4596
-  JXFoundation: 06e9e5f6c113a50ac7ca88d03e889d42675ab162
+  JXFoundation: 7ef06685d072ff1bf5bd9d2c4b653a581311d277
   Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
   Nimble-Snapshots: bbd1ab264bacc24a9ce24a8363bc05aac783aeb0
   Quick: ce1276c7c27ba2da3cb2fd0cde053c3648b3b22d
 
 PODFILE CHECKSUM: 98e9fd993d44bfc9985bd7c238254a45cfb6f067
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.9.1

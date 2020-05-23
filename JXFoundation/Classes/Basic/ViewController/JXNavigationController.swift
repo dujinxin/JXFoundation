@@ -13,7 +13,7 @@ open class JXNavigationController: UINavigationController {
     open var backItem: UIBarButtonItem = {
         let leftButton = UIButton()
         leftButton.frame = CGRect(x: 10, y: 7, width: 30, height: 30)
-        leftButton.setImage(UIImage(named: "icon-back")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        leftButton.setImage(UIImage(named: "icon_back_dark")?.withRenderingMode(.alwaysTemplate), for: .normal)
         leftButton.tintColor = UIColor.darkText
         //leftButton.imageEdgeInsets = UIEdgeInsetsMake(12, 0, 12, 24)
         //leftButton.setTitle("up", for: .normal)
