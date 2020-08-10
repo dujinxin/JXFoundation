@@ -50,6 +50,7 @@ class JXTestViewController: JXBaseViewController {
         view.addSubview(horizontalView!)
         
         
+        
         let moreButton = UIButton()
         moreButton.setTitle("查看全文", for: .normal)
         moreButton.setTitleColor(UIColor.red, for: .normal)
@@ -70,6 +71,47 @@ class JXTestViewController: JXBaseViewController {
         //self.view.layer.addSublayer(layer)
         
         
+        let activityButton = JXActivityIndicatorButton.init(frame: CGRect(x: 30, y: 320, width: 160, height: 60))
+        activityButton.normalTitle = "付费浏览"
+        activityButton.selectedTitle = "付费中..."
+        activityButton.position = .left
+        activityButton.style = .white
+        activityButton.useActivityIndicatorView = true
+        activityButton.backgroundColor = UIColor.systemPink
+        self.view.addSubview(activityButton)
+        
+        activityButton.clickBlock = {(_,_) in
+        
+            
+            let alert = JXAlertView.initWithTitle("温馨提示", content: "let activityButton = JXActivityIndicatorButton.init(frame: CGRect(x: 30, y: 320, width: 160, height: 60))", cancelTitle: "取消", confirmTitle: "付费")
+            alert.contentLabel.textAlignment = .center
+            let attribute = JXAttribute()
+            attribute.contentMarginEdge = UIEdgeInsets.init(top: 10, left: 16, bottom: 20, right: 16)
+            attribute.minimumInteritemSpacing = 20
+            alert.attribute = attribute
+            alert.nextBlock = {
+                
+            }
+            alert.cancelBlock = {
+                
+            }
+            alert.show()
+            
+        
+        }
+        
+        
+        
+        let seg = UISegmentedControl(items: ["新闻","视频","热点"])
+        seg.frame = CGRect(x: 20, y: 600, width: 200, height: 40)
+        seg.layer.cornerRadius = 20
+        
+        self.view.addSubview(seg)
+        
+    }
+    func savGifImage() {
+        let path = Bundle.main.path(forResource: "撒娇", ofType: ".gif")!
+
     }
     
     override func didReceiveMemoryWarning() {

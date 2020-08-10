@@ -7,12 +7,12 @@
 
 import Foundation
 
-extension Bundle {
+public extension Bundle {
    
-    public func jxLocalizedString(forKey key: String) -> String {
+    func jxLocalizedString(forKey key: String) -> String {
         return self.jxLocalizedString(forKey: key, value: nil, table: nil)
     }
-    public func jxLocalizedString(forKey key: String, value: String?, table tableName: String?) -> String {
+    func jxLocalizedString(forKey key: String, value: String?, table tableName: String?) -> String {
         if let bundle = self.getBundle() {
             
             guard var language = NSLocale.preferredLanguages.first else { return "" }
@@ -38,15 +38,16 @@ extension Bundle {
         }
        
     }
-    public func getBundle() -> Bundle? {
+    func getBundle() -> Bundle? {
+        
         guard
             let path = Bundle.init(for: Bundle.self).path(forResource: "JXFoundation", ofType: "bundle"),
-            let languageBundle = Bundle(path: path) else {
-              
+            let customBundle = Bundle(path: path) else {
+          
             return nil
         }
     
-        return languageBundle
+        return customBundle
     }
     
 }

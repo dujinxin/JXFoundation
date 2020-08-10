@@ -224,6 +224,11 @@
                                 "title":"FileManager+Extension",
                                 "desc":"FileManager扩展，文件管理，增删改查",
                                 "sub":[]
+                            },
+                            {
+                                "title":"String+Extension",
+                                "desc":"String扩展，增删改查,文本计算，字符串校验，文件路径等",
+                                "sub":[]
                             }
                     ]
                 },

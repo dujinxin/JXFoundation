@@ -38,18 +38,22 @@ class MyViewController: JXTableViewController {
         self.customNavigationBar.layoutMargins = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 8)
         
         
-        self.dataArray = ["设置","拖动排序","其他"]
+        
+        self.beginRefreshing()
     }
-    override func isCustomNavigationBarUsed() -> Bool {
+    override var useCustomNavigationBar : Bool{
         return true
     }
-
+    override var useRefreshControl : Bool {
+        return true
+    }
     override func refresh() {
-        JXFoundationHelper.shared.countDown(timeOut: 3, process: { (a) in
+        super.refresh()
+        let _ = JXFoundationHelper.shared.countDown(timeOut: 1, process: { (a) in
             print(a)
         }) {
-            self.dataArray = ["通用","拖动排序","其他"]
-            self.refreshControl?.endRefreshing()
+            self.dataArray = ["通用","个人中心","拖动排序","其他"]
+            self.refreshControl.endRefreshing()
             self.tableView.reloadData()
             //self.tableView.setContentOffset(CGPoint(x: 0, y: -self.navStatusHeight), animated: true)
         }
@@ -75,6 +79,10 @@ extension MyViewController {
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         case 1:
+            let vc = JXUserViewController()
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 2:
             let vc = JXChannelViewController()
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
@@ -88,6 +96,6 @@ extension MyViewController {
 }
 extension MyViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset)
+        //print(scrollView.contentOffset)
     }
 }

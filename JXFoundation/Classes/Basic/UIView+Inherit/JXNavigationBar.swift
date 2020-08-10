@@ -26,6 +26,10 @@ open class JXNavigationBar: UINavigationBar {
     public lazy var backgroundView: UIView = {
         let v = UIView()
         v.backgroundColor = UIColor.clear
+        v.addSubview(self.backgroundImage)
+        v.addSubview(self.contentView)
+        v.addSubview(self.largeTitleView)
+        v.addSubview(self.separatorView)
         return v
     }()
     ///背景图片
@@ -101,14 +105,8 @@ open class JXNavigationBar: UINavigationBar {
                     } else {
                         //subV.backgroundColor = UIColor.clear
                     }
-                    if let _ = self.backgroundView.superview {
-                        
-                    } else {
+                    if let _ = self.backgroundView.superview {} else {
                         v.addSubview(self.backgroundView)
-                        self.backgroundView.addSubview(self.backgroundImage)
-                        self.backgroundView.addSubview(self.contentView)
-                        self.backgroundView.addSubview(self.largeTitleView)
-                        self.backgroundView.addSubview(self.separatorView)
                     }
                 })
        

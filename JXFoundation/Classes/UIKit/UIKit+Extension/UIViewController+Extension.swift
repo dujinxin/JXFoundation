@@ -62,3 +62,22 @@ public extension UIViewController {
         }
     }
 }
+
+public extension UIViewController {
+
+    func showNotice(_ msg: String) {
+        let notice = JXNoticeView.init(text: msg)
+        notice.show()
+    }
+    func showCustomAlert(_ title: String?, content: String?) {
+        let alert = JXAlertView.initWithTitle(title, content: content, cancelTitle: "", confirmTitle: "确定")
+        alert.show()
+    }
+    func showSystemAlert(_ title: String?, content: String?) {
+        let alert = UIAlertController.init(title: title, message: content, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "", style: .cancel, handler: { (action) in
+            
+        }))
+        UIViewController.topStackViewController?.present(alert, animated: true, completion: nil)
+    }
+}

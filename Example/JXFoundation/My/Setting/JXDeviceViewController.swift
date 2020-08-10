@@ -12,7 +12,9 @@ import JXFoundation
 private let cellId = "cellId"
 
 class JXDeviceViewController: JXTableViewController {
-    
+    override var style: UITableView.Style {
+        return .grouped
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,14 +23,12 @@ class JXDeviceViewController: JXTableViewController {
         self.customNavigationBar.backgroundView.backgroundColor = UIColor.cyan
         self.customNavigationBar.separatorView.backgroundColor = UIColor.gray
   
-        self.tableView.frame = CGRect(x: 0, y: self.navStatusHeight, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - self.navStatusHeight)
+        self.tableView.backgroundColor = UIColor.groupTableViewBackground
+        //self.tableView.frame = CGRect(x: 0, y: self.navStatusHeight, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - self.navStatusHeight)
 
         self.tableView.register(UINib(nibName: "JXCommonCell", bundle: nil), forCellReuseIdentifier: cellId)
 
-        
-        
         self.dataArray = self.getDatas()
-        
         
         //org.cocoapods.demo.JXFoundation-Example
    
@@ -38,37 +38,53 @@ class JXDeviceViewController: JXTableViewController {
         print(UIDevice.current.freeMemory1)
         
     }
-    override func isCustomNavigationBarUsed() -> Bool {
+    override var useCustomNavigationBar : Bool{
         return true
     }
-    func getDatas() -> Array<Dictionary<String, String>> {
+    func getDatas() -> Array<Array<Dictionary<String, String>>> {
         return [
-            ["title": "名称", "description": UIDevice.current.name, "content": ""],
-            ["title": "设备型号", "description": UIDevice.current.modelName, "content": ""],
-            ["title": "本地化设备型号", "description": UIDevice.current.localizedModel, "content": "localized version of model"],
-            ["title": "系统名称", "description": UIDevice.current.systemName, "content": "e.g. \("iOS"),\("MacOS"),\("WatchOS")"],
-            ["title": "系统版本", "description": UIDevice.current.systemVersion, "content": "e.g. \("13.4.1")"],
-            
-            ["title": "运营商", "description": UIDevice.current.carrierName, "content": ""],
-            ["title": "WI-FI地址", "description": UIDevice.current.wifiNetworkAddress(), "content": ""],
-            ["title": "蜂窝网络地址", "description": UIDevice.current.mobileNetworkAddress(), "content": ""],
-            //["title": "蓝牙地址", "description": "", "content": ""],
-            //["title": "IMEI", "description": UIDevice.current.wifinameNetworkAddress(), "content": ""],
-            ["title": "UUID", "description": UIDevice.current.uuid, "content": ""],
-            
-            ["title": "总容量", "description": "\(ByteCountFormatter.string(fromByteCount: Int64(UIDevice.current.totalMemory), countStyle: ByteCountFormatter.CountStyle.memory))", "content": ""],
-            ["title": "可用容量", "description": "\(ByteCountFormatter.string(fromByteCount: Int64(UIDevice.current.freeMemory), countStyle: ByteCountFormatter.CountStyle.memory))", "content": ""]
+
+            [
+                ["title": "名称", "description": UIDevice.current.name, "content": ""],
+                ["title": "设备型号", "description": UIDevice.current.modelName, "content": ""],
+                ["title": "本地化设备型号", "description": UIDevice.current.localizedModel, "content": "localized version of model"],
+                ["title": "系统名称", "description": UIDevice.current.systemName, "content": "e.g. \("iOS"),\("MacOS"),\("WatchOS")"],
+                ["title": "系统版本", "description": UIDevice.current.systemVersion, "content": "e.g. \("13.4.1")"]
+            ],
+            [
+                ["title": "运营商", "description": UIDevice.current.carrierName, "content": ""],
+                ["title": "WI-FI地址", "description": UIDevice.current.wifiNetworkAddress(), "content": ""],
+                ["title": "蜂窝网络地址", "description": UIDevice.current.mobileNetworkAddress(), "content": ""],
+                //["title": "蓝牙地址", "description": "", "content": ""],
+                //["title": "IMEI", "description": UIDevice.current.wifinameNetworkAddress(), "content": ""],
+                ["title": "UUID", "description": UIDevice.current.uuid, "content": ""]
+            ],
+            [
+                ["title": "总容量", "description": "\(ByteCountFormatter.string(fromByteCount: Int64(UIDevice.current.totalMemory), countStyle: ByteCountFormatter.CountStyle.memory))", "content": ""],
+                ["title": "可用容量", "description": "\(ByteCountFormatter.string(fromByteCount: Int64(UIDevice.current.freeMemory), countStyle: ByteCountFormatter.CountStyle.memory))", "content": ""]
+            ],
         ]
     }
 }
 extension JXDeviceViewController {
-    override func tableView(_ tvareView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
         return self.dataArray.count
+    }
+    override func tableView(_ tvareView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let sectionArray = self.dataArray[section] as! Array<Dictionary<String, String>>
+        return sectionArray.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! JXCommonCell
        
-        let dict = self.dataArray[indexPath.row] as! Dictionary<String, String>
+        let sectionArray = self.dataArray[indexPath.section] as! Array<Dictionary<String, String>>
+        let dict = sectionArray[indexPath.row]
         cell.titleLabel.text = dict["title"]
         cell.extensionLabel.text = dict["description"]
         //cell.contentLabel.text = dict["content"]

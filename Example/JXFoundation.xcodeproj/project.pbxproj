@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		29A9A8CD2351CC4E00489648 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29A9A8CF2351CC4E00489648 /* Localizable.strings */; };
 		3517600B20E643890056803B /* OrderManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3517600820E643890056803B /* OrderManagerViewController.swift */; };
-		3517600C20E643890056803B /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3517600920E643890056803B /* FeedbackViewController.swift */; };
-		3517600D20E643890056803B /* JXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3517600A20E643890056803B /* JXViewController.swift */; };
+		3517600C20E643890056803B /* JXFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3517600920E643890056803B /* JXFeedbackViewController.swift */; };
 		351EE60D210875D6004C5DE9 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351EE60C210875D6004C5DE9 /* CategoryViewController.swift */; };
 		3524FC9221D0927C005813A3 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524FC9121D0927C005813A3 /* MyViewController.swift */; };
 		3595B29C218FECA800494929 /* TestListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B29B218FECA800494929 /* TestListController.swift */; };
@@ -36,12 +35,29 @@
 		845BE56D24739FC300D6750C /* Countrys.json in Resources */ = {isa = PBXBuildFile; fileRef = 845BE56B24739FC200D6750C /* Countrys.json */; };
 		845BE5702473BDF500D6750C /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE56F2473BDF500D6750C /* DiscoverViewController.swift */; };
 		845BE57F2477CF6000D6750C /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE57E2477CF6000D6750C /* SubViewController.swift */; };
+		847FD7FD249B53680094B121 /* JXUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847FD7FC249B53680094B121 /* JXUserViewController.swift */; };
 		8493C12A245D6F6F00012DB2 /* JXSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493C129245D6F6F00012DB2 /* JXSettingViewController.swift */; };
 		8493C12D245E5C4B00012DB2 /* JXDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493C12C245E5C4B00012DB2 /* JXDeviceViewController.swift */; };
 		8493C131245E6B7B00012DB2 /* JXCommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493C12F245E6B7B00012DB2 /* JXCommonCell.swift */; };
 		8493C132245E6B7B00012DB2 /* JXCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8493C130245E6B7B00012DB2 /* JXCommonCell.xib */; };
 		8493C1422460292A00012DB2 /* JXPrivateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493C1412460292A00012DB2 /* JXPrivateViewController.swift */; };
 		8493C1482461516B00012DB2 /* JXTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493C1472461516B00012DB2 /* JXTestViewController.swift */; };
+		84C53B9E24DAB0F400C978B8 /* JXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C53B9D24DAB0F100C978B8 /* JXViewController.swift */; };
+		84C53BA024DAB75C00C978B8 /* JXAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C53B9F24DAB75C00C978B8 /* JXAlertViewController.swift */; };
+		84C53BA224DAB78800C978B8 /* JXScrollTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C53BA124DAB78800C978B8 /* JXScrollTitleViewController.swift */; };
+		84C53BA424DAB7A000C978B8 /* JXHorizontalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C53BA324DAB7A000C978B8 /* JXHorizontalViewController.swift */; };
+		84C53BA624DBB40400C978B8 /* JXSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C53BA524DBB40400C978B8 /* JXSelectViewController.swift */; };
+		84C53BAA24DCFB2E00C978B8 /* CustomSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C53BA824DCFB2E00C978B8 /* CustomSelectCell.swift */; };
+		84C53BAB24DCFB2E00C978B8 /* CustomSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C53BA924DCFB2E00C978B8 /* CustomSelectCell.xib */; };
+		84C5B45324A2EB72009729BD /* 撒娇.gif in Resources */ = {isa = PBXBuildFile; fileRef = 84C5B45224A2EB72009729BD /* 撒娇.gif */; };
+		84C5B45524A2ECEB009729BD /* Private.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C5B45424A2ECEA009729BD /* Private.storyboard */; };
+		84C5B45824A2EEAD009729BD /* JXAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B45724A2EEAD009729BD /* JXAlbumViewController.swift */; };
+		84C5B45A24A2F0FD009729BD /* 视频.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84C5B45924A2F0FD009729BD /* 视频.mp4 */; };
+		84C5B45C24A2F292009729BD /* 樱花.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84C5B45B24A2F292009729BD /* 樱花.jpg */; };
+		84C5B47024A84866009729BD /* JXInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B46F24A84866009729BD /* JXInputViewController.swift */; };
+		84C5B47224A84946009729BD /* JXViewDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C5B47124A84946009729BD /* JXViewDemo.storyboard */; };
+		84C5B5F624BC42B7009729BD /* AppDelegate+LocalNotifiication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B5F524BC42B7009729BD /* AppDelegate+LocalNotifiication.swift */; };
+		84C5B5F824BC4D13009729BD /* JXLocalNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B5F724BC4D13009729BD /* JXLocalNotificationController.swift */; };
 		F58900C50512E0C1CD6EEA78 /* Pods_JXFoundation_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4033CC54EDB8F326E866405 /* Pods_JXFoundation_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,8 +85,7 @@
 		29A9A8D12351CC5600489648 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		29A9A8D22351CC5800489648 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3517600820E643890056803B /* OrderManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderManagerViewController.swift; sourceTree = "<group>"; };
-		3517600920E643890056803B /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
-		3517600A20E643890056803B /* JXViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXViewController.swift; sourceTree = "<group>"; };
+		3517600920E643890056803B /* JXFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXFeedbackViewController.swift; sourceTree = "<group>"; };
 		351EE60C210875D6004C5DE9 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryViewController.swift; path = JXFoundation/Category/CategoryViewController.swift; sourceTree = SOURCE_ROOT; };
 		3524FC9121D0927C005813A3 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		3595B29B218FECA800494929 /* TestListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestListController.swift; sourceTree = "<group>"; };
@@ -101,12 +116,29 @@
 		845BE56B24739FC200D6750C /* Countrys.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Countrys.json; sourceTree = "<group>"; };
 		845BE56F2473BDF500D6750C /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		845BE57E2477CF6000D6750C /* SubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
+		847FD7FC249B53680094B121 /* JXUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXUserViewController.swift; sourceTree = "<group>"; };
 		8493C129245D6F6F00012DB2 /* JXSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXSettingViewController.swift; sourceTree = "<group>"; };
 		8493C12C245E5C4B00012DB2 /* JXDeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXDeviceViewController.swift; sourceTree = "<group>"; };
 		8493C12F245E6B7B00012DB2 /* JXCommonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXCommonCell.swift; sourceTree = "<group>"; };
 		8493C130245E6B7B00012DB2 /* JXCommonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JXCommonCell.xib; sourceTree = "<group>"; };
 		8493C1412460292A00012DB2 /* JXPrivateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXPrivateViewController.swift; sourceTree = "<group>"; };
 		8493C1472461516B00012DB2 /* JXTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXTestViewController.swift; sourceTree = "<group>"; };
+		84C53B9D24DAB0F100C978B8 /* JXViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXViewController.swift; sourceTree = "<group>"; };
+		84C53B9F24DAB75C00C978B8 /* JXAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXAlertViewController.swift; sourceTree = "<group>"; };
+		84C53BA124DAB78800C978B8 /* JXScrollTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXScrollTitleViewController.swift; sourceTree = "<group>"; };
+		84C53BA324DAB7A000C978B8 /* JXHorizontalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXHorizontalViewController.swift; sourceTree = "<group>"; };
+		84C53BA524DBB40400C978B8 /* JXSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXSelectViewController.swift; sourceTree = "<group>"; };
+		84C53BA824DCFB2E00C978B8 /* CustomSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectCell.swift; sourceTree = "<group>"; };
+		84C53BA924DCFB2E00C978B8 /* CustomSelectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSelectCell.xib; sourceTree = "<group>"; };
+		84C5B45224A2EB72009729BD /* 撒娇.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "撒娇.gif"; sourceTree = "<group>"; };
+		84C5B45424A2ECEA009729BD /* Private.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Private.storyboard; sourceTree = "<group>"; };
+		84C5B45724A2EEAD009729BD /* JXAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXAlbumViewController.swift; sourceTree = "<group>"; };
+		84C5B45924A2F0FD009729BD /* 视频.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "视频.mp4"; sourceTree = "<group>"; };
+		84C5B45B24A2F292009729BD /* 樱花.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "樱花.jpg"; sourceTree = "<group>"; };
+		84C5B46F24A84866009729BD /* JXInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXInputViewController.swift; sourceTree = "<group>"; };
+		84C5B47124A84946009729BD /* JXViewDemo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JXViewDemo.storyboard; sourceTree = "<group>"; };
+		84C5B5F524BC42B7009729BD /* AppDelegate+LocalNotifiication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+LocalNotifiication.swift"; sourceTree = "<group>"; };
+		84C5B5F724BC4D13009729BD /* JXLocalNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXLocalNotificationController.swift; sourceTree = "<group>"; };
 		8F5B92AB0EF0DE8A546F7385 /* JXFoundation.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = JXFoundation.podspec; path = ../JXFoundation.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A229F08ED1DE9C6192AFD97E /* Pods-JXFoundation_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXFoundation_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JXFoundation_Tests/Pods-JXFoundation_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B6E14FD458B0D2892BD30F6E /* Pods_JXFoundation_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JXFoundation_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,8 +180,11 @@
 		3524FC8E21D0923E005813A3 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				84C53BA724DCFADC00C978B8 /* View */,
+				84C5B46E24A84821009729BD /* ViewController */,
 				3598AB6820E9FE1700841C85 /* MainViewController.swift */,
 				845BE57E2477CF6000D6750C /* SubViewController.swift */,
+				84C53B9D24DAB0F100C978B8 /* JXViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -159,6 +194,7 @@
 			children = (
 				845BE55F2473871800D6750C /* 拖动排序 */,
 				3524FC9121D0927C005813A3 /* MyViewController.swift */,
+				847FD7FC249B53680094B121 /* JXUserViewController.swift */,
 				8493C129245D6F6F00012DB2 /* JXSettingViewController.swift */,
 				8493C1472461516B00012DB2 /* JXTestViewController.swift */,
 				8493C140246028D600012DB2 /* Setting */,
@@ -181,9 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				3595B2A12190062C00494929 /* CountDown.swift */,
-				3517600A20E643890056803B /* JXViewController.swift */,
 				3595B2CC2196EB0F00494929 /* InputViewController.swift */,
-				3517600920E643890056803B /* FeedbackViewController.swift */,
 				3517600820E643890056803B /* OrderManagerViewController.swift */,
 				3595B29B218FECA800494929 /* TestListController.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
@@ -242,6 +276,9 @@
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				84C5B45924A2F0FD009729BD /* 视频.mp4 */,
+				84C5B45B24A2F292009729BD /* 樱花.jpg */,
+				84C5B45224A2EB72009729BD /* 撒娇.gif */,
 				607FACD41AFB9204008FA782 /* Info.plist */,
 				845BE5682473959600D6750C /* JXFoundation.json */,
 				845BE56B24739FC200D6750C /* Countrys.json */,
@@ -310,9 +347,44 @@
 			children = (
 				8493C12C245E5C4B00012DB2 /* JXDeviceViewController.swift */,
 				8493C1412460292A00012DB2 /* JXPrivateViewController.swift */,
+				84C5B5F524BC42B7009729BD /* AppDelegate+LocalNotifiication.swift */,
+				84C5B45624A2EDD3009729BD /* Private */,
 				845BE5562472494B00D6750C /* JXDataViewController.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		84C53BA724DCFADC00C978B8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84C53BA824DCFB2E00C978B8 /* CustomSelectCell.swift */,
+				84C53BA924DCFB2E00C978B8 /* CustomSelectCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84C5B45624A2EDD3009729BD /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				84C5B45424A2ECEA009729BD /* Private.storyboard */,
+				84C5B45724A2EEAD009729BD /* JXAlbumViewController.swift */,
+				84C5B5F724BC4D13009729BD /* JXLocalNotificationController.swift */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		84C5B46E24A84821009729BD /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3517600920E643890056803B /* JXFeedbackViewController.swift */,
+				84C5B46F24A84866009729BD /* JXInputViewController.swift */,
+				84C53B9F24DAB75C00C978B8 /* JXAlertViewController.swift */,
+				84C53BA524DBB40400C978B8 /* JXSelectViewController.swift */,
+				84C53BA124DAB78800C978B8 /* JXScrollTitleViewController.swift */,
+				84C53BA324DAB7A000C978B8 /* JXHorizontalViewController.swift */,
+				84C5B47124A84946009729BD /* JXViewDemo.storyboard */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		C536AD799CDC1AB488212340 /* Pods */ = {
@@ -380,9 +452,9 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 2BW22L7PP7;
+						DevelopmentTeam = KKYJM4DU53;
 						LastSwiftMigration = 1140;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -419,13 +491,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C53BAB24DCFB2E00C978B8 /* CustomSelectCell.xib in Resources */,
+				84C5B45A24A2F0FD009729BD /* 视频.mp4 in Resources */,
+				84C5B47224A84946009729BD /* JXViewDemo.storyboard in Resources */,
 				845BE56D24739FC300D6750C /* Countrys.json in Resources */,
 				845BE56C24739FC300D6750C /* Province.json in Resources */,
+				84C5B45324A2EB72009729BD /* 撒娇.gif in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				8493C132245E6B7B00012DB2 /* JXCommonCell.xib in Resources */,
 				845BE5692473959600D6750C /* JXFoundation.json in Resources */,
 				845BE5662473875300D6750C /* ChannelReusableView.xib in Resources */,
 				29A9A8CD2351CC4E00489648 /* Localizable.strings in Resources */,
+				84C5B45C24A2F292009729BD /* 樱花.jpg in Resources */,
+				84C5B45524A2ECEB009729BD /* Private.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				845BE5652473875200D6750C /* ChannelViewCell.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
@@ -511,10 +589,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-JXFoundation_Example/Pods-JXFoundation_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/JXFoundation/JXFoundation.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JXFoundation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -528,11 +608,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C5B45824A2EEAD009729BD /* JXAlbumViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				84C53BA224DAB78800C978B8 /* JXScrollTitleViewController.swift in Sources */,
 				3595B2A22190062C00494929 /* CountDown.swift in Sources */,
 				845BE55E2473862700D6750C /* JXChannelViewController.swift in Sources */,
 				845BE57F2477CF6000D6750C /* SubViewController.swift in Sources */,
 				3595B2CD2196EB0F00494929 /* InputViewController.swift in Sources */,
+				84C5B5F824BC4D13009729BD /* JXLocalNotificationController.swift in Sources */,
+				84C53BAA24DCFB2E00C978B8 /* CustomSelectCell.swift in Sources */,
+				84C53B9E24DAB0F400C978B8 /* JXViewController.swift in Sources */,
 				3595B29C218FECA800494929 /* TestListController.swift in Sources */,
 				8493C1422460292A00012DB2 /* JXPrivateViewController.swift in Sources */,
 				8493C1482461516B00012DB2 /* JXTestViewController.swift in Sources */,
@@ -543,14 +628,19 @@
 				3598AB6B20EA022E00841C85 /* UIKitViewController.swift in Sources */,
 				8493C131245E6B7B00012DB2 /* JXCommonCell.swift in Sources */,
 				845BE5672473875300D6750C /* ChannelReusableView.swift in Sources */,
+				84C5B5F624BC42B7009729BD /* AppDelegate+LocalNotifiication.swift in Sources */,
 				351EE60D210875D6004C5DE9 /* CategoryViewController.swift in Sources */,
 				3598AB6920E9FE1700841C85 /* MainViewController.swift in Sources */,
 				8493C12D245E5C4B00012DB2 /* JXDeviceViewController.swift in Sources */,
 				845BE5642473875200D6750C /* ChannelViewCell.swift in Sources */,
-				3517600D20E643890056803B /* JXViewController.swift in Sources */,
+				84C53BA624DBB40400C978B8 /* JXSelectViewController.swift in Sources */,
 				845BE5702473BDF500D6750C /* DiscoverViewController.swift in Sources */,
+				847FD7FD249B53680094B121 /* JXUserViewController.swift in Sources */,
 				3524FC9221D0927C005813A3 /* MyViewController.swift in Sources */,
-				3517600C20E643890056803B /* FeedbackViewController.swift in Sources */,
+				3517600C20E643890056803B /* JXFeedbackViewController.swift in Sources */,
+				84C53BA424DAB7A000C978B8 /* JXHorizontalViewController.swift in Sources */,
+				84C5B47024A84866009729BD /* JXInputViewController.swift in Sources */,
+				84C53BA024DAB75C00C978B8 /* JXAlertViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,7 +749,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -708,7 +798,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -721,11 +811,11 @@
 			baseConfigurationReference = C61EB5F1B94044D0D48F7F83 /* Pods-JXFoundation_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = JXFoundation_ExampleDebug.entitlements;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 2BW22L7PP7;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KKYJM4DU53;
 				INFOPLIST_FILE = JXFoundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -745,10 +835,10 @@
 			baseConfigurationReference = 59B74FFF5F4FDAF17FB293C5 /* Pods-JXFoundation_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = JXFoundation_Example.entitlements;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = JXFoundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -770,8 +860,8 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(SDKROOT)/Developer/Library/Frameworks/**",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -794,8 +884,8 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"@executable_path/Frameworks",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

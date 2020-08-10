@@ -26,7 +26,7 @@ class JXDataViewController: JXTableViewController {
         
         self.dataArray = ["UserDefaults","plist","file","Keychain","数据库"]
     }
-    override func isCustomNavigationBarUsed() -> Bool {
+    override var useCustomNavigationBar : Bool{
         return true
     }
     
@@ -34,7 +34,7 @@ class JXDataViewController: JXTableViewController {
         let _ = JXFoundationHelper.shared.countDown(timeOut: 2, process: { (a) in
             print(a)
         }) {
-            self.refreshControl?.endRefreshing()
+            self.refreshControl.endRefreshing()
             //self.tableView.setContentOffset(CGPoint(x: 0, y: -self.navStatusHeight), animated: true)
         }
     }

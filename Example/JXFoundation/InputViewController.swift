@@ -71,11 +71,11 @@ class InputViewController: UIViewController {
         }
 //        bar.textViewDelegate = self
 //        bar.textFieldDelegate = self
-        bar.tintColor = UIColor.white
-        bar.toolBar.barTintColor = UIColor.black
-        bar.backgroundColor = UIColor.black
-        bar.upItem.title = "上"
-        bar.downItem.title = "下"
+        bar.tintColor = UIColor.darkGray
+        bar.toolBar.barTintColor = UIColor.lightGray
+        bar.backgroundColor = UIColor.white
+//        bar.upItem.title = "上"
+//        bar.downItem.title = "下"
         self.view.addSubview(bar)
         
         

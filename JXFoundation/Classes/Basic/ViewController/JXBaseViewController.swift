@@ -7,11 +7,19 @@
 //
 
 import UIKit
+import Reachability
+
+public enum JXNetworkStatus: Int {
+    case unavailable
+    case wifi
+    case cellular
+}
+
 
 open class JXBaseViewController: UIViewController {
     
     open var backBlock : (()->())?
-    
+    public var networkStatus : JXNetworkStatus = .unavailable
     //MARK: - custom NavigationBar
     //自定义导航栏
     public lazy var customNavigationBar : JXNavigationBar = {
@@ -45,7 +53,7 @@ open class JXBaseViewController: UIViewController {
     //子类重写title的setter方法
     override open var title: String?{
         didSet {
-            if self.isCustomNavigationBarUsed() {
+            if self.useCustomNavigationBar {
                 self.customNavigationItem.title = title
             } else {
                 self.navigationItem.title = title
@@ -72,7 +80,7 @@ open class JXBaseViewController: UIViewController {
             }
             self.customNavigationBar.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.navStatusHeight)
             if #available(iOS 11.0, *) {
-                if self.isCustomNavigationBarUsed() {
+                if self.useCustomNavigationBar {
                     
                     self.customNavigationBar.prefersLargeTitles = useLargeTitles
                 } else {
@@ -83,6 +91,9 @@ open class JXBaseViewController: UIViewController {
             }
         }
     }
+    //MARK: - Reachability
+    let reachablity = try? Reachability.init()
+    
     //MARK: - default view info
     
     /// default view
@@ -103,7 +114,24 @@ open class JXBaseViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.white
         
-        self.isCustomNavigationBarUsed() ? setupCustomNavigationBar() : setupNavigationBarConfig()
+        self.useCustomNavigationBar ? setupCustomNavigationBar() : setupNavigationBarConfig()
+    }
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(networkReachablity(notify:)), name: NSNotification.Name.reachabilityChanged, object: nil)
+        
+        do {
+            try reachablity?.startNotifier()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+    }
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        reachablity?.stopNotifier()
     }
     override open func loadView() {
         super.loadView()
@@ -114,18 +142,52 @@ open class JXBaseViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     //MARK: - 子类重写
     override open var preferredStatusBarStyle: UIStatusBarStyle {
          return .default
     }
-    open func isCustomNavigationBarUsed() -> Bool{
+    open var useCustomNavigationBar : Bool{
         return true
+    }
+    /// request data
+    @objc open func networkReachablity(notify: NSNotification) {
+        
+        guard let reach = notify.object as? Reachability else { return }
+        switch reach.connection {
+        case .unavailable:
+            self.networkStatus = .unavailable
+        case .wifi:
+            self.networkStatus = .wifi
+        case .cellular:
+            self.networkStatus = .cellular
+        default:
+            self.networkStatus = .unavailable
+        }
+        
+        self.resetView(status: self.networkStatus)
+        
+        
+    }
+    open func resetView(status: JXNetworkStatus) {
+        if status == .unavailable {
+            //展示无网络的视图
+        } else {
+            //正常展示内容
+            if status == .wifi {
+                //正常展示内容，没有限制
+            } else {
+                //正常展示内容，运营商网络，要限制耗流量的操作，提示用户
+            }
+        }
     }
     /// request data
     @objc open func requestData() {}
     
     open func setUpMainView() {}
-    /// add default view eg:no data,no network,no login
+    /// add default view eg: no data,no network,no login
     open func setUpDefaultView() {
         defaultView.frame = view.bounds
         view.addSubview(defaultView)

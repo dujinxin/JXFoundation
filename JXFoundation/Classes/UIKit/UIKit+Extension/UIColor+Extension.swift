@@ -45,7 +45,9 @@ public extension UIColor{
         let color = UIColor(red:CGFloat(arc4random_uniform(255))/255.0, green: CGFloat(arc4random_uniform(255))/255.0, blue: CGFloat(arc4random_uniform(255))/255.0, alpha: 1.0)
         return color
     }
-    
+    class var jx000000Color : UIColor {
+        return UIColor.rgbColor(rgbValue: 0x000000)
+    }
     class var jx333333Color : UIColor {
         return UIColor.rgbColor(rgbValue: 0x333333)
     }

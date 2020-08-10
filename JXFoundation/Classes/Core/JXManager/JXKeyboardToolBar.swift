@@ -10,6 +10,9 @@ import UIKit
 private let keyWindowWidth : CGFloat = UIScreen.main.bounds.width
 private let keyWindowHeight : CGFloat = UIScreen.main.bounds.height
 
+public typealias KeyboardShowBlock = ((_ keyboardHeight: CGFloat, _ toolBarHeight: CGFloat, _ responderView: UIView)->())
+public typealias KeyboardCloseBlock = (()->())
+
 public protocol JXKeyboardTextFieldDelegate: AnyObject {
     func keyboardTextFieldShouldReturn(_ textField: UITextField) -> Bool
     func keyboardTextField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
@@ -20,9 +23,7 @@ public protocol JXKeyboardTextViewDelegate: AnyObject {
 
 public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate {
     
-    public typealias KeyboardShowBlock = ((_ keyboardHeight: CGFloat, _ toolBarHeight: CGFloat, _ responderView: UIView)->())
-    public typealias KeyboardCloseBlock = (()->())
-    
+    //MARK: public properties
     public var showBlock: KeyboardShowBlock?
     public var closeBlock: KeyboardCloseBlock?
     public weak var textFieldDelegate: JXKeyboardTextFieldDelegate?
@@ -76,10 +77,10 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
     private var isKeyboardShow = false
     private var isUpDownShow : Bool = false
     
-    public var upItem : UIBarButtonItem!
-    public var downItem : UIBarButtonItem!
-    public var titleItem : UIBarButtonItem!
-    public var closeItem : UIBarButtonItem!
+    private var upItem : UIBarButtonItem!
+    private var downItem : UIBarButtonItem!
+    private var titleItem : UIBarButtonItem!
+    private var closeItem : UIBarButtonItem!
     
     public var toolEdgeInsets : UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) {
         didSet{
@@ -93,10 +94,23 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
      
         //tool.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         var items = [UIBarButtonItem]()
-        let titles = ["↑","↓",Bundle.main.jxLocalizedString(forKey: "Done")]
+        let titles = ["JXFoundationBarArrowUp","JXFoundationBarArrowDown",Bundle.main.jxLocalizedString(forKey: "Done")]
+        
+        
+        
+        guard let path = Bundle.init(for: type(of: self)).path(forResource: "JXFoundation", ofType: "bundle"), let bundle = Bundle.init(path: path) else {
+            assertionFailure("获取JXFoundation bundle文件失败！")
+            return tool
+        }
+        
         for i in 0..<3 {
             
-            let item = UIBarButtonItem(title: titles[i], style: UIBarButtonItem.Style.plain, target: self, action: #selector(changeResponder(_:)))
+            var item: UIBarButtonItem!
+            if #available(iOS 13.0, *) {
+                item = UIBarButtonItem.init(image: UIImage(named: titles[i], in: bundle, with: .none), style: .plain, target: self, action: #selector(changeResponder(_:)))
+            } else {
+                item = UIBarButtonItem.init(image: UIImage(named: titles[i], in: bundle, compatibleWith: nil), style: .plain, target: self, action: #selector(changeResponder(_:)))
+            }
             item.isEnabled = true
             item.tag = i
             if i == 0 {
@@ -104,6 +118,8 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
             } else if i == 1 {
                 self.downItem = item
             } else {
+                let item = UIBarButtonItem(title: titles[i], style: .plain, target: self, action: #selector(changeResponder(_:)))
+                item.tag = 2
                 self.closeItem = item
             }
             items.append(item)
@@ -213,13 +229,9 @@ public class JXKeyboardToolBar: UIView, UITextFieldDelegate, UITextViewDelegate 
     func updown(_ isShow: Bool) {
         self.isUpDownShow = isShow
         if isShow {
-            self.upItem?.title = "↑"
-            self.downItem?.title = "↓"
             self.upItem?.isEnabled = true
             self.downItem?.isEnabled = true
         } else {
-            self.upItem?.title = ""
-            self.downItem?.title = ""
             self.upItem?.isEnabled = false
             self.downItem?.isEnabled = false
         }

@@ -8,8 +8,6 @@
 
 import Foundation
 
-let dataPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-
 //MARK:保存到文件中
 public extension FileManager{
     
@@ -20,7 +18,7 @@ public extension FileManager{
     ///   - name: 数据名称
     /// - Returns: 操作结果
     static func insert(data: Data, toFile name: String) -> Bool{
-        let newPath = dataPath + "/\(name)"
+        let newPath = String.documentDirectoryPath + "/\(name)"
         let dataPathUrl = URL.init(fileURLWithPath: newPath)
         
         do {
@@ -28,7 +26,7 @@ public extension FileManager{
         } catch let error {
             print(error.localizedDescription)
         }
-        return !FileManager.default.fileExists(atPath: newPath)
+        return FileManager.default.fileExists(atPath: newPath)
     }
     /// 修改文件中的数据
     ///
@@ -37,10 +35,14 @@ public extension FileManager{
     ///   - name: 数据名称
     /// - Returns: 操作结果
     static func update(inFile data: Data, name: String) -> Bool {
-        let newPath = dataPath + "/\(name)"
+        let newPath = String.documentDirectoryPath + "/\(name)"
         let dataPathUrl = URL.init(fileURLWithPath: newPath)
-        if FileManager.default.fileExists(atPath: newPath) == false {
-            return false
+        if FileManager.default.fileExists(atPath: newPath) {
+            do {
+                try FileManager.default.removeItem(atPath: newPath)
+            } catch let error {
+                print(error.localizedDescription)
+            }
         }
         
         do {
@@ -48,7 +50,7 @@ public extension FileManager{
         } catch let error {
             print(error.localizedDescription)
         }
-        return !FileManager.default.fileExists(atPath: newPath)
+        return FileManager.default.fileExists(atPath: newPath)
     }
     /// 获取文件中的数据
     ///
@@ -56,7 +58,7 @@ public extension FileManager{
     ///   - name: 数据名称
     /// - Returns: 操作结果
     static func select(fromFile name: String) -> Any? {
-        let newPath = dataPath + "/\(name)"
+        let newPath = String.documentDirectoryPath + "/\(name)"
         let dataPathUrl = URL.init(fileURLWithPath: newPath)
         
         var data : Data?
@@ -72,7 +74,7 @@ public extension FileManager{
     /// - Parameter name: 数据名称
     /// - Returns: 操作结果
     static func delete(fromFile name: String) -> Bool{
-        let newPath = dataPath + "/\(name)"
+        let newPath = String.documentDirectoryPath + "/\(name)"
         
         do {
             try FileManager.default.removeItem(atPath: newPath)

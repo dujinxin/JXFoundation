@@ -9,16 +9,20 @@ PODS:
   - iOSSnapshotTestCase/Core (5.0.2)
   - iOSSnapshotTestCase/SwiftSupport (5.0.2):
     - iOSSnapshotTestCase/Core
-  - JXFoundation (2.0.4.2):
-    - JXFoundation/Basic (= 2.0.4.2)
-    - JXFoundation/Core (= 2.0.4.2)
-    - JXFoundation/UIKit (= 2.0.4.2)
-  - JXFoundation/Basic (2.0.4.2):
+  - JXFoundation (2.1.0):
+    - JXFoundation/Basic (= 2.1.0)
+    - JXFoundation/Core (= 2.1.0)
+    - JXFoundation/UIKit (= 2.1.0)
+    - ReachabilitySwift
+  - JXFoundation/Basic (2.1.0):
     - JXFoundation/Core
     - JXFoundation/UIKit
-  - JXFoundation/Core (2.0.4.2)
-  - JXFoundation/UIKit (2.0.4.2):
+    - ReachabilitySwift
+  - JXFoundation/Core (2.1.0):
+    - ReachabilitySwift
+  - JXFoundation/UIKit (2.1.0):
     - JXFoundation/Core
+    - ReachabilitySwift
   - Nimble (7.3.4)
   - Nimble-Snapshots (6.9.1):
     - Nimble-Snapshots/Core (= 6.9.1)
@@ -26,6 +30,7 @@ PODS:
     - iOSSnapshotTestCase (~> 5.0)
     - Nimble (~> 7.0)
   - Quick (2.0.0)
+  - ReachabilitySwift (5.0.0)
 
 DEPENDENCIES:
   - FBSnapshotTestCase
@@ -41,6 +46,7 @@ SPEC REPOS:
     - Nimble
     - Nimble-Snapshots
     - Quick
+    - ReachabilitySwift
 
 EXTERNAL SOURCES:
   JXFoundation:
@@ -49,10 +55,11 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   iOSSnapshotTestCase: 2d51aa06775e95cecb0a1fb9c5c159ccd1dd4596
-  JXFoundation: 7ef06685d072ff1bf5bd9d2c4b653a581311d277
+  JXFoundation: e44a885e7214a66db019056869d75113783d95a7
   Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
   Nimble-Snapshots: bbd1ab264bacc24a9ce24a8363bc05aac783aeb0
   Quick: ce1276c7c27ba2da3cb2fd0cde053c3648b3b22d
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
 
 PODFILE CHECKSUM: 98e9fd993d44bfc9985bd7c238254a45cfb6f067
 

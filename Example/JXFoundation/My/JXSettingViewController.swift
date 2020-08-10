@@ -26,7 +26,9 @@ class JXSettingViewController: JXTableViewController {
         
         self.dataArray = ["device","隐私","数据存储"]
     }
-    override func isCustomNavigationBarUsed() -> Bool {
+    
+    
+    override var useCustomNavigationBar : Bool{
         return true
     }
     
@@ -34,8 +36,20 @@ class JXSettingViewController: JXTableViewController {
         let _ = JXFoundationHelper.shared.countDown(timeOut: 2, process: { (a) in
             print(a)
         }) {
-            self.refreshControl?.endRefreshing()
+            self.refreshControl.endRefreshing()
             //self.tableView.setContentOffset(CGPoint(x: 0, y: -self.navStatusHeight), animated: true)
+        }
+    }
+    override func resetView(status: JXNetworkStatus) {
+        if status == .unavailable {
+            
+        } else {
+            
+            if status == .wifi {
+                
+            } else {
+                
+            }
         }
     }
 }

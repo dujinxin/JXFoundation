@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                print(font)
 //            }
 //        }
+        let _ = self.notifications_application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }
 

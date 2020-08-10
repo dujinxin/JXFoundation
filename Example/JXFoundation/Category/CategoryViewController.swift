@@ -45,8 +45,9 @@ class CategoryViewController: JXBaseViewController {
 //            layout.itemSize = UICollectionViewFlowLayout.automaticSize
 //        }
         let width = kScreenWidth - kScreenWidth / 3
-        layout.itemSize = CGSize(width: width, height: 52)
-        layout.headerReferenceSize = CGSize(width: kScreenWidth, height: 38)
+        layout.itemSize = CGSize(width: width - 12, height: 52)
+        layout.headerReferenceSize = CGSize(width: width - 12, height: 38)
+        
         //layout.estimatedItemSize = CGSize(width: width, height: 52)
         //layout.headerReferenceSize = UICollectionViewFlowLayoutAutomaticSize
      
@@ -70,9 +71,9 @@ class CategoryViewController: JXBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.automaticallyAdjustsScrollViewInsets = false
-        self.view.backgroundColor = UIColor.white
+        
         self.title = "分类"
+        self.useLargeTitles = true
         self.customNavigationBar.backgroundView.backgroundColor = UIColor.cyan
         self.customNavigationBar.separatorView.backgroundColor = UIColor.gray
         
@@ -266,4 +267,6 @@ class CategoryEntity: BaseModel {
     @objc var title: String?
     @objc var desc: String?
     @objc var list = Array<CategoryEntity>()
+    
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
 }

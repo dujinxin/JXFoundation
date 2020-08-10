@@ -44,7 +44,7 @@ public class JXInputTextView: JXView {
     public var style: JXInputTextViewStyle = .none
     public var apply : JXInputTextViewApplication = .comment
     public var delegate : JXInputTextViewDelegate?
-    public var sendBlock : ClickBlock?
+    public var sendBlock : JXClickBlock?
     public var limitWords : Int  =  0                     //限制字数，0默认不限制
     public var limitLines : Int  =  4                     //限制行数，默认限制4行
     public var placeHolder: String? {
@@ -182,7 +182,7 @@ public class JXInputTextView: JXView {
         self.removeFromSuperview()
     }
     //MARK:system methods
-    public init(frame: CGRect, style:JXInputTextViewStyle = .none,completion:ClickBlock?) {
+    public init(frame: CGRect, style: JXInputTextViewStyle = .none, completion: JXClickBlock?) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.groupTableViewBackground
         
@@ -192,7 +192,12 @@ public class JXInputTextView: JXView {
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        
+        self.backgroundColor = UIColor.groupTableViewBackground
+        
+        self.setTopBar(style: style)
+        self.setKeyBoardObserver()
     }
     deinit {
         NotificationCenter.default.removeObserver(self)

@@ -18,18 +18,19 @@ public extension  UIBarButtonItem {
     ///   - imageName:图片名称
     ///   - target:target
     ///   - action:action
-    convenience init(title:String = "",fontSize:CGFloat = 13, imageName:String = "",target:Any,action:Selector) {
+    convenience init(title: String = "", fontSize: CGFloat = 14, imageName:String = "",target: Any, action: Selector) {
         
         let btn = UIButton()
         btn.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
         btn.setTitle(title, for: .normal)
         btn.setTitleColor(UIColor.darkText, for: .normal)
         if imageName.isEmpty == false {
-            btn.setImage(UIImage.init(named: imageName), for: .normal)
+            btn.setImage(UIImage(named: imageName), for: .normal)
         }
         btn.addTarget(target, action: action, for: .touchUpInside)
         
         btn.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
+        btn.titleLabel?.lineBreakMode = .byTruncatingTail
         
         self.init(customView: btn)
     }

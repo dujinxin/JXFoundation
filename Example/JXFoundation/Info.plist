@@ -26,6 +26,10 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>该功能需要访问您的相册</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>该功能需要访问您的相册</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

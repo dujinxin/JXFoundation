@@ -10,6 +10,11 @@
 import UIKit
 import Photos
 
+enum JXSourceType {
+    case image
+    case video
+}
+
 public extension UIImage {
     
     /// 依据宽度等比例对图片重新绘制
@@ -76,7 +81,7 @@ public extension UIImage {
     /// - Returns: 图片
     class func imageScreenshot(view: UIView) -> UIImage? {
         let rect = view.bounds
-        UIGraphicsBeginImageContext(rect.size)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
         let context = UIGraphicsGetCurrentContext()
         
         view.layer.render(in: context!)
@@ -102,43 +107,119 @@ public extension UIImage {
 }
 public extension UIImage {
     
-    class func save(image: UIImage, completion: ((_ isSuccess: Bool)->())?) {
+    //MARK:保存图片，视频到相册 - 系统方法
+    /// 保存图片
+    /// - Parameters:
+    ///   - image: 图片
+    ///   - completion: <#completion description#>
+    /// - Returns: <#description#>
+    class func imageWriteToSavedPhotosAlbum(image: UIImage) {
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
     }
-    @objc func image(image:UIImage,didFinishSavingWithError error:Error?,contextInfo:AnyObject?) {
-        if error != nil {
-            //
-            print("保存成功")
-        }else{
-            print("保存失败")
+    /// 保存视频
+    /// - Parameters:
+    ///   - videoPath: 视频本地路径
+    ///   - completion: <#completion description#>
+    /// - Returns: <#description#>
+    class func saveVideoAtPathToSavedPhotosAlbum(videoPath: String) {
+        if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(videoPath) {
+            UISaveVideoAtPathToSavedPhotosAlbum(videoPath, self, #selector(video(path:didFinishSaving:contextInfo:)), nil)
         }
     }
-    
-    /// 保存图片到相册
+    @objc func image(image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeMutableRawPointer?) {
+        if error != nil {
+            print("保存成功")
+        }else{
+            print("保存失败：",error?.localizedDescription as Any)
+        }
+    }
+    @objc func video(path: String, didFinishSaving error: Error?, contextInfo: UnsafeMutableRawPointer?) {
+        if let error = error {
+            print(error.localizedDescription)
+        } else {
+            print("保存成功")
+        }
+    }
+    //MARK:保存图片，视频到相册 - 自建相册
+    /// 保存图片到相册（只有一帧）
     ///
     /// - Parameters:
     ///   - image: 图片
     ///   - isAlbum: 是否新建相册
     ///   - completion: 回调
-    class func saveImage(image: UIImage, isAlbum: Bool = false, completion: @escaping ((_ isSuccess: Bool,_ msg: String)->())) -> Void {
-        
-        //let isGo = authorizationStatus()
-        
-        saveImageToAlbum(image: image, isCreateAlbum: isAlbum, albumName: "操作员", completion: completion)
-    }
-    private func authorizationStatus() -> Bool {
-        if PHPhotoLibrary.authorizationStatus() == .authorized{
-            return true
-        }else{
-            return false
+    class func saveImage(image: UIImage, isCreateAlbum: Bool = false, albumName: String, completion: @escaping ((_ isSuccess: Bool,_ msg: String)->())) -> Void {
+        if PHPhotoLibrary.authorizationStatus() == .notDetermined {
+            PHPhotoLibrary.requestAuthorization { (status) in
+                if status == .authorized {
+                    saveImageToAlbum(image: image, isCreateAlbum: isCreateAlbum, albumName: albumName, completion: completion)
+                }
+            }
+        } else if PHPhotoLibrary.authorizationStatus() == .restricted {
+            let notice = JXNoticeView.init(text: "请打开相册权限")
+            notice.show()
+        } else {
+            saveImageToAlbum(image: image, isCreateAlbum: isCreateAlbum, albumName: albumName, completion: completion)
         }
-//        PHPhotoLibrary.requestAuthorization({ (status) in
-//            if status == .authorized {
-//                
-//            }
-//        })
+        
+    }
+    class func saveResource(data: Data?, fileURL: URL?, type: PHAssetResourceType, isCreateAlbum: Bool = false, albumName: String, completion: @escaping ((_ isSuccess: Bool,_ msg: String)->())) -> Void {
+        if PHPhotoLibrary.authorizationStatus() == .notDetermined {
+            PHPhotoLibrary.requestAuthorization { (status) in
+                if status == .authorized {
+                    saveResourceToAlbum(data: data, fileURL: fileURL, type: type, isCreateAlbum: isCreateAlbum, albumName: albumName, completion: completion)
+                }
+            }
+        } else if PHPhotoLibrary.authorizationStatus() == .restricted {
+            let notice = JXNoticeView.init(text: "请打开相册权限")
+            notice.show()
+        } else {
+            saveResourceToAlbum(data: data, fileURL: fileURL, type: type, isCreateAlbum: isCreateAlbum, albumName: albumName, completion: completion)
+        }
+        
     }
     
+    /// 保存图片到相册（包括Gif图片）
+    ///
+    /// - Parameters:
+    ///   - image: 图片
+    ///   - isAlbum: 是否新建相册
+    ///   - completion: 回调
+    class func saveImage(path: String, isCreateAlbum: Bool = false, albumName: String, completion: @escaping ((_ isSuccess: Bool,_ msg: String)->())) -> Void {
+        if PHPhotoLibrary.authorizationStatus() == .notDetermined {
+            PHPhotoLibrary.requestAuthorization { (status) in
+                if status == .authorized {
+                    saveImageVideoToAlbum(path: path, sourceType: .image, isCreateAlbum: isCreateAlbum, albumName: albumName, completion: completion)
+                }
+            }
+        } else if PHPhotoLibrary.authorizationStatus() == .restricted {
+            let notice = JXNoticeView.init(text: "请打开相册权限")
+            notice.show()
+        } else {
+            saveImageVideoToAlbum(path: path, sourceType: .image, isCreateAlbum: isCreateAlbum, albumName: albumName, completion: completion)
+        }
+        
+    }
+    /// 保存视频到相册
+    ///
+    /// - Parameters:
+    ///   - path: 视频路径
+    ///   - isAlbum: 是否新建相册
+    ///   - completion: 回调
+    class func saveVideo(path: String, isCreateAlbum: Bool = false, albumName: String, completion: @escaping ((_ isSuccess: Bool,_ msg: String)->())) -> Void {
+        if PHPhotoLibrary.authorizationStatus() == .notDetermined {
+            PHPhotoLibrary.requestAuthorization { (status) in
+                if status == .authorized {
+                    saveImageVideoToAlbum(path: path, sourceType: .video, isCreateAlbum: isCreateAlbum, albumName: albumName, completion: completion)
+                }
+            }
+        } else if PHPhotoLibrary.authorizationStatus() == .restricted {
+            let notice = JXNoticeView.init(text: "请打开相册权限")
+            notice.show()
+        } else {
+            saveImageVideoToAlbum(path: path, sourceType: .video, isCreateAlbum: isCreateAlbum, albumName: albumName, completion: completion)
+        }
+        
+    }
     /// 保存图片到相册
     ///
     /// - Parameters:
@@ -146,7 +227,8 @@ public extension UIImage {
     ///   - isCreateAlbum: 是否新建相册（如果有就不会创建）
     ///   - albumName: 相册名字
     ///   - completion: 回调
-    class private func saveImageToAlbum(image:UIImage,isCreateAlbum:Bool,albumName:String,completion:@escaping ((_ isSuccess:Bool,_ msg:String)->())) -> Void {
+    class private func saveImageToAlbum(image: UIImage, isCreateAlbum: Bool, albumName: String, completion: @escaping ((_ isSuccess: Bool, _ msg: String)->())) -> Void {
+        
         //同步执行
 //        try? PHPhotoLibrary.shared().performChangesAndWait({
 //            //
@@ -159,16 +241,19 @@ public extension UIImage {
             let changeRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
             placeHolder = changeRequest.placeholderForCreatedAsset?.localIdentifier
             
+            
         }, completionHandler: { (isSuccess, error) in
-            //
-            if isCreateAlbum == false{
-                completion(isSuccess,"保存成功")
-                return
-            }
+            
             if isSuccess{
+                if isCreateAlbum == false {
+                    DispatchQueue.main.async {
+                        completion(isSuccess,"保存成功")
+                    }
+                    return
+                }
                 let phassetResults = PHAsset.fetchAssets(withLocalIdentifiers: [placeHolder], options: nil)
                 //print(phassetResults.firstObject)
-                
+             
                 var collectionChangeRequest: PHAssetCollectionChangeRequest!
                 var phAssetCollection : PHAssetCollection?
                 //PHAssetCollectionType: 相册类型：album,用户自定义相册；smartAlbum,系统相册；moment 事件排序相册
@@ -192,14 +277,129 @@ public extension UIImage {
                         
                         
                     }, completionHandler: { (isS, error) in
-                        if isS {
-                            completion(true,"保存到自定义相册成功")
-                        }else{
-                            print("保存到新相册失败 error = " + (error?.localizedDescription)!)
-                            completion(false,"保存到自定义相册失败")
+                        
+                        DispatchQueue.main.async {
+                            if isS {
+                                completion(true,"保存到自定义相册成功")
+                            }else{
+                                completion(false,"保存到自定义相册失败 error = \(error?.localizedDescription ?? "")")
+                            }
                         }
                     })
-                }else{//没有找到指定相册，需要新建相册
+                } else {//没有找到指定相册，需要新建相册
+                    //创建相册
+                    
+                    var collectionPlaceHolder : String!
+                    var collectionChangeRequest: PHAssetCollectionChangeRequest!
+                    PHPhotoLibrary.shared().performChanges({
+                        //创建一个相册
+                        collectionChangeRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: albumName)
+                        //保存其占位符
+                        collectionPlaceHolder = collectionChangeRequest.placeholderForCreatedAssetCollection.localIdentifier
+                    }, completionHandler: { (isCollectionCreateSuccess, error) in
+                        if isCollectionCreateSuccess {
+                            //根据占位符来获取相册
+                            let phAssetCollection = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [collectionPlaceHolder], options: nil)
+                            //print(phassetCollection.firstObject)
+                            
+                            //将已保存到胶卷相册的图片插入到新相册中，并置于首位
+                            PHPhotoLibrary.shared().performChanges({
+                                //创建一个操作相册的对象
+                                collectionChangeRequest = PHAssetCollectionChangeRequest(for: phAssetCollection.firstObject!)
+                                //给相册插入图片
+                                collectionChangeRequest.insertAssets(phassetResults, at: IndexSet.init(integer: 0))
+                               
+                            }, completionHandler: { (isS, error) in
+                                
+                                DispatchQueue.main.async {
+                                    if isS {
+                                        completion(true,"保存到自定义相册成功")
+                                    } else {
+                                        completion(false,"保存到自定义相册失败 error = \(error?.localizedDescription ?? "")")
+                                    }
+                                }
+                            })
+                            
+                        } else {
+                            DispatchQueue.main.async {
+                                completion(false,"保存到自定义相册失败 error = \(error?.localizedDescription ?? "")")
+                            }
+                        }
+                    })
+                }
+                
+            } else {
+                DispatchQueue.main.async {
+                    completion(false,"保存到自定义相册失败 error = \(error?.localizedDescription ?? "")")
+                }
+            }
+        })
+    }
+    /// 保存视频到相册
+    ///
+    /// - Parameters:
+    ///   - path: 视频路径
+    ///   - isCreateAlbum: 是否新建相册（如果有就不会创建）
+    ///   - albumName: 相册名字
+    ///   - completion: 回调
+    class private func saveImageVideoToAlbum(path: String, sourceType: JXSourceType = .image, isCreateAlbum: Bool, albumName: String, completion: @escaping ((_ isSuccess: Bool, _ msg: String) -> ())) -> Void {
+        //同步执行
+//        try? PHPhotoLibrary.shared().performChangesAndWait({
+//            //
+//            PHAssetChangeRequest.creationRequestForAsset(from: cell.imageView.image!)
+//        })
+        //异步
+        var placeHolder : String!
+        PHPhotoLibrary.shared().performChanges({
+            //
+            let changeRequest = sourceType == .video ? PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: URL(fileURLWithPath: path)) : PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: URL(fileURLWithPath: path))
+            placeHolder = changeRequest?.placeholderForCreatedAsset?.localIdentifier
+            
+        }, completionHandler: { (isSuccess, error) in
+            
+            if isSuccess{
+                if isCreateAlbum == false {
+                    DispatchQueue.main.async {
+                        completion(isSuccess,"保存成功")
+                    }
+                    return
+                }
+                let phassetResults = PHAsset.fetchAssets(withLocalIdentifiers: [placeHolder], options: nil)
+                //print(phassetResults.firstObject)
+                
+                var collectionChangeRequest: PHAssetCollectionChangeRequest!
+                var phAssetCollection : PHAssetCollection?
+                //PHAssetCollectionType: 相册类型：album,用户自定义相册；smartAlbum,系统相册；moment 事件排序相册
+                //PHAssetCollectionSubtype:相册子类型：更详细的分类, 缩小查找范围，提高效率
+                //PHFetchOptions?
+                let collectionResults = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular, options: nil)
+                //let collectionResults = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [placeHolder], options: nil)
+                collectionResults.enumerateObjects({ (assetCollection, index, stop) in
+                    if albumName == assetCollection.localizedTitle{
+                        phAssetCollection = assetCollection
+                        stop.initialize(to: true)
+                    }
+                })
+                if let phAssetCollection = phAssetCollection {//有已经建好的相册，那么直接保存即可
+                
+                    //将已保存到胶卷相册的图片插入到新相册中，并置于首位
+                    PHPhotoLibrary.shared().performChanges({
+                        //根据已有相册创建一个操作相册的对象
+                        collectionChangeRequest = PHAssetCollectionChangeRequest(for: phAssetCollection)
+                        //给相册插入图片
+                        collectionChangeRequest.insertAssets(phassetResults, at: IndexSet.init(integer: 0))
+                        
+                        
+                    }, completionHandler: { (isS, error) in
+                        DispatchQueue.main.async {
+                            if isS {
+                                completion(true,"保存到自定义相册成功")
+                            }else{
+                                completion(false,"保存到自定义相册失败 error = \(error?.localizedDescription ?? "")")
+                            }
+                        }
+                    })
+                } else {//没有找到指定相册，需要新建相册
                     //创建相册
                     
                     var collectionPlaceHolder : String!
@@ -224,24 +424,138 @@ public extension UIImage {
                                 
                                 
                             }, completionHandler: { (isS, error) in
-                                if isS {
-                                    completion(true,"保存到自定义相册成功")
-                                }else{
-                                    print("保存到新相册失败 error = " + (error?.localizedDescription)!)
-                                    completion(false,"保存到自定义相册失败")
+                                DispatchQueue.main.async {
+                                    if isS {
+                                        completion(true,"保存到自定义相册成功")
+                                    }else{
+                                        completion(false,"保存到自定义相册失败 error = \(error?.localizedDescription ?? "")")
+                                    }
                                 }
                             })
                             
                         }else{
-                            completion(false,"保存到自定义相册失败")
-                            print("创建相册失败 error = " + (error?.localizedDescription)!)
+                            DispatchQueue.main.async {
+                                completion(false,"保存到自定义相册失败 error = \(error?.localizedDescription ?? "")")
+                            }
                         }
                     })
                 }
                 
-            }else{
-                completion(false,"保存到自定义相册失败")
-                print("保存到胶卷相册失败 error = \(String(describing: error?.localizedDescription))")
+            } else {
+                DispatchQueue.main.async {
+                    completion(false,"保存到自定义相册失败 error = \(error?.localizedDescription ?? "")")
+                }
+            }
+        })
+    }
+    class private func saveResourceToAlbum(data: Data?, fileURL: URL?, type: PHAssetResourceType, isCreateAlbum: Bool, albumName: String, completion: @escaping ((_ isSuccess: Bool, _ msg: String)->())) -> Void {
+        
+        //异步
+        var placeHolder : String!
+        PHPhotoLibrary.shared().performChanges({
+            //
+            let request = PHAssetCreationRequest(for: PHAsset())
+            
+            if let data = data, data.isEmpty == false {
+                request.addResource(with: type, data: data, options: nil)
+            } else if let url = fileURL, url.isFileURL == true {
+                request.addResource(with: type, fileURL: url, options: nil)
+            } else {
+                DispatchQueue.main.async {
+                    completion(false,"data,fileURL至少有一个不为空")
+                }
+            }
+            placeHolder = request.placeholderForCreatedAsset?.localIdentifier
+        }, completionHandler: { (isSuccess, error) in
+        
+            if isSuccess{
+                if isCreateAlbum == false {
+                    DispatchQueue.main.async {
+                        completion(isSuccess,"保存成功")
+                    }
+                    return
+                }
+                let phassetResults = PHAsset.fetchAssets(withLocalIdentifiers: [placeHolder], options: nil)
+                //print(phassetResults.firstObject)
+             
+                var collectionChangeRequest: PHAssetCollectionChangeRequest!
+                var phAssetCollection : PHAssetCollection?
+                //PHAssetCollectionType: 相册类型：album,用户自定义相册；smartAlbum,系统相册；moment 事件排序相册
+                //PHAssetCollectionSubtype:相册子类型：更详细的分类, 缩小查找范围，提高效率
+                //PHFetchOptions?
+                let collectionResults = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular, options: nil)
+                collectionResults.enumerateObjects({ (assetCollection, index, stop) in
+                    if albumName == assetCollection.localizedTitle{
+                        phAssetCollection = assetCollection
+                        stop.initialize(to: true)
+                    }
+                })
+                if let phAssetCollection = phAssetCollection {//有已经建好的相册，那么直接保存即可
+                
+                    //将已保存到胶卷相册的图片插入到新相册中，并置于首位
+                    PHPhotoLibrary.shared().performChanges({
+                        //根据已有相册创建一个操作相册的对象
+                        collectionChangeRequest = PHAssetCollectionChangeRequest(for: phAssetCollection)
+                        //给相册插入图片
+                        collectionChangeRequest.insertAssets(phassetResults, at: IndexSet.init(integer: 0))
+                        
+                        
+                    }, completionHandler: { (isS, error) in
+                        
+                        DispatchQueue.main.async {
+                            if isS {
+                                completion(true,"保存到自定义相册成功")
+                            }else{
+                                completion(false,"保存到自定义相册失败 error = \(error?.localizedDescription ?? "")")
+                            }
+                        }
+                    })
+                } else {//没有找到指定相册，需要新建相册
+                    //创建相册
+                    
+                    var collectionPlaceHolder : String!
+                    var collectionChangeRequest: PHAssetCollectionChangeRequest!
+                    PHPhotoLibrary.shared().performChanges({
+                        //创建一个相册
+                        collectionChangeRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: albumName)
+                        //保存其占位符
+                        collectionPlaceHolder = collectionChangeRequest.placeholderForCreatedAssetCollection.localIdentifier
+                    }, completionHandler: { (isCollectionCreateSuccess, error) in
+                        if isCollectionCreateSuccess {
+                            //根据占位符来获取相册
+                            let phAssetCollection = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [collectionPlaceHolder], options: nil)
+                            //print(phassetCollection.firstObject)
+                            
+                            //将已保存到胶卷相册的图片插入到新相册中，并置于首位
+                            PHPhotoLibrary.shared().performChanges({
+                                //创建一个操作相册的对象
+                                collectionChangeRequest = PHAssetCollectionChangeRequest(for: phAssetCollection.firstObject!)
+                                //给相册插入图片
+                                collectionChangeRequest.insertAssets(phassetResults, at: IndexSet.init(integer: 0))
+                               
+                            }, completionHandler: { (isS, error) in
+                                
+                                DispatchQueue.main.async {
+                                    if isS {
+                                        completion(true,"保存到自定义相册成功")
+                                    } else {
+                                        completion(false,"保存到自定义相册失败 error = \(error?.localizedDescription ?? "")")
+                                    }
+                                }
+                            })
+                            
+                        } else {
+                            DispatchQueue.main.async {
+                                completion(false,"保存到自定义相册失败 error = \(error?.localizedDescription ?? "")")
+                            }
+                        }
+                    })
+                }
+                
+            } else {
+                DispatchQueue.main.async {
+                    completion(false,"保存到自定义相册失败 error = \(error?.localizedDescription ?? "")")
+                }
             }
         })
     }
@@ -278,15 +592,17 @@ public extension UIImage {
     /// - Parameters:
     ///   - name: 数据名称
     /// - Returns: 操作结果
-    static func select(name: String) -> Data? {
-        let data = FileManager.select(fromFile: name) as? Data
-        return data
+    static func select(name: String) -> UIImage? {
+        guard let data = FileManager.select(fromFile: name) as? Data else {
+            return nil
+        }
+        return UIImage(data: data)
     }
     /// 移除图片
     ///
     /// - Parameter name: 数据名称
     /// - Returns: 操作结果
-    static func delete(name: String) ->Bool{
+    static func delete(name: String) -> Bool {
         return FileManager.delete(fromFile: name)
     }
 }

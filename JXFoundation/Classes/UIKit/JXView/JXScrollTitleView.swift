@@ -7,10 +7,12 @@
 
 import UIKit
 
-public enum JXScrollTitleViewBottomLineType {
-    case defalut          //隐藏
-    case customSize       //自定义大小
-    case titleSize        //跟随title
+public enum JXScrollTitleViewIndicatorType {
+    case defalut                //不显示
+    case lineCustomSize         //自定义线条大小
+    case lineTitleSize          //线条跟随title
+    
+    case backgroundTitleSize    //背景跟随title
 }
 
 public protocol JXScrollTitleViewDelegate {
@@ -18,13 +20,17 @@ public protocol JXScrollTitleViewDelegate {
 }
 
 public class JXScrollTitleView: JXView {
-    
+    //MARK:public properties & methods
+    /// delegate : JXScrollTitleViewDelegate
     public var delegate : JXScrollTitleViewDelegate?
+    /// 回调
+    public var clickBlock : JXSelectedBlock?
     public var selectedIndex = 0 {
         didSet{
             self.resetStatus(animateType: 0)
         }
     }
+    public var buttons = Array<UIButton>()
     public lazy var containerView: UIScrollView = {
         let view = UIScrollView()
         view.showsHorizontalScrollIndicator = false
@@ -32,12 +38,21 @@ public class JXScrollTitleView: JXView {
         view.delegate = self
         return view
     }()
-    public var lineType : JXScrollTitleViewBottomLineType = .defalut {
+    /// 底部滑动指示器风格
+    public var indicatorType : JXScrollTitleViewIndicatorType = .defalut {
         didSet{
-            self.bottomLineView.isHidden = lineType == .defalut ? true : false
+            switch indicatorType {
+            case .lineTitleSize,.lineCustomSize:
+                self.bottomLineView.isHidden = false
+            case .backgroundTitleSize:
+                self.selectedBackgroundView.isHidden = false
+            default:
+                self.bottomLineView.isHidden = true
+                self.selectedBackgroundView.isHidden = true
+            }
         }
     }
-    /// 底部线条，origin不起作用
+    /// 底部滑动指示器风格，origin不起作用
     public lazy var bottomLineView: UIView = {
         let view = UIView()
         view.frame = CGRect(x: 0, y: 0, width: 60, height: 2)
@@ -45,6 +60,21 @@ public class JXScrollTitleView: JXView {
         view.isHidden = true
         return view
     }()
+    /// 背景滑动指示器，origin不起作用。背景色，圆角，可以自己调整。宽度由attribute.contentMarginEdge.left 和.right来定，高度由attribute.sectionEdgeInsets.top 和.bottom来约束
+    public lazy var selectedBackgroundView: UIView = {
+        let view = UIView()
+        view.frame = CGRect(x: 0, y: 0, width: 60, height: 30)
+        view.backgroundColor = UIColor.darkGray
+        view.layer.cornerRadius = 5
+        view.isHidden = true
+        return view
+    }()
+    /// 创建一个滑动视图
+    /// - Parameters:
+    ///   - frame: frame
+    ///   - delegate: 代理
+    ///   - titles: 标题集合
+    ///   - attribute: 常用属性设置
     public init(frame: CGRect, delegate: JXScrollTitleViewDelegate, titles: Array<String>, attribute: JXAttribute) {
         super.init(frame: frame)
         
@@ -55,8 +85,30 @@ public class JXScrollTitleView: JXView {
         self.backgroundColor = attribute.backgroundColor
         
         self.addSubview(self.containerView)
+        
+        self.containerView.addSubview(self.bottomLineView)
+        self.containerView.addSubview(self.selectedBackgroundView)
+        self.initSubViews(titles)
+    }
+    /// 创建一个滑动视图
+    /// - Parameters:
+    ///   - frame: frame
+    ///   - titles: 标题集合
+    ///   - attribute: 常用属性设置
+    ///   - clickBlock: 回调
+    public init(frame: CGRect, titles: Array<String>, attribute: JXAttribute, clickBlock: JXClickBlock?) {
+        super.init(frame: frame)
+        
+        self.clickBlock = clickBlock
+        self.attribute = attribute
+        self.titles = titles
+        
+        self.backgroundColor = attribute.backgroundColor
+        
+        self.addSubview(self.containerView)
         self.initSubViews(titles)
         self.containerView.addSubview(self.bottomLineView)
+        self.containerView.addSubview(self.selectedBackgroundView)
     }
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -67,10 +119,7 @@ public class JXScrollTitleView: JXView {
         self.containerView.frame = CGRect(x: attribute.sectionEdgeInsets.left, y: attribute.sectionEdgeInsets.top, width: bounds.width - attribute.sectionEdgeInsets.left - (-attribute.sectionEdgeInsets.right), height: bounds.height - attribute.sectionEdgeInsets.top - (-attribute.sectionEdgeInsets.bottom))
         
         
-        
-        
         self.totalWidth = 0
-        
         
         self.rects.removeAll(keepingCapacity: true)
         for i in 0..<self.titles.count {
@@ -89,11 +138,12 @@ public class JXScrollTitleView: JXView {
             //let size = title.calculate(width: UIScreen.main.screenWidth, font: font)
             //let itemWidth = size.width + 4 + CGFloat(fabsf(Float(attribute.contentMarginEdge.left))) + CGFloat(fabsf(Float(attribute.contentMarginEdge.right)))
             
-            let contentWidth = button.sizeThatFits(CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: self.containerView.bounds.height)).width
-            let itemWidth = contentWidth + CGFloat(fabsf(Float(attribute.contentMarginEdge.left))) + CGFloat(fabsf(Float(attribute.contentMarginEdge.right)))
-            let itemHeight = self.containerView.bounds.size.height - attribute.sectionEdgeInsets.top - (-attribute.sectionEdgeInsets.bottom)
+            let contentSize = button.sizeThatFits(CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: self.containerView.bounds.height))
+            let itemWidth = contentSize.width + CGFloat(fabsf(Float(attribute.contentMarginEdge.left))) + CGFloat(fabsf(Float(attribute.contentMarginEdge.right)))
+            let itemHeight = contentSize.height + CGFloat(fabsf(Float(attribute.contentMarginEdge.top))) + CGFloat(fabsf(Float(attribute.contentMarginEdge.bottom)))
+            print(itemHeight,self.containerView.bounds.height)
             
-            let rect = CGRect(x: self.totalWidth, y: attribute.sectionEdgeInsets.top, width: itemWidth, height: itemHeight)
+            let rect = CGRect(x: self.totalWidth, y: 0, width: itemWidth, height: self.containerView.bounds.height)
             button.frame = rect
             button.contentEdgeInsets = attribute.contentEdgeInsets
             
@@ -108,14 +158,22 @@ public class JXScrollTitleView: JXView {
                 isFirstInit = false
                 
                 var lineFrame = self.bottomLineView.frame
+                var backgroundFrame = self.bottomLineView.frame
                 lineFrame.origin.y = self.containerView.bounds.height - lineFrame.height
-                if self.lineType == .customSize {
+                backgroundFrame.origin.y = self.containerView.bounds.height - backgroundFrame.height
+                if self.indicatorType == .lineCustomSize {
                     lineFrame.origin.x = (rect.size.width - lineFrame.width) / 2 + rect.origin.x
-                } else if self.lineType == .titleSize {
+                    self.bottomLineView.frame = lineFrame
+                } else if self.indicatorType == .lineTitleSize {
                     lineFrame.origin.x = rect.origin.x
                     lineFrame.size.width = rect.size.width
+                    self.bottomLineView.frame = lineFrame
+                } else if self.indicatorType == .backgroundTitleSize {
+                    lineFrame.origin.x = rect.origin.x
+                    lineFrame.size.width = rect.size.width
+                    self.selectedBackgroundView.frame = rect
                 }
-                self.bottomLineView.frame = lineFrame
+                
             }
             
         }
@@ -129,7 +187,7 @@ public class JXScrollTitleView: JXView {
     //MARK:private properties & methods
     private var attribute: JXAttribute!
     private var titles = Array<String>()
-    private var buttons = Array<UIButton>()
+    
     private var rects = Array<CGRect>()
     private var totalWidth: CGFloat = 0
     private var isFirstInit: Bool = true
@@ -171,6 +229,9 @@ public class JXScrollTitleView: JXView {
         if let target = self.delegate {
             target.jxScrollTitleView(scrollTitleView: self, didSelectItemAt: button.tag)
         }
+        if let block = self.clickBlock {
+            block(self, self.selectedIndex)
+        }
     }
     func resetStatus(animateType: Int) {
         
@@ -199,15 +260,17 @@ public class JXScrollTitleView: JXView {
         let rect = self.rects[self.selectedIndex]
         UIView.animate(withDuration: 0.3, animations: {
             
-            if self.lineType == .customSize {
+            if self.indicatorType == .lineCustomSize {
                 var lineFrame = self.bottomLineView.frame
                 lineFrame.origin.x = (rect.size.width - lineFrame.width) / 2 + rect.origin.x
                 self.bottomLineView.frame = lineFrame
-            } else if self.lineType == .titleSize {
+            } else if self.indicatorType == .lineTitleSize {
                 var lineFrame = self.bottomLineView.frame
                 lineFrame.origin.x = rect.origin.x
                 lineFrame.size.width = rect.size.width
                 self.bottomLineView.frame = lineFrame
+            } else if self.indicatorType == .backgroundTitleSize {
+                self.selectedBackgroundView.frame = rect
             }
             
         }) { (finished) in
@@ -215,8 +278,10 @@ public class JXScrollTitleView: JXView {
             
         }
         //scrollView 滚动动画
-        let rectWithCenter = CGRect(x: button.center.x - self.containerView.bounds.width / 2, y: 0, width: self.containerView.bounds.width, height: self.containerView.bounds.height)
-        self.containerView.scrollRectToVisible(rectWithCenter, animated: true)
+        if self.containerView.isScrollEnabled {
+            let rectWithCenter = CGRect(x: button.center.x - self.containerView.bounds.width / 2, y: 0, width: self.containerView.bounds.width, height: self.containerView.bounds.height)
+            self.containerView.scrollRectToVisible(rectWithCenter, animated: true)
+        }
     }
 }
 extension JXScrollTitleView: UIScrollViewDelegate {

@@ -66,3 +66,13 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+Example/Pods/Target Support Files/FBSnapshotTestCase/FBSnapshotTestCase.debug.xcconfig
+Example/Pods/Target Support Files/FBSnapshotTestCase/FBSnapshotTestCase.release.xcconfig
+Example/Pods/Target Support Files/iOSSnapshotTestCase/iOSSnapshotTestCase.debug.xcconfig
+Example/Pods/Target Support Files/iOSSnapshotTestCase/iOSSnapshotTestCase.release.xcconfig
+Example/Pods/Target Support Files/JXFoundation/JXFoundation.debug.xcconfig
+Example/Pods/Target Support Files/JXFoundation/JXFoundation.release.xcconfig
+Example/Pods/Target Support Files/Nimble/Nimble.debug.xcconfig
+Example/Pods/Target Support Files/Nimble/Nimble.release.xcconfig
+Example/Pods/Target Support Files/Nimble-Snapshots/Nimble-Snapshots.debug.xcconfig
+Example/Pods/Target Support Files/Nimble-Snapshots/Nimble-Snapshots.release.xcconfig

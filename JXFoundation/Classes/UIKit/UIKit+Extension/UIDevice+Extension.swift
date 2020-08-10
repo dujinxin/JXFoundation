@@ -280,7 +280,7 @@ public extension UIDevice {
             return host_statistics(host_port, HOST_VM_INFO, p, &host_size)
         }
         if status == KERN_SUCCESS {
-            let free = vm_size_t(vm_stat.free_count) * page_size
+            //let free = vm_size_t(vm_stat.free_count) * page_size
             //活跃的+不活跃的+wire
             let used = (Int64)(vm_size_t(vm_stat.active_count + vm_stat.inactive_count + vm_stat.wire_count) * page_size)
 

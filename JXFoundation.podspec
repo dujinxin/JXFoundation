@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JXFoundation'
-  s.version          = '2.1.0'
+  s.version          = '2.1.1'
   s.summary          = '基类，自定义view，extension，方法工具，用于快速集成'
 
 # This description is used to generate tags and improve search results.
@@ -31,13 +31,18 @@ TODO: Add long description of the pod here.
   s.swift_version    = '5.1'
   # s.source_files = 'JXFoundation/Classes/Resources/JXFoundation.bundle'
   s.resource = 'JXFoundation/Classes/Resources/JXFoundation.bundle'
-  # s.resource_bundles = {
-  #   'JXFoundation' => ['JXFoundation/Assets/*.png']
-  # }
+#  s.resource = 'JXFoundation/Classes/Resources/JXFoundation/*.xcassets'
+  s.resource_bundles = {
+#      'JXFoundation' => ['JXFoundation/*.xcassets']
+
+      'JXFoundation' => ['JXFoundation/Classes/Resources/*']
+      
+  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'ReachabilitySwift'
   
   s.subspec 'Basic' do |ss|
       ss.source_files = 'JXFoundation/Classes/Basic/**/*'

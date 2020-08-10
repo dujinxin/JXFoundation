@@ -7,20 +7,23 @@
 //
 
 import UIKit
+import JXFoundation
 
-class SubViewController: UIViewController {
+private let cellId = "cellId"
+
+class SubViewController: JXTableViewController {
     
     override var title: String?{
         didSet{
             let moreButton = UIButton()
             moreButton.setTitle(title, for: .normal)
-             moreButton.setTitleColor(UIColor.red, for: .normal)
+            moreButton.setTitleColor(UIColor.red, for: .normal)
             moreButton.titleLabel?.font = UIFont.systemFont(ofSize: 40, weight: .semibold)
-             moreButton.contentVerticalAlignment = .bottom;
-             moreButton.tag = 996;
-             self.view.addSubview(moreButton);
+            moreButton.contentVerticalAlignment = .bottom;
+            moreButton.tag = 996;
+            //self.view.addSubview(moreButton);
              
-             moreButton.frame = CGRect(x: 0, y: 300 - 60, width: 375, height: 60)
+            moreButton.frame = CGRect(x: 0, y: 300 - 60, width: 375, height: 60)
             
             let layer = CAGradientLayer.init()
             layer.colors = [UIColor.black.cgColor, UIColor.rgbColor(rgbValue: 0x000000, alpha: 0).cgColor];
@@ -31,31 +34,80 @@ class SubViewController: UIViewController {
             moreButton.layer.insertSublayer(layer, at: 0)
         }
     }
-
-    override func loadView() {
-        super.loadView()
-        print(#function,self.title ?? "")
+    
+    var frame : CGRect? {
+        didSet{
+            self.tableView.frame = frame ?? CGRect()
+        }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        print(#function,self.title ?? "")
+        self.tableView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - kNavStatusHeight - kNavLargeTitleHeight - 44)
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        
+        self.dataArray = ["device","隐私","数据存储","device","隐私","数据存储","device","隐私","数据存储","device","隐私","数据存储","device","隐私","数据存储","device","隐私","数据存储","device","隐私","数据存储","device","隐私","数据存储","device","隐私","数据存储"]
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(#function,self.title ?? "")
+        
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print(#function,self.title ?? "")
+    override var useCustomNavigationBar : Bool{
+        return false
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print(#function,self.title ?? "")
+    
+    override func refresh() {
+        let _ = JXFoundationHelper.shared.countDown(timeOut: 1, process: { (a) in
+            print(a)
+        }) {
+            self.refreshControl.endRefreshing()
+            //self.tableView.setContentOffset(CGPoint(x: 0, y: -self.navStatusHeight), animated: true)
+        }
     }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print(#function,self.title ?? "")
+    override func resetView(status: JXNetworkStatus) {
+        if status == .unavailable {
+            
+        } else {
+            
+            if status == .wifi {
+                
+            } else {
+                
+            }
+        }
+    }
+}
+extension SubViewController {
+    override func tableView(_ tvareView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.dataArray.count
+    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        cell.accessoryType = .disclosureIndicator
+        cell.textLabel?.text = self.dataArray[indexPath.row] as? String
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch indexPath.row {
+        case 0:
+            self.navigationController?.pushViewController(JXDeviceViewController(), animated: true)
+        case 1:
+            self.navigationController?.pushViewController(JXPrivateViewController(), animated: true)
+        case 2:
+            self.navigationController?.pushViewController(JXDataViewController(), animated: true)
+        default:
+            print(indexPath.row)
+        }
+    }
+}
+extension SubViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("subTableView",scrollView.contentOffset)
+        
+        
     }
 }

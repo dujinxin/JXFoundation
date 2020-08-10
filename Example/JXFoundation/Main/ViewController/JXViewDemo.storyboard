@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Select View Controller-->
+        <scene sceneID="aDZ-tS-sx3">
+            <objects>
+                <viewController storyboardIdentifier="JXSelectViewController" id="kt3-Sa-ECy" customClass="JXSelectViewController" customModule="JXFoundation_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f52-nW-akw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="uhL-VQ-7oC">
+                                <rect key="frame" x="153" y="268" width="108" height="360"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8t-h7-M2V">
+                                        <rect key="frame" x="0.0" y="0.0" width="108" height="30"/>
+                                        <state key="normal" title="pickSelect"/>
+                                        <connections>
+                                            <action selector="pickAction:" destination="kt3-Sa-ECy" eventType="touchUpInside" id="MTx-e3-nHB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3j-K1-C9W">
+                                        <rect key="frame" x="0.0" y="55" width="108" height="30"/>
+                                        <state key="normal" title="listSelect"/>
+                                        <connections>
+                                            <action selector="listAction:" destination="kt3-Sa-ECy" eventType="touchUpInside" id="Fc7-xD-Eml"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjy-Oi-kMV">
+                                        <rect key="frame" x="0.0" y="110" width="108" height="30"/>
+                                        <state key="normal" title="customSelect"/>
+                                        <connections>
+                                            <action selector="customAction:" destination="kt3-Sa-ECy" eventType="touchUpInside" id="4wz-kW-t2y"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VE2-n6-Gv9">
+                                        <rect key="frame" x="0.0" y="165" width="108" height="30"/>
+                                        <state key="normal" title="middle position"/>
+                                        <connections>
+                                            <action selector="middleAction:" destination="kt3-Sa-ECy" eventType="touchUpInside" id="Zmi-IZ-ZCL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAm-fz-efP">
+                                        <rect key="frame" x="0.0" y="220" width="108" height="30"/>
+                                        <state key="normal" title="bottom position"/>
+                                        <connections>
+                                            <action selector="bottomAction:" destination="kt3-Sa-ECy" eventType="touchUpInside" id="pGB-AJ-HLa"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hro-JT-WgH">
+                                        <rect key="frame" x="0.0" y="275" width="108" height="30"/>
+                                        <state key="normal" title="custom cell list"/>
+                                        <connections>
+                                            <action selector="title3Action:" destination="kt3-Sa-ECy" eventType="touchUpInside" id="hgR-UO-tqN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRZ-LL-RpK">
+                                        <rect key="frame" x="0.0" y="330" width="108" height="30"/>
+                                        <state key="normal" title="只有内容"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="uhL-VQ-7oC" firstAttribute="centerY" secondItem="f52-nW-akw" secondAttribute="centerY" id="7qb-M6-ob4"/>
+                            <constraint firstItem="uhL-VQ-7oC" firstAttribute="centerX" secondItem="f52-nW-akw" secondAttribute="centerX" id="Oyh-r5-Bu6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ClM-JD-NP9"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xk4-Io-qmF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-709" y="135"/>
+        </scene>
+        <!--Input View Controller-->
+        <scene sceneID="qc8-Ba-PRG">
+            <objects>
+                <viewController storyboardIdentifier="JXInputViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NUR-aA-woW" customClass="JXInputViewController" customModule="JXFoundation_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bKG-CV-Qvx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMC-4V-VdQ">
+                                <rect key="frame" x="151" y="431" width="112" height="34"/>
+                                <color key="backgroundColor" red="0.98823529409999999" green="0.29803921570000003" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="112" id="5EB-On-HQQ"/>
+                                </constraints>
+                                <state key="normal" title="请输入内容"/>
+                                <connections>
+                                    <action selector="showInputView" destination="NUR-aA-woW" eventType="touchUpInside" id="wRR-JV-jrn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QMC-4V-VdQ" firstAttribute="centerX" secondItem="bKG-CV-Qvx" secondAttribute="centerX" id="pDX-KQ-C6A"/>
+                            <constraint firstItem="QMC-4V-VdQ" firstAttribute="centerY" secondItem="bKG-CV-Qvx" secondAttribute="centerY" id="qq3-tT-hDt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2lf-Vr-Pj7"/>
+                    </view>
+                    <connections>
+                        <outlet property="inputButton" destination="QMC-4V-VdQ" id="StJ-jA-Rjd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="btt-Yw-klr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-16" y="135"/>
+        </scene>
+        <!--Alert View Controller-->
+        <scene sceneID="HGZ-gw-BU5">
+            <objects>
+                <viewController storyboardIdentifier="alertVC" id="WFk-ah-Ip0" customClass="JXAlertViewController" customModule="JXFoundation_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ru2-iB-jdl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Wcs-Qh-pXa">
+                                <rect key="frame" x="128" y="268" width="158" height="360"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3P-o2-eiq">
+                                        <rect key="frame" x="0.0" y="0.0" width="158" height="30"/>
+                                        <state key="normal" title="全内容"/>
+                                        <connections>
+                                            <action selector="allAction:" destination="WFk-ah-Ip0" eventType="touchUpInside" id="iVZ-Ev-Pq3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0JK-xx-BRt">
+                                        <rect key="frame" x="0.0" y="55" width="158" height="30"/>
+                                        <state key="normal" title="只有标题"/>
+                                        <connections>
+                                            <action selector="titleAction:" destination="WFk-ah-Ip0" eventType="touchUpInside" id="PIq-nc-k3e"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UOz-Jz-iTD">
+                                        <rect key="frame" x="0.0" y="110" width="158" height="30"/>
+                                        <state key="normal" title="只有内容"/>
+                                        <connections>
+                                            <action selector="contentAction:" destination="WFk-ah-Ip0" eventType="touchUpInside" id="8Wm-QY-9bC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNV-ks-P54">
+                                        <rect key="frame" x="0.0" y="165" width="158" height="30"/>
+                                        <state key="normal" title="单个按钮"/>
+                                        <connections>
+                                            <action selector="singleAction:" destination="WFk-ah-Ip0" eventType="touchUpInside" id="rpm-ad-kWX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Jp-BA-q2o">
+                                        <rect key="frame" x="0.0" y="220" width="158" height="30"/>
+                                        <state key="normal" title="操作按钮带菊花loading"/>
+                                        <connections>
+                                            <action selector="loadingAction:" destination="WFk-ah-Ip0" eventType="touchUpInside" id="g5x-uJ-x6u"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9U8-66-PHJ">
+                                        <rect key="frame" x="0.0" y="275" width="158" height="30"/>
+                                        <state key="normal" title="只有内容"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awE-IK-KF0">
+                                        <rect key="frame" x="0.0" y="330" width="158" height="30"/>
+                                        <state key="normal" title="只有内容"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Wcs-Qh-pXa" firstAttribute="centerX" secondItem="ru2-iB-jdl" secondAttribute="centerX" id="3cO-bs-tI3"/>
+                            <constraint firstItem="Wcs-Qh-pXa" firstAttribute="centerY" secondItem="ru2-iB-jdl" secondAttribute="centerY" id="dqT-g1-ycK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0tC-eS-cRL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vnj-Lj-GbE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1399" y="135"/>
+        </scene>
+    </scenes>
+</document>

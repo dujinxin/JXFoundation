@@ -13,6 +13,27 @@ private let reuseIndentifierHeader = "reuseIndentifierHeader"
 
 open class JXCollectionViewController: JXBaseViewController {
 
+    open override var useLargeTitles: Bool {
+        didSet{
+            if useLargeTitles == true {
+                self.navStatusHeight = kNavStatusHeight + kNavLargeTitleHeight
+            } else {
+                self.navStatusHeight = kNavStatusHeight
+            }
+            
+            if #available(iOS 11.0, *) {
+                if self.useCustomNavigationBar {
+                    self.customNavigationBar.prefersLargeTitles = useLargeTitles
+                } else {
+                    self.navigationController?.navigationBar.prefersLargeTitles = useLargeTitles
+                }
+            } else {
+                // Fallback on earlier versions
+            }
+            self.customNavigationBar.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.navStatusHeight)
+            self.collectionView.frame = CGRect(x: 0, y: self.navStatusHeight, width: view.bounds.width, height: (view.bounds.height - self.navStatusHeight))
+        }
+    }
     //collectionView
     public lazy var collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout.init()
@@ -45,7 +66,7 @@ open class JXCollectionViewController: JXBaseViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        if self.isCustomNavigationBarUsed() {
+        if self.useCustomNavigationBar {
             if #available(iOS 11.0, *) {
                 self.collectionView.contentInsetAdjustmentBehavior = .never
             } else {
@@ -59,8 +80,8 @@ open class JXCollectionViewController: JXBaseViewController {
     }
     
     open func setUpTableView(){
-        let y = self.isCustomNavigationBarUsed() ? self.navStatusHeight : 0
-        let height = self.isCustomNavigationBarUsed() ? (view.bounds.height - self.navStatusHeight) : view.bounds.height
+        let y = self.useCustomNavigationBar ? self.navStatusHeight : 0
+        let height = self.useCustomNavigationBar ? (view.bounds.height - self.navStatusHeight) : view.bounds.height
         
         self.collectionView.frame = CGRect(x: 0, y: y, width: view.bounds.width, height: height)
         self.view.addSubview(self.collectionView)

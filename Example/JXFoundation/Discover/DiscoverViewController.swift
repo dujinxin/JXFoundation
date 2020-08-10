@@ -30,7 +30,7 @@ class DiscoverViewController: UITableViewController {
         refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         self.tableView.addSubview(refreshControl!)
 
-        print(self.navigationController?.navigationBar.frame)
+        print(self.navigationController?.navigationBar.frame as Any)
     }
     @objc func refresh() {
         let _ = JXFoundationHelper.shared.countDown(timeOut: 3, process: { (a) in

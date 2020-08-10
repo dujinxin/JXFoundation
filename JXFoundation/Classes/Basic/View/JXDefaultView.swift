@@ -128,8 +128,8 @@ open class JXDefaultView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if style == .noNetwork {
-            self.tapBlock?()
+        if let block = tapBlock, style == .noNetwork {
+            block()
         }
     }
 }
@@ -139,7 +139,7 @@ public extension JXDefaultView {
     /// set default content
     ///
     /// - Parameter info: [String:String] include imageName,content
-    func setDefaultViewContent(info:[String:String])  {
+    func setDefaultViewContent(info: [String: String])  {
         
         guard let imagaName = info["imageName"],
             let content = info["content"]
@@ -151,7 +151,7 @@ public extension JXDefaultView {
         noticeLabel.text = content
     }
     
-    func setSubViewContent(type:JXDefaultViewStyle) {
+    func setSubViewContent(type: JXDefaultViewStyle) {
         //
         var imageName : String?
         var content : String?

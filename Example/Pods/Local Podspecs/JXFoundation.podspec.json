@@ -1,6 +1,6 @@
 {
   "name": "JXFoundation",
-  "version": "2.0.4.2",
+  "version": "2.1.0",
   "summary": "基类，自定义view，extension，方法工具，用于快速集成",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/dujinxin/JXFoundation",
@@ -13,13 +13,18 @@
   },
   "source": {
     "git": "https://github.com/dujinxin/JXFoundation.git",
-    "tag": "2.0.4.2"
+    "tag": "2.1.0"
   },
   "platforms": {
     "ios": "9.0"
   },
   "swift_versions": "5.1",
   "resources": "JXFoundation/Classes/Resources/JXFoundation.bundle",
+  "dependencies": {
+    "ReachabilitySwift": [
+
+    ]
+  },
   "subspecs": [
     {
       "name": "Basic",

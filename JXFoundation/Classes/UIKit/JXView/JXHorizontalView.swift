@@ -22,8 +22,8 @@ public protocol JXHorizontalViewDelegate {
 public class JXHorizontalView: UIView {
 
     let parentViewController : UIViewController
-    var containers = Array<Any>()
-    var currentPage = 0
+    public var containers = Array<Any>()
+    public var currentPage = 0
     var delegate : JXHorizontalViewDelegate?
     /// 手动管理viewWillAppear(_:) 、 viewDidAppear(_:) 、viewWillDisappear(_:) 、viewDidDisappear(_:) ，需要父控制器重写次属性，改为false。暂时不开放，无法控制viewDidDisappear(_:)，viewDidAppear(_:)无法控制
     var shouldAutomaticallyForwardAppearanceMethods: Bool
@@ -42,6 +42,8 @@ public class JXHorizontalView: UIView {
         self.containers = containers
         self.shouldAutomaticallyForwardAppearanceMethods = parentViewController.shouldAutomaticallyForwardAppearanceMethods
         super.init(frame: frame)
+        
+        print(self.bounds)
         
         for obj in containers {
             if let vc = obj as? UIViewController {
@@ -110,6 +112,7 @@ extension JXHorizontalView: UICollectionViewDelegate, UICollectionViewDataSource
             let v = containers[indexPath.item]
             if let vc = v as? UIViewController {
                 vc.view.tag = 100
+                vc.view.frame = cell.contentView.bounds
                 if let v = cell.contentView.viewWithTag(100) {
                     v.removeFromSuperview()
                 }

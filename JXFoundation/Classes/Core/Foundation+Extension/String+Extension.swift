@@ -86,3 +86,36 @@ public extension String {
 //        return Base64.stringDecode(string)
 //    }
 }
+// MARK: - 沙盒文件路径 path
+public extension String {
+    //MARK: - 系统路径
+    /// home文件夹路径
+    static var homeDirectoryPath: String {
+        return NSHomeDirectory()
+    }
+    /// tmp文件夹路径
+    static var tmpDirectoryPath: String {
+        return NSTemporaryDirectory()
+    }
+    /// document文件夹路径 eg: /var/mobile/Containers/Data/Application/18BD30C1-CEA0-4EEF-B315-0944AC3EEC7B/Documents
+    static var documentDirectoryPath: String {
+        return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+    }
+    /// library文件夹路径
+    static var libraryDirectoryPath: String {
+        return NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0]
+    }
+    /// caches文件夹路径  .../Library/Caches
+    static var cachesDirectoryPath: String {
+        return NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
+    }
+    //MARK: - 自定义路径
+    /// userInfoPath文件路径 eg: /var/mobile/Containers/Data/Application/18BD30C1-CEA0-4EEF-B315-0944AC3EEC7B/Documents/userInfo"
+    static var userInfoPath: String {
+        return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/userInfo"
+    }
+    /// downloads文件夹路径 eg: /var/mobile/Containers/Data/Application/18BD30C1-CEA0-4EEF-B315-0944AC3EEC7B/Documents/downloads"
+    static var downloadsDirectoryPath: String {
+        return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/Downloads"
+    }
+}

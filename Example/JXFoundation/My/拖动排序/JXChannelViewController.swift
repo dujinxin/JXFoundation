@@ -72,7 +72,7 @@ class JXChannelViewController: JXBaseViewController {
         long.minimumPressDuration = 0.5
         self.collectionView.addGestureRecognizer(long)
     }
-    override func isCustomNavigationBarUsed() -> Bool {
+    override var useCustomNavigationBar : Bool{
         return true
     }
     // MARK: - Actions

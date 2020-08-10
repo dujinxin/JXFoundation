@@ -8,17 +8,17 @@
 
 import Foundation
 
-extension Bundle {
+public extension Bundle {
     /// 工程名称
-    public var bundleName: String {
+    var bundleName: String {
         return (Bundle.main.infoDictionary?["CFBundleName"] as? String) ?? ""
     }
     /// 版本号
-    public var version: String {
+    var version: String {
         return (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? ""
     }
     /// build版本号
-    public var buildVersion: String {
+    var buildVersion: String {
         return (Bundle.main.infoDictionary?["CFBundleVersion"] as? String) ?? ""
     }
 }

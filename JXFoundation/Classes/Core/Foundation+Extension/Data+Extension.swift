@@ -9,49 +9,36 @@
 import Foundation
 
 public extension Data{
-    /// 保存图片到文件中
+    /// 保存数据
     ///
     /// - Parameters:
-    ///   - image: 图片
-    ///   - name: 图片名称
-    static func save(data: Data, name: String) {
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let path = paths[0]
-        let imagePath = path + "/\(name)"
-        let imagePathUrl = URL.init(fileURLWithPath: imagePath)
-        
-        try? data.write(to: imagePathUrl)
-        
-        if FileManager.default.fileExists(atPath: imagePath) {
-            print("保存成功",imagePath)
-        }
+    ///   - data: 数据
+    ///   - name: 数据名称
+    static func insert(data: Data, name: String) ->Bool {
+        return FileManager.insert(data: data, toFile: name)
     }
-    /// 获取文件中的图片
+    /// 修改数据
     ///
     /// - Parameters:
-    ///   - image: 图片
-    ///   - name: 图片名称
-    static func get(name: String) -> Data? {
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let path = paths[0]
-        let imagePath = path + "/\(name)"
-        let imagePathUrl = URL.init(fileURLWithPath: imagePath)
-        
-        let data = try? Data.init(contentsOf: imagePathUrl)
-        
+    ///   - data: 图片
+    ///   - name: 数据名称
+    /// - Returns: 操作结果
+    static func update(data: Data, name: String) ->Bool {
+        return FileManager.update(inFile: data, name: name)
+    }
+    /// 获取数据
+    ///
+    /// - Parameters:
+    ///   - data: 数据
+    ///   - name: 数据名称
+    static func select(name: String) -> Data? {
+        let data = FileManager.select(fromFile: name) as? Data
         return data
     }
-    /// 移除文件中图片
+    /// 移除数据
     ///
-    /// - Parameter name: 图片名称
-    static func remove(name: String) {
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let path = paths[0]
-        let imagePath = path + "/\(name)"
-        
-        try? FileManager.default.removeItem(atPath: imagePath)
-        if FileManager.default.fileExists(atPath: imagePath) {
-            print("移除成功",imagePath)
-        }
+    /// - Parameter name: 数据名称
+    static func delete(name: String) -> Bool{
+        return FileManager.delete(fromFile: name)
     }
 }
