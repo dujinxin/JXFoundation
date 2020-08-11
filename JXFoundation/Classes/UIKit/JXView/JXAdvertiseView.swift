@@ -76,7 +76,6 @@ public class JXAdvertiseView: UIView {
             self.touchDismiss()
         }
     }
-    
     @objc func touchDismiss() {
         
         self.adTimer?.invalidate()
