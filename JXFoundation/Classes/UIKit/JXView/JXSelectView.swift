@@ -87,7 +87,8 @@ public class JXSelectView: UIView {
             //self.resetFrame(height: contentHeight)
         }
     }
-    
+    public var isShadowBgViewEnabled : Bool = true
+    public var isAutoDismiss : Bool = true
     public var isScrollEnabled : Bool = false {
         didSet{
             if isScrollEnabled == true {
@@ -242,9 +243,14 @@ public class JXSelectView: UIView {
         
     }
   
+    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    //MARK: public methods
     func resetFrame(height: CGFloat = 0.0) {
         var totalHeight : CGFloat = 0
         var contentHeight : CGFloat = 0
@@ -301,10 +307,16 @@ public class JXSelectView: UIView {
         //contentView frame
         self.contentView?.frame = CGRect(x: CGFloat(fabsf(Float(attribute.contentMarginEdge.left))), y: alertViewTopHeight + CGFloat(fabsf(Float(attribute.contentMarginEdge.top))), width: width - CGFloat(fabsf(Float(attribute.contentMarginEdge.left))) - CGFloat(fabsf(Float(attribute.contentMarginEdge.right))), height: contentHeight - CGFloat(fabsf(Float(attribute.contentMarginEdge.top))) - CGFloat(fabsf(Float(attribute.contentMarginEdge.bottom))))
     }
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-    }
     
+    public func reloadData() {
+        if self.style == .list {
+            self.tableView.reloadData()
+        } else if self.style == .pick {
+            
+        } else {
+            
+        }
+    }
     public func show() {
         self.show(inView: self.bgWindow)
     }
@@ -332,8 +344,10 @@ public class JXSelectView: UIView {
         } else {
             self.center = center
         }
+        if isShadowBgViewEnabled {
+            superView.addSubview(self.bgView)
+        }
         
-        superView.addSubview(self.bgView)
         superView.addSubview(self)
         superView.isHidden = false
         
@@ -459,7 +473,10 @@ extension JXSelectView : UITableViewDelegate,UITableViewDataSource {
         
         //self.delegate?.willPresentJXSelectView!(self)
         self.delegate?.jxSelectView(self, clickButtonAtIndex: indexPath.row)
-        self.dismiss()
+        if isAutoDismiss {
+            self.dismiss()
+        }
+        
         //self.delegate?.didPresentJXSelectView!(self)
        
     }
