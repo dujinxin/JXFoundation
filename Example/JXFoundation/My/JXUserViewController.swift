@@ -36,7 +36,7 @@ class JXUserViewController: JXTableViewController {
         topBar.indicatorType = .lineCustomSize
         return topBar
     }()
-    lazy var horizontalView : JXHorizontalView = {
+    lazy var horizontalView : JXScrollContainerView = {
         var controllers = [UIViewController]()
         for title in titles {
             let vc = SubViewController()
@@ -45,7 +45,7 @@ class JXUserViewController: JXTableViewController {
             controllers.append(vc)
         }
         
-        let horizontalView = JXHorizontalView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: UIScreen.main.bounds.height - self.navStatusHeight - 44), containers: controllers, parentViewController: self)
+        let horizontalView = JXScrollContainerView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: UIScreen.main.bounds.height - self.navStatusHeight - 44), containers: controllers, parentViewController: self)
         //view.addSubview(self.horizontalView)
         return horizontalView
     }()
@@ -155,12 +155,12 @@ extension JXUserViewController : JXScrollTitleViewDelegate {
         self.horizontalView.containerView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
     }
 }
-extension JXUserViewController : JXHorizontalViewDelegate {
+extension JXUserViewController : JXScrollContainerViewDelegate {
 
-    func horizontalViewDidScroll(scrollView: UIScrollView) {
+    func scrollContainerViewDidScroll(scrollView: UIScrollView) {
         
     }
-    func horizontalView(_: JXHorizontalView, to indexPath: IndexPath) {
+    func scrollContainerView(_: JXScrollContainerView, to indexPath: IndexPath) {
         if self.topBar.selectedIndex == indexPath.item {
             return
         }

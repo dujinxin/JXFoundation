@@ -181,7 +181,7 @@
 		C42E25AEAE4758760D9239D25E88FEAF /* CwlCatchException.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B4C55D246E42CF13277C827184DCB0A /* CwlCatchException.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C49D52712466511E332C952834C81FE1 /* FBSnapshotTestCasePlatform.h in Headers */ = {isa = PBXBuildFile; fileRef = EECD6B98986E7D866B462544E4D07C9E /* FBSnapshotTestCasePlatform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C6CE5426AC5979B9CAA9B79DE58D7E8B /* Pods-JXFoundation_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0218734BB338D67F3185B367F709B230 /* Pods-JXFoundation_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C78730C95C651302D6DB5177B0DBC2BA /* JXHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A391898E00550ED8F946DF7D22F33F0 /* JXHorizontalView.swift */; };
+		C78730C95C651302D6DB5177B0DBC2BA /* JXScrollContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A391898E00550ED8F946DF7D22F33F0 /* JXScrollContainerView.swift */; };
 		C85392CFD28CA4E4C79C16E2B129D1BB /* CurrentTestCaseTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBEB7F8AE5CBE7929140518B16ED735 /* CurrentTestCaseTracker.swift */; };
 		C912897D77798A90873A3DAD8A4BDC50 /* QCKDSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D7A42ECC55F965D018E503545D869CB /* QCKDSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C971A8D42C7C043DC4970A69B81546A7 /* DSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 127E57F23FA2D683FA72D731766D2BBE /* DSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -354,7 +354,7 @@
 		28297375094E9C736E1A7DBE9A6404FC /* NMBObjCMatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NMBObjCMatcher.swift; path = Sources/Nimble/Adapters/NMBObjCMatcher.swift; sourceTree = "<group>"; };
 		29A362D1CD58ADB3072C72580845478F /* NMBExceptionCapture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NMBExceptionCapture.h; path = Sources/NimbleObjectiveC/NMBExceptionCapture.h; sourceTree = "<group>"; };
 		29AD9FE94593091C999B248889AD4D84 /* FBSnapshotTestCase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FBSnapshotTestCase.debug.xcconfig; sourceTree = "<group>"; };
-		2A391898E00550ED8F946DF7D22F33F0 /* JXHorizontalView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JXHorizontalView.swift; sourceTree = "<group>"; };
+		2A391898E00550ED8F946DF7D22F33F0 /* JXScrollContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JXScrollContainerView.swift; sourceTree = "<group>"; };
 		2D7BBE1F0F4D9618706E4338B3CCEA4C /* RaisesException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RaisesException.swift; path = Sources/Nimble/Matchers/RaisesException.swift; sourceTree = "<group>"; };
 		2DE56180E2F5A7C045911100C7092864 /* FBSnapshotTestCase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSnapshotTestCase-prefix.pch"; sourceTree = "<group>"; };
 		2F27BF6E197D407EB3523DCD932E953B /* SatisfyAllOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SatisfyAllOf.swift; path = Sources/Nimble/Matchers/SatisfyAllOf.swift; sourceTree = "<group>"; };
@@ -828,7 +828,7 @@
 				93FD33DA08F5F6582FF1C31D9C79CD51 /* JXAttribute.swift */,
 				C7DFFF650F8C750D9E8D81CC2E738D4F /* JXBarView.swift */,
 				DB049FB6FBFC08615EB8EC560DBBF142 /* JXGuideView.swift */,
-				2A391898E00550ED8F946DF7D22F33F0 /* JXHorizontalView.swift */,
+				2A391898E00550ED8F946DF7D22F33F0 /* JXScrollContainerView.swift */,
 				271C7209A24A84525839782D3A614D80 /* JXInputTextView.swift */,
 				1B5050B914135CB8E670D601E801ABE1 /* JXNoticeView.swift */,
 				9EB93B5156D3D19E86D5B70512829092 /* JXPlaceHolderTextView.swift */,
@@ -1790,7 +1790,7 @@
 				33133A195F5976FA6E362212B1F05CF7 /* JXFoundation-dummy.m in Sources */,
 				A9A2965B6A2750327C4A318592100EDE /* JXFoundationHelper.swift in Sources */,
 				4461B09F4B785813EA3F0437B7899C68 /* JXGuideView.swift in Sources */,
-				C78730C95C651302D6DB5177B0DBC2BA /* JXHorizontalView.swift in Sources */,
+				C78730C95C651302D6DB5177B0DBC2BA /* JXScrollContainerView.swift in Sources */,
 				1F725F1EC2EBD23FBE0352D3434417C3 /* JXInputTextView.swift in Sources */,
 				70D6A4B8C5E7C52098CF6082921FDCA6 /* JXKeyboardToolBar.swift in Sources */,
 				2D559AA325A5BAD31BA12300C2708CED /* JXKeyChainManager.swift in Sources */,

@@ -27,15 +27,19 @@ open class JXBaseViewController: UIViewController {
         navigationBar.useCustomBackgroundView = true
         //navigationBar.isTranslucent = true
         navigationBar.barStyle = .default
-        navigationBar.tintColor = UIColor.rgbColor(rgbValue: 0x000000) //item图片文字颜色
-        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.rgbColor(rgbValue: 0x000000),NSAttributedString.Key.font:UIFont(name: "PingFangSC-Semibold", size: 17) as Any]//标题设置
+        navigationBar.tintColor = (self.preferredStatusBarStyle == .default) ? UIColor.darkText : UIColor.white //item图片文字颜色
+        navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: (self.preferredStatusBarStyle == .default) ? UIColor.darkText : UIColor.white,
+            NSAttributedString.Key.font:UIFont(name: "PingFangSC-Semibold", size: 17) as Any]//标题设置
         
         //navigationBar.barTintColor = UIColor.clear//导航条颜色,透明色不起作用,可以用下面的方法来设置
         //navigationBar.setBackgroundImage(navigationBar.imageWithColor(UIColor.clear), for: UIBarMetrics.default)
         //大标题
         if #available(iOS 11.0, *) {
             navigationBar.prefersLargeTitles = false
-            //navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.rgbColor(rgbValue: 0x000000),NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]
+            navigationBar.largeTitleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: (self.preferredStatusBarStyle == .default) ? UIColor.darkText : UIColor.white,
+            NSAttributedString.Key.font:UIFont(name: "PingFangSC-Semibold", size: 34) as Any]
         }
         
         return navigationBar
@@ -59,6 +63,21 @@ open class JXBaseViewController: UIViewController {
                 self.navigationItem.title = title
             }
         }
+    }
+    //子类重写返回按钮 backItem里， 事件默认为pop，可以自定义
+    open var backItem: UIBarButtonItem {
+        let leftButton = UIButton()
+        leftButton.frame = CGRect(x: 10, y: 7, width: 30, height: 30)
+        leftButton.setImage(UIImage(named: "icon_back_light")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        leftButton.tintColor = (self.preferredStatusBarStyle == .default) ? UIColor.darkText : UIColor.white
+        //leftButton.imageEdgeInsets = UIEdgeInsetsMake(12, 0, 12, 24)
+        //leftButton.setTitle("up", for: .normal)
+        leftButton.addTarget(self, action: #selector(pop), for: .touchUpInside)
+        let item = UIBarButtonItem(customView: leftButton)
+        return item
+    }
+    @objc func pop() {
+        self.navigationController?.popViewController(animated: true)
     }
     //MARK: - navStatusHeight
     private var _navStatusHeight: CGFloat = kNavStatusHeight

@@ -141,7 +141,7 @@ public class JXScrollTitleView: JXView {
             let contentSize = button.sizeThatFits(CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: self.containerView.bounds.height))
             let itemWidth = contentSize.width + CGFloat(fabsf(Float(attribute.contentMarginEdge.left))) + CGFloat(fabsf(Float(attribute.contentMarginEdge.right)))
             let itemHeight = contentSize.height + CGFloat(fabsf(Float(attribute.contentMarginEdge.top))) + CGFloat(fabsf(Float(attribute.contentMarginEdge.bottom)))
-            print(itemHeight,self.containerView.bounds.height)
+            //print(itemHeight,self.containerView.bounds.height)
             
             let rect = CGRect(x: self.totalWidth, y: 0, width: itemWidth, height: self.containerView.bounds.height)
             button.frame = rect
@@ -181,7 +181,7 @@ public class JXScrollTitleView: JXView {
         if self.totalWidth <= self.containerView.bounds.width {
             self.containerView.contentSize = self.containerView.bounds.size
         } else {
-            self.containerView.contentSize = CGSize(width: self.totalWidth, height: bounds.height)
+            self.containerView.contentSize = CGSize(width: self.totalWidth, height: self.containerView.bounds.size.height)
         }
     }
     //MARK:private properties & methods

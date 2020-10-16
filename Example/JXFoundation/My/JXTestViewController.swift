@@ -12,9 +12,6 @@ import JXFoundation
 
 class JXTestViewController: JXBaseViewController {
     
-    var topBar : JXBarView!
-    var horizontalView : JXHorizontalView?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
@@ -24,32 +21,13 @@ class JXTestViewController: JXBaseViewController {
         self.customNavigationBar.backgroundView.backgroundColor = UIColor.cyan
         self.customNavigationBar.separatorView.backgroundColor = UIColor.gray
         
-        topBar = JXBarView.init(frame: CGRect.init(x: 0, y: kNavStatusHeight + 60 , width: view.bounds.width, height: 44), titles: ["新闻","视频","热点","体育","游戏","关注","娱乐","直播","音乐台","会员专区"])
-        topBar.delegate = self
-        topBar.backgroundColor = UIColor.orange
-        topBar.bottomLineSize = CGSize(width: 60, height: 2)
-        topBar.bottomLineView.backgroundColor = .red
-        topBar.isBottomLineEnabled = true
-        let att = JXAttribute()
-        att.normalColor = UIColor.rgbColor(rgbValue: 0x999999)
-        att.selectedColor = UIColor.red
-        att.normalFontSize = 18
-        topBar.attribute = att
-        view.addSubview(topBar)
-        
-        let vc1 = UIViewController()
-        vc1.view.backgroundColor = UIColor.randomColor
-        let vc2 = UIViewController()
-        vc2.view.backgroundColor = UIColor.randomColor
-        let vc3 = UIViewController()
-        vc3.view.backgroundColor = UIColor.randomColor
-        let vc4 = UIViewController()
-        vc4.view.backgroundColor = UIColor.randomColor
-
-        horizontalView = JXHorizontalView.init(frame: CGRect.init(x: 0, y: kNavStatusHeight + 60 + 44, width: view.bounds.width, height: UIScreen.main.bounds.height - kNavStatusHeight - 52 - 44), containers: [vc1,vc2,vc3,vc4], parentViewController: self)
-        view.addSubview(horizontalView!)
         
         
+        let scr = JXScrollCycleView.init(frame: CGRect(x: 0, y: kNavStatusHeight + 60, width: view.bounds.width, height: 100), titles: ["mainScrollView.addGestureRecognizer(gesture1)","分类分类分类分类分类分类分类分类分类","//创建上下文，并让两个scrollView都持有"], attribute: JXAttribute()) { (v, a) in
+            print(v,a)
+        }
+        view.addSubview(scr)
+        scr.beginScroll()
         
         let moreButton = UIButton()
         moreButton.setTitle("查看全文", for: .normal)
@@ -71,47 +49,6 @@ class JXTestViewController: JXBaseViewController {
         //self.view.layer.addSublayer(layer)
         
         
-        let activityButton = JXActivityIndicatorButton.init(frame: CGRect(x: 30, y: 320, width: 160, height: 60))
-        activityButton.normalTitle = "付费浏览"
-        activityButton.selectedTitle = "付费中..."
-        activityButton.position = .left
-        activityButton.style = .white
-        activityButton.useActivityIndicatorView = true
-        activityButton.backgroundColor = UIColor.systemPink
-        self.view.addSubview(activityButton)
-        
-        activityButton.clickBlock = {(_,_) in
-        
-            
-            let alert = JXAlertView.initWithTitle("温馨提示", content: "let activityButton = JXActivityIndicatorButton.init(frame: CGRect(x: 30, y: 320, width: 160, height: 60))", cancelTitle: "取消", confirmTitle: "付费")
-            alert.contentLabel.textAlignment = .center
-            let attribute = JXAttribute()
-            attribute.contentMarginEdge = UIEdgeInsets.init(top: 10, left: 16, bottom: 20, right: 16)
-            attribute.minimumInteritemSpacing = 20
-            alert.attribute = attribute
-            alert.nextBlock = {
-                
-            }
-            alert.cancelBlock = {
-                
-            }
-            alert.show()
-            
-        
-        }
-        
-        
-        
-        let seg = UISegmentedControl(items: ["新闻","视频","热点"])
-        seg.frame = CGRect(x: 20, y: 600, width: 200, height: 40)
-        seg.layer.cornerRadius = 20
-        
-        self.view.addSubview(seg)
-        
-    }
-    func savGifImage() {
-        let path = Bundle.main.path(forResource: "撒娇", ofType: ".gif")!
-
     }
     
     override func didReceiveMemoryWarning() {
@@ -119,31 +56,5 @@ class JXTestViewController: JXBaseViewController {
         // Dispose of any resources that can be recreated.
     }
 }
-extension JXTestViewController : JXBarViewDelegate {
 
-    func jxBarView(barView: JXBarView, didClick index: Int) {
-        let indexPath = IndexPath.init(item: index, section: 0)
-        //开启动画会影响topBar的点击移动动画
-        self.horizontalView?.containerView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.left, animated: false)
-        
-        print("did click \(index)")
-    }
-}
-extension JXTestViewController : JXHorizontalViewDelegate {
-
-    func horizontalViewDidScroll(scrollView:UIScrollView) {
-
-        let offset = scrollView.contentOffset.x
-
-        let count = CGFloat(self.topBar.titles.count)
-        let x : CGFloat = (UIScreen.main.screenWidth / count  - self.topBar.bottomLineSize.width) / 2 + (offset / UIScreen.main.screenWidth ) * ((UIScreen.main.screenWidth / count))
-
-        self.topBar.bottomLineView.frame.origin.x = x
-
-    }
-    func horizontalView(_: JXHorizontalView, to indexPath: IndexPath) {
-
-        self.topBar.scrollToItem(at: indexPath)
-    }
-}
 

@@ -1,9 +1,9 @@
 //
-//  CategoryViewController.swift
+//  TwoCategroyViewController.swift
 //  JXFoundation_Example
 //
-//  Created by 杜进新 on 2018/7/25.
-//  Copyright © 2018年 CocoaPods. All rights reserved.
+//  Created by Admin on 9/28/20.
+//  Copyright © 2020 CocoaPods. All rights reserved.
 //
 
 import UIKit
@@ -13,7 +13,7 @@ private let reuseIdentifierOne = "reuseIdentifierOne"
 private let reuseIdentifierTwo = "reuseIdentifierTwo"
 private let reuseIdentifierThree = "reuseIdentifierThree"
 
-class CategoryViewController: JXBaseViewController {
+class TwoCategroyViewController: JXBaseViewController {
     //tableview
     public lazy var tableView : UITableView = {
         let table = UITableView(frame: CGRect())
@@ -66,6 +66,7 @@ class CategoryViewController: JXBaseViewController {
     //data array
     var dataArray = [CategoryEntity]()
     
+    
     /// 一级列表选中的行
     var selectRow = 0
     
@@ -85,103 +86,19 @@ class CategoryViewController: JXBaseViewController {
         self.view.addSubview(self.collectionView)
         
         
-     
-        self.handleData()
+        self.tableView.reloadData()
+        self.collectionView.reloadData()
+        
+        self.tableView.selectRow(at: IndexPath(row: self.selectRow , section: 0), animated: true, scrollPosition: .middle)
+        self.collectionView.scrollToItem(at: IndexPath(row: 0 , section: self.selectRow), at: .top, animated: true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func handleData() {
-            
-        guard
-            let path = Bundle.main.path(forResource: "JXFoundation", ofType: "json"),
-            let string = try? String.init(contentsOf: URL(fileURLWithPath: path)),
-            let data = string.data(using: .utf8),
-            let json = try? JSONSerialization.jsonObject(with: data, options: [.fragmentsAllowed,.mutableContainers,.mutableContainers]),
-            let jsonArray = json as? Array<Any>  else {
-                return
-        }
-        
-//        jsonArray.forEach { (itemOne) in
-//            guard let dictOne = itemOne as? Dictionary<String, Any> else {
-//                return
-//            }
-//            let entityOne = CategoryEntity()
-//            entityOne.setValuesForKeys(dictOne)
-//
-//            if let subOne = dictOne["sub"] as? Array<Any> {
-//                subOne.forEach { (itemTwo) in
-//                    guard let dictTwo = itemTwo as? Dictionary<String, Any> else {
-//                        return
-//                    }
-//                    let entityTwo = CategoryEntity()
-//                    entityTwo.setValuesForKeys(dictTwo)
-//
-//                    if let subTwo = dictTwo["sub"] as? Array<Any> {
-//                        subTwo.forEach { (itemThree) in
-//                            guard let dictThree = itemThree as? Dictionary<String, Any> else {
-//                                return
-//                            }
-//                            let entityThree = CategoryEntity()
-//                            entityThree.setValuesForKeys(dictThree)
-//
-//
-//
-//                            entityTwo.list.append(entityThree)
-//                        }
-//                    }
-//
-//                    entityOne.list.append(entityTwo)
-//                }
-//            }
-//
-//
-//            self.dataArray.append(entityOne)
-//        }
-        
-        jsonArray.forEach { (itemOne) in
-            guard let dictOne = itemOne as? Dictionary<String, Any> else {
-                return
-            }
-            let entityOne = CategoryEntity()
-            entityOne.setValuesForKeys(dictOne)
-            
-            let entityOne_copy = self.handleDictionary(dict: dictOne, to: entityOne)
-            
-            self.dataArray.append(entityOne_copy)
-        }
-        
-        self.tableView.reloadData()
-        self.collectionView.reloadData()
-    }
-    /// 递归处理子类嵌套数据
-    /// - Parameters:
-    ///   - dict: <#dict description#>
-    ///   - entity: <#entity description#>
-    /// - Returns: <#description#>
-    func handleDictionary(dict: Dictionary<String, Any>, to entity: CategoryEntity) -> CategoryEntity {
-        if let arr = dict["sub"] as? Array<Any> {
-            arr.forEach { (item) in
-                guard let subDict = item as? Dictionary<String, Any> else {
-                    return
-                }
-                let subEntity = CategoryEntity()
-                subEntity.setValuesForKeys(subDict)
-                
-                let subEntity_copy = self.handleDictionary(dict: subDict, to: subEntity)
-                
-
-                entity.list.append(subEntity_copy)
-            }
-        }
-        return entity
-    }
-    
 }
 // MARK: - UITableViewDataSource & UITableViewDelegate
-extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
+extension TwoCategroyViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tvareView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataArray.count
     }
@@ -195,13 +112,16 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        //tableView.deselectRow(at: indexPath, animated: true)
         
         
         if self.selectRow != indexPath.row {
             self.selectRow = indexPath.row
-            self.collectionView.reloadData()
+//            self.collectionView.reloadData()
         }
+        
+        self.collectionView.scrollToItem(at: IndexPath(item: 0, section: indexPath.row), at: .top, animated: true)
+        //self.tableView.scrollToRow(at: IndexPath(row: self.selectRow, section: 0), at: .top, animated: true)
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
@@ -211,30 +131,24 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 // MARK: - UICollectionViewDataSource & UICollectionViewDelegate
-extension CategoryViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension TwoCategroyViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if self.dataArray.count > 0 {
-            let entity = self.dataArray[self.selectRow]
-            return entity.list.count
-        }
-        return 0
+        return self.dataArray.count
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if self.dataArray.count > 0 {
-            let entityTwo = self.dataArray[self.selectRow]
-            let entityThree = entityTwo.list[section]
-            return entityThree.list.count
+            let entityOne = self.dataArray[section]
+            return entityOne.list.count
         }
         return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifierThree, for: indexPath) as! ChannelViewCell
-        let entityOne = self.dataArray[self.selectRow]
-        let entityTwo = entityOne.list[indexPath.section]
-        let entityThree = entityTwo.list[indexPath.item]
+        let entityOne = self.dataArray[indexPath.section]
+        let entityTwo = entityOne.list[indexPath.item]
         
-        cell.titleView.text = entityThree.title
+        cell.titleView.text = entityTwo.title
         cell.statusView.isHidden = true
         return cell
     }
@@ -242,31 +156,32 @@ extension CategoryViewController : UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reuseIdentifierTwo, for: indexPath) as! ChannelReusableView
         
-        let entityOne = self.dataArray[self.selectRow]
-        let entityTwo = entityOne.list[indexPath.section]
+        let entityOne = self.dataArray[indexPath.section]
         
-        reusableView.titleView.text = entityTwo.title
-        reusableView.detailView.text = entityTwo.desc
+        reusableView.titleView.text = entityOne.title
+        reusableView.detailView.text = entityOne.desc
         
         return reusableView
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let entityOne = self.dataArray[self.selectRow]
-        let entityTwo = entityOne.list[indexPath.section]
-        let entityThree = entityTwo.list[indexPath.item]
+        let entityOne = self.dataArray[indexPath.section]
+        let entityTwo = entityOne.list[indexPath.item]
         
-        let v = JXNoticeView.init(text: entityThree.desc ?? "")
+        let v = JXNoticeView.init(text: entityTwo.desc ?? "")
         v.show()
     }
-}
-extension CategoryViewController {
-
-}
-
-class CategoryEntity: BaseModel {
-    @objc var title: String?
-    @objc var desc: String?
-    @objc var list = Array<CategoryEntity>()
-    
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+    //
+    var _isScrollDown: Bool {
+        return false
+    }
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        if !_isScrollDown && (collectionView.isDragging || collectionView.isDecelerating){
+            self.tableView.selectRow(at: IndexPath(row: indexPath.section, section: 0), animated: true, scrollPosition: .middle)
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
+        if !_isScrollDown && (collectionView.isDragging || collectionView.isDecelerating){
+            self.tableView.selectRow(at: IndexPath(row: indexPath.section , section: 0), animated: true, scrollPosition: .middle)
+        }
+    }
 }

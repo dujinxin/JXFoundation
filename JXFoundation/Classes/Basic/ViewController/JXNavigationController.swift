@@ -53,9 +53,12 @@ open class JXNavigationController: UINavigationController {
             titleName = viewControllers.first?.title ?? titleName
         }
         
-        if let vc = viewController as? JXBaseViewController {
+        if viewController.isKind(of: JXBaseViewController.self) {
+            let vc = viewController as! JXBaseViewController
             vc.hidesBottomBarWhenPushed = true
-            vc.customNavigationItem.leftBarButtonItem = self.backItem
+            vc.customNavigationItem.leftBarButtonItem = vc.backItem
+        } else {
+            viewController.navigationItem.leftBarButtonItem = self.backItem
         }
     }
     

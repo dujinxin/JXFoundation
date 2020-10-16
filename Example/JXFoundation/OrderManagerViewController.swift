@@ -9,10 +9,10 @@
 import UIKit
 import JXFoundation
 
-class OrderManagerViewController: UIViewController,JXTopBarViewDelegate,JXHorizontalViewDelegate{
+class OrderManagerViewController: UIViewController,JXTopBarViewDelegate,JXScrollContainerViewDelegate{
     
     var topBar : JXTopBarView?
-    var horizontalView : JXHorizontalView?
+    var horizontalView : JXScrollContainerView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class OrderManagerViewController: UIViewController,JXTopBarViewDelegate,JXHorizo
         topBar?.isBottomLineEnabled = true
         view.addSubview(topBar!)
         
-        horizontalView = JXHorizontalView.init(frame: CGRect.init(x: 0, y: kNavStatusHeight + 44, width: view.bounds.width, height: UIScreen.main.bounds.height - kNavStatusHeight - 44), containers: [UIViewController(),UIViewController(),UIViewController(),UIViewController()], parentViewController: self)
+        horizontalView = JXScrollContainerView.init(frame: CGRect.init(x: 0, y: kNavStatusHeight + 44, width: view.bounds.width, height: UIScreen.main.bounds.height - kNavStatusHeight - 44), containers: [UIViewController(),UIViewController(),UIViewController(),UIViewController()], parentViewController: self)
         view.addSubview(horizontalView!)
     }
     
@@ -40,13 +40,13 @@ extension OrderManagerViewController {
         //开启动画会影响topBar的点击移动动画
         self.horizontalView?.containerView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.left, animated: false)
     }
-    func horizontalViewDidScroll(scrollView:UIScrollView) {
+    func scrollContainerViewDidScroll(scrollView:UIScrollView) {
         var frame = self.topBar?.bottomLineView.frame
         let offset = scrollView.contentOffset.x
         frame?.origin.x = (offset / UIScreen.main.screenWidth ) * (UIScreen.main.screenWidth / CGFloat((self.topBar?.titles.count)!))
         self.topBar?.bottomLineView.frame = frame!
     }
-    func horizontalView(_: JXHorizontalView, to indexPath: IndexPath) {
+    func scrollContainerView(_: JXScrollContainerView, to indexPath: IndexPath) {
         //
         if self.topBar?.selectedIndex == indexPath.item {
             return

@@ -36,7 +36,6 @@ public class JXSelectView: UIView {
     
     public var title : String?
     public var message : String?
-    public var fontSize : CGFloat = 15
     public var closeItemWidth : CGFloat = 44
     
     var actions : Array<String> = [String](){
@@ -76,19 +75,25 @@ public class JXSelectView: UIView {
             }
         }
     }
-    //
+    /// 选项列表高度类型
     public var listHeightStyle : JXSelectViewListHeightStyle = .fixed
-    public var fixedHeight : CGFloat = 400   //listHeightStyle 为.fixed 起作用
+    /// 固定高度 listHeightStyle 为.fixed 起作用
+    public var fixedHeight : CGFloat = 400
+    /// 选项列表高度
     public var listHeight : CGFloat = 44
-    
+    /// 选中的行
     public var selectRow : Int = -1
+    /// 内容高度
     public var contentHeight : CGFloat = 0 {
         didSet{
             //self.resetFrame(height: contentHeight)
         }
     }
+    /// 背景是否可以点击消失
     public var isShadowBgViewEnabled : Bool = true
+    /// 选择后是否自动消失
     public var isAutoDismiss : Bool = true
+    /// 是否可以滚动
     public var isScrollEnabled : Bool = false {
         didSet{
             if isScrollEnabled == true {
@@ -102,8 +107,6 @@ public class JXSelectView: UIView {
             }
         }
     }
-    //可重用标识符
-    var identifier: String = "reuseIdentifierCustom"
     
     //MARK: subViews
     var topBarView: UIView = {
@@ -159,16 +162,16 @@ public class JXSelectView: UIView {
         
         return tool
     }()
-    //主内容视图
+    ///主内容视图
     private var contentView : UIView?
-    //自定义视图
+    ///自定义视图
     public var customView: UIView? {
         didSet{
             self.contentView = customView
             self.contentHeight = customView?.frame.height ?? 0
         }
     }
-    //.list 视图
+    ///.list 视图
     lazy var tableView : UITableView = {
         let table = UITableView.init(frame: CGRect.init(), style: .plain)
         table.delegate = self
@@ -181,7 +184,7 @@ public class JXSelectView: UIView {
         table.register(JXSelectListViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         return table
     }()
-    //背景视图
+    ///背景视图
     public lazy var backgroundView : UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white
@@ -420,7 +423,7 @@ public class JXSelectView: UIView {
 }
 extension JXSelectView : UITableViewDelegate,UITableViewDataSource {
     
-    //注册自定义list内容，二选一
+    ///注册自定义list内容，二选一 ,标识符设置为 reuseIdentifierCustom
     public func register(_ nib: UINib?, _ cellClass: AnyClass?, forCellReuseIdentifier identifier: String = "reuseIdentifierCustom") {
         if let nib = nib {
             self.tableView.register(nib, forCellReuseIdentifier: identifier)
@@ -449,7 +452,7 @@ extension JXSelectView : UITableViewDelegate,UITableViewDataSource {
     }
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-        if let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifierCustom") {
             if let delegate = self.delegate {
                 return  delegate.jxSelectView?(tableView, cellForRowAt: indexPath) ?? cell
             }

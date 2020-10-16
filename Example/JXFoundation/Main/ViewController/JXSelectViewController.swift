@@ -90,6 +90,7 @@ class JXSelectViewController: JXBaseViewController {
         select.position = .middle
         select.show()
     }
+   
     @IBAction func bottomAction(_ sender: Any) {
         let v = UIImageView()
         v.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenWidth / 2)

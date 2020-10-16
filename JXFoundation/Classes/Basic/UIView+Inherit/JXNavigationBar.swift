@@ -81,7 +81,7 @@ open class JXNavigationBar: UINavigationBar {
         super.layoutSubviews()
         
         self.backgroundView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: frame.maxY)
-        print(self.backgroundView.frame)
+        //print(self.backgroundView.frame)
         self.backgroundImage.frame = CGRect(x: 0, y: 0, width: bounds.width, height: frame.maxY)
         self.separatorView.frame = CGRect(x: 0, y: frame.maxY - 0.33, width: bounds.width, height: 0.33)
         self.contentView.frame = CGRect(x: 0, y: kStatusBarHeight, width: bounds.width, height: kNavStatusHeight - kStatusBarHeight)

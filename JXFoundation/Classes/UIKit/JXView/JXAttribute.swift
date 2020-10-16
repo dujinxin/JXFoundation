@@ -7,6 +7,12 @@
 
 import UIKit
 
+public enum JXTopBarStyle {
+    case none
+    case toolbar
+    case custom
+}
+
 public class JXAttribute: NSObject {
     
     //MARK:color
@@ -29,6 +35,7 @@ public class JXAttribute: NSObject {
     public var selectedFontSize : CGFloat = 14
     
     //MARK:size
+    public var itemSize: CGSize = CGSize()
     public var minimumInteritemSpacing : CGFloat = 0
     /// 内容距边框的距离，非负数
     public var contentMarginEdge : UIEdgeInsets =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -36,9 +43,9 @@ public class JXAttribute: NSObject {
     public var sectionEdgeInsets : UIEdgeInsets =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     
     //MARK:布局
-    //是否使用顶部工具栏
-    public var topBarStyle : Int = 0 // 0不使用，1toolbar，2自定义
-    //是否在X系列底部布局
+    ///是否使用顶部工具栏：0不使用，1toolbar，2自定义
+    public var topBarStyle : Int = 0
+    ///是否在X系列底部布局
     public var isUseBottomArea : Bool = false
     
     

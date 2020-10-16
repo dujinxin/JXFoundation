@@ -44,10 +44,12 @@ class JXViewController: JXTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - kNavStatusHeight - kNavLargeTitleHeight - 44)
+        self.tableView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - kNavStatusHeight - 44)
+        
+        //self.tableView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - kNavStatusHeight - 44 - kTabBarHeight)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         
-        self.dataArray = ["JXNoticeView","JXAlertView","JXSelectView","JXPlaceHolderView","JXInputTextView","JXScrollTitleView","JXHorizontalView","JXAdvertiseView","JXGuideView","JXGuideView","JXGuideView","JXGuideView","JXGuideView","JXGuideView","JXGuideView","JXGuideView","JXGuideView","JXGuideView","JXGuideView","JXGuideView","JXGuideView","JXGuideView","JXGuideView","JXGuideView","JXGuideView","JXGuideView","JXGuideView","JXGuideView"]
+        self.dataArray = ["JXNoticeView","JXAlertView","JXSelectView","JXPlaceHolderView","JXInputTextView","JXScrollTitleView","JXScrollContainerView","JXAdvertiseView","JXGuideView","JXActivityIndicatorButtonView","JXAutoScrollViewController","JXGuideView","JXGuideView","JXGuideView","JXGuideView","JXGuideView"]
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -86,7 +88,7 @@ extension JXViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text = self.dataArray[indexPath.row] as? String
-        
+        cell.contentView.backgroundColor = self.view.backgroundColor
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -126,7 +128,7 @@ extension JXViewController {
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
             case 6:
-                let vc = JXHorizontalViewController()
+                let vc = UIStoryboard(name: "JXViewDemo", bundle: nil).instantiateViewController(withIdentifier: "JXScrollContainerViewController") as! JXScrollContainerViewController
                 vc.title = title
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
@@ -144,11 +146,31 @@ extension JXViewController {
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
             case 9:
-                let vc = CategoryViewController()
+                let vc = JXActivityIndicatorButtonViewController()
                 vc.title = title
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
             case 10:
+                let vc = JXAutoScrollViewController()
+                vc.title = title
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            case 11:
+                let vc = TestListController()
+                vc.title = title
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            case 12:
+                let vc = TestListController()
+                vc.title = title
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            case 13:
+                let vc = TestListController()
+                vc.title = title
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            case 14:
                 let vc = TestListController()
                 vc.title = title
                 vc.hidesBottomBarWhenPushed = true

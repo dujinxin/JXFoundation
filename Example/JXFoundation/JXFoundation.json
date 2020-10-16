@@ -94,6 +94,11 @@
                                 "sub":[]
                             },
                             {
+                                "title":"JXSelectView",
+                                "desc":"选择视图，支持列表（tableView）,pick 或者自定义视图",
+                                "sub":[]
+                            },
+                            {
                                 "title":"JXPlaceHolderView",
                                 "desc":"自定义textView，带有placeholder文字",
                                 "sub":[]
@@ -105,12 +110,12 @@
                             },
                             {
                                 "title":"JXScrollTitleView",
-                                "desc":"可以滚动的item集合view，与JXHorizontalView配合使用",
+                                "desc":"可以滚动的item集合view，与JXScrollContainerView配合使用",
                                 "sub":[]
                             },
                             {
-                                "title":"JXHorizontalView",
-                                "desc":"横向分页切换的view，与JXScrollTitleView配合使用",
+                                "title":"JXScrollContainerView",
+                                "desc":"分页切换的view，支持横向和纵向，与JXScrollTitleView配合使用",
                                 "sub":[]
                             },
                             {
@@ -127,7 +132,15 @@
                                 "title":"JXDefaultView",
                                 "desc":"空白页，用于空数据，无网络等其他限制条件",
                                 "sub":[]
+                            },
+                            {
+                                "title":"JXActivityIndicatorButton",
+                                "desc":"自定义按钮，带加载指示器",
+                                "sub":[]
                             }
+                            
+                            
+                            
                     ]
                     
                 },

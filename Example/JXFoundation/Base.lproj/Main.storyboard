@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lJF-gc-kKE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lJF-gc-kKE">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -29,7 +29,7 @@
         <!--Category-->
         <scene sceneID="UVn-Mf-sZb">
             <objects>
-                <navigationController id="clc-dv-0H1" sceneMemberID="viewController">
+                <navigationController id="clc-dv-0H1" customClass="JXNavigationController" customModule="JXFoundation" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Category" id="yKh-BR-n72"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="3fJ-hm-TT3">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
@@ -236,7 +236,7 @@
         <!--home-->
         <scene sceneID="YgN-pT-tvW">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DPc-q8-zH7" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DPc-q8-zH7" customClass="JXNavigationController" customModule="JXFoundation" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="home" id="jXh-Xy-bNw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FBG-5b-HCE">

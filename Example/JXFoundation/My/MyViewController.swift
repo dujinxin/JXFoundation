@@ -26,9 +26,7 @@ class MyViewController: JXTableViewController {
         self.customNavigationBar.barTintColor = UIColor.blue
         if #available(iOS 13.0, *) {
             self.customNavigationBar.standardAppearance.backgroundColor = UIColor.yellow
-            self.customNavigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor:  UIColor.rgbColor(rgbValue: 0x000000), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 34)]
         } else {
-            
             self.customNavigationBar.barTintColor = UIColor.yellow
         }
        
@@ -40,6 +38,9 @@ class MyViewController: JXTableViewController {
         
         
         self.beginRefreshing()
+    }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     override var useCustomNavigationBar : Bool{
         return true

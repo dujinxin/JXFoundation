@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="GameItemViewCell" customModule="JXFoundation_Example" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="144" height="144"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="144" height="144"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kWm-Iu-4fV">
+                        <rect key="frame" x="0.0" y="0.0" width="144" height="144"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImgPlaceHold" translatesAutoresizingMaskIntoConstraints="NO" id="Kgg-sX-k8j">
+                                <rect key="frame" x="0.0" y="0.0" width="144" height="144"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Kgg-sX-k8j" secondAttribute="height" id="nNI-bS-ebt"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_game_link" translatesAutoresizingMaskIntoConstraints="NO" id="Pi5-7o-hQi">
+                                <rect key="frame" x="120" y="0.0" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Pi5-7o-hQi" secondAttribute="height" multiplier="1:1" id="gbj-UU-f1V"/>
+                                    <constraint firstAttribute="height" constant="24" id="wpw-i6-0Ex"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.59607843140000005" green="0.59607843140000005" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Kgg-sX-k8j" firstAttribute="top" secondItem="kWm-Iu-4fV" secondAttribute="top" id="CVl-3X-r4z"/>
+                            <constraint firstAttribute="bottom" secondItem="Kgg-sX-k8j" secondAttribute="bottom" id="EVH-tk-Kx6"/>
+                            <constraint firstAttribute="trailing" secondItem="Pi5-7o-hQi" secondAttribute="trailing" id="RYN-P5-aBd"/>
+                            <constraint firstItem="Kgg-sX-k8j" firstAttribute="leading" secondItem="kWm-Iu-4fV" secondAttribute="leading" id="jXR-w5-vTl"/>
+                            <constraint firstAttribute="trailing" secondItem="Kgg-sX-k8j" secondAttribute="trailing" id="ssi-x7-jhE"/>
+                            <constraint firstItem="Pi5-7o-hQi" firstAttribute="top" secondItem="kWm-Iu-4fV" secondAttribute="top" id="zeP-Pm-QZI"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="kWm-Iu-4fV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Fkp-7E-as9"/>
+                <constraint firstAttribute="trailing" secondItem="kWm-Iu-4fV" secondAttribute="trailing" id="LAS-HS-hzg"/>
+                <constraint firstAttribute="bottom" secondItem="kWm-Iu-4fV" secondAttribute="bottom" id="QRo-Er-VNr"/>
+                <constraint firstItem="kWm-Iu-4fV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dx7-A9-KKv"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="145" height="144"/>
+            <connections>
+                <outlet property="gameBgView" destination="kWm-Iu-4fV" id="Vdp-ER-ItA"/>
+                <outlet property="iconImageView" destination="Kgg-sX-k8j" id="Nig-Sx-rEE"/>
+            </connections>
+            <point key="canvasLocation" x="200.00000000000003" y="143.30357142857142"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ImgPlaceHold" width="375" height="375"/>
+        <image name="home_game_link" width="24" height="24"/>
+    </resources>
+</document>

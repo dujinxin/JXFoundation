@@ -57,7 +57,7 @@ class JXScrollTitleViewController: JXBaseViewController {
         topBar.indicatorType = .lineCustomSize
         return topBar
     }()
-    var horizontalView : JXHorizontalView!
+    var horizontalView : JXScrollContainerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,7 +92,7 @@ class JXScrollTitleViewController: JXBaseViewController {
             
         }
         
-        horizontalView = JXHorizontalView(frame: frame, containers: controllers, parentViewController: self)
+        horizontalView = JXScrollContainerView(frame: frame, containers: controllers, parentViewController: self)
         view.addSubview(self.horizontalView)
         
         
@@ -116,12 +116,12 @@ extension JXScrollTitleViewController : JXScrollTitleViewDelegate {
         }
     }
 }
-extension JXScrollTitleViewController : JXHorizontalViewDelegate {
+extension JXScrollTitleViewController : JXScrollContainerViewDelegate {
 
-    func horizontalViewDidScroll(scrollView:UIScrollView) {
+    func scrollContainerViewDidScroll(scrollView:UIScrollView) {
         
     }
-    func horizontalView(_: JXHorizontalView, to indexPath: IndexPath) {
+    func scrollContainerView(_: JXScrollContainerView, to indexPath: IndexPath) {
         if self.topBar2.selectedIndex == indexPath.item {
             return
         }

@@ -225,3 +225,50 @@ extension JXWkWebViewController :WKScriptMessageHandler{
         print("message:",message)
     }
 }
+/**
+ 1.原生调用H5方法
+
+ [wkWebView evaluateJavaScript:@"js方法名" completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+     if (!error) { // 成功
+        NSLog(@"%@",response);
+     } else { // 失败
+         NSLog(@"%@",error.localizedDescription);
+     }
+ }];
+ H5调用原生方法
+
+ 1> App端：
+   // 1. WKWebView注入ScriptMessageHandler
+  [wkWebView.configuration.userContentController addScriptMessageHandler:(id <WKScriptMessageHandler>)scriptMessageHandler name:@"xxx"];
+   // 2. 提供setWebViewAppearance方法，这样就能反射出H5即将传来的字符串@"setWebViewAppearance"
+   - (void)setWebViewAppearance {
+   
+   }
+   
+ 2> H5端：
+   // 1. 获取handler
+   var handler = {
+     callHander: function (json) {
+     if (iOS端) {
+         window.webkit.messageHandlers.xxx.postMessage(JSON.stringify(json))
+     }
+     if (安卓端) {
+         window.xxx.postMessage(JSON.stringify(json));
+     }
+   }
+   // 2. 设置调用App方法所需要的传出的参数（这里是json格式）
+   function setAppAppearance(){
+     handler.callHander({
+         'body':"setWebViewAppearance",
+         'buttons': [
+             {
+                 "text":"分享",
+                 "action":""
+             }
+         ],
+         'title':"这是webView的标题"
+     });
+   }
+   // 3. H5调用自己的设置方法,继而调用了原生客户端的方法
+   setAppAppearance()
+ */

@@ -36,7 +36,7 @@ class MainViewController: JXBaseViewController {
         topBar.indicatorType = .backgroundTitleSize
         return topBar
     }()
-    var horizontalView : JXHorizontalView!
+    var horizontalView : JXScrollContainerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,7 @@ class MainViewController: JXBaseViewController {
                 vc.title = title
                 controllers.append(vc)
             } else {
-                let vc = SubViewController()
+                let vc = JXViewController()
                 
                 vc.view.backgroundColor = UIColor.randomColor
                 vc.title = title
@@ -69,7 +69,8 @@ class MainViewController: JXBaseViewController {
             
         }
         
-        horizontalView = JXHorizontalView(frame: frame, containers: controllers, parentViewController: self)
+        horizontalView = JXScrollContainerView(frame: frame, containers: controllers, parentViewController: self)
+        horizontalView.scrollDirection = .vertical
         view.addSubview(self.horizontalView)
         
         
@@ -91,21 +92,23 @@ extension MainViewController : JXScrollTitleViewDelegate {
     func jxScrollTitleView(scrollTitleView: JXScrollTitleView, didSelectItemAt index: Int) {
         let indexPath = IndexPath.init(item: index, section: 0)
         //开启动画会影响topBar的点击移动动画
-        self.horizontalView.containerView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
+        self.horizontalView.selectItem(at: indexPath, animated: false)
     }
 }
-extension MainViewController : JXHorizontalViewDelegate {
+extension MainViewController : JXScrollContainerViewDelegate {
 
-    func horizontalViewDidScroll(scrollView:UIScrollView) {
+    func scrollContainerViewDidScroll(scrollView:UIScrollView) {
         
     }
-    func horizontalView(_: JXHorizontalView, to indexPath: IndexPath) {
+    func scrollContainerView(_: JXScrollContainerView, to indexPath: IndexPath) {
         if self.topBar.selectedIndex == indexPath.item {
             return
         }
-        self.topBar.selectedIndex = indexPath.item
+        
         
         print(self.topBar.selectedIndex)
-        
+        if self.horizontalView.containerView.isDragging || self.horizontalView.containerView.isDecelerating {
+            self.topBar.selectedIndex = indexPath.item
+        }
     }
 }
