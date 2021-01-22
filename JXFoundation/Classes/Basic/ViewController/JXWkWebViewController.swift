@@ -9,28 +9,9 @@
 import UIKit
 import WebKit
 
-open class JXWkWebViewController: JXBaseViewController {
-
-    open override var useLargeTitles: Bool {
-        didSet{
-            if useLargeTitles == true {
-                self.navStatusHeight = kNavStatusHeight + kNavLargeTitleHeight
-            } else {
-                self.navStatusHeight = kNavStatusHeight
-            }
-            
-            if #available(iOS 11.0, *) {
-                if self.useCustomNavigationBar {
-                    self.customNavigationBar.prefersLargeTitles = useLargeTitles
-                } else {
-                    self.navigationController?.navigationBar.prefersLargeTitles = useLargeTitles
-                }
-            } else {
-                // Fallback on earlier versions
-            }
-            self.customNavigationBar.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.navStatusHeight)
-            self.webView.frame = CGRect(x: 0, y: self.navStatusHeight, width: view.bounds.width, height: (view.bounds.height - self.navStatusHeight))
-        }
+open class JXWkWebViewController: JXScrollViewController {
+    open override var scrollView: UIScrollView? {
+        return self.webView.scrollView
     }
     public lazy var webView: WKWebView = {
         let config = WKWebViewConfiguration()
@@ -42,7 +23,7 @@ open class JXWkWebViewController: JXBaseViewController {
         //是否支持JavaScript
         config.preferences.javaScriptEnabled = true
         //不通过用户交互，是否可以打开窗口
-        config.preferences.javaScriptCanOpenWindowsAutomatically = false
+        config.preferences.javaScriptCanOpenWindowsAutomatically = true
         //通过JS与webView内容交互
         let userContentController = WKUserContentController()
         config.userContentController = userContentController
@@ -70,7 +51,13 @@ open class JXWkWebViewController: JXBaseViewController {
             }
         }
     }
-
+    open override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.defaultView.frame = view.bounds
+        self.customNavigationBar.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: self.navStatusHeight)
+        let y = self.navStatusHeight
+        self.webView.frame = CGRect(x: 0, y: y, width: view.bounds.width, height: (view.bounds.height - y))
+    }
     override open func setUpMainView() {
         let y = self.useCustomNavigationBar ? self.navStatusHeight : 0
         let height = self.useCustomNavigationBar ? (view.bounds.height - self.navStatusHeight) : view.bounds.height
@@ -102,9 +89,9 @@ open class JXWkWebViewController: JXBaseViewController {
     }
     deinit {
         self.webView.removeObserver(self, forKeyPath: "estimatedProgress")
+        print(self.classForCoder)
     }
 }
-
 extension JXWkWebViewController:WKUIDelegate{
     /*! @abstract Creates a new web view.
      @param webView The web view invoking the delegate method.
@@ -118,13 +105,17 @@ extension JXWkWebViewController:WKUIDelegate{
      
      If you do not implement this method, the web view will cancel the navigation.
      */
-//    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-//        return self.wkWebView
-//    }
+    ///点击新打开一个网页（新打开的网页无法返回到原网页，不能goback）
+    open func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        if navigationAction.targetFrame == nil {
+            webView.load(navigationAction.request)
+        }
+        return nil
+    }
     open func webViewDidClose(_ webView: WKWebView) {
         print("close")
     }
-    //只包含确定的提示框
+    ///只包含确定的提示框
     open func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         
         print("alert")
@@ -137,7 +128,7 @@ extension JXWkWebViewController:WKUIDelegate{
         self.present(alert, animated: true, completion: nil)
         
     }
-    //带有确认和取消的提示框，确定true,取消false
+    ///带有确认和取消的提示框，确定true,取消false
     open func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         print("confirm")
         let alert = UIAlertController(title: "提示", message: message, preferredStyle: .alert)
@@ -151,7 +142,7 @@ extension JXWkWebViewController:WKUIDelegate{
         }))
         self.present(alert, animated: true, completion: nil)
     }
-    //输入框，可以有多个输入框，但是最后回传时，要拼接成一个字符串
+    ///输入框，可以有多个输入框，但是最后回传时，要拼接成一个字符串
     open func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
         
         print("textInput")
@@ -165,17 +156,17 @@ extension JXWkWebViewController:WKUIDelegate{
         }))
         self.present(alert, animated: true, completion: nil)
     }
-    //实现该方法，可以弹出自定义视图
+    ///实现该方法，可以弹出自定义视图
     @available(iOS 10.0, *)
     open func webView(_ webView: WKWebView, shouldPreviewElement elementInfo: WKPreviewElementInfo) -> Bool {
         return true
     }
-    //实现该方法，可以弹出自定义视图控制器
+    ///实现该方法，可以弹出自定义视图控制器
     @available(iOS 10.0, *)
     open func webView(_ webView: WKWebView, previewingViewControllerForElement elementInfo: WKPreviewElementInfo, defaultActions previewActions: [WKPreviewActionItem]) -> UIViewController? {
         return nil
     }
-    //实现该方法，关闭自定义视图控制器
+    ///实现该方法，关闭自定义视图控制器
     open func webView(_ webView: WKWebView, commitPreviewingViewController previewingViewController: UIViewController) {
         
     }

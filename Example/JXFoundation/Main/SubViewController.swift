@@ -44,10 +44,12 @@ class SubViewController: JXTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - kNavStatusHeight - kNavLargeTitleHeight - 44)
+        self.tableView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - self.navStatusHeight)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         
         self.dataArray = ["device","隐私","数据存储","device","隐私","数据存储","device","隐私","数据存储","device","隐私","数据存储","device","隐私","数据存储","device","隐私","数据存储","device","隐私","数据存储","device","隐私","数据存储","device","隐私","数据存储"]
+        
+        self.tableView.bounces = false
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -56,7 +58,11 @@ class SubViewController: JXTableViewController {
     override var useCustomNavigationBar : Bool{
         return false
     }
-    
+    open override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.defaultView.frame = view.bounds
+        self.tableView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+    }
     override func refresh() {
         let _ = JXFoundationHelper.shared.countDown(timeOut: 1, process: { (a) in
             print(a)
@@ -105,9 +111,19 @@ extension SubViewController {
     }
 }
 extension SubViewController {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //super.scrollViewDidScroll(scrollView)
         print("subTableView",scrollView.contentOffset)
-        
-        
+        if let block = self.scrollViewDidScrollBlock {
+            block(scrollView)
+        }
+    }
+}
+extension SubViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }

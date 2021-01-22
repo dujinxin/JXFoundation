@@ -59,8 +59,4 @@ extension JXPrivateViewController {
         }
     }
 }
-extension JXPrivateViewController {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset)
-    }
-}
+

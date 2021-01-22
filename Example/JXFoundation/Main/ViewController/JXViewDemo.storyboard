@@ -163,7 +163,10 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9U8-66-PHJ">
                                         <rect key="frame" x="0.0" y="275" width="158" height="30"/>
-                                        <state key="normal" title="只有内容"/>
+                                        <state key="normal" title="contentMarginEdge"/>
+                                        <connections>
+                                            <action selector="contentMarginEdgeAction:" destination="WFk-ah-Ip0" eventType="touchUpInside" id="zDu-1A-DUI"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awE-IK-KF0">
                                         <rect key="frame" x="0.0" y="330" width="158" height="30"/>

@@ -11,28 +11,10 @@ import UIKit
 private let reuseIdentifier = "reuseIdentifier"
 private let reuseIndentifierHeader = "reuseIndentifierHeader"
 
-open class JXCollectionViewController: JXBaseViewController {
+open class JXCollectionViewController: JXScrollViewController {
 
-    open override var useLargeTitles: Bool {
-        didSet{
-            if useLargeTitles == true {
-                self.navStatusHeight = kNavStatusHeight + kNavLargeTitleHeight
-            } else {
-                self.navStatusHeight = kNavStatusHeight
-            }
-            
-            if #available(iOS 11.0, *) {
-                if self.useCustomNavigationBar {
-                    self.customNavigationBar.prefersLargeTitles = useLargeTitles
-                } else {
-                    self.navigationController?.navigationBar.prefersLargeTitles = useLargeTitles
-                }
-            } else {
-                // Fallback on earlier versions
-            }
-            self.customNavigationBar.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.navStatusHeight)
-            self.collectionView.frame = CGRect(x: 0, y: self.navStatusHeight, width: view.bounds.width, height: (view.bounds.height - self.navStatusHeight))
-        }
+    open override var scrollView: UIScrollView? {
+        return self.collectionView
     }
     //collectionView
     public lazy var collectionView : UICollectionView = {
@@ -57,8 +39,6 @@ open class JXCollectionViewController: JXBaseViewController {
         collectionView.dataSource = self
         return collectionView
     }()
-    //refreshControl
-    public var refreshControl : UIRefreshControl?
     //data array
     public var dataArray = NSMutableArray()
     public var page : Int = 1
@@ -74,22 +54,13 @@ open class JXCollectionViewController: JXBaseViewController {
             }
         }
     }
-   
-    @objc override open func setUpMainView() {
-        setUpTableView()
+    open override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.defaultView.frame = view.bounds
+        self.customNavigationBar.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: self.navStatusHeight)
+        let y = self.navStatusHeight
+        self.collectionView.frame = CGRect(x: 0, y: y, width: view.bounds.width, height: (view.bounds.height - y))
     }
-    
-    open func setUpTableView(){
-        let y = self.useCustomNavigationBar ? self.navStatusHeight : 0
-        let height = self.useCustomNavigationBar ? (view.bounds.height - self.navStatusHeight) : view.bounds.height
-        
-        self.collectionView.frame = CGRect(x: 0, y: y, width: view.bounds.width, height: height)
-        self.view.addSubview(self.collectionView)
-    }
-    /// request data
-    ///
-    /// - Parameter page: load data for page,
-    open func request(page:Int) {}
 }
 extension JXCollectionViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

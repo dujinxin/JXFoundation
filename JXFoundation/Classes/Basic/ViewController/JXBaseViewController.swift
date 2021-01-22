@@ -154,8 +154,11 @@ open class JXBaseViewController: UIViewController {
     }
     override open func loadView() {
         super.loadView()
-        
         prefersDefaultView ? setUpDefaultView() : setUpMainView()
+    }
+    open override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.defaultView.frame = view.bounds
     }
     override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -163,6 +166,7 @@ open class JXBaseViewController: UIViewController {
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
+        print(self.classForCoder)
     }
     //MARK: - 子类重写
     override open var preferredStatusBarStyle: UIStatusBarStyle {

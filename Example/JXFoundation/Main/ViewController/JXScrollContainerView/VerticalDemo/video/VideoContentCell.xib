@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XU0-Ib-mRc">
                         <rect key="frame" x="0.0" y="0.0" width="102" height="142"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImgPlaceHold" translatesAutoresizingMaskIntoConstraints="NO" id="PJs-4A-Iza">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PJs-4A-Iza">
                                 <rect key="frame" x="0.0" y="0.0" width="102" height="142"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FDs-BB-WSo" customClass="VideoRoundView" customModule="JXFoundation_Example" customModuleProvider="target">
@@ -74,7 +74,4 @@
             <point key="canvasLocation" x="169.56521739130437" y="159.375"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="ImgPlaceHold" width="375" height="375"/>
-    </resources>
 </document>

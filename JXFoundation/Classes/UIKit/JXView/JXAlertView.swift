@@ -103,17 +103,19 @@ public class JXAlertView: UIView {
         
     }
     
+    @IBOutlet weak var actiontop: NSLayoutConstraint!
     @IBOutlet weak var actionLeading: NSLayoutConstraint!
     @IBOutlet weak var actionTrailing: NSLayoutConstraint!
     @IBOutlet weak var actionBottom: NSLayoutConstraint!
     
     //MARK:public properties & methods
-    /// contentMarginEdge:  default（0，16，20，16）
-    public var actionMarginEdge: UIEdgeInsets = UIEdgeInsets.init(top: 0, left: 16, bottom: 20, right: 16) {
+    /// contentMarginEdge:  default（16，16，16，16）
+    public var contentMarginEdge: UIEdgeInsets = UIEdgeInsets.init(top: 16, left: 16, bottom: 16, right: 16) {
         didSet{
-            self.actionLeading.constant = CGFloat(fabsf(Float(actionMarginEdge.left)))
-            self.actionBottom.constant = CGFloat(fabsf(Float(actionMarginEdge.bottom)))
-            self.actionTrailing.constant = CGFloat(fabsf(Float(actionMarginEdge.right)))
+            self.actiontop.constant = CGFloat(fabsf(Float(contentMarginEdge.top)))
+            self.actionLeading.constant = CGFloat(fabsf(Float(contentMarginEdge.left)))
+            self.actionBottom.constant = CGFloat(fabsf(Float(contentMarginEdge.bottom)))
+            self.actionTrailing.constant = CGFloat(fabsf(Float(contentMarginEdge.right)))
         }
     }
     
@@ -121,6 +123,7 @@ public class JXAlertView: UIView {
         didSet{
             guard let attribute = attribute else { return }
             self.buttonStackView.spacing = attribute.minimumInteritemSpacing
+            self.contentMarginEdge = attribute.contentMarginEdge
         }
     }
     public var useActivityIndicatorView: Bool = false {

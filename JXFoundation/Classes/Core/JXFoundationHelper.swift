@@ -88,4 +88,43 @@ open class JXFoundationHelper {
             return true
         }
     }
+    
+    /// 根据权重值获取数组下标，进而选择
+    /// - Parameter weights: 升序排列
+    /// - Returns: 数组下标
+    func getIndexOfArray(weights: Array<UInt>) -> Int {
+        if weights.count == 0 {
+            assertionFailure("权重值不可为空")
+        }
+        //只有一个元素，那么那么直接返回即可
+        if weights.count == 1 {
+            return 0
+        }
+        //多个元素，需要根据权重来随机取值
+        
+        //权重值总和（分母）
+        let sumWeight = weights.reduce(0) { (result, a) in
+            return result + a
+        }
+        if sumWeight == 0 {
+            assertionFailure("权重值不可为0")
+        }
+        var index = -1
+        //依次根据权重（概率）：单个权重（分子） / 总的权重和（分母），取值，取到则停止
+        //1.每个元素被参与得额概率一样为：1/weights.count
+        //2.每个元素被被选中的概率为：权重/ 总的权重
+        let indexRandom = Int(arc4random_uniform(UInt32(weights.count)))
+        let weightRandom = arc4random_uniform(UInt32(sumWeight))
+        let weightValue = weights[indexRandom]//权重值
+        
+        //举例：[2,1,4],概率为2/7，1/7，4/7，对应随机值为：0,1; 0; 0,1,2,3.
+        if weightRandom < weightValue {
+            index = indexRandom
+        }
+        //没有获取到下标值，那么继续
+        if index == -1 {
+            return getIndexOfArray(weights: weights)
+        }
+        return index
+    }
 }

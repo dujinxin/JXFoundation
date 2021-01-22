@@ -20,8 +20,14 @@ public class JXAttribute: NSObject {
     public var highlightedColor = UIColor.black
     public var selectedColor = UIColor.darkText
     public var backgroundColor = UIColor.clear
+    public var normalBackgroundColor = UIColor.clear
     public var selectedBackgroundColor = UIColor.clear
     public var separatorColor = UIColor.darkGray
+    
+    //MARK:image
+    public var normalImage = ""
+    public var highlightedImage = ""
+    public var selectedImage = ""
     
     //MARK:font
     public var fontName : String?
@@ -39,8 +45,14 @@ public class JXAttribute: NSObject {
     public var minimumInteritemSpacing : CGFloat = 0
     /// 内容距边框的距离，非负数
     public var contentMarginEdge : UIEdgeInsets =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    /// 内容距边框的距离，带符号
     public var contentEdgeInsets : UIEdgeInsets =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     public var sectionEdgeInsets : UIEdgeInsets =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    
+    //MARK:layer
+    public var cornerRadius : CGFloat = 0
+    public var borderWidth : CGFloat = 0
+    public var borderColor : CGColor = UIColor.clear.cgColor
     
     //MARK:布局
     ///是否使用顶部工具栏：0不使用，1toolbar，2自定义

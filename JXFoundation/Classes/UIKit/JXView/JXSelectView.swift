@@ -481,7 +481,6 @@ extension JXSelectView : UITableViewDelegate,UITableViewDataSource {
         }
         
         //self.delegate?.didPresentJXSelectView!(self)
-       
     }
 }
 

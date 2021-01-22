@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kWm-Iu-4fV">
                         <rect key="frame" x="0.0" y="0.0" width="144" height="144"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImgPlaceHold" translatesAutoresizingMaskIntoConstraints="NO" id="Kgg-sX-k8j">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kgg-sX-k8j">
                                 <rect key="frame" x="0.0" y="0.0" width="144" height="144"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Kgg-sX-k8j" secondAttribute="height" id="nNI-bS-ebt"/>
@@ -62,7 +62,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ImgPlaceHold" width="375" height="375"/>
         <image name="home_game_link" width="24" height="24"/>
     </resources>
 </document>

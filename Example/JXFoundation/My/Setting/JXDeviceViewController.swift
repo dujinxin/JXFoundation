@@ -12,6 +12,7 @@ import JXFoundation
 private let cellId = "cellId"
 
 class JXDeviceViewController: JXTableViewController {
+    
     override var style: UITableView.Style {
         return .grouped
     }
@@ -36,6 +37,7 @@ class JXDeviceViewController: JXTableViewController {
         print(UIDevice.current.freeMemory)
         print(UIDevice.current.totalMemory1)
         print(UIDevice.current.freeMemory1)
+        
         
     }
     override var useCustomNavigationBar : Bool{

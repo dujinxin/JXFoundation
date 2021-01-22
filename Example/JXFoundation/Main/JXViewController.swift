@@ -40,16 +40,18 @@ class JXViewController: JXTableViewController {
             self.tableView.frame = frame ?? CGRect()
         }
     }
-    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.tableView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+        print(self.view.frame,self.tableView.frame)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - kNavStatusHeight - 44)
-        
-        //self.tableView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - kNavStatusHeight - 44 - kTabBarHeight)
+        self.tableView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         
-        self.dataArray = ["JXNoticeView","JXAlertView","JXSelectView","JXPlaceHolderView","JXInputTextView","JXScrollTitleView","JXScrollContainerView","JXAdvertiseView","JXGuideView","JXActivityIndicatorButtonView","JXAutoScrollViewController","JXGuideView","JXGuideView","JXGuideView","JXGuideView","JXGuideView"]
+        self.dataArray = ["JXNoticeView","JXAlertView","JXSelectView","JXPlaceHolderView","JXInputTextView","JXScrollTitleView","JXScrollContainerView","JXAdvertiseView","JXGuideView","JXActivityIndicatorButtonView","JXAutoScrollView","JXDrawerView","JXGuideView","JXGuideView","JXGuideView","JXGuideView"]
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -156,7 +158,7 @@ extension JXViewController {
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
             case 11:
-                let vc = TestListController()
+                let vc = JXDrawListViewController()
                 vc.title = title
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)

@@ -137,6 +137,21 @@
                                 "title":"JXActivityIndicatorButton",
                                 "desc":"自定义按钮，带加载指示器",
                                 "sub":[]
+                            },
+                            {
+                                "title":"JXDrawerView",
+                                "desc":"展开选择按钮",
+                                "sub":[]
+                            },
+                            {
+                                "title":"JXAutoScrollView",
+                                "desc":"自动无缝衔接滚动广告",
+                                "sub":[]
+                            },
+                            {
+                                "title":"JXActivityIndicatorButton",
+                                "desc":"自定义按钮，带加载指示器",
+                                "sub":[]
                             }
                             
                             

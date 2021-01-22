@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16097.2"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="JXTestView" customModule="JXFoundation_Example" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="359" height="345"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="89w-K7-yb7">
+                    <rect key="frame" x="0.0" y="0.0" width="359" height="345"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="89w-K7-yb7" secondAttribute="trailing" id="0II-2i-vF9"/>
+                <constraint firstItem="89w-K7-yb7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="2Jo-a5-61T"/>
+                <constraint firstAttribute="bottom" secondItem="89w-K7-yb7" secondAttribute="bottom" id="KCD-1q-RAh"/>
+                <constraint firstItem="89w-K7-yb7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="WQt-6A-jMh"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="contentView" destination="89w-K7-yb7" id="el4-6d-gNs"/>
+            </connections>
+            <point key="canvasLocation" x="55.797101449275367" y="58.59375"/>
+        </view>
+    </objects>
+</document>

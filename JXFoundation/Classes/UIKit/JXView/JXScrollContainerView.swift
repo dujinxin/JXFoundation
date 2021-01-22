@@ -17,18 +17,30 @@ public enum JXScrollContainerViewScrollDirection {
     case vertical
 }
 
-
 public protocol JXScrollContainerViewDelegate {
     
     func scrollContainerView(_ scrollContainerView : JXScrollContainerView, to indexPath: IndexPath) -> Void
     func scrollContainerViewDidScroll(scrollView: UIScrollView) -> Void
 }
+/// 目前没有使用，双层嵌套时会用到viewForItemAt
+@objc public protocol JXScrollContainerViewDataSource: NSObjectProtocol {
+    @objc optional func scrollContainerView(_ scrollContainerView: JXScrollContainerView, numberOfItemsInSection section: Int) -> Int
+    @objc optional func scrollContainerView(_ scrollContainerView : JXScrollContainerView, viewForItemAt indexPath: IndexPath) -> UIView
+}
 
 public class JXScrollContainerView: UIView {
-
+    //MARK: 双层嵌套,JXScrollContainerView作为二级容器时会用到
+    var mainScrollView : UIScrollView?
+    
+    
+    var subScrollView : UIScrollView?
+    /// 代理兼父控制器
     let parentViewController : UIViewController
+    /// 容器
     public var containers = Array<Any>()
+    /// 当前所处的页码
     public var currentPage = 0
+    /// 滚动切换方向，主要分为horizontal，vertical
     public var scrollDirection : JXScrollContainerViewScrollDirection = .horizontal {
         didSet{
             guard let collectionViewLayout : UICollectionViewFlowLayout = self.containerView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
@@ -36,11 +48,12 @@ public class JXScrollContainerView: UIView {
             self.containerView.collectionViewLayout = collectionViewLayout
         }
     }
-    
+    var dataSource : JXScrollContainerViewDataSource?
     var delegate : JXScrollContainerViewDelegate?
     /// 手动管理viewWillAppear(_:) 、 viewDidAppear(_:) 、viewWillDisappear(_:) 、viewDidDisappear(_:) ，需要父控制器重写次属性，改为false。暂时不开放，无法控制viewDidDisappear(_:)，viewDidAppear(_:)无法控制
     var shouldAutomaticallyForwardAppearanceMethods: Bool
     
+    /// 主容器，UICollectionView，分页切换，包含的视图为controller.view 或者 view
     public lazy var containerView: UICollectionView = {
         
         let flowlayout = UICollectionViewFlowLayout.init()
@@ -78,6 +91,7 @@ public class JXScrollContainerView: UIView {
     
         self.parentViewController = parentViewController
         self.delegate = parentViewController as? JXScrollContainerViewDelegate
+        self.dataSource = parentViewController as? JXScrollContainerViewDataSource
         self.containers = containers
         self.shouldAutomaticallyForwardAppearanceMethods = parentViewController.shouldAutomaticallyForwardAppearanceMethods
         super.init(frame: frame)
@@ -103,10 +117,15 @@ public class JXScrollContainerView: UIView {
     }
 
     
+    /// 主动调用的刷新方法
     public func reloadData() {
-        let indexPath = IndexPath.init(item: 0, section: 0)
+        let indexPath = IndexPath.init(item: currentPage, section: 0)
         self.containerView.reloadItems(at: [indexPath])
     }
+    /// 滚动方法
+    /// - Parameters:
+    ///   - indexPath: 目标位置
+    ///   - animated: 动画
     public func scrollToItem(at indexPath: IndexPath, animated: Bool) {
         if let cell = self.containerView.visibleCells.first, let indexP = self.containerView.indexPath(for: cell), indexPath == indexP {
             return
@@ -115,6 +134,10 @@ public class JXScrollContainerView: UIView {
         self.containerView.scrollToItem(at: indexPath, at: scrollPosition, animated: animated)
         
     }
+    /// 选择方法
+    /// - Parameters:
+    ///   - indexPath: 选择位置
+    ///   - animated: 动画
     public func selectItem(at indexPath: IndexPath, animated: Bool) {
         if let cell = self.containerView.visibleCells.first, let indexP = self.containerView.indexPath(for: cell), indexPath == indexP {
             return
@@ -140,8 +163,8 @@ extension JXScrollContainerView: UICollectionViewDelegate, UICollectionViewDataS
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         if containers.count > indexPath.item {
-            let v = containers[indexPath.item]
-            if let vc = v as? UIViewController {
+            let obj = containers[indexPath.item]
+            if let vc = obj as? UIViewController {
                 vc.view.tag = 100
                 vc.view.frame = cell.contentView.bounds
                 if let v = cell.contentView.viewWithTag(100) {
@@ -152,14 +175,18 @@ extension JXScrollContainerView: UICollectionViewDelegate, UICollectionViewDataS
                 if !shouldAutomaticallyForwardAppearanceMethods { vc.endAppearanceTransition() }
                 
                 //vc.didMove(toParent: parentViewController)
-            }else if(v is UIView){
-                let iv = v as! UIView
-                iv.frame = cell.contentView.bounds
-                iv.tag = 10000
-                cell.contentView.addSubview(iv)
+            } else if(obj is UIView){
+                let v = obj as! UIView
+                v.frame = cell.contentView.bounds
+                v.tag = 10000
+                cell.contentView.addSubview(v)
             }
-            
-            
+            if let dataSource = self.dataSource, let v = dataSource.scrollContainerView?(self, viewForItemAt: indexPath) {
+//                cell.contentView.removeAllSubView()
+//                v.frame = cell.contentView.bounds
+//                v.tag = 10000
+//                cell.contentView.addSubview(v)
+            }
          }
     }
     public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -220,12 +247,11 @@ extension JXScrollContainerView: UIScrollViewDelegate {
     }
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
-        var page_int = 0
-        
         if self.scrollDirection == .horizontal {
+            
             let offset = scrollView.contentOffset.x
             let page = offset / self.frame.size.width
-            page_int = Int(page)
+            let page_int = Int(page)
             
             if self.currentPage == page_int {
                 return
@@ -252,7 +278,20 @@ extension JXScrollContainerView: UIScrollViewDelegate {
             delegate.scrollContainerView(self, to: indexPath)
         } else if self.scrollDirection == .vertical {
             print("scrollViewDidEndDecelerating vertical ",scrollView.contentOffset)
+            
+            if let s = self.mainScrollView {
+                s.isScrollEnabled = true
+            }
         }
     }
-    
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if let s = self.mainScrollView {
+            s.isScrollEnabled = false
+        }
+    }
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if let s = self.mainScrollView, decelerate == false {
+            s.isScrollEnabled = false
+        }
+    }
 }

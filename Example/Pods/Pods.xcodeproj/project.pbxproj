@@ -114,6 +114,9 @@
 		84A51323DD78920EDD3935B546FE6A19 /* JXBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D380BFD10DDD633E7FAD7177E43ABA9E /* JXBaseViewController.swift */; };
 		84C5B46624A75694009729BD /* JXAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B46424A75693009729BD /* JXAlertView.swift */; };
 		84C5B46D24A83E28009729BD /* JXAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C5B46C24A83E27009729BD /* JXAlertView.xib */; };
+		84DB3117255D2A53006C401B /* JXDrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB3116255D2A52006C401B /* JXDrawerView.swift */; };
+		84DB311B255D3A02006C401B /* JXAutoScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB311A255D3A02006C401B /* JXAutoScrollView.swift */; };
+		84FA35A6258CBA7900A3E4BC /* JXScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA35A4258CB9E400A3E4BC /* JXScrollViewController.swift */; };
 		881129390DAA1E78971CA234BE2ED0E4 /* XCTestObservationCenter+CurrentTestCaseTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C495845D9ED9B9A6807204D302BD2C9 /* XCTestObservationCenter+CurrentTestCaseTracker.m */; };
 		88396E68DC05A379282F3B374F75F43C /* FBSnapshotTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AE8DFA2D83F568E79E07CF42203509 /* FBSnapshotTestController.m */; };
 		89C225B77EF694072C88449380472344 /* Bundle+JXFoundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886932BD8B28CA95CF290AB4F7CA5261 /* Bundle+JXFoundation.swift */; };
@@ -449,6 +452,9 @@
 		847E031D0F99D0DDB503679AAF51A205 /* CwlCatchException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlCatchException.swift; path = Carthage/Checkouts/CwlCatchException/Sources/CwlCatchException/CwlCatchException.swift; sourceTree = "<group>"; };
 		84C5B46424A75693009729BD /* JXAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXAlertView.swift; sourceTree = "<group>"; };
 		84C5B46C24A83E27009729BD /* JXAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JXAlertView.xib; path = JXFoundation/Classes/Resources/JXAlertView.xib; sourceTree = "<group>"; };
+		84DB3116255D2A52006C401B /* JXDrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXDrawerView.swift; sourceTree = "<group>"; };
+		84DB311A255D3A02006C401B /* JXAutoScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXAutoScrollView.swift; sourceTree = "<group>"; };
+		84FA35A4258CB9E400A3E4BC /* JXScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXScrollViewController.swift; sourceTree = "<group>"; };
 		851A9408B6E712E747FFAFA3501E4719 /* QuickSpecBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickSpecBase.h; path = Sources/QuickSpecBase/include/QuickSpecBase.h; sourceTree = "<group>"; };
 		871642A0C55656B26B54C7DB7581FD75 /* Expectation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expectation.swift; path = Sources/Nimble/Expectation.swift; sourceTree = "<group>"; };
 		886932BD8B28CA95CF290AB4F7CA5261 /* Bundle+JXFoundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Bundle+JXFoundation.swift"; sourceTree = "<group>"; };
@@ -717,6 +723,7 @@
 			isa = PBXGroup;
 			children = (
 				D380BFD10DDD633E7FAD7177E43ABA9E /* JXBaseViewController.swift */,
+				84FA35A4258CB9E400A3E4BC /* JXScrollViewController.swift */,
 				640DA9BB54F702F1147DC78103E54115 /* JXCollectionViewController.swift */,
 				90A4D45B4EEA995D7B53FF056E203832 /* JXNavigationController.swift */,
 				91D91AFDD5B5E111849B76F2F3175794 /* JXTableViewController.swift */,
@@ -824,18 +831,20 @@
 			children = (
 				7001FC71F0DC687098FB248FA6FDD9D9 /* JXAdvertiseView.swift */,
 				84C5B46424A75693009729BD /* JXAlertView.swift */,
-				648E3C7185D214AAE28AD8813AA29193 /* JXSelectView.swift */,
+				84DB311A255D3A02006C401B /* JXAutoScrollView.swift */,
+				84161BFD2499FEB700811EFA /* JXActivityIndicatorButton.swift */,
 				93FD33DA08F5F6582FF1C31D9C79CD51 /* JXAttribute.swift */,
 				C7DFFF650F8C750D9E8D81CC2E738D4F /* JXBarView.swift */,
+				84DB3116255D2A52006C401B /* JXDrawerView.swift */,
 				DB049FB6FBFC08615EB8EC560DBBF142 /* JXGuideView.swift */,
 				2A391898E00550ED8F946DF7D22F33F0 /* JXScrollContainerView.swift */,
+				70D1EE2263424E56208CE9D5622277EF /* JXScrollTitleView.swift */,
+				648E3C7185D214AAE28AD8813AA29193 /* JXSelectView.swift */,
 				271C7209A24A84525839782D3A614D80 /* JXInputTextView.swift */,
 				1B5050B914135CB8E670D601E801ABE1 /* JXNoticeView.swift */,
 				9EB93B5156D3D19E86D5B70512829092 /* JXPlaceHolderTextView.swift */,
-				70D1EE2263424E56208CE9D5622277EF /* JXScrollTitleView.swift */,
 				7C3B40C36A5F8EC21ABF7A18F8B38E21 /* JXTopBarView.swift */,
 				D62A86DE243C5DE5A803FE56B2978DA2 /* JXView.swift */,
-				84161BFD2499FEB700811EFA /* JXActivityIndicatorButton.swift */,
 			);
 			name = JXView;
 			path = JXFoundation/Classes/UIKit/JXView;
@@ -1775,10 +1784,12 @@
 			files = (
 				091B39BCC05B66546FD65855B3B900CA /* BaseModel.swift in Sources */,
 				50D695B6EF19249E34016F15333C4C35 /* BaseViewModel.swift in Sources */,
+				84FA35A6258CBA7900A3E4BC /* JXScrollViewController.swift in Sources */,
 				70468DB9CC1C8D235B2AB845DF247909 /* Bundle+Extension.swift in Sources */,
 				89C225B77EF694072C88449380472344 /* Bundle+JXFoundation.swift in Sources */,
 				C32E028FBB698903A8BA213735B838FA /* Data+Extension.swift in Sources */,
 				748038FEBB69199ABDC7B8418E6AC3D3 /* Date+Extension.swift in Sources */,
+				84DB311B255D3A02006C401B /* JXAutoScrollView.swift in Sources */,
 				6ABDBA98F6F022814BB0DDDE5CA91B62 /* FileManager+Extension.swift in Sources */,
 				3DE3147D2308AC910CE3C2BD92804BF7 /* JXAdvertiseView.swift in Sources */,
 				1BEE015298C8B4DE3CAC128BDD1F3464 /* JXSelectView.swift in Sources */,
@@ -1815,6 +1826,7 @@
 				7BE49E43DDBD3B3DFBB68D1AA35E2C10 /* UIScreen+Extension.swift in Sources */,
 				94F6FD9146FB92FE1439E2BD09E17F70 /* UIView+Extension.swift in Sources */,
 				DD4BCE7FC29F8E0B04E8D43F8A64D9DB /* UIViewController+Extension.swift in Sources */,
+				84DB3117255D2A53006C401B /* JXDrawerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

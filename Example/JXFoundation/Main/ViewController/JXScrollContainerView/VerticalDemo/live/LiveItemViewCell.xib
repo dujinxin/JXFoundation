@@ -20,11 +20,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vGc-ky-V14">
                         <rect key="frame" x="0.0" y="0.0" width="157" height="157"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImgPlaceHold" translatesAutoresizingMaskIntoConstraints="NO" id="rub-2m-d9E">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rub-2m-d9E">
                                 <rect key="frame" x="0.0" y="0.0" width="157" height="157"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="rub-2m-d9E" secondAttribute="height" id="T1v-Ki-msn"/>
-                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#黑马门" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIC-QC-Hpp">
                                 <rect key="frame" x="4" y="115" width="149" height="18"/>
@@ -93,7 +90,4 @@
             <point key="canvasLocation" x="209.42028985507247" y="173.10267857142856"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="ImgPlaceHold" width="375" height="375"/>
-    </resources>
 </document>

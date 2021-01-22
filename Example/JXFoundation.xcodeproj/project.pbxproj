@@ -24,6 +24,8 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		7A19245D051968A0AE489E12 /* Pods_JXFoundation_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E14FD458B0D2892BD30F6E /* Pods_JXFoundation_Example.framework */; };
+		84131008256A6184008FD717 /* JXTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84131007256A6184008FD717 /* JXTestView.swift */; };
+		8413100A256A61D1008FD717 /* JXTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84131009256A61D1008FD717 /* JXTestView.xib */; };
 		84286E812535BB910056904F /* HomeCommonFooterReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84286E662535BB910056904F /* HomeCommonFooterReusableView.xib */; };
 		84286E822535BB910056904F /* VideoContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84286E682535BB910056904F /* VideoContentCell.xib */; };
 		84286E832535BB910056904F /* VideoContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84286E692535BB910056904F /* VideoContentCell.swift */; };
@@ -50,15 +52,16 @@
 		84286E9A2536E53D0056904F /* JXActivityIndicatorButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84286E992536E53D0056904F /* JXActivityIndicatorButtonViewController.swift */; };
 		84286E9C2536E93B0056904F /* JXAutoScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84286E9B2536E93B0056904F /* JXAutoScrollViewController.swift */; };
 		84286EE5253953A90056904F /* JXScrollCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84286EE4253953A90056904F /* JXScrollCycleView.swift */; };
+		8434AFD0255249A9002559C2 /* JXControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434AFCF255249A9002559C2 /* JXControlViewController.swift */; };
+		8434AFD425524AB3002559C2 /* JXPortraitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434AFD325524AB3002559C2 /* JXPortraitViewController.swift */; };
+		8434AFD625524AD8002559C2 /* JXlandscapeRightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434AFD525524AD8002559C2 /* JXlandscapeRightViewController.swift */; };
+		8434AFD825524B2B002559C2 /* JXRotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434AFD725524B2B002559C2 /* JXRotationViewController.swift */; };
 		845BE5572472494B00D6750C /* JXDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE5562472494B00D6750C /* JXDataViewController.swift */; };
 		845BE55E2473862700D6750C /* JXChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE55D2473862700D6750C /* JXChannelViewController.swift */; };
 		845BE5642473875200D6750C /* ChannelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE5602473875200D6750C /* ChannelViewCell.swift */; };
 		845BE5652473875200D6750C /* ChannelViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845BE5612473875200D6750C /* ChannelViewCell.xib */; };
 		845BE5662473875300D6750C /* ChannelReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845BE5622473875200D6750C /* ChannelReusableView.xib */; };
 		845BE5672473875300D6750C /* ChannelReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE5632473875200D6750C /* ChannelReusableView.swift */; };
-		845BE5692473959600D6750C /* JXFoundation.json in Resources */ = {isa = PBXBuildFile; fileRef = 845BE5682473959600D6750C /* JXFoundation.json */; };
-		845BE56C24739FC300D6750C /* Province.json in Resources */ = {isa = PBXBuildFile; fileRef = 845BE56A24739FC200D6750C /* Province.json */; };
-		845BE56D24739FC300D6750C /* Countrys.json in Resources */ = {isa = PBXBuildFile; fileRef = 845BE56B24739FC200D6750C /* Countrys.json */; };
 		845BE5702473BDF500D6750C /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE56F2473BDF500D6750C /* DiscoverViewController.swift */; };
 		845BE57F2477CF6000D6750C /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE57E2477CF6000D6750C /* SubViewController.swift */; };
 		847FD7FD249B53680094B121 /* JXUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847FD7FC249B53680094B121 /* JXUserViewController.swift */; };
@@ -68,6 +71,16 @@
 		8493C132245E6B7B00012DB2 /* JXCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8493C130245E6B7B00012DB2 /* JXCommonCell.xib */; };
 		8493C1422460292A00012DB2 /* JXPrivateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493C1412460292A00012DB2 /* JXPrivateViewController.swift */; };
 		8493C1482461516B00012DB2 /* JXTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493C1472461516B00012DB2 /* JXTestViewController.swift */; };
+		849F159625B98AD4005ED859 /* LanuchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F158C25B98AD4005ED859 /* LanuchViewController.swift */; };
+		849F159825B98AD4005ED859 /* LanuchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F158E25B98AD4005ED859 /* LanuchManager.swift */; };
+		849F159925B98AD4005ED859 /* 樱花.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 849F159025B98AD4005ED859 /* 樱花.jpg */; };
+		849F159A25B98AD4005ED859 /* 视频.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 849F159125B98AD4005ED859 /* 视频.mp4 */; };
+		849F159B25B98AD4005ED859 /* Province.json in Resources */ = {isa = PBXBuildFile; fileRef = 849F159225B98AD4005ED859 /* Province.json */; };
+		849F159C25B98AD4005ED859 /* Countrys.json in Resources */ = {isa = PBXBuildFile; fileRef = 849F159325B98AD4005ED859 /* Countrys.json */; };
+		849F159D25B98AD4005ED859 /* JXFoundation.json in Resources */ = {isa = PBXBuildFile; fileRef = 849F159425B98AD4005ED859 /* JXFoundation.json */; };
+		849F159E25B98AD4005ED859 /* 撒娇.gif in Resources */ = {isa = PBXBuildFile; fileRef = 849F159525B98AD4005ED859 /* 撒娇.gif */; };
+		849F15A025B9936E005ED859 /* JXTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F159F25B9936E005ED859 /* JXTabbarViewController.swift */; };
+		849F15A225BA6A8B005ED859 /* Lanuch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849F15A125BA6A8B005ED859 /* Lanuch.storyboard */; };
 		84C53B9E24DAB0F400C978B8 /* JXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C53B9D24DAB0F100C978B8 /* JXViewController.swift */; };
 		84C53BA024DAB75C00C978B8 /* JXAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C53B9F24DAB75C00C978B8 /* JXAlertViewController.swift */; };
 		84C53BA224DAB78800C978B8 /* JXScrollTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C53BA124DAB78800C978B8 /* JXScrollTitleViewController.swift */; };
@@ -75,19 +88,19 @@
 		84C53BA624DBB40400C978B8 /* JXSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C53BA524DBB40400C978B8 /* JXSelectViewController.swift */; };
 		84C53BAA24DCFB2E00C978B8 /* CustomSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C53BA824DCFB2E00C978B8 /* CustomSelectCell.swift */; };
 		84C53BAB24DCFB2E00C978B8 /* CustomSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C53BA924DCFB2E00C978B8 /* CustomSelectCell.xib */; };
-		84C5B45324A2EB72009729BD /* 撒娇.gif in Resources */ = {isa = PBXBuildFile; fileRef = 84C5B45224A2EB72009729BD /* 撒娇.gif */; };
 		84C5B45524A2ECEB009729BD /* Private.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C5B45424A2ECEA009729BD /* Private.storyboard */; };
 		84C5B45824A2EEAD009729BD /* JXAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B45724A2EEAD009729BD /* JXAlbumViewController.swift */; };
-		84C5B45A24A2F0FD009729BD /* 视频.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84C5B45924A2F0FD009729BD /* 视频.mp4 */; };
-		84C5B45C24A2F292009729BD /* 樱花.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84C5B45B24A2F292009729BD /* 樱花.jpg */; };
 		84C5B47024A84866009729BD /* JXInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B46F24A84866009729BD /* JXInputViewController.swift */; };
 		84C5B47224A84946009729BD /* JXViewDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C5B47124A84946009729BD /* JXViewDemo.storyboard */; };
 		84C5B5F624BC42B7009729BD /* AppDelegate+LocalNotifiication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B5F524BC42B7009729BD /* AppDelegate+LocalNotifiication.swift */; };
 		84C5B5F824BC4D13009729BD /* JXLocalNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B5F724BC4D13009729BD /* JXLocalNotificationController.swift */; };
-		84CA72EA2519EC71006C5C75 /* JXAutoScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CA72E92519EC71006C5C75 /* JXAutoScrollView.swift */; };
+		84DB3119255D2BC6006C401B /* JXDrawListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB3118255D2BC6006C401B /* JXDrawListViewController.swift */; };
+		84DB311D255D4667006C401B /* JXDropListVew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB311C255D4667006C401B /* JXDropListVew.swift */; };
+		84DB3123255FF089006C401B /* JXPresentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB3122255FF089006C401B /* JXPresentView.swift */; };
 		84E7D58F25219ABA00605B01 /* TwoCategroyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E7D58E25219ABA00605B01 /* TwoCategroyViewController.swift */; };
 		84E7D5922521D61700605B01 /* JXHorizontalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E7D5912521D61700605B01 /* JXHorizontalViewController.swift */; };
 		84E7D5942521D65800605B01 /* JXVerticallyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E7D5932521D65800605B01 /* JXVerticallyViewController.swift */; };
+		84FA3669259045F400A3E4BC /* TViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA3668259045F400A3E4BC /* TViewController.swift */; };
 		F58900C50512E0C1CD6EEA78 /* Pods_JXFoundation_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4033CC54EDB8F326E866405 /* Pods_JXFoundation_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -135,6 +148,8 @@
 		607FACE51AFB9204008FA782 /* JXFoundation_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JXFoundation_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		84131007256A6184008FD717 /* JXTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXTestView.swift; sourceTree = "<group>"; };
+		84131009256A61D1008FD717 /* JXTestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JXTestView.xib; sourceTree = "<group>"; };
 		84286E662535BB910056904F /* HomeCommonFooterReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCommonFooterReusableView.xib; sourceTree = "<group>"; };
 		84286E682535BB910056904F /* VideoContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoContentCell.xib; sourceTree = "<group>"; };
 		84286E692535BB910056904F /* VideoContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoContentCell.swift; sourceTree = "<group>"; };
@@ -161,15 +176,16 @@
 		84286E992536E53D0056904F /* JXActivityIndicatorButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXActivityIndicatorButtonViewController.swift; sourceTree = "<group>"; };
 		84286E9B2536E93B0056904F /* JXAutoScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXAutoScrollViewController.swift; sourceTree = "<group>"; };
 		84286EE4253953A90056904F /* JXScrollCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXScrollCycleView.swift; sourceTree = "<group>"; };
+		8434AFCF255249A9002559C2 /* JXControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXControlViewController.swift; sourceTree = "<group>"; };
+		8434AFD325524AB3002559C2 /* JXPortraitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXPortraitViewController.swift; sourceTree = "<group>"; };
+		8434AFD525524AD8002559C2 /* JXlandscapeRightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXlandscapeRightViewController.swift; sourceTree = "<group>"; };
+		8434AFD725524B2B002559C2 /* JXRotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXRotationViewController.swift; sourceTree = "<group>"; };
 		845BE5562472494B00D6750C /* JXDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXDataViewController.swift; sourceTree = "<group>"; };
 		845BE55D2473862700D6750C /* JXChannelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXChannelViewController.swift; sourceTree = "<group>"; };
 		845BE5602473875200D6750C /* ChannelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelViewCell.swift; sourceTree = "<group>"; };
 		845BE5612473875200D6750C /* ChannelViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChannelViewCell.xib; sourceTree = "<group>"; };
 		845BE5622473875200D6750C /* ChannelReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChannelReusableView.xib; sourceTree = "<group>"; };
 		845BE5632473875200D6750C /* ChannelReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelReusableView.swift; sourceTree = "<group>"; };
-		845BE5682473959600D6750C /* JXFoundation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JXFoundation.json; sourceTree = "<group>"; };
-		845BE56A24739FC200D6750C /* Province.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Province.json; sourceTree = "<group>"; };
-		845BE56B24739FC200D6750C /* Countrys.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Countrys.json; sourceTree = "<group>"; };
 		845BE56F2473BDF500D6750C /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		845BE57E2477CF6000D6750C /* SubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
 		847FD7FC249B53680094B121 /* JXUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXUserViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +195,16 @@
 		8493C130245E6B7B00012DB2 /* JXCommonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JXCommonCell.xib; sourceTree = "<group>"; };
 		8493C1412460292A00012DB2 /* JXPrivateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXPrivateViewController.swift; sourceTree = "<group>"; };
 		8493C1472461516B00012DB2 /* JXTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXTestViewController.swift; sourceTree = "<group>"; };
+		849F158C25B98AD4005ED859 /* LanuchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanuchViewController.swift; sourceTree = "<group>"; };
+		849F158E25B98AD4005ED859 /* LanuchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanuchManager.swift; sourceTree = "<group>"; };
+		849F159025B98AD4005ED859 /* 樱花.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "樱花.jpg"; sourceTree = "<group>"; };
+		849F159125B98AD4005ED859 /* 视频.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "视频.mp4"; sourceTree = "<group>"; };
+		849F159225B98AD4005ED859 /* Province.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Province.json; sourceTree = "<group>"; };
+		849F159325B98AD4005ED859 /* Countrys.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Countrys.json; sourceTree = "<group>"; };
+		849F159425B98AD4005ED859 /* JXFoundation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = JXFoundation.json; sourceTree = "<group>"; };
+		849F159525B98AD4005ED859 /* 撒娇.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "撒娇.gif"; sourceTree = "<group>"; };
+		849F159F25B9936E005ED859 /* JXTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXTabbarViewController.swift; sourceTree = "<group>"; };
+		849F15A125BA6A8B005ED859 /* Lanuch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Lanuch.storyboard; sourceTree = "<group>"; };
 		84C53B9D24DAB0F100C978B8 /* JXViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXViewController.swift; sourceTree = "<group>"; };
 		84C53B9F24DAB75C00C978B8 /* JXAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXAlertViewController.swift; sourceTree = "<group>"; };
 		84C53BA124DAB78800C978B8 /* JXScrollTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXScrollTitleViewController.swift; sourceTree = "<group>"; };
@@ -186,19 +212,19 @@
 		84C53BA524DBB40400C978B8 /* JXSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXSelectViewController.swift; sourceTree = "<group>"; };
 		84C53BA824DCFB2E00C978B8 /* CustomSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectCell.swift; sourceTree = "<group>"; };
 		84C53BA924DCFB2E00C978B8 /* CustomSelectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSelectCell.xib; sourceTree = "<group>"; };
-		84C5B45224A2EB72009729BD /* 撒娇.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "撒娇.gif"; sourceTree = "<group>"; };
 		84C5B45424A2ECEA009729BD /* Private.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Private.storyboard; sourceTree = "<group>"; };
 		84C5B45724A2EEAD009729BD /* JXAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXAlbumViewController.swift; sourceTree = "<group>"; };
-		84C5B45924A2F0FD009729BD /* 视频.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "视频.mp4"; sourceTree = "<group>"; };
-		84C5B45B24A2F292009729BD /* 樱花.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "樱花.jpg"; sourceTree = "<group>"; };
 		84C5B46F24A84866009729BD /* JXInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXInputViewController.swift; sourceTree = "<group>"; };
 		84C5B47124A84946009729BD /* JXViewDemo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JXViewDemo.storyboard; sourceTree = "<group>"; };
 		84C5B5F524BC42B7009729BD /* AppDelegate+LocalNotifiication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+LocalNotifiication.swift"; sourceTree = "<group>"; };
 		84C5B5F724BC4D13009729BD /* JXLocalNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXLocalNotificationController.swift; sourceTree = "<group>"; };
-		84CA72E92519EC71006C5C75 /* JXAutoScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXAutoScrollView.swift; sourceTree = "<group>"; };
+		84DB3118255D2BC6006C401B /* JXDrawListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXDrawListViewController.swift; sourceTree = "<group>"; };
+		84DB311C255D4667006C401B /* JXDropListVew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXDropListVew.swift; sourceTree = "<group>"; };
+		84DB3122255FF089006C401B /* JXPresentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXPresentView.swift; sourceTree = "<group>"; };
 		84E7D58E25219ABA00605B01 /* TwoCategroyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoCategroyViewController.swift; sourceTree = "<group>"; };
 		84E7D5912521D61700605B01 /* JXHorizontalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXHorizontalViewController.swift; sourceTree = "<group>"; };
 		84E7D5932521D65800605B01 /* JXVerticallyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXVerticallyViewController.swift; sourceTree = "<group>"; };
+		84FA3668259045F400A3E4BC /* TViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TViewController.swift; sourceTree = "<group>"; };
 		8F5B92AB0EF0DE8A546F7385 /* JXFoundation.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = JXFoundation.podspec; path = ../JXFoundation.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A229F08ED1DE9C6192AFD97E /* Pods-JXFoundation_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXFoundation_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JXFoundation_Tests/Pods-JXFoundation_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B6E14FD458B0D2892BD30F6E /* Pods_JXFoundation_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JXFoundation_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,9 +282,13 @@
 				3524FC9121D0927C005813A3 /* MyViewController.swift */,
 				847FD7FC249B53680094B121 /* JXUserViewController.swift */,
 				8493C129245D6F6F00012DB2 /* JXSettingViewController.swift */,
+				84FA3668259045F400A3E4BC /* TViewController.swift */,
 				8493C1472461516B00012DB2 /* JXTestViewController.swift */,
-				84CA72E92519EC71006C5C75 /* JXAutoScrollView.swift */,
 				84286EE4253953A90056904F /* JXScrollCycleView.swift */,
+				84DB311C255D4667006C401B /* JXDropListVew.swift */,
+				84DB3122255FF089006C401B /* JXPresentView.swift */,
+				84131007256A6184008FD717 /* JXTestView.swift */,
+				84131009256A61D1008FD717 /* JXTestView.xib */,
 				8493C140246028D600012DB2 /* Setting */,
 				8493C12F245E6B7B00012DB2 /* JXCommonCell.swift */,
 				8493C130245E6B7B00012DB2 /* JXCommonCell.xib */,
@@ -338,13 +368,9 @@
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				84C5B45924A2F0FD009729BD /* 视频.mp4 */,
-				84C5B45B24A2F292009729BD /* 樱花.jpg */,
-				84C5B45224A2EB72009729BD /* 撒娇.gif */,
+				849F158B25B98AD4005ED859 /* lanuch */,
+				849F158F25B98AD4005ED859 /* resource */,
 				607FACD41AFB9204008FA782 /* Info.plist */,
-				845BE5682473959600D6750C /* JXFoundation.json */,
-				845BE56B24739FC200D6750C /* Countrys.json */,
-				845BE56A24739FC200D6750C /* Province.json */,
 				29A9A8CF2351CC4E00489648 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
@@ -439,6 +465,24 @@
 			path = main;
 			sourceTree = "<group>";
 		};
+		8434AFD125524A6A002559C2 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				8434AFD225524A74002559C2 /* Rotation */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
+		8434AFD225524A74002559C2 /* Rotation */ = {
+			isa = PBXGroup;
+			children = (
+				8434AFD725524B2B002559C2 /* JXRotationViewController.swift */,
+				8434AFD325524AB3002559C2 /* JXPortraitViewController.swift */,
+				8434AFD525524AD8002559C2 /* JXlandscapeRightViewController.swift */,
+			);
+			path = Rotation;
+			sourceTree = "<group>";
+		};
 		845BE55F2473871800D6750C /* 拖动排序 */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,12 +515,38 @@
 			isa = PBXGroup;
 			children = (
 				8493C12C245E5C4B00012DB2 /* JXDeviceViewController.swift */,
+				8434AFCF255249A9002559C2 /* JXControlViewController.swift */,
+				8434AFD125524A6A002559C2 /* Control */,
 				8493C1412460292A00012DB2 /* JXPrivateViewController.swift */,
 				84C5B5F524BC42B7009729BD /* AppDelegate+LocalNotifiication.swift */,
 				84C5B45624A2EDD3009729BD /* Private */,
 				845BE5562472494B00D6750C /* JXDataViewController.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		849F158B25B98AD4005ED859 /* lanuch */ = {
+			isa = PBXGroup;
+			children = (
+				849F15A125BA6A8B005ED859 /* Lanuch.storyboard */,
+				849F158C25B98AD4005ED859 /* LanuchViewController.swift */,
+				849F158E25B98AD4005ED859 /* LanuchManager.swift */,
+				849F159F25B9936E005ED859 /* JXTabbarViewController.swift */,
+			);
+			path = lanuch;
+			sourceTree = "<group>";
+		};
+		849F158F25B98AD4005ED859 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				849F159025B98AD4005ED859 /* 樱花.jpg */,
+				849F159125B98AD4005ED859 /* 视频.mp4 */,
+				849F159225B98AD4005ED859 /* Province.json */,
+				849F159325B98AD4005ED859 /* Countrys.json */,
+				849F159425B98AD4005ED859 /* JXFoundation.json */,
+				849F159525B98AD4005ED859 /* 撒娇.gif */,
+			);
+			path = resource;
 			sourceTree = "<group>";
 		};
 		84C53BA724DCFADC00C978B8 /* View */ = {
@@ -508,6 +578,7 @@
 				84C53BA124DAB78800C978B8 /* JXScrollTitleViewController.swift */,
 				84286E992536E53D0056904F /* JXActivityIndicatorButtonViewController.swift */,
 				84286E9B2536E93B0056904F /* JXAutoScrollViewController.swift */,
+				84DB3118255D2BC6006C401B /* JXDrawListViewController.swift */,
 				84E7D5902521D4CB00605B01 /* JXScrollContainerView */,
 				84C5B47124A84946009729BD /* JXViewDemo.storyboard */,
 			);
@@ -598,12 +669,13 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = KKYJM4DU53;
+						DevelopmentTeam = 2BW22L7PP7;
 						LastSwiftMigration = 1140;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = KKYJM4DU53;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Manual;
 						TestTargetID = 607FACCF1AFB9204008FA782;
@@ -638,28 +710,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C53BAB24DCFB2E00C978B8 /* CustomSelectCell.xib in Resources */,
-				84C5B45A24A2F0FD009729BD /* 视频.mp4 in Resources */,
+				8413100A256A61D1008FD717 /* JXTestView.xib in Resources */,
 				84C5B47224A84946009729BD /* JXViewDemo.storyboard in Resources */,
+				849F159B25B98AD4005ED859 /* Province.json in Resources */,
+				849F15A225BA6A8B005ED859 /* Lanuch.storyboard in Resources */,
 				84286E8A2535BB910056904F /* LeftItemCell.xib in Resources */,
-				845BE56D24739FC300D6750C /* Countrys.json in Resources */,
 				84286E972535BB910056904F /* MainHeaderReusableView.xib in Resources */,
 				84286E8C2535BB910056904F /* LiveItemViewCell.xib in Resources */,
-				845BE56C24739FC300D6750C /* Province.json in Resources */,
-				84C5B45324A2EB72009729BD /* 撒娇.gif in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				8493C132245E6B7B00012DB2 /* JXCommonCell.xib in Resources */,
-				845BE5692473959600D6750C /* JXFoundation.json in Resources */,
 				845BE5662473875300D6750C /* ChannelReusableView.xib in Resources */,
 				84286E812535BB910056904F /* HomeCommonFooterReusableView.xib in Resources */,
 				84286E872535BB910056904F /* GameItemViewCell.xib in Resources */,
+				849F159D25B98AD4005ED859 /* JXFoundation.json in Resources */,
 				29A9A8CD2351CC4E00489648 /* Localizable.strings in Resources */,
-				84C5B45C24A2F292009729BD /* 樱花.jpg in Resources */,
 				84C5B45524A2ECEB009729BD /* Private.storyboard in Resources */,
 				84286E912535BB910056904F /* MainEntryCell.xib in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				849F159925B98AD4005ED859 /* 樱花.jpg in Resources */,
 				84286E8F2535BB910056904F /* LiveHeaderReusableView.xib in Resources */,
 				84286E952535BB910056904F /* MainContentCell.xib in Resources */,
+				849F159C25B98AD4005ED859 /* Countrys.json in Resources */,
 				845BE5652473875200D6750C /* ChannelViewCell.xib in Resources */,
+				849F159E25B98AD4005ED859 /* 撒娇.gif in Resources */,
+				849F159A25B98AD4005ED859 /* 视频.mp4 in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 				84286E822535BB910056904F /* VideoContentCell.xib in Resources */,
 			);
@@ -767,14 +841,18 @@
 				84286E932535BB910056904F /* MainEntryCell.swift in Sources */,
 				84286E962535BB910056904F /* MainHeaderReusableView.swift in Sources */,
 				84C5B45824A2EEAD009729BD /* JXAlbumViewController.swift in Sources */,
+				849F159825B98AD4005ED859 /* LanuchManager.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				84131008256A6184008FD717 /* JXTestView.swift in Sources */,
 				84C53BA224DAB78800C978B8 /* JXScrollTitleViewController.swift in Sources */,
 				3595B2A22190062C00494929 /* CountDown.swift in Sources */,
 				845BE55E2473862700D6750C /* JXChannelViewController.swift in Sources */,
 				84286E842535BB910056904F /* VideoViewController.swift in Sources */,
 				84E7D5942521D65800605B01 /* JXVerticallyViewController.swift in Sources */,
 				845BE57F2477CF6000D6750C /* SubViewController.swift in Sources */,
+				849F159625B98AD4005ED859 /* LanuchViewController.swift in Sources */,
 				84286E942535BB910056904F /* MainContentCell.swift in Sources */,
+				849F15A025B9936E005ED859 /* JXTabbarViewController.swift in Sources */,
 				3595B2CD2196EB0F00494929 /* InputViewController.swift in Sources */,
 				84C5B5F824BC4D13009729BD /* JXLocalNotificationController.swift in Sources */,
 				84286E8E2535BB910056904F /* LiveItemViewCell.swift in Sources */,
@@ -782,13 +860,15 @@
 				84C53B9E24DAB0F400C978B8 /* JXViewController.swift in Sources */,
 				84286E852535BB910056904F /* HomeCommonFooterReusableView.swift in Sources */,
 				3595B29C218FECA800494929 /* TestListController.swift in Sources */,
+				84DB3119255D2BC6006C401B /* JXDrawListViewController.swift in Sources */,
 				8493C1422460292A00012DB2 /* JXPrivateViewController.swift in Sources */,
 				84286E882535BB910056904F /* GameItemViewCell.swift in Sources */,
+				84DB311D255D4667006C401B /* JXDropListVew.swift in Sources */,
 				8493C1482461516B00012DB2 /* JXTestViewController.swift in Sources */,
+				84DB3123255FF089006C401B /* JXPresentView.swift in Sources */,
 				845BE5572472494B00D6750C /* JXDataViewController.swift in Sources */,
 				84286E832535BB910056904F /* VideoContentCell.swift in Sources */,
 				84286E892535BB910056904F /* HomeViewController.swift in Sources */,
-				84CA72EA2519EC71006C5C75 /* JXAutoScrollView.swift in Sources */,
 				84E7D58F25219ABA00605B01 /* TwoCategroyViewController.swift in Sources */,
 				84286E9A2536E53D0056904F /* JXActivityIndicatorButtonViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
@@ -804,6 +884,9 @@
 				84E7D5922521D61700605B01 /* JXHorizontalViewController.swift in Sources */,
 				3598AB6920E9FE1700841C85 /* MainViewController.swift in Sources */,
 				8493C12D245E5C4B00012DB2 /* JXDeviceViewController.swift in Sources */,
+				8434AFD825524B2B002559C2 /* JXRotationViewController.swift in Sources */,
+				84FA3669259045F400A3E4BC /* TViewController.swift in Sources */,
+				8434AFD0255249A9002559C2 /* JXControlViewController.swift in Sources */,
 				845BE5642473875200D6750C /* ChannelViewCell.swift in Sources */,
 				84C53BA624DBB40400C978B8 /* JXSelectViewController.swift in Sources */,
 				845BE5702473BDF500D6750C /* DiscoverViewController.swift in Sources */,
@@ -812,7 +895,9 @@
 				3524FC9221D0927C005813A3 /* MyViewController.swift in Sources */,
 				84286E9C2536E93B0056904F /* JXAutoScrollViewController.swift in Sources */,
 				3517600C20E643890056803B /* JXFeedbackViewController.swift in Sources */,
+				8434AFD425524AB3002559C2 /* JXPortraitViewController.swift in Sources */,
 				84C53BA424DAB7A000C978B8 /* JXScrollContainerViewController.swift in Sources */,
+				8434AFD625524AD8002559C2 /* JXlandscapeRightViewController.swift in Sources */,
 				84286E902535BB910056904F /* HomeLiveController.swift in Sources */,
 				84C5B47024A84866009729BD /* JXInputViewController.swift in Sources */,
 				84286EE5253953A90056904F /* JXScrollCycleView.swift in Sources */,
@@ -990,19 +1075,20 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KKYJM4DU53;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 2BW22L7PP7;
 				INFOPLIST_FILE = JXFoundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.JXFoundation-Example";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rt.org.cocoapods.demo.JXFoundation-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = AdDev;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1014,18 +1100,19 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 2BW22L7PP7;
 				INFOPLIST_FILE = JXFoundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rt.org.cocoapods.demo.JXFoundation-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = AdDev;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1033,8 +1120,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5BE60DEF63C7E707B5D4E0DA /* Pods-JXFoundation_Tests.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = KKYJM4DU53;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/Developer/Library/Frameworks/**",
@@ -1058,7 +1147,7 @@
 			baseConfigurationReference = A229F08ED1DE9C6192AFD97E /* Pods-JXFoundation_Tests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = KKYJM4DU53;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

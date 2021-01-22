@@ -21,13 +21,11 @@ class JXSettingViewController: JXTableViewController {
         self.customNavigationBar.backgroundView.backgroundColor = UIColor.cyan
         self.customNavigationBar.separatorView.backgroundColor = UIColor.gray
         
-        self.tableView.frame = CGRect(x: 0, y: self.navStatusHeight, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        //self.tableView.frame = CGRect(x: 0, y: self.navStatusHeight, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         
-        self.dataArray = ["device","隐私","数据存储"]
+        self.dataArray = ["设备信息","控制中心","隐私","数据存储"]
     }
-    
-    
     override var useCustomNavigationBar : Bool{
         return true
     }
@@ -69,18 +67,17 @@ extension JXSettingViewController {
         
         switch indexPath.row {
         case 0:
-            self.navigationController?.pushViewController(JXDeviceViewController(), animated: true)
+            let vc = JXDeviceViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         case 1:
-            self.navigationController?.pushViewController(JXPrivateViewController(), animated: true)
+            self.navigationController?.pushViewController(JXControlViewController(), animated: true)
         case 2:
+            self.navigationController?.pushViewController(JXPrivateViewController(), animated: true)
+        case 3:
             self.navigationController?.pushViewController(JXDataViewController(), animated: true)
         default:
             print(indexPath.row)
         }
     }
 }
-extension JXSettingViewController {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset)
-    }
-}
+

@@ -66,6 +66,25 @@ open class JXNavigationController: UINavigationController {
     @objc func pop() {
         popViewController(animated: true)
     }
+    //重写这两个方法，解决导航栏控制器设置屏幕旋转无效的问题
+    open override var shouldAutorotate: Bool {
+        if let vc = self.visibleViewController {
+            return vc.shouldAutorotate
+        }
+        return false
+    }
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if let vc = self.visibleViewController {
+            return vc.supportedInterfaceOrientations
+        }
+        return .portrait
+    }
+    open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        if let vc = self.visibleViewController {
+            return vc.preferredInterfaceOrientationForPresentation
+        }
+        return .portrait
+    }
     
     //重写这两个方法，解决单个控制器设置状态栏隐藏或文字无效的问题
     override open var childForStatusBarHidden: UIViewController? {

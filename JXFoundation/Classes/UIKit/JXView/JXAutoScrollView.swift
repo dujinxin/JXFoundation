@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import JXFoundation
 
 public protocol JXAutoScrollViewDelegate {
     func jxAutoScrollView(autoScrollView : JXAutoScrollView,didSelectItemAt index: Int) -> Void
@@ -228,13 +227,13 @@ public class JXAutoScrollView: UIView {
         }
     }
     //MARK: public methods
-    @objc func beginScroll() {
+    @objc public func beginScroll() {
         if self.titles.count < 2 || self.containerView.contentSize.width <= self.containerView.bounds.width {
             return
         }
         self.displayLink.add(to: RunLoop.current, forMode: RunLoop.Mode.common)
     }
-    @objc func stopScroll() {
+    @objc public func stopScroll() {
         self.displayLink.remove(from: RunLoop.current, forMode: RunLoop.Mode.common)
     }
     
